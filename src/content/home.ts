@@ -52,20 +52,20 @@ export const howItWorks = [
 ];
 
 export const pipelineNodes = [
-  { name: "Listener", role: "PWA capture", level: 0, pack: "A" },
-  { name: "Whisper", role: "transcription", level: 0, pack: "A" },
-  { name: "Exa", role: "market research", level: 0, pack: "A" },
-  { name: "Claude / PRD Agent", role: "Zod schema", level: 0, pack: "A" },
-  { name: "Brand Agent", role: "identity kit", level: 1, pack: "A" },
-  { name: "Jira Generator", role: "epics + stories", level: 1, pack: "A" },
-  { name: "Confluence Generator", role: "space + pages", level: 1, pack: "A" },
-  { name: "Engineering Agent", role: "scaffold spec", level: 1, pack: "B" },
-  { name: "Next.js + Supabase", role: "repo", level: 0, pack: "B" },
-  { name: "Vercel Deploy", role: "staging deploy", level: 0, pack: "C" },
+  { name: "Listener", role: "PWA Capture", level: 0, pack: "A" },
+  { name: "Whisper", role: "Transcription", level: 0, pack: "A" },
+  { name: "Exa", role: "Market Research", level: 0, pack: "A" },
+  { name: "Claude / PRD Agent", role: "Zod Schema", level: 0, pack: "A" },
+  { name: "Brand Agent", role: "Identity Kit", level: 1, pack: "A" },
+  { name: "Jira Generator", role: "Epics + Stories", level: 1, pack: "A" },
+  { name: "Confluence Generator", role: "Space + Pages", level: 1, pack: "A" },
+  { name: "Engineering Agent", role: "Scaffold Spec", level: 1, pack: "B" },
+  { name: "Next.js + Supabase", role: "Repo", level: 0, pack: "B" },
+  { name: "Vercel Deploy", role: "Staging Deploy", level: 0, pack: "C" },
 ];
 
 export const pipelineNodeOutputs = [
-  "→ PWA capture session",
+  "→ On-device capture session",
   "→ Structured transcript",
   "→ Competitive brief",
   "→ Validated PRD schema",
@@ -75,6 +75,131 @@ export const pipelineNodeOutputs = [
   "→ Engineering scaffold spec",
   "→ Next.js + Supabase repo",
   "→ Staging deploy URL",
+];
+
+export const pipelineNodeBodies = [
+  "Speak once. Murmur captures on-device — no uploads, no prompt wrangling, no leaving your flow.",
+  "Speech becomes structured text on your machine. Whisper transcribes before anything crosses the wire.",
+  "Live web search for competitors and prior art. Citations you can open — not invented market research.",
+  "One agent turns the memo into a typed PRD, validated against a Zod schema before anything downstream runs.",
+  "Palette, typography, and voice pulled from the spec — not a generic mood board.",
+  "Epics and stories generated from the PRD. The backlog follows the product, not reverse-engineered docs.",
+  "Confluence space and pages scaffolded to mirror the PRD structure your team can fill in.",
+  "Repo boundaries and scaffold spec defined before Pack B writes application code.",
+  "A typed Next.js + Supabase repo aligned to the PRD — auth, schema, and brand tokens wired in.",
+  "A preview URL on Vercel before you close the tab. Staged, not a localhost demo.",
+];
+
+export type PipelineIllustration =
+  | "capture"
+  | "transcript"
+  | "research"
+  | "schema"
+  | "parallel"
+  | "brand"
+  | "jira"
+  | "confluence"
+  | "engineering"
+  | "repo"
+  | "deploy";
+
+export const pipelineNodeIllustrations: PipelineIllustration[] = [
+  "capture",
+  "transcript",
+  "research",
+  "schema",
+  "brand",
+  "jira",
+  "confluence",
+  "engineering",
+  "repo",
+  "deploy",
+];
+
+export const pipelineRailSteps = [
+  { step: "01", label: "Voice" },
+  { step: "02", label: "Transcription" },
+  { step: "03", label: "Research" },
+  { step: "04", label: "PRD" },
+  { step: "05", label: "Brand · Jira · Confluence" },
+  { step: "06", label: "Scaffold" },
+  { step: "07", label: "Deploy" },
+] as const;
+
+export type PipelineStage = {
+  step: string;
+  title: string;
+  role: string;
+  pack: string;
+  output: string;
+  body: string;
+  glowTarget: number | "hub";
+};
+
+export const pipelineStages: PipelineStage[] = [
+  {
+    step: "01",
+    title: "Listener",
+    role: "PWA Capture",
+    pack: "A",
+    output: "→ On-device capture session",
+    body: "Speak once. Murmur captures on-device — no uploads, no prompt wrangling, no leaving your flow.",
+    glowTarget: 0,
+  },
+  {
+    step: "02",
+    title: "Whisper",
+    role: "Transcription",
+    pack: "A",
+    output: "→ Structured transcript",
+    body: "Speech becomes structured text on your machine. Whisper transcribes before anything crosses the wire.",
+    glowTarget: 1,
+  },
+  {
+    step: "03",
+    title: "Exa",
+    role: "Market Research",
+    pack: "A",
+    output: "→ Competitive brief",
+    body: "Live web search for competitors and prior art. Citations you can open — not invented market research.",
+    glowTarget: 2,
+  },
+  {
+    step: "04",
+    title: "Claude / PRD Agent",
+    role: "Zod Schema",
+    pack: "A",
+    output: "→ Validated PRD schema",
+    body: "One agent turns the memo into a typed PRD, validated against a Zod schema before anything downstream runs.",
+    glowTarget: 3,
+  },
+  {
+    step: "05–08",
+    title: "Parallel agents",
+    role: "PRD Fans Out",
+    pack: "A · B",
+    output: "→ Brand · Jira · Confluence · Scaffold spec",
+    body: "The PRD fans out to four specialists at once — brand, Jira, Confluence, and engineering scaffold in parallel.",
+    glowTarget: "hub",
+  },
+  {
+    step: "09",
+    title: "Next.js + Supabase",
+    role: "Repo",
+    pack: "B",
+    output: "→ Next.js + Supabase repo",
+    body: "A typed Next.js + Supabase repo aligned to the PRD — auth, schema, and brand tokens wired in.",
+    glowTarget: 8,
+  },
+  {
+    step: "10",
+    title: "Vercel Deploy",
+    role: "Staging Deploy",
+    pack: "C",
+    output: "→ Staging deploy URL",
+    body: "A preview URL on Vercel before you close the tab. Staged, not a localhost demo.",
+    glowTarget: 9,
+  },
 ];
 
 export const packs = [
