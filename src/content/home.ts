@@ -202,53 +202,76 @@ export const pipelineStages: PipelineStage[] = [
   },
 ];
 
-export const packs = [
+export type PackFeature =
+  | string
+  | {
+      text: string;
+      bold?: boolean;
+    };
+
+export type Pack = {
+  letter: string;
+  name: string;
+  subtitle?: string;
+  priceAmount: string;
+  priceUnit: string;
+  priceNote?: string;
+  features: PackFeature[];
+  cta: string;
+  tag?: string;
+  footnote?: string;
+  featured?: boolean;
+};
+
+export const packs: Pack[] = [
   {
     letter: "A",
     name: "Pipeline",
-    position: "Turn the memo into a real project foundation.",
-    price: "Starting from $49/month - early access",
+    subtitle: "Voice memo → PRD, brand kit, Jira, Confluence.",
+    priceAmount: "$49",
+    priceUnit: "/ month",
+    priceNote: "Early access",
     features: [
-      "Listener intake",
-      "Local transcription handoff",
-      "Competitive research brief",
-      "Validated PRD",
-      "Brand identity kit",
-      "Jira + Confluence scaffold",
+      "Unlimited voice memos via Listener PWA",
+      "Local Whisper transcription",
+      "Exa-backed market research brief",
+      "Validated PRD (Zod schema, exportable)",
+      "Brand kit — palette, type, logo marks",
+      "Jira board + Confluence space scaffold",
     ],
-    cta: "Join for Pack A",
+    cta: "Start with Pack A →",
+    footnote: "The base. Most builders start here.",
     featured: true,
   },
   {
     letter: "B",
     name: "Pipeline + Scaffold",
-    position: "Add a starter codebase when planning is not enough.",
-    price: "From $199/project - early access",
+    subtitle: "Adds a Next.js + Supabase repo, in your hands.",
+    priceAmount: "$199",
+    priceUnit: "/ project",
     features: [
-      "Everything in Pack A",
-      "Engineering scaffold spec",
-      "Next.js app foundation",
-      "Supabase-ready structure",
-      "Repository handoff",
+      { text: "Everything in Pack A", bold: true },
+      "Next.js 15 + Supabase scaffold",
+      "Auth, RLS policies, typed DB schema",
+      "Brand tokens applied to UI",
     ],
-    cta: "Join for Pack B",
-    tag: "+ SCAFFOLD",
+    cta: "Add Scaffold",
+    tag: "+ Scaffold",
   },
   {
     letter: "C",
     name: "Pipeline + Scaffold + Deploy",
-    position: "Go from spoken idea to a staged URL.",
-    price: "From $399/project - early access",
+    subtitle: "Live URL, in your hands",
+    priceAmount: "$399",
+    priceUnit: "/ project",
     features: [
-      "Everything in Pack B",
-      "Vercel project setup",
-      "Staging deployment",
-      "*.murmur.studio preview",
-      "Launch checklist",
+      { text: "Everything in Pack B", bold: true },
+      "Vercel deploy + preview URL",
+      "Custom subdomain on murmur.studio",
+      "CI & environment wired",
     ],
-    cta: "Join for Pack C",
-    tag: "+ DEPLOY",
-    glow: true,
+    cta: "Add Deploy",
+    tag: "+ Deploy",
   },
 ];
 
@@ -275,6 +298,18 @@ export const stackLayers = [
     ],
   },
 ] as const;
+
+export const waitlistSection = {
+  eyebrow: "Join the waitlist",
+  headline: "Be early.",
+  description:
+    "Murmur opens in private beta this summer. No spam, occasional updates, first access when Pack A is live.",
+  count: 4,
+  countLabel: "builders on the waitlist",
+  placeholder: "you@studio.com",
+  cta: "Reserve a seat →",
+  footnote: "Powered by Buttondown · no tracking pixels · unsubscribe one-click",
+} as const;
 
 export const studioLog = [
   {

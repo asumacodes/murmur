@@ -88,13 +88,13 @@ export function StackStrip() {
   );
 
   return (
-    <section ref={sectionRef} className="py-16 sm:py-20">
+    <section ref={sectionRef} className="py-16 !pb-0 sm:py-20">
       <Container>
         <div className="border-y border-[var(--border-subtle)] py-10 sm:py-12">
           <div className="stack-header mb-10 max-w-3xl lg:mb-12">
             <SectionEyebrow className="stack-header-line opacity-0">Built on</SectionEyebrow>
             <h2 className="stack-header-line font-serif-display mt-4 text-[clamp(2rem,3.5vw,3.2rem)] leading-[1.05] opacity-0">
-              Every layer is named.
+              Every layer is <span className="text-invert">named</span>.
             </h2>
             <p className="stack-header-line mt-5 max-w-2xl text-base leading-7 text-[var(--text-secondary)] opacity-0">
               Proven primitives at each step of the pipeline — intelligence,

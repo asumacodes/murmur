@@ -8,6 +8,7 @@ import { Packs } from "@/components/sections/Packs";
 import { Pipeline } from "@/components/sections/Pipeline";
 import { StackStrip } from "@/components/sections/StackStrip";
 import { StudioLog } from "@/components/sections/StudioLog";
+import { features } from "@/config/features";
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
         <HowItWorks />
         <Pipeline />
         <Packs />
-        <StudioLog />
+        {features.studioLog ? <StudioLog /> : null}
         <StackStrip />
         <FutureSections />
         <EarlyAccessCTA />

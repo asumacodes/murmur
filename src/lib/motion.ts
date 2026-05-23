@@ -1,3 +1,5 @@
+import { features } from "@/config/features";
+
 export const PREMIUM_EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
 
 export const motionDefaults = {
@@ -17,9 +19,6 @@ export const scrollEnterSoft = {
   toggleActions: "play none none none" as const,
 };
 
-export const sectionSpyIds = [
-  "how-it-works",
-  "pipeline",
-  "packs",
-  "studio-log",
-] as const;
+export const sectionSpyIds = features.studioLog
+  ? (["how-it-works", "pipeline", "packs", "studio-log"] as const)
+  : (["how-it-works", "pipeline", "packs"] as const);

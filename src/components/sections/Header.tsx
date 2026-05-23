@@ -3,8 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import { navItems } from "@/content/home";
 import { GhostButton, VersionChip } from "@/components/ui";
+import { features } from "@/config/features";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { sectionSpyIds } from "@/lib/motion";
+
+const headerNavItems = navItems.filter(
+  (item) => features.studioLog || item.href !== "#studio-log",
+);
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -84,7 +89,7 @@ export function Header() {
 
         <nav className="hidden md:block" aria-label="Primary navigation">
           <ul className="flex items-center gap-8">
-            {navItems.map((item) => {
+            {headerNavItems.map((item) => {
               const sectionId = item.href.replace("#", "");
               const isActive = activeSection === sectionId;
 
@@ -128,7 +133,7 @@ export function Header() {
           className="murmur-container mb-4 grid gap-2 rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-elevated)] p-4 md:hidden"
         >
           <ul className="grid gap-2">
-            {navItems.map((item, index) => {
+            {headerNavItems.map((item, index) => {
               const sectionId = item.href.replace("#", "");
               const isActive = activeSection === sectionId;
 

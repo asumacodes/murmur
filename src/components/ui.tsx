@@ -55,12 +55,12 @@ export function VersionChip({ className = "" }: { className?: string }) {
 export function PlayIcon({ className = "" }: { className?: string }) {
   return (
     <span
-      className={`inline-grid size-6 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--gold)_45%,transparent)] bg-[rgba(201,169,110,0.06)] transition-[border-color,background-color] duration-200 group-hover:border-[var(--gold)] group-hover:bg-[var(--gold)] ${className}`}
+      className={`inline-grid size-6 shrink-0 place-items-center rounded-full border border-current border-opacity-40 bg-[rgba(201,169,110,0.06)] text-inherit transition-[border-color,background-color,color] duration-200 group-hover:border-[var(--gold)] group-hover:bg-[var(--gold)] group-hover:text-[var(--bg-deep)] ${className}`}
       aria-hidden="true"
     >
       <svg
         viewBox="0 0 16 16"
-        className="ml-0.5 size-2.5 fill-current text-[var(--gold)] transition-colors duration-200 group-hover:text-[var(--bg-deep)]"
+        className="ml-0.5 size-2.5 fill-current text-inherit transition-colors duration-200 group-hover:text-[var(--bg-deep)]"
       >
         <path d="M4 3.5v9l8-4.5-8-4.5z" />
       </svg>

@@ -1,9 +1,21 @@
 import { Container } from "@/components/ui";
 import { footerLinks } from "@/content/home";
+import { features } from "@/config/features";
 
-const socialLinks = [
-  { label: "YouTube", href: "https://www.youtube.com/@AsumaCodes" },
-  { label: "X", href: "https://x.com/AsumaCodes" },
+const footerLinkGroups = {
+  ...footerLinks,
+  studio: footerLinks.studio.filter(
+    (link) => features.studioLog || link.href !== "#studio-log",
+  ),
+};
+
+const socialLinks: { label: string; href: string; handle?: string }[] = [
+  {
+    label: "YouTube",
+    handle: "@AsumaCodes",
+    href: "https://www.youtube.com/@AsumaCodes",
+  },
+  { label: "X", handle: "@AsumaCodes", href: "https://x.com/AsumaCodes" },
   { label: "GitHub", href: "https://github.com/asumacodes" },
 ];
 
@@ -11,7 +23,7 @@ export function Footer() {
   return (
     <footer className="border-t border-[var(--border-subtle)] py-12">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_auto] lg:items-start">
           <div>
             <p className="font-serif-display text-4xl italic text-[var(--gold)]">
               Murmur
@@ -28,7 +40,7 @@ export function Footer() {
           </div>
 
           <div className="grid grid-cols-3 gap-6">
-            {Object.entries(footerLinks).map(([group, links]) => (
+            {Object.entries(footerLinkGroups).map(([group, links]) => (
               <nav key={group} aria-label={`Footer ${group} links`}>
                 <p className="font-mono-text mb-4 text-xs uppercase tracking-[0.14em] text-[var(--gold)]">
                   {group}
@@ -49,28 +61,31 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="lg:text-right">
-            <ul className="flex gap-4 lg:justify-end">
+          <div className="w-fit lg:justify-self-end">
+            <ul className="footer-social grid gap-3">
               {socialLinks.map((item) => (
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="focus-ring gold-link rounded-sm text-sm text-[var(--gold)]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer-social-link focus-ring rounded-sm text-sm text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-primary)]"
                   >
                     {item.label}
+                    {item.handle ? ` · ${item.handle}` : null} ↗
                   </a>
                 </li>
               ))}
             </ul>
-            <p className="mt-5 text-sm text-[var(--text-tertiary)]">
+            <p className="footer-location font-mono-text mt-6 text-sm text-[var(--text-tertiary)]">
               Made in Chandigarh · 2026
             </p>
           </div>
         </div>
 
-        <div className="font-mono-text mt-12 flex flex-col gap-3 border-t border-[var(--border-subtle)] pt-6 text-xs uppercase tracking-[0.12em] text-[var(--text-tertiary)] sm:flex-row sm:items-center sm:justify-between">
+        <div className="footer-bar">
           <span>© 2026 SprintZero Studio</span>
-          <span>v0.5 - early access</span>
+          <span>v0.5 · early access</span>
         </div>
       </Container>
     </footer>

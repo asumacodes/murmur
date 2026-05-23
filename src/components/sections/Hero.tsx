@@ -170,10 +170,16 @@ export function Hero() {
                 <ListenerMockup animateWaveform />
               </div>
               <div className="hero-cta opacity-0">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                  <MagneticGoldButton href="#early-access">Join early access →</MagneticGoldButton>
+                <div className="hero-cta-row flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <MagneticGoldButton
+                    href="#early-access"
+                    className="hero-btn hero-btn--primary font-medium"
+                  >
+                    Join early access →
+                  </MagneticGoldButton>
                   <GhostButton
                     href="#pipeline"
+                    className="hero-btn hero-btn--ghost font-medium"
                     onClick={() => {
                       window.dispatchEvent(new CustomEvent(REPLAY_PIPELINE_EVENT));
                     }}
