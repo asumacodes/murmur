@@ -5,37 +5,48 @@ export const navItems = [
   { label: "Studio log", href: "#studio-log" },
 ];
 
-export const pipelineLabels = ["VOICE", "RESEARCH", "PRD", "BRAND", "SHIPPED"];
+export const pipelineLabels = [
+  { numeral: "i.", label: "VOICE" },
+  { numeral: "ii.", label: "RESEARCH" },
+  { numeral: "iii.", label: "PRD" },
+  { numeral: "iv.", label: "BRAND" },
+  { numeral: "v.", label: "SHIPPED" },
+];
 
 export const howItWorks = [
   {
     number: "01",
-    title: "VOICE IN",
-    body: "You open Listener. Tap once. Talk for five minutes about your idea.",
+    label: "Voice in",
+    headline: "You open Listener. Tap once. Talk for five minutes.",
+    body: "No prompts. No fields. No structure to figure out. Speak the idea as if explaining it to a friend at a kitchen table.",
     artifact: "Recording",
   },
   {
     number: "02",
-    title: "TRANSCRIPTION",
-    body: "Whisper runs locally. Your voice becomes structured text - privately, in seconds.",
+    label: "Transcription",
+    headline: "Whisper runs locally. Your voice becomes structured text — privately, in seconds.",
+    body: "Speaker turns, punctuation, paragraph breaks. The audio never leaves your machine. The transcript is what the pipeline reads.",
     artifact: "Transcript",
   },
   {
     number: "03",
-    title: "RESEARCH",
-    body: "Exa searches the web for competitors, prior art, and market signal. You get a brief, not a hallucination.",
+    label: "Research",
+    headline: "Exa searches the web for competitors, prior art, and market signal. You get a brief, not a hallucination.",
+    body: "Real URLs. Real snippets. Each finding cited and dated. The PRD agent reads this before it writes a word.",
     artifact: "Market signal",
   },
   {
     number: "04",
-    title: "PROJECT FOUNDATION",
-    body: "Claude writes the PRD. A brand identity is generated. Jira board and Confluence space scaffold themselves.",
+    label: "Project foundation",
+    headline: "Claude writes the PRD. A brand identity is generated. Jira board and Confluence space scaffold themselves.",
+    body: "Four specialists, four typed schemas, one validated handoff per agent. The output is what a small studio would produce in a week.",
     artifact: "PRD + brand + Jira",
   },
   {
     number: "05",
-    title: "SCAFFOLD & DEPLOY",
-    body: "For Pack B and C: a Next.js + Supabase repo lands in your hands. For Pack C: it is live on a *.murmur.studio URL before you close the tab.",
+    label: "Scaffold & deploy — optional",
+    headline: "For Pack B and C: a Next.js + Supabase repo lands in your hands. For Pack C: it's live before you close the tab.",
+    body: "Auth wired. Database typed. Vercel preview URL. The scaffold matches the PRD schema, not a generic template.",
     artifact: "Deploy",
   },
 ];
@@ -51,6 +62,19 @@ export const pipelineNodes = [
   { name: "Engineering Agent", role: "scaffold spec", level: 1, pack: "B" },
   { name: "Next.js + Supabase", role: "repo", level: 0, pack: "B" },
   { name: "Vercel Deploy", role: "staging deploy", level: 0, pack: "C" },
+];
+
+export const pipelineNodeOutputs = [
+  "→ PWA capture session",
+  "→ Structured transcript",
+  "→ Competitive brief",
+  "→ Validated PRD schema",
+  "→ Brand identity kit",
+  "→ Jira epics + stories",
+  "→ Confluence space scaffold",
+  "→ Engineering scaffold spec",
+  "→ Next.js + Supabase repo",
+  "→ Staging deploy URL",
 ];
 
 export const packs = [

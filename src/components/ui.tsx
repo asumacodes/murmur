@@ -27,7 +27,7 @@ type ButtonLinkProps = ComponentPropsWithoutRef<"a">;
 export function GoldButton({ className = "", ...props }: ButtonLinkProps) {
   return (
     <a
-      className={`focus-ring inline-flex items-center justify-center rounded-full bg-[var(--gold-bright)] px-5 py-3 text-sm font-semibold text-[var(--bg-deep)] transition duration-200 hover:bg-[var(--gold)] ${className}`}
+      className={`focus-ring inline-flex h-11 items-center justify-center rounded-sm bg-[var(--gold-bright)] px-5 text-sm font-semibold text-[var(--bg-deep)] transition duration-200 hover:bg-[var(--gold)] ${className}`}
       {...props}
     />
   );
@@ -36,7 +36,7 @@ export function GoldButton({ className = "", ...props }: ButtonLinkProps) {
 export function GhostButton({ className = "", ...props }: ButtonLinkProps) {
   return (
     <a
-      className={`focus-ring inline-flex items-center justify-center rounded-full border border-[var(--border-gold)] px-5 py-3 text-sm font-semibold text-[var(--gold)] transition duration-200 hover:border-[var(--gold)] hover:bg-[rgba(201,169,110,0.08)] ${className}`}
+      className={`group focus-ring inline-flex h-11 items-center justify-center gap-2.5 rounded-sm border border-[color-mix(in_srgb,var(--gold)_38%,transparent)] px-5 text-sm font-semibold text-[var(--gold)] transition-[border-color,background-color,box-shadow] duration-200 hover:border-[var(--gold)] hover:bg-[rgba(201,169,110,0.04)] hover:shadow-[inset_0_0_0_1px_rgba(201,169,110,0.06)] ${className}`}
       {...props}
     />
   );
@@ -55,10 +55,13 @@ export function VersionChip({ className = "" }: { className?: string }) {
 export function PlayIcon({ className = "" }: { className?: string }) {
   return (
     <span
-      className={`inline-grid size-7 shrink-0 place-items-center rounded-full border border-[var(--border-gold)] ${className}`}
+      className={`inline-grid size-6 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--gold)_45%,transparent)] bg-[rgba(201,169,110,0.06)] transition-[border-color,background-color] duration-200 group-hover:border-[var(--gold)] group-hover:bg-[var(--gold)] ${className}`}
       aria-hidden="true"
     >
-      <svg viewBox="0 0 16 16" className="ml-0.5 size-2.5 fill-current text-[var(--text-primary)]">
+      <svg
+        viewBox="0 0 16 16"
+        className="ml-0.5 size-2.5 fill-current text-[var(--gold)] transition-colors duration-200 group-hover:text-[var(--bg-deep)]"
+      >
         <path d="M4 3.5v9l8-4.5-8-4.5z" />
       </svg>
     </span>

@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { navItems } from "@/content/home";
 import { GhostButton, VersionChip } from "@/components/ui";
+import { useScrollSpy } from "@/hooks/useScrollSpy";
+import { sectionSpyIds } from "@/lib/motion";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -10,6 +12,7 @@ export function Header() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileNavRef = useRef<HTMLElement>(null);
   const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
+  const activeSection = useScrollSpy(sectionSpyIds);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -68,30 +71,35 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition duration-300 ${
         scrolled
-          ? "border-b border-[var(--border-subtle)] bg-[rgba(20,20,20,0.96)]"
+          ? "border-b border-[var(--border-subtle)] bg-[rgba(20,20,20,0.96)] backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="murmur-container flex h-20 items-center justify-between gap-6">
-        <a href="#top" className="focus-ring flex items-baseline gap-3 rounded-lg">
+        <a href="#top" className="focus-ring rounded-lg">
           <span className="font-serif-display text-3xl italic text-[var(--gold)]">
             Murmur
           </span>
-          <VersionChip className="hidden sm:inline" />
         </a>
 
         <nav className="hidden md:block" aria-label="Primary navigation">
           <ul className="flex items-center gap-8">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  className="focus-ring gold-link rounded-sm text-sm text-[var(--text-secondary)]"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const sectionId = item.href.replace("#", "");
+              const isActive = activeSection === sectionId;
+
+              return (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    aria-current={isActive ? "location" : undefined}
+                    className="focus-ring nav-link rounded-sm text-sm"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
@@ -120,18 +128,28 @@ export function Header() {
           className="murmur-container mb-4 grid gap-2 rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-elevated)] p-4 md:hidden"
         >
           <ul className="grid gap-2">
-            {navItems.map((item, index) => (
-              <li key={item.href}>
-                <a
-                  ref={index === 0 ? firstMobileLinkRef : undefined}
-                  href={item.href}
-                  className="focus-ring block rounded-2xl px-4 py-3 text-sm text-[var(--text-secondary)] hover:bg-[rgba(201,169,110,0.08)]"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            {navItems.map((item, index) => {
+              const sectionId = item.href.replace("#", "");
+              const isActive = activeSection === sectionId;
+
+              return (
+                <li key={item.href}>
+                  <a
+                    ref={index === 0 ? firstMobileLinkRef : undefined}
+                    href={item.href}
+                    aria-current={isActive ? "location" : undefined}
+                    className={`focus-ring block rounded-2xl px-4 py-3 text-sm transition-colors ${
+                      isActive
+                        ? "bg-[rgba(201,169,110,0.1)] text-[var(--text-primary)]"
+                        : "text-[var(--text-secondary)] hover:bg-[rgba(201,169,110,0.06)] hover:text-[var(--text-primary)]"
+                    }`}
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
           <GhostButton href="#early-access" onClick={() => setOpen(false)}>
             Join early access

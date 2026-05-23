@@ -2,194 +2,24 @@
 
 import { useRef } from "react";
 import { Container, SectionEyebrow } from "@/components/ui";
-import { pipelineNodes } from "@/content/home";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { pipelineNodeOutputs, pipelineNodes } from "@/content/home";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { scrollEnter } from "@/lib/motion";
+import {
+  createPipelineGlowController,
+  createPipelineReplayTimeline,
+  createPipelineTracerLoop,
+  REPLAY_PIPELINE_EVENT,
+  setTracerProgress,
+} from "@/lib/pipeline-tracer";
 
 const mainFlow = pipelineNodes.slice(0, 4);
 const branchFlow = pipelineNodes.slice(4, 8);
 const shipFlow = pipelineNodes.slice(8);
 
-type Point = { x: number; y: number };
-
-const TRACER_SPEED = 180;
-
-type TracerStep = {
-  type: "trail";
-  points: [Point, Point];
-  glowStart?: number | "hub";
-  glowEnd?: number | "hub";
-};
-
-function linkPoints(run: HTMLElement, flow: string): [Point, Point] | null {
-  const line = run.querySelector<HTMLElement>(`[data-flow="${flow}"]`);
-  if (!line) {
-    return null;
-  }
-
-  const runRect = run.getBoundingClientRect();
-  const rect = line.getBoundingClientRect();
-  const y = rect.top + rect.height / 2 - runRect.top;
-
-  return [
-    { x: rect.left - runRect.left, y },
-    { x: rect.right - runRect.left, y },
-  ];
-}
-
-function railPoints(run: HTMLElement, flow: "branch-in" | "branch-out"): [Point, Point] | null {
-  const rail = run.querySelector<HTMLElement>(`[data-flow="${flow}"]`);
-  if (!rail) {
-    return null;
-  }
-
-  const runRect = run.getBoundingClientRect();
-  const rect = rail.getBoundingClientRect();
-  const y = rect.top + rect.height / 2 - runRect.top;
-
-  return [
-    { x: rect.left - runRect.left, y },
-    { x: rect.right - runRect.left, y },
-  ];
-}
-
-function trailStep(
-  run: HTMLElement,
-  source: "link" | "rail",
-  flow: string,
-  glow?: { start?: number | "hub"; end?: number | "hub" },
-): TracerStep | null {
-  const points =
-    source === "link"
-      ? linkPoints(run, flow)
-      : railPoints(run, flow as "branch-in" | "branch-out");
-
-  if (!points) {
-    return null;
-  }
-
-  return {
-    type: "trail",
-    points,
-    glowStart: glow?.start,
-    glowEnd: glow?.end,
-  };
-}
-
-function buildTracerSteps(run: HTMLElement): TracerStep[] {
-  const steps: TracerStep[] = [];
-
-  const add = (step: TracerStep | null) => {
-    if (step) {
-      steps.push(step);
-    }
-  };
-
-  // Tracer only runs on visible lines — hidden instant jumps between each segment.
-  add(trailStep(run, "link", "main-0", { start: 0, end: 1 }));
-  add(trailStep(run, "link", "main-1", { start: 1, end: 2 }));
-  add(trailStep(run, "link", "main-2", { start: 2, end: 3 }));
-  add(trailStep(run, "rail", "branch-in", { start: "hub", end: "hub" }));
-  add(trailStep(run, "rail", "branch-out", { start: "hub", end: "hub" }));
-  add(trailStep(run, "link", "ship-0", { start: 8, end: 9 }));
-
-  return steps;
-}
-
-function buildTracerLoop(run: HTMLElement, dot: HTMLElement) {
-  if (window.matchMedia("(max-width: 1023px)").matches) {
-    return null;
-  }
-
-  const steps = buildTracerSteps(run);
-  if (!steps.length) {
-    return null;
-  }
-
-  const nodes = gsap.utils.toArray<HTMLElement>(".pipeline-node", run);
-  const hub = run.querySelector<HTMLElement>(".pipeline-branch-hub");
-  const parallelIndexes = [4, 5, 6, 7];
-  let activeNodes: HTMLElement[] = [];
-
-  const clearGlow = () => {
-    activeNodes.forEach((nodeEl) => nodeEl.classList.remove("is-tracing"));
-    activeNodes = [];
-    hub?.classList.remove("is-tracing");
-  };
-
-  const setGlow = (target: number | "hub") => {
-    clearGlow();
-
-    if (target === "hub") {
-      hub?.classList.add("is-tracing");
-      activeNodes = parallelIndexes
-        .map((index) => nodes.find((nodeEl) => nodeEl.dataset.index === String(index)))
-        .filter((nodeEl): nodeEl is HTMLElement => Boolean(nodeEl));
-      activeNodes.forEach((nodeEl) => nodeEl.classList.add("is-tracing"));
-      return;
-    }
-
-    const nodeEl = nodes.find((entry) => entry.dataset.index === String(target));
-    if (nodeEl) {
-      activeNodes = [nodeEl];
-      nodeEl.classList.add("is-tracing");
-    }
-  };
-
-  const loop = gsap.timeline({
-    repeat: -1,
-    repeatDelay: 0.25,
-    onRepeat: () => {
-      gsap.set(dot, { opacity: 0 });
-      clearGlow();
-    },
-  });
-
-  steps.forEach((step) => {
-    const [start, end] = step.points;
-    const duration = Math.hypot(end.x - start.x, end.y - start.y) / TRACER_SPEED;
-
-    loop.call(() => {
-      gsap.set(dot, {
-        opacity: 1,
-        x: start.x,
-        y: start.y,
-        xPercent: -50,
-        yPercent: -50,
-      });
-      if (step.glowStart !== undefined) {
-        setGlow(step.glowStart);
-      }
-    });
-
-    loop.to(
-      dot,
-      {
-        x: end.x,
-        y: end.y,
-        duration,
-        ease: "none",
-        onComplete: () => {
-          gsap.set(dot, { opacity: 0 });
-          if (step.glowEnd !== undefined) {
-            setGlow(step.glowEnd);
-          }
-        },
-      },
-      ">",
-    );
-  });
-
-  loop.call(() => {
-    gsap.set(dot, { opacity: 0 });
-    clearGlow();
-  });
-
-  return loop;
-}
-
 export function Pipeline() {
   const sectionRef = useRef<HTMLElement>(null);
+  const pinWrapRef = useRef<HTMLDivElement>(null);
   const runRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -209,14 +39,92 @@ export function Pipeline() {
       }
 
       let tracerLoop: gsap.core.Timeline | null = null;
+      let replayTimeline: gsap.core.Timeline | null = null;
+      let scrubTrigger: ScrollTrigger | null = null;
+      let isScrubbing = false;
+
+      const glowController = createPipelineGlowController(run);
+
+      const getDot = () => run.querySelector<HTMLElement>(".pipeline-tracer-global");
+
+      const stopMotion = () => {
+        tracerLoop?.kill();
+        tracerLoop = null;
+        replayTimeline?.kill();
+        replayTimeline = null;
+      };
 
       const startTracer = () => {
-        tracerLoop?.kill();
-        const dot = run.querySelector<HTMLElement>(".pipeline-tracer-global");
+        if (isScrubbing) {
+          return;
+        }
+
+        stopMotion();
+
+        const dot = getDot();
+        if (!dot || !run.classList.contains("is-live")) {
+          return;
+        }
+
+        tracerLoop = createPipelineTracerLoop(run, dot, glowController);
+      };
+
+      const setupScrubPin = () => {
+        const pinWrap = pinWrapRef.current;
+        const dot = getDot();
+
+        if (!pinWrap || !dot) {
+          startTracer();
+          return;
+        }
+
+        if (window.matchMedia("(max-width: 1023px)").matches) {
+          startTracer();
+          return;
+        }
+
+        stopMotion();
+        isScrubbing = true;
+
+        scrubTrigger?.kill();
+        scrubTrigger = ScrollTrigger.create({
+          trigger: pinWrap,
+          start: "top top+=80",
+          end: "+=110%",
+          pin: true,
+          scrub: 0.65,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            setTracerProgress(run, dot, self.progress, glowController);
+          },
+          onLeave: () => {
+            isScrubbing = false;
+            startTracer();
+          },
+          onEnterBack: () => {
+            stopMotion();
+            isScrubbing = true;
+          },
+        });
+      };
+
+      const onReplay = () => {
+        const dot = getDot();
         if (!dot) {
           return;
         }
-        tracerLoop = buildTracerLoop(run, dot);
+
+        stopMotion();
+        isScrubbing = false;
+        scrubTrigger?.disable();
+
+        sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        replayTimeline = createPipelineReplayTimeline(run, dot, glowController, () => {
+          scrubTrigger?.enable();
+          startTracer();
+        });
+        replayTimeline.play(0);
       };
 
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -268,7 +176,7 @@ export function Pipeline() {
         },
         onComplete: () => {
           run.classList.add("is-live");
-          startTracer();
+          setupScrubPin();
         },
       });
 
@@ -357,14 +265,21 @@ export function Pipeline() {
         if (!run.classList.contains("is-live")) {
           return;
         }
-        startTracer();
+
+        scrubTrigger?.kill();
+        scrubTrigger = null;
+        isScrubbing = false;
+        setupScrubPin();
       };
 
       window.addEventListener("resize", onResize);
+      window.addEventListener(REPLAY_PIPELINE_EVENT, onReplay);
 
       return () => {
-        tracerLoop?.kill();
+        stopMotion();
+        scrubTrigger?.kill();
         window.removeEventListener("resize", onResize);
+        window.removeEventListener(REPLAY_PIPELINE_EVENT, onReplay);
         run.querySelectorAll(".pipeline-node.is-tracing, .pipeline-branch-hub.is-tracing").forEach((el) => {
           el.classList.remove("is-tracing");
         });
@@ -392,44 +307,46 @@ export function Pipeline() {
           </p>
         </div>
 
-        <div
-          ref={runRef}
-          className="pipeline-run relative rounded-[2rem] border border-[var(--border-gold)] bg-[rgba(10,10,10,0.45)] p-4 sm:p-6 lg:p-8"
-        >
-          <span
-            className="pipeline-tracer-global pointer-events-none absolute left-0 top-0 z-20 hidden size-2 rounded-full bg-[var(--gold-bright)] opacity-0 shadow-[0_0_14px_rgba(232,168,32,0.95)] lg:block"
-            aria-hidden="true"
-          />
-
-          <div className="grid gap-5">
-            <FlowRow nodes={mainFlow} startIndex={0} flowPrefix="main" />
-
-            <div className="grid gap-4 lg:grid-cols-[1fr_2fr_1fr] lg:items-center">
-              <BranchRail label="PRD fans out" align="right" flow="branch-in" />
-              <div className="pipeline-branch-hub opacity-0 rounded-[1.5rem] border border-[var(--border-gold)] bg-[rgba(201,169,110,0.04)] p-4">
-                <p className="font-mono-text mb-4 text-center text-[0.65rem] uppercase tracking-[0.14em] text-[var(--gold)]">
-                  parallel agents
-                </p>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {branchFlow.map((node, index) => (
-                    <PipelineNode
-                      key={node.name}
-                      node={node}
-                      index={index + mainFlow.length}
-                      compact
-                    />
-                  ))}
-                </div>
-              </div>
-              <BranchRail label="engineering rejoins" align="left" flow="branch-out" />
-            </div>
-
-            <FlowRow
-              nodes={shipFlow}
-              startIndex={mainFlow.length + branchFlow.length}
-              alignRight
-              flowPrefix="ship"
+        <div ref={pinWrapRef} className="pipeline-pin-wrap">
+          <div
+            ref={runRef}
+            className="pipeline-run relative rounded-[2rem] border border-[var(--border-gold)] bg-[rgba(10,10,10,0.45)] p-4 sm:p-6 lg:p-8"
+          >
+            <span
+              className="pipeline-tracer-global pointer-events-none absolute left-0 top-0 z-20 hidden size-2 rounded-full bg-[var(--gold-bright)] opacity-0 shadow-[0_0_14px_rgba(232,168,32,0.95)] lg:block"
+              aria-hidden="true"
             />
+
+            <div className="grid gap-5">
+              <FlowRow nodes={mainFlow} startIndex={0} flowPrefix="main" />
+
+              <div className="grid gap-4 lg:grid-cols-[1fr_2fr_1fr] lg:items-center">
+                <BranchRail label="PRD fans out" align="right" flow="branch-in" />
+                <div className="pipeline-branch-hub opacity-0 rounded-[1.5rem] border border-[var(--border-gold)] bg-[rgba(201,169,110,0.04)] p-4">
+                  <p className="font-mono-text mb-4 text-center text-[0.65rem] uppercase tracking-[0.14em] text-[var(--gold)]">
+                    parallel agents
+                  </p>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {branchFlow.map((node, index) => (
+                      <PipelineNode
+                        key={node.name}
+                        node={node}
+                        index={index + mainFlow.length}
+                        compact
+                      />
+                    ))}
+                  </div>
+                </div>
+                <BranchRail label="engineering rejoins" align="left" flow="branch-out" />
+              </div>
+
+              <FlowRow
+                nodes={shipFlow}
+                startIndex={mainFlow.length + branchFlow.length}
+                alignRight
+                flowPrefix="ship"
+              />
+            </div>
           </div>
         </div>
 
@@ -523,9 +440,11 @@ function PipelineNode({
   index: number;
   compact?: boolean;
 }) {
+  const output = pipelineNodeOutputs[index];
+
   return (
     <div
-      className={`pipeline-node opacity-0 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-elevated)] p-4 transition-[border-color,box-shadow] duration-300 ${
+      className={`pipeline-node group relative opacity-0 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-elevated)] p-4 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-[var(--border-gold)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.28)] ${
         compact ? "min-h-32" : ""
       }`}
       data-index={index}
@@ -540,6 +459,14 @@ function PipelineNode({
       <p className="font-mono-text mt-2 text-[0.68rem] uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
         {node.role}
       </p>
+      {output ? (
+        <p
+          aria-hidden="true"
+          className="pipeline-node-output font-mono-text pointer-events-none absolute inset-x-4 bottom-4 translate-y-1 text-[0.62rem] uppercase tracking-[0.12em] text-[var(--gold-bright)] opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+        >
+          {output}
+        </p>
+      ) : null}
     </div>
   );
 }

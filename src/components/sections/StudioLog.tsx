@@ -77,7 +77,7 @@ export function StudioLog() {
           {studioLog.map((entry) => (
             <article
               key={entry.title}
-              className="log-item grid gap-4 py-6 opacity-0 lg:grid-cols-[170px_1fr_140px] lg:items-start"
+              className="log-item group grid gap-4 py-6 opacity-0 transition-[background-color,padding] duration-300 hover:-mx-4 hover:rounded-2xl hover:bg-[rgba(201,169,110,0.04)] hover:px-4 lg:grid-cols-[170px_1fr_140px] lg:items-start"
             >
               <time
                 dateTime={entry.dateTime}
@@ -86,7 +86,7 @@ export function StudioLog() {
                 {entry.date}
               </time>
               <div>
-                <h3 className="font-serif-display text-2xl text-[var(--text-primary)] sm:text-3xl">
+                <h3 className="font-serif-display text-2xl text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--gold)] sm:text-3xl">
                   {entry.title}
                 </h3>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--text-secondary)]">

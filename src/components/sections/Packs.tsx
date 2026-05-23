@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { Container, GhostButton, GoldButton, SectionEyebrow } from "@/components/ui";
+import { Container, GhostButton, SectionEyebrow } from "@/components/ui";
+import { MagneticGoldButton } from "@/components/ui/MagneticGoldButton";
 import { packs } from "@/content/home";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
@@ -103,7 +104,7 @@ function PackCard({
 }) {
   return (
     <article
-      className={`relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-[var(--border-gold)] bg-[var(--bg-elevated)] p-6 opacity-0 ${className} ${
+      className={`pack-card-interactive relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-[var(--border-gold)] bg-[var(--bg-elevated)] p-6 opacity-0 transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(0,0,0,0.35)] ${className} ${
         large ? "justify-between lg:p-9" : "h-full"
       }`}
     >
@@ -147,9 +148,9 @@ function PackCard({
           {pack.price}
         </p>
         {large ? (
-          <GoldButton href="#early-access" className="mt-5">
+          <MagneticGoldButton href="#early-access" className="mt-5">
             {pack.cta}
-          </GoldButton>
+          </MagneticGoldButton>
         ) : (
           <GhostButton href="#early-access" className="mt-5">
             {pack.cta}

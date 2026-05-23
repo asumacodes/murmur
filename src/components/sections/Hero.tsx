@@ -2,9 +2,11 @@
 
 import { useRef } from "react";
 import { ListenerMockup } from "@/components/mockups";
-import { Container, GoldButton, PlayIcon, SectionEyebrow } from "@/components/ui";
+import { Container, GhostButton, PlayIcon, SectionEyebrow } from "@/components/ui";
+import { MagneticGoldButton } from "@/components/ui/MagneticGoldButton";
 import { pipelineLabels } from "@/content/home";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { REPLAY_PIPELINE_EVENT } from "@/lib/pipeline-tracer";
 
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
@@ -20,6 +22,7 @@ export function Hero() {
         ".hero-mockup-wrapper",
         ".hero-divider",
         ".hero-pipeline-label",
+        ".hero-pipeline-arrow",
       ];
 
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -30,7 +33,7 @@ export function Hero() {
 
       const mm = gsap.matchMedia();
 
-      mm.add("(min-width: 768px)", () => {
+      const animateListenerDevice = (options?: { float?: boolean }) => {
         const bars = gsap.utils.toArray<HTMLElement>(
           ".waveform-bar",
           containerRef.current,
@@ -38,14 +41,28 @@ export function Hero() {
 
         bars.forEach((bar) => {
           gsap.to(bar, {
-            scaleY: "random(0.45, 1.35)",
+            scaleY: "random(0.55, 1.35)",
             transformOrigin: "bottom center",
-            duration: "random(0.2, 0.45)",
+            duration: "random(0.18, 0.42)",
             repeat: -1,
             yoyo: true,
             ease: "power1.inOut",
           });
         });
+
+        if (options?.float) {
+          gsap.to(".listener", {
+            y: -6,
+            duration: 2.4,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          });
+        }
+      };
+
+      mm.add("(min-width: 768px)", () => {
+        animateListenerDevice({ float: true });
 
         const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
@@ -91,25 +108,18 @@ export function Hero() {
             "-=0.8",
           )
           .fromTo(
-            ".hero-pipeline-label",
+            ".hero-pipeline-label, .hero-pipeline-arrow",
             { autoAlpha: 0, y: 10 },
-            { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.1 },
+            { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.06 },
             "-=0.8",
           );
       });
 
       mm.add("(max-width: 767px)", () => {
+        animateListenerDevice();
+
         gsap.fromTo(
-          [
-            ".hero-eyebrow",
-            ".hero-title-line",
-            ".hero-subhead",
-            ".hero-cta",
-            ".hero-honesty",
-            ".hero-mockup-wrapper",
-            ".hero-divider",
-            ".hero-pipeline-label",
-          ],
+          targets,
           { autoAlpha: 0, y: 16 },
           {
             autoAlpha: 1,
@@ -134,11 +144,6 @@ export function Hero() {
       aria-label="Hero — Murmur product introduction"
       className="relative overflow-hidden pb-16 pt-36 sm:pt-44 lg:flex lg:min-h-[100svh] lg:flex-col lg:pb-10 lg:pt-32"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-[4%] top-[8%] hidden h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(201,169,110,0.06),transparent_70%)] lg:block"
-      />
-
       <Container className="relative z-10 flex flex-1 flex-col">
         <div className="grid flex-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7 lg:flex lg:flex-col lg:justify-center">
@@ -153,26 +158,30 @@ export function Hero() {
                 </span>
                 <span className="hero-title-line block opacity-0">Ship.</span>
               </h1>
-              <p className="hero-subhead max-w-2xl text-xl leading-[1.55] text-[var(--text-secondary)] opacity-0">
-                A five-minute voice memo becomes a validated PRD, brand kit,
-                Jira board, and Confluence space - automatically. Skip the
-                planning theater.
+              <p className="hero-subhead max-w-[35rem] text-xl leading-[1.55] text-[var(--text-secondary)] opacity-0">
+                A five-minute voice memo becomes a validated PRD, brand kit, Jira board, and
+                Confluence space — automatically. Skip the{" "}
+                <span className="font-serif-display italic text-[var(--text-primary)]">
+                  planning theater
+                </span>
+                .
               </p>
               <div className="hero-mockup-wrapper opacity-0 lg:hidden">
                 <ListenerMockup animateWaveform />
               </div>
               <div className="hero-cta opacity-0">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                  <GoldButton href="#early-access">Join early access →</GoldButton>
-                  <a
-                    href="#how-it-works"
-                    className="focus-ring gold-link inline-flex items-center gap-3 rounded-sm font-serif-display text-lg text-[var(--text-primary)]"
+                  <MagneticGoldButton href="#early-access">Join early access →</MagneticGoldButton>
+                  <GhostButton
+                    href="#pipeline"
+                    onClick={() => {
+                      window.dispatchEvent(new CustomEvent(REPLAY_PIPELINE_EVENT));
+                    }}
                   >
                     Watch the pipeline run
                     <PlayIcon />
-                  </a>
+                  </GhostButton>
                 </div>
-                {/* Pipeline demo coming with Bridge stream Part 1 */}
               </div>
               <p className="hero-honesty font-mono-text text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)] opacity-0">
                 4 users · 1 builder · phase 0 in progress
@@ -180,7 +189,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="hero-mockup-wrapper hidden opacity-0 lg:col-span-5 lg:flex lg:items-center lg:justify-end">
+          <div className="hero-mockup-wrapper hidden opacity-0 lg:col-span-5 lg:flex lg:items-center lg:justify-end lg:py-6">
             <ListenerMockup animateWaveform tall />
           </div>
         </div>
@@ -192,20 +201,27 @@ export function Hero() {
           />
           <nav
             aria-label="Pipeline stages overview"
-            className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-0"
+            className="hero-pipeline-nav mt-6 flex flex-wrap items-center gap-x-2 gap-y-3 lg:w-full lg:justify-between lg:gap-0"
           >
-            {pipelineLabels.map((label, index) => (
-              <div
-                key={label}
-                className="hero-pipeline-label opacity-0 font-mono-text text-[0.68rem] uppercase tracking-[0.15em] text-[var(--gold)] lg:text-center"
-              >
-                {label}
+            {pipelineLabels.map((item, index) => (
+              <span key={item.label} className="contents">
+                <span className="hero-pipeline-label inline-flex items-center gap-1 opacity-0 text-[var(--gold)]">
+                  <span className="font-serif-display text-[0.65rem] italic leading-none lg:text-[0.72rem]">
+                    {item.numeral}
+                  </span>
+                  <span className="text-[0.65rem] font-semibold uppercase tracking-[0.08em] lg:text-[0.72rem]">
+                    {item.label}
+                  </span>
+                </span>
                 {index < pipelineLabels.length - 1 ? (
-                  <span className="ml-3 hidden text-[var(--text-tertiary)] lg:inline">
+                  <span
+                    className="hero-pipeline-arrow hidden px-1 text-[0.72rem] leading-none text-[var(--gold)] opacity-0 lg:inline"
+                    aria-hidden="true"
+                  >
                     →
                   </span>
                 ) : null}
-              </div>
+              </span>
             ))}
           </nav>
         </div>

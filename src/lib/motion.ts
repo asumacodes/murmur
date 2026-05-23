@@ -1,5 +1,12 @@
 export const PREMIUM_EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
 
+export const motionDefaults = {
+  revealDuration: 0.85,
+  revealStagger: 0.08,
+  revealEase: "power3.out" as const,
+  enterY: 18,
+};
+
 export const scrollEnter = {
   start: "top 80%",
   toggleActions: "play none none none" as const,
@@ -9,3 +16,10 @@ export const scrollEnterSoft = {
   start: "top 85%",
   toggleActions: "play none none none" as const,
 };
+
+export const sectionSpyIds = [
+  "how-it-works",
+  "pipeline",
+  "packs",
+  "studio-log",
+] as const;

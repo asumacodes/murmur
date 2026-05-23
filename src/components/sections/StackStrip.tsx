@@ -12,9 +12,10 @@ export function StackStrip() {
   useGSAP(
     () => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        gsap.set([".stack-header-line", ".stack-layer", ".stack-tool"], {
+        gsap.set([".stack-header-line", ".stack-layer", ".stack-tool", ".stack-divider"], {
           autoAlpha: 1,
           y: 0,
+          scaleY: 1,
         });
         return;
       }
@@ -66,6 +67,22 @@ export function StackStrip() {
           },
         },
       );
+
+      gsap.fromTo(
+        ".stack-divider",
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          duration: 1,
+          stagger: 0.12,
+          ease: "power2.out",
+          transformOrigin: "top center",
+          scrollTrigger: {
+            trigger: ".stack-registry",
+            ...scrollEnterSoft,
+          },
+        },
+      );
     },
     { scope: sectionRef },
   );
@@ -85,14 +102,20 @@ export function StackStrip() {
             </p>
           </div>
 
-          <div className="stack-registry grid gap-10 lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-[var(--border-subtle)]">
+          <div className="stack-registry relative grid gap-10 lg:grid-cols-3 lg:gap-0">
             {stackLayers.map((layer, layerIndex) => (
               <div
                 key={layer.label}
-                className={`stack-layer opacity-0 lg:px-8 ${
+                className={`stack-layer relative opacity-0 lg:px-8 ${
                   layerIndex === 0 ? "lg:pl-0" : ""
                 } ${layerIndex === stackLayers.length - 1 ? "lg:pr-0" : ""}`}
               >
+                {layerIndex > 0 ? (
+                  <div
+                    className="stack-divider pointer-events-none absolute bottom-0 left-0 top-0 hidden w-px origin-top scale-y-0 bg-[var(--border-subtle)] lg:block"
+                    aria-hidden="true"
+                  />
+                ) : null}
                 <p className="font-mono-text mb-6 text-[0.62rem] uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
                   {layer.label}
                 </p>
