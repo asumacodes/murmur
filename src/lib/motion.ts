@@ -22,3 +22,7 @@ export const scrollEnterSoft = {
 export const sectionSpyIds = features.studioLog
   ? (["how-it-works", "pipeline", "packs", "studio-log"] as const)
   : (["how-it-works", "pipeline", "packs"] as const);
+
+export const DESKTOP_BREAKPOINT = 1024;
+export const desktopMedia = `(min-width: ${DESKTOP_BREAKPOINT}px)`;
+export const mobileMedia = `(max-width: ${DESKTOP_BREAKPOINT - 1}px)`;

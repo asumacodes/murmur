@@ -66,7 +66,7 @@ export function EarlyAccessCTA() {
           </p>
 
           <form
-            className="waitlist-form mx-auto mt-8 flex flex-col gap-3 opacity-0 sm:flex-row sm:items-stretch"
+            className="waitlist-form mx-auto mt-8 flex flex-col items-center gap-3 opacity-0 sm:flex-row sm:items-stretch"
             action="mailto:hello@sprintzero.studio?subject=Murmur%20early%20access"
             method="post"
             encType="text/plain"

@@ -7,8 +7,9 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarsePointer = window.matchMedia("(max-width: 1023px)").matches;
 
-    if (reduceMotion) {
+    if (reduceMotion || coarsePointer) {
       return;
     }
 

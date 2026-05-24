@@ -76,11 +76,12 @@ export function createPipelineStageController(
 
   const applySlotFocus = (activeSlot: HTMLElement | null) => {
     const scrubbing = run.classList.contains("is-scrubbing");
+    const isMobile = Boolean(run.closest(".pipeline-pin-wrap--mobile"));
 
     querySlots().forEach((slot) => {
       const isActive = slot === activeSlot;
 
-      if (!scrubbing) {
+      if (!scrubbing || isMobile) {
         gsap.set(slot, { scale: 1, opacity: 1 });
         return;
       }

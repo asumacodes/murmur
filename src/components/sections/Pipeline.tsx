@@ -12,7 +12,7 @@ import {
   pipelineStages,
 } from "@/content/home";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
-import { scrollEnter } from "@/lib/motion";
+import { desktopMedia, mobileMedia, scrollEnter } from "@/lib/motion";
 import {
   applyPipelineScrub,
   createPipelineStageController,
@@ -36,6 +36,19 @@ function PipelineTopBar({ className = "" }: { className?: string }) {
   );
 }
 
+function PipelineMobileTopBar({ className = "" }: { className?: string }) {
+  return (
+    <div
+      className={`pipeline-top-bar pipeline-header-line flex shrink-0 flex-col items-center gap-2 opacity-0 ${className}`}
+    >
+      <SectionEyebrow className="mb-0">Pipeline</SectionEyebrow>
+      <p className="pipeline-top-bar-note font-mono-text text-center text-[0.75rem] tracking-[0.06em] text-[var(--gold)]">
+        Orchestrated by n8n · self-hosted
+      </p>
+    </div>
+  );
+}
+
 function PipelineIntro({ className = "" }: { className?: string }) {
   return (
     <div className={`pipeline-header shrink-0 max-w-4xl ${className}`}>
@@ -49,13 +62,15 @@ function PipelineIntro({ className = "" }: { className?: string }) {
 
 function PipelineProgressRail({
   progressRailRef,
+  className = "",
 }: {
   progressRailRef: RefObject<HTMLElement | null>;
+  className?: string;
 }) {
   return (
     <nav
       ref={progressRailRef}
-      className="pipeline-progress-rail pipeline-header-line opacity-0"
+      className={`pipeline-progress-rail pipeline-header-line opacity-0 ${className}`}
       aria-label="Pipeline stages"
     >
       <div className="pipeline-progress-track">
@@ -85,6 +100,86 @@ function PipelineProgressRail({
   );
 }
 
+type ScrubRefs = {
+  run: HTMLDivElement;
+  progressRail: HTMLElement;
+  viewport: HTMLDivElement;
+  track: HTMLDivElement;
+};
+
+function createScrubHandlers(refs: ScrubRefs, section: HTMLElement, pinWrap: HTMLDivElement) {
+  let scrubTrigger: ScrollTrigger | null = null;
+  const stageController = createPipelineStageController(refs.run, refs.progressRail);
+  const getTracer = () =>
+    refs.progressRail.querySelector<HTMLElement>(".pipeline-progress-tracer");
+
+  const scrubTo = (progress: number) => {
+    const dot = getTracer();
+    if (!dot) {
+      return;
+    }
+
+    applyPipelineScrub(
+      refs.run,
+      refs.progressRail,
+      dot,
+      refs.track,
+      refs.viewport,
+      progress,
+      stageController,
+    );
+  };
+
+  const setupScrub = (scrollEnd: string, start = "top top+=80") => {
+    const dot = getTracer();
+    if (!dot) {
+      return;
+    }
+
+    scrubTrigger?.kill();
+    refs.run.classList.add("is-live");
+    gsap.set(refs.run, { autoAlpha: 1, y: 0 });
+
+    scrubTrigger = ScrollTrigger.create({
+      trigger: section,
+      start,
+      end: scrollEnd,
+      pin: pinWrap,
+      scrub: 0.55,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        scrubTo(self.progress);
+      },
+      onEnter: () => {
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+          scrubTo(scrubTrigger?.progress ?? 0);
+        });
+      },
+      onLeave: () => {
+        refs.run.classList.remove("is-scrubbing");
+        stageController.resetFocus();
+      },
+      onEnterBack: () => {
+        refs.run.classList.add("is-scrubbing");
+        requestAnimationFrame(() => scrubTo(scrubTrigger?.progress ?? 0));
+      },
+    });
+
+    scrubTo(scrubTrigger.progress);
+    ScrollTrigger.refresh();
+  };
+
+  const kill = () => {
+    scrubTrigger?.kill();
+    scrubTrigger = null;
+    stageController.clearStage();
+  };
+
+  return { setupScrub, scrubTo, kill, getScrubTrigger: () => scrubTrigger };
+}
+
 export function Pipeline() {
   const sectionRef = useRef<HTMLElement>(null);
   const pinWrapRef = useRef<HTMLDivElement>(null);
@@ -93,91 +188,41 @@ export function Pipeline() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
+  const mobilePinWrapRef = useRef<HTMLDivElement>(null);
+  const mobileProgressRailRef = useRef<HTMLElement>(null);
+  const mobileRunRef = useRef<HTMLDivElement>(null);
+  const mobileViewportRef = useRef<HTMLDivElement>(null);
+  const mobileTrackRef = useRef<HTMLDivElement>(null);
+
   useGSAP(
     () => {
-      const run = runRef.current;
-      const progressRail = progressRailRef.current;
-      const viewport = viewportRef.current;
-      const track = trackRef.current;
-
-      if (!run || !progressRail || !viewport || !track) {
+      const section = sectionRef.current;
+      if (!section) {
         return;
       }
 
-      let scrubTrigger: ScrollTrigger | null = null;
+      let desktopScrub: ReturnType<typeof createScrubHandlers> | null = null;
+      let mobileScrub: ReturnType<typeof createScrubHandlers> | null = null;
       let replayTimeline: gsap.core.Timeline | null = null;
 
-      const stageController = createPipelineStageController(run, progressRail);
-      const getTracer = () =>
-        progressRail.querySelector<HTMLElement>(".pipeline-progress-tracer");
-
-      const scrubTo = (progress: number) => {
-        const dot = getTracer();
-        if (!dot) {
-          return;
-        }
-
-        applyPipelineScrub(run, progressRail, dot, track, viewport, progress, stageController);
-      };
-
-      const setupDesktopScrub = () => {
-        const section = sectionRef.current;
-        const pinWrap = pinWrapRef.current;
-        const dot = getTracer();
-
-        if (!section || !pinWrap || !dot || window.matchMedia("(max-width: 1023px)").matches) {
-          return;
-        }
-
-        scrubTrigger?.kill();
-        run.classList.add("is-live");
-        gsap.set(run, { autoAlpha: 1, y: 0 });
-
-        scrubTrigger = ScrollTrigger.create({
-          trigger: section,
-          start: "top top+=80",
-          end: "+=320%",
-          pin: pinWrap,
-          scrub: 0.55,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            scrubTo(self.progress);
-          },
-          onEnter: () => {
-            requestAnimationFrame(() => {
-              ScrollTrigger.refresh();
-              scrubTo(scrubTrigger?.progress ?? 0);
-            });
-          },
-          onLeave: () => {
-            run.classList.remove("is-scrubbing");
-            stageController.resetFocus();
-          },
-          onEnterBack: () => {
-            run.classList.add("is-scrubbing");
-            requestAnimationFrame(() => scrubTo(scrubTrigger?.progress ?? 0));
-          },
-        });
-
-        scrubTo(scrubTrigger.progress);
-        ScrollTrigger.refresh();
-      };
-
       const onReplay = () => {
-        const dot = getTracer();
-        if (!dot) {
+        const activeScrub = desktopScrub ?? mobileScrub;
+        const scrubTrigger = activeScrub?.getScrubTrigger();
+        const dot = progressRailRef.current?.querySelector<HTMLElement>(".pipeline-progress-tracer")
+          ?? mobileProgressRailRef.current?.querySelector<HTMLElement>(".pipeline-progress-tracer");
+
+        if (!activeScrub || !dot) {
           return;
         }
 
         replayTimeline?.kill();
         scrubTrigger?.disable();
 
-        sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
 
         const proxy = { progress: 0 };
         replayTimeline = gsap.timeline({
-          onUpdate: () => scrubTo(proxy.progress),
+          onUpdate: () => activeScrub.scrubTo(proxy.progress),
           onComplete: () => {
             scrubTrigger?.enable();
           },
@@ -195,9 +240,14 @@ export function Pipeline() {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         gsap.set(".pipeline-header-line", { autoAlpha: 1, y: 0 });
         gsap.set(".pipeline-node", { autoAlpha: 1, y: 0, scale: 1 });
-        gsap.set(run, { autoAlpha: 1, y: 0 });
-        run.classList.add("is-live");
-        stageController.setStage(0);
+        if (runRef.current) {
+          gsap.set(runRef.current, { autoAlpha: 1, y: 0 });
+          runRef.current.classList.add("is-live");
+        }
+        if (mobileRunRef.current) {
+          gsap.set(mobileRunRef.current, { autoAlpha: 1, y: 0 });
+          mobileRunRef.current.classList.add("is-live");
+        }
         return;
       }
 
@@ -211,50 +261,89 @@ export function Pipeline() {
           stagger: 0.08,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: sectionRef.current,
+            trigger: section,
             ...scrollEnter,
           },
         },
       );
 
-      gsap.fromTo(
-        ".pipeline-mobile-stack .pipeline-node",
-        { autoAlpha: 0, y: 16 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.55,
-          stagger: 0.06,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".pipeline-mobile-stack",
-            ...scrollEnter,
-          },
-        },
-      );
+      const mm = gsap.matchMedia();
 
-      if (!window.matchMedia("(max-width: 1023px)").matches) {
-        gsap.set(run, { autoAlpha: 1, y: 0 });
-        requestAnimationFrame(setupDesktopScrub);
-      }
+      mm.add(desktopMedia, () => {
+        const run = runRef.current;
+        const progressRail = progressRailRef.current;
+        const viewport = viewportRef.current;
+        const track = trackRef.current;
+        const pinWrap = pinWrapRef.current;
 
-      const onResize = () => {
-        if (!run.classList.contains("is-live")) {
+        if (!run || !progressRail || !viewport || !track || !pinWrap) {
           return;
         }
 
-        setupDesktopScrub();
-      };
+        desktopScrub = createScrubHandlers(
+          { run, progressRail, viewport, track },
+          section,
+          pinWrap,
+        );
 
-      window.addEventListener("resize", onResize);
+        gsap.set(run, { autoAlpha: 1, y: 0 });
+        requestAnimationFrame(() => desktopScrub?.setupScrub("+=320%"));
+
+        const onResize = () => {
+          if (!run.classList.contains("is-live")) {
+            return;
+          }
+
+          desktopScrub?.setupScrub("+=320%");
+        };
+
+        window.addEventListener("resize", onResize);
+
+        return () => {
+          window.removeEventListener("resize", onResize);
+          desktopScrub?.kill();
+          desktopScrub = null;
+        };
+      });
+
+      mm.add(mobileMedia, () => {
+        const run = mobileRunRef.current;
+        const progressRail = mobileProgressRailRef.current;
+        const viewport = mobileViewportRef.current;
+        const track = mobileTrackRef.current;
+        const pinWrap = mobilePinWrapRef.current;
+
+        if (!run || !progressRail || !viewport || !track || !pinWrap) {
+          return;
+        }
+
+        mobileScrub = createScrubHandlers(
+          { run, progressRail, viewport, track },
+          section,
+          pinWrap,
+        );
+
+        gsap.set(run, { autoAlpha: 1, y: 0 });
+        gsap.set(track, { x: 0 });
+        requestAnimationFrame(() => {
+          mobileScrub?.setupScrub("+=240%");
+          mobileScrub?.scrubTo(0);
+        });
+
+        return () => {
+          mobileScrub?.kill();
+          mobileScrub = null;
+        };
+      });
+
       window.addEventListener(REPLAY_PIPELINE_EVENT, onReplay);
 
       return () => {
         replayTimeline?.kill();
-        scrubTrigger?.kill();
-        window.removeEventListener("resize", onResize);
+        desktopScrub?.kill();
+        mobileScrub?.kill();
+        mm.revert();
         window.removeEventListener(REPLAY_PIPELINE_EVENT, onReplay);
-        stageController.clearStage();
       };
     },
     { scope: sectionRef },
@@ -278,17 +367,24 @@ export function Pipeline() {
         </div>
       </div>
 
-      <Container className="lg:hidden">
-        <div className="pipeline-mobile-stack flex flex-col">
-          <PipelineTopBar />
+      <div ref={mobilePinWrapRef} className="pipeline-pin-wrap pipeline-pin-wrap--mobile flex flex-col lg:hidden">
+        <Container className="pipeline-pin-header shrink-0">
+          <PipelineMobileTopBar />
           <PipelineIntro />
-          <div className="grid gap-5">
-            {pipelineNodes.map((node, index) => (
-              <PipelineStageCard key={node.name} node={node} index={index} />
-            ))}
+          <PipelineProgressRail
+            progressRailRef={mobileProgressRailRef}
+            className="pipeline-progress-rail--mobile-hidden"
+          />
+        </Container>
+
+        <div ref={mobileRunRef} className="pipeline-run pipeline-run--open relative min-h-0 w-full shrink-0">
+          <div ref={mobileViewportRef} className="pipeline-viewport overflow-x-hidden overflow-y-visible">
+            <div ref={mobileTrackRef} className="pipeline-stage-track flex w-max items-center gap-4">
+              <HorizontalPipelineTrack />
+            </div>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

@@ -11,12 +11,36 @@ const headerNavItems = navItems.filter(
   (item) => features.studioLog || item.href !== "#studio-log",
 );
 
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="size-5"
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+    >
+      {open ? (
+        <>
+          <path d="M6 6l12 12M18 6L6 18" />
+        </>
+      ) : (
+        <>
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </>
+      )}
+    </svg>
+  );
+}
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const mobileNavRef = useRef<HTMLElement>(null);
-  const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
+  const drawerRef = useRef<HTMLElement>(null);
+  const firstDrawerLinkRef = useRef<HTMLAnchorElement>(null);
   const activeSection = useScrollSpy(sectionSpyIds);
 
   useEffect(() => {
@@ -33,7 +57,7 @@ export function Header() {
 
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    firstMobileLinkRef.current?.focus();
+    firstDrawerLinkRef.current?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -45,7 +69,7 @@ export function Header() {
       if (event.key === "Tab") {
         const focusable = [
           menuButtonRef.current,
-          ...(mobileNavRef.current?.querySelectorAll<HTMLElement>("a, button") ?? []),
+          ...(drawerRef.current?.querySelectorAll<HTMLElement>("a, button") ?? []),
         ].filter(Boolean) as HTMLElement[];
 
         const first = focusable[0];
@@ -74,17 +98,18 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition duration-300 ${
+      className={`site-header fixed inset-x-0 top-0 z-50 transition duration-300 ${
         scrolled
           ? "border-b border-[var(--border-subtle)] bg-[rgba(20,20,20,0.96)] backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="murmur-container flex h-20 items-center justify-between gap-6">
-        <a href="#top" className="focus-ring rounded-lg">
+      <div className="murmur-container flex h-20 items-center justify-between gap-4">
+        <a href="#top" className="focus-ring flex items-center gap-2.5 rounded-lg">
           <span className="font-serif-display text-3xl italic text-[var(--gold)]">
             Murmur
           </span>
+          <VersionChip />
         </a>
 
         <nav className="hidden md:block" aria-label="Primary navigation">
@@ -108,59 +133,72 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="hidden md:block">
+        <div className="flex items-center gap-3">
+          <div className="hidden md:block">
+            <GhostButton href="#early-access" className="text-sm">
+              Join early access
+            </GhostButton>
+          </div>
+
+          <button
+            ref={menuButtonRef}
+            type="button"
+            className="mobile-menu-trigger focus-ring flex size-10 items-center justify-center rounded-sm border border-[var(--border-gold)] text-[var(--gold)] md:hidden"
+            onClick={() => setOpen((value) => !value)}
+            aria-expanded={open}
+            aria-controls="mobile-nav-drawer"
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+          >
+            <MenuIcon open={open} />
+          </button>
+        </div>
+      </div>
+
+      <div
+        className={`mobile-nav-backdrop md:hidden ${open ? "is-open" : ""}`}
+        aria-hidden={!open}
+        onClick={() => setOpen(false)}
+      />
+
+      <nav
+        id="mobile-nav-drawer"
+        ref={drawerRef}
+        aria-label="Mobile navigation"
+        aria-hidden={!open}
+        className={`mobile-nav-drawer md:hidden ${open ? "is-open" : ""}`}
+      >
+        <div className="mobile-nav-drawer-head">
+          <span className="font-serif-display text-2xl italic text-[var(--gold)]">Murmur</span>
           <VersionChip />
         </div>
 
-        <button
-          ref={menuButtonRef}
-          type="button"
-          className="focus-ring rounded-full border border-[var(--border-gold)] px-4 py-2 text-sm text-[var(--gold)] md:hidden"
-          onClick={() => setOpen((value) => !value)}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-        >
-          {open ? "Close" : "Menu"}
-        </button>
-      </div>
+        <ul className="mobile-nav-list">
+          {headerNavItems.map((item, index) => {
+            const sectionId = item.href.replace("#", "");
+            const isActive = activeSection === sectionId;
 
-      {open ? (
-        <nav
-          id="mobile-nav"
-          ref={mobileNavRef}
-          aria-label="Mobile navigation"
-          className="murmur-container mb-4 grid gap-2 rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-elevated)] p-4 md:hidden"
-        >
-          <ul className="grid gap-2">
-            {headerNavItems.map((item, index) => {
-              const sectionId = item.href.replace("#", "");
-              const isActive = activeSection === sectionId;
+            return (
+              <li key={item.href}>
+                <a
+                  ref={index === 0 ? firstDrawerLinkRef : undefined}
+                  href={item.href}
+                  aria-current={isActive ? "location" : undefined}
+                  className={`mobile-nav-link ${isActive ? "is-active" : ""}`}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
 
-              return (
-                <li key={item.href}>
-                  <a
-                    ref={index === 0 ? firstMobileLinkRef : undefined}
-                    href={item.href}
-                    aria-current={isActive ? "location" : undefined}
-                    className={`focus-ring block rounded-2xl px-4 py-3 text-sm transition-colors ${
-                      isActive
-                        ? "bg-[rgba(201,169,110,0.1)] text-[var(--text-primary)]"
-                        : "text-[var(--text-secondary)] hover:bg-[rgba(201,169,110,0.06)] hover:text-[var(--text-primary)]"
-                    }`}
-                    onClick={() => setOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-          <GhostButton href="#early-access" onClick={() => setOpen(false)}>
+        <div className="mobile-nav-cta">
+          <GhostButton href="#early-access" className="mobile-nav-cta-btn" onClick={() => setOpen(false)}>
             Join early access
           </GhostButton>
-        </nav>
-      ) : null}
+        </div>
+      </nav>
     </header>
   );
 }

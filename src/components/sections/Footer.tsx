@@ -23,7 +23,7 @@ export function Footer() {
   return (
     <footer className="border-t border-[var(--border-subtle)] py-12">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_auto] lg:items-start">
+        <div className="footer-main-grid grid gap-8 lg:grid-cols-[1.2fr_1fr_auto] lg:gap-10 lg:items-start lg:text-left">
           <div>
             <p className="font-serif-display text-4xl italic text-[var(--gold)]">
               Murmur
@@ -39,7 +39,9 @@ export function Footer() {
             </a>
           </div>
 
-          <div className="grid grid-cols-3 gap-6">
+          <hr aria-hidden="true" className="footer-mobile-divider lg:hidden" />
+
+          <div className="footer-link-grid grid grid-cols-3 gap-6">
             {Object.entries(footerLinkGroups).map(([group, links]) => (
               <nav key={group} aria-label={`Footer ${group} links`}>
                 <p className="font-mono-text mb-4 text-xs uppercase tracking-[0.14em] text-[var(--gold)]">
@@ -61,7 +63,9 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="w-fit lg:justify-self-end">
+          <hr aria-hidden="true" className="footer-mobile-divider lg:hidden" />
+
+          <div className="footer-social-block w-fit lg:justify-self-end">
             <ul className="footer-social grid gap-3">
               {socialLinks.map((item) => (
                 <li key={item.label}>

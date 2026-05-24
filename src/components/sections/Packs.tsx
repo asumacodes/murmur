@@ -14,6 +14,25 @@ function featureText(feature: PackFeature): { text: string; bold: boolean } {
   return { text: feature.text, bold: feature.bold ?? false };
 }
 
+function PackName({ name }: { name: string }) {
+  const segments = name.split(/\s+\+\s+/);
+
+  if (segments.length === 1) {
+    return <>{name}</>;
+  }
+
+  return (
+    <>
+      {segments.map((segment, index) => (
+        <span key={`${segment}-${index}`}>
+          {index > 0 ? <span className="pack-card-name-plus"> + </span> : null}
+          {segment}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export function Packs() {
   const sectionRef = useRef<HTMLElement>(null);
   const [primary, ...addons] = packs;
@@ -99,7 +118,7 @@ function PackCard({ pack, className = "" }: { pack: Pack; className?: string }) 
           </span>
           <div className="pack-card-head-copy">
             <h3 className="pack-card-name font-serif-display text-[var(--text-primary)]">
-              {pack.name}
+              <PackName name={pack.name} />
             </h3>
             {pack.subtitle ? (
               <p className="pack-card-subtitle text-[var(--text-secondary)]">{pack.subtitle}</p>
@@ -107,7 +126,7 @@ function PackCard({ pack, className = "" }: { pack: Pack; className?: string }) 
           </div>
         </div>
         {pack.tag ? (
-          <span className="pack-card-tag font-mono-text uppercase text-[var(--gold)]">
+          <span className="pack-card-tag hidden font-mono-text uppercase text-[var(--gold)] lg:inline-block">
             {pack.tag}
           </span>
         ) : null}

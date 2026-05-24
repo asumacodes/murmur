@@ -142,12 +142,12 @@ export function Hero() {
       ref={containerRef}
       id="top"
       aria-label="Hero — Murmur product introduction"
-      className="relative overflow-hidden pb-16 pt-36 sm:pt-44 lg:flex lg:min-h-[100svh] lg:flex-col lg:pb-10 lg:pt-32"
+      className="relative overflow-hidden pb-8 pt-36 sm:pt-44 lg:flex lg:min-h-[100svh] lg:flex-col lg:pb-10 lg:pt-32"
     >
       <Container className="relative z-10 flex flex-1 flex-col">
         <div className="grid flex-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7 lg:flex lg:flex-col lg:justify-center">
-            <div className="space-y-8">
+            <div className="hero-copy-stack flex flex-col gap-6 lg:gap-8 lg:text-left">
               <SectionEyebrow className="hero-eyebrow opacity-0">
                 MURMUR · A SPRINTZERO STUDIO PRODUCT
               </SectionEyebrow>
@@ -170,7 +170,7 @@ export function Hero() {
                 <ListenerMockup animateWaveform />
               </div>
               <div className="hero-cta opacity-0">
-                <div className="hero-cta-row flex flex-col gap-3 sm:flex-row sm:items-center">
+                <div className="hero-cta-row mobile-cta-row flex flex-col sm:flex-row sm:items-center lg:justify-start">
                   <MagneticGoldButton
                     href="#early-access"
                     className="hero-btn hero-btn--primary font-medium"
@@ -200,7 +200,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-floor mt-16 lg:mt-auto lg:pt-10">
+        <div className="hero-floor mt-8 hidden lg:mt-auto lg:block lg:pt-10">
           <hr
             aria-hidden="true"
             className="hero-divider origin-left scale-x-0 border-t border-[var(--border-gold)]"
