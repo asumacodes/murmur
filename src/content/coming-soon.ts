@@ -4,9 +4,9 @@ export const comingSoon = {
   subhead: "Voice → a complete project foundation in about six minutes.",
   differentiation:
     "Not another AI dashboard. An agentic pipeline that does the founder-ops work — research, PRD, brand, board — while you talk.",
-  /** Display as ALL CAPS with em dash in the UI */
-  status: "Coming soon. Building in public the whole way.",
-  statusDisplay: "COMING SOON — BUILDING IN PUBLIC THE WHOLE WAY",
+  /** Display as ALL CAPS in the UI */
+  status: "Coming soon.",
+  statusDisplay: "COMING SOON",
   social: {
     x: {
       label: "Follow on X",

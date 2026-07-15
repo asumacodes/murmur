@@ -1,4 +1,4 @@
-import { ComingSoonPage } from "@/components/coming-soon/ComingSoonPage";
+import { ComingSoon } from "@/components/sections/ComingSoon";
 import { EarlyAccessCTA } from "@/components/sections/EarlyAccessCTA";
 import { Footer } from "@/components/sections/Footer";
 import { FutureSections } from "@/components/future/FutureSections";
@@ -13,7 +13,7 @@ import { features } from "@/config/features";
 
 export default function Home() {
   if (features.comingSoon) {
-    return <ComingSoonPage />;
+    return <ComingSoon />;
   }
 
   return (
