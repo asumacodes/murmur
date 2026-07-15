@@ -14,8 +14,8 @@ export default function PrivacyPage() {
           <div className="mt-8 space-y-5 text-lg leading-8 text-[var(--text-secondary)]">
             <p>
               Murmur is coming soon. If you join the launch list, we store your
-              email via Buttondown solely to tell you when Murmur is ready —
-              one email, no drip sequences. Unsubscribe anytime.
+              email via Resend solely to tell you when Murmur is ready — one
+              email, no drip sequences. Unsubscribe anytime.
             </p>
             <p>
               The product direction is local-first recording and transcription

@@ -1,7 +1,7 @@
 export const comingSoon = {
   brand: "Murmur",
   headline: "Speak. Transcribe. Ship.",
-  subhead: "Voice → a complete project foundation in about six minutes.",
+  subhead: "Voice → a complete project foundation under 10 minutes.",
   differentiation:
     "Not another AI dashboard. An agentic pipeline that does the founder-ops work — research, PRD, brand, board — while you talk.",
   /** Display as ALL CAPS in the UI */
