@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-import { ComingSoon } from "@/components/sections/ComingSoon";
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
 import { EarlyAccessCTA } from "@/components/sections/EarlyAccessCTA";
 import { Footer } from "@/components/sections/Footer";
 import { FutureSections } from "@/components/future/FutureSections";
@@ -13,25 +8,9 @@ import { Packs } from "@/components/sections/Packs";
 import { Pipeline } from "@/components/sections/Pipeline";
 import { StackStrip } from "@/components/sections/StackStrip";
 import { StudioLog } from "@/components/sections/StudioLog";
-=======
-import dynamic from "next/dynamic";
-import { ComingSoon } from "@/components/sections/ComingSoon";
->>>>>>> Stashed changes
 import { features } from "@/config/features";
 
-const FullLandingPage = dynamic(() =>
-  import("@/components/FullLandingPage").then((mod) => mod.FullLandingPage),
-);
-
-export default function Home() {
-<<<<<<< Updated upstream
-  if (features.comingSoon) {
-    return <ComingSoon />;
-  }
-
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
+export function FullLandingPage() {
   return (
     <>
       <a href="#main-content" className="skip-link">
@@ -51,11 +30,4 @@ export default function Home() {
       <Footer />
     </>
   );
-=======
-  if (features.comingSoon) {
-    return <ComingSoon />;
-  }
-
-  return <FullLandingPage />;
->>>>>>> Stashed changes
 }
