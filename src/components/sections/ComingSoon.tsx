@@ -17,21 +17,8 @@ export function ComingSoon() {
 
   useGSAP(
     () => {
-<<<<<<< Updated upstream
-      const revealTargets = [
-        ".cs-wordmark",
-        ".cs-headline",
-        ".cs-subhead",
-        ".cs-hook",
-        ".cs-status",
-        ".cs-ctas",
-        ".cs-form",
-        ".cs-footer",
-      ];
-=======
       // LCP text paints immediately; animate only secondary UI.
       const revealTargets = [".cs-ctas", ".cs-form"];
->>>>>>> Stashed changes
 
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         gsap.set(revealTargets, { autoAlpha: 1, y: 0 });
@@ -85,32 +72,13 @@ export function ComingSoon() {
       </a>
 
       <header className="coming-soon-header">
-<<<<<<< Updated upstream
-        <p className="cs-wordmark coming-soon-brand font-serif-display italic text-[var(--gold)] opacity-0">
-=======
         <p className="cs-wordmark coming-soon-brand font-serif-display italic text-[var(--gold)]">
->>>>>>> Stashed changes
           {comingSoon.brand}
         </p>
       </header>
 
       <main id="main-content" tabIndex={-1} className="coming-soon-main">
         <div className="coming-soon-hero">
-<<<<<<< Updated upstream
-          <h1 className="cs-headline coming-soon-headline font-serif-display italic opacity-0">
-            {comingSoon.headline}
-          </h1>
-
-          <p className="cs-subhead coming-soon-subhead opacity-0">
-            {comingSoon.subhead}
-          </p>
-
-          <p className="cs-hook coming-soon-hook opacity-0">
-            {comingSoon.differentiation}
-          </p>
-
-          <p className="cs-status coming-soon-status font-mono-text opacity-0">
-=======
           <h1 className="cs-headline coming-soon-headline font-serif-display italic">
             {comingSoon.headline}
           </h1>
@@ -124,7 +92,6 @@ export function ComingSoon() {
           </p>
 
           <p className="cs-status coming-soon-status font-mono-text">
->>>>>>> Stashed changes
             {comingSoon.statusDisplay}
           </p>
 
@@ -210,11 +177,7 @@ export function ComingSoon() {
         </div>
       </main>
 
-<<<<<<< Updated upstream
-      <footer className="cs-footer coming-soon-footer opacity-0">
-=======
       <footer className="coming-soon-footer">
->>>>>>> Stashed changes
         <p className="coming-soon-footer-legal">
           <a href={footer.privacy.href} className="coming-soon-footer-link">
             {footer.privacy.label}
