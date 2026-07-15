@@ -21,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://murmur.studio"),
+  metadataBase: new URL("https://www.trymurmur.studio"),
   title: "Murmur - Speak. Transcribe. Ship.",
   description:
     "A five-minute voice memo becomes a validated PRD, brand kit, Jira board, Confluence space, and launch foundation.",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Murmur - Speak. Transcribe. Ship.",
     description:
       "The agentic pipeline that turns a voice memo into a complete project foundation.",
-    url: "https://murmur.studio",
+    url: "https://www.trymurmur.studio",
     siteName: "Murmur",
     images: [
       {

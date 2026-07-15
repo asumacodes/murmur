@@ -1,3 +1,4 @@
+import { ComingSoonPage } from "@/components/coming-soon/ComingSoonPage";
 import { EarlyAccessCTA } from "@/components/sections/EarlyAccessCTA";
 import { Footer } from "@/components/sections/Footer";
 import { FutureSections } from "@/components/future/FutureSections";
@@ -11,6 +12,10 @@ import { StudioLog } from "@/components/sections/StudioLog";
 import { features } from "@/config/features";
 
 export default function Home() {
+  if (features.comingSoon) {
+    return <ComingSoonPage />;
+  }
+
   return (
     <>
       <a href="#main-content" className="skip-link">
