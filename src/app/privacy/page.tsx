@@ -13,8 +13,9 @@ export default function PrivacyPage() {
           </h1>
           <div className="mt-8 space-y-5 text-lg leading-8 text-[var(--text-secondary)]">
             <p>
-              Murmur is in early access. The waitlist currently opens your email
-              client so your address is not stored by this website.
+              Murmur is coming soon. If you join the launch list, we store your
+              email via Resend solely to tell you when Murmur is ready — one
+              email, no drip sequences. Unsubscribe anytime.
             </p>
             <p>
               The product direction is local-first recording and transcription
