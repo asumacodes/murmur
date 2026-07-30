@@ -12,10 +12,10 @@ const footerLinkGroups = {
 const socialLinks: { label: string; href: string; handle?: string }[] = [
   {
     label: "YouTube",
-    handle: "@AsumaCodes",
-    href: "https://www.youtube.com/@AsumaCodes",
+    handle: "@trymurmurhq",
+    href: "https://www.youtube.com/@trymurmurhq",
   },
-  { label: "X", handle: "@AsumaCodes", href: "https://x.com/AsumaCodes" },
+  { label: "X", handle: "@trymurmurhq", href: "https://x.com/@trymurmurhq" },
   { label: "GitHub", href: "https://github.com/asumacodes" },
 ];
 
