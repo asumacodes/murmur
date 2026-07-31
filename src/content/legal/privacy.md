@@ -59,7 +59,7 @@ We do **not** intentionally collect special-category / sensitive personal data. 
 | Completion notifications | Your consent | Consent (Art. 6(1)(a)) |
 | Marketing sign-up emails | Your consent | Consent (Art. 6(1)(a)) |
 
-You may withdraw consent at any time (see Section 8). Withdrawing consent for core processing may mean you can no longer use the Service.
+You may withdraw consent at any time (see Section 10). Withdrawing consent for core processing may mean you can no longer use the Service.
 
 ---
 
@@ -74,6 +74,8 @@ You may withdraw consent at any time (see Section 8). Withdrawing consent for co
 | Atlassian tokens | Until you disconnect Atlassian or delete your account, at which point they are permanently deleted. |
 | Notification subscriptions | Until you disable notifications or delete your account. |
 | Marketing emails | Until you unsubscribe. |
+
+We may retain limited personal data beyond the periods above where we are required to do so to comply with a legal, tax, accounting, or regulatory obligation, or to establish, exercise, or defend a legal claim. Any such data is retained only for as long as that obligation requires and is then deleted.
 
 ---
 
@@ -110,13 +112,19 @@ No system is perfectly secure, but we work to protect your data in line with rec
 
 ---
 
-## 7. Cookies and analytics
+## 7. Data breach notification
+
+Despite our safeguards, no system is perfectly secure. If a personal-data breach affecting your data occurs, we will take prompt steps to contain and assess it, and we will notify the **Data Protection Board of India** and affected users as required by, and within the timelines set out in, applicable law. Our notice will describe, to the extent known, the nature of the breach and the measures we are taking in response.
+
+---
+
+## 8. Cookies and analytics
 
 We do not use tracking or advertising cookies. We use **privacy-friendly, cookieless website analytics** (via Cloudflare) to understand aggregate traffic, which does not identify you individually. Because we set no tracking cookies, no cookie-consent banner is presented. We use only the essential cookies required to keep you signed in and to operate the Service securely.
 
 ---
 
-## 8. International data transfers
+## 9. International data transfers
 
 Your core data — recordings, transcripts, run results, and Atlassian tokens — is stored on infrastructure located **in India** (Mumbai and Bangalore).
 
@@ -124,28 +132,28 @@ Certain sub-processors — specifically **Anthropic, AssemblyAI, and Resend** �
 
 ---
 
-## 9. Your rights
+## 10. Your rights
 
-Under the DPDP Act and the GDPR, you have the following rights over your personal data. You can exercise most of them directly in the Service; for the rest, contact us using the details in Section 11.
+Under the DPDP Act and the GDPR, you have the following rights over your personal data. You can exercise most of them directly in the Service; for the rest, contact us using the details in Section 12.
 
 - **Right to access** — you can view all of your recordings, transcripts, and run results in your dashboard, and export documents via Confluence's native export.
 - **Right to correction** — you can edit your display name and profile details in your account settings.
-- **Right to erasure / to be forgotten** — you can delete an individual recording, a single run, a project, or **your entire account**, directly in the Service. Deleting your account permanently removes all Murmur-held personal data — your account, recordings, transcripts, run results, operational data, notification subscriptions, and Atlassian tokens.
+- **Right to erasure / to be forgotten** — you can delete an individual recording, a single run, a project, or **your entire account**, directly in the Service. Deleting your account permanently removes all Murmur-held personal data — your account, recordings, transcripts, run results, operational data, notification subscriptions, and Atlassian tokens — **except** where we are required to retain limited data to comply with a legal obligation (see Section 4).
 - **Right to withdraw consent** — you can disconnect Atlassian (which permanently deletes the stored tokens), unsubscribe from emails, or delete your account at any time.
-- **Right to grievance redressal (DPDP)** — you can raise any concern with our Grievance Officer (Section 11) and receive a timely response.
+- **Right to grievance redressal (DPDP)** — you can raise any concern with our Grievance Officer (Section 12) and receive a timely response.
 - **Rights under the GDPR** — if you are in the EU/EEA, you additionally have the rights to restrict or object to processing, to data portability, and to lodge a complaint with your local supervisory authority.
 
 **Important — your Atlassian workspace is yours.** The Jira project and Confluence space that Murmur creates live in **your own** Atlassian workspace, not ours. Because they are yours and under your control, deleting your Murmur account does **not** delete them — we have no ability to reach into your Atlassian workspace once your tokens are deleted. If you want those artifacts removed, you can delete them directly in your own Atlassian account at any time.
 
 ---
 
-## 10. Children
+## 11. Children
 
 Murmur is not directed to children. You must be at least **18 years old** to use the Service. We do not knowingly collect personal data from children.
 
 ---
 
-## 11. Grievance Officer and contact
+## 12. Grievance Officer and contact
 
 In line with the DPDP Act, we have designated a **Grievance Officer** to address questions and complaints about how we handle your personal data.
 
@@ -154,13 +162,13 @@ In line with the DPDP Act, we have designated a **Grievance Officer** to address
 **Email:** [grievanceofficer@trymurmur.studio](mailto:grievanceofficer@trymurmur.studio)
 **Address:** 723, Sector 8, HUDA, Ambala City, Haryana - 134003
 
-We will acknowledge and respond to grievances within the timelines required by applicable law.
+We will acknowledge your grievance within **7 (seven) days** of receipt and work to resolve it within the period prescribed under the DPDP Act and its Rules. If you are not satisfied with our response, you have the right to escalate your complaint to the **Data Protection Board of India**.
 
 For GDPR matters, you may also contact us at the same address. If you are in the EU/EEA and believe we have not addressed your concern, you have the right to complain to your national data protection authority.
 
 ---
 
-## 12. Changes to this Policy
+## 13. Changes to this Policy
 
 We may update this Policy as the Service evolves or as the law requires. When we make material changes, we will update the "Last updated" date above and, where appropriate, notify you. Your continued use of the Service after a change takes effect means you accept the updated Policy.
 
