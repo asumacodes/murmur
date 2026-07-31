@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { MurmurMark } from "@/components/brand/MurmurMark";
 import { navItems } from "@/content/home";
 import { GhostButton, VersionChip } from "@/components/ui";
 import { features } from "@/config/features";
@@ -106,6 +107,7 @@ export function Header() {
     >
       <div className="murmur-container flex h-20 items-center justify-between gap-4">
         <a href="#top" className="focus-ring flex items-center gap-2.5 rounded-lg">
+          <MurmurMark className="size-7 shrink-0" />
           <span className="font-serif-display text-3xl italic text-[var(--gold)]">
             Murmur
           </span>
@@ -168,7 +170,12 @@ export function Header() {
         className={`mobile-nav-drawer md:hidden ${open ? "is-open" : ""}`}
       >
         <div className="mobile-nav-drawer-head">
-          <span className="font-serif-display text-2xl italic text-[var(--gold)]">Murmur</span>
+          <span className="flex items-center gap-2">
+            <MurmurMark className="size-6 shrink-0" />
+            <span className="font-serif-display text-2xl italic text-[var(--gold)]">
+              Murmur
+            </span>
+          </span>
           <VersionChip />
         </div>
 

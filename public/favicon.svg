@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Murmur">
+  <defs>
+    <linearGradient id="murmur-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#debc68" />
+      <stop offset="50%" stop-color="#d3af5a" />
+      <stop offset="100%" stop-color="#c9a44d" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="#000000" />
+  <g fill="url(#murmur-gold)">
+    <rect x="118" y="214" width="28" height="84" rx="14" />
+    <rect x="162" y="178" width="28" height="156" rx="14" />
+    <rect x="206" y="142" width="28" height="228" rx="14" />
+    <rect x="250" y="106" width="28" height="300" rx="14" />
+    <rect x="294" y="142" width="28" height="228" rx="14" />
+    <rect x="338" y="178" width="28" height="156" rx="14" />
+    <rect x="382" y="214" width="28" height="84" rx="14" />
+  </g>
+</svg>

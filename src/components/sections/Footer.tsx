@@ -1,3 +1,4 @@
+import { MurmurMark } from "@/components/brand/MurmurMark";
 import { Container } from "@/components/ui";
 import { footerLinks } from "@/content/home";
 import { features } from "@/config/features";
@@ -25,8 +26,9 @@ export function Footer() {
       <Container>
         <div className="footer-main-grid grid gap-8 lg:grid-cols-[1.2fr_1fr_auto] lg:gap-10 lg:items-start lg:text-left">
           <div>
-            <p className="font-serif-display text-4xl italic text-[var(--gold)]">
-              Murmur
+            <p className="flex items-center gap-3 font-serif-display text-4xl italic text-[var(--gold)]">
+              <MurmurMark className="size-9 shrink-0" />
+              <span>Murmur</span>
             </p>
             <p className="mt-3 text-[var(--text-secondary)]">
               Speak. Transcribe. Ship.

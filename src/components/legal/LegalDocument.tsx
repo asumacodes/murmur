@@ -1,6 +1,7 @@
 import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { MurmurMark } from "@/components/brand/MurmurMark";
 import { Container } from "@/components/ui";
 
 type LegalDocumentProps = {
@@ -38,8 +39,9 @@ export function LegalDocument({ eyebrow, markdown }: LegalDocumentProps) {
     <main className="section-pad legal-page">
       <Container>
         <div className="legal-shell">
-          <a href="/" className="legal-back">
-            ← Murmur
+          <a href="/" className="legal-back inline-flex items-center gap-2">
+            <MurmurMark className="size-4 shrink-0" />
+            <span>← Murmur</span>
           </a>
           <p className="font-mono-text text-xs uppercase tracking-[0.15em] text-[var(--gold)]">
             {eyebrow}

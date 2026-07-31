@@ -7,6 +7,8 @@ export const size = {
 };
 export const contentType = "image/png";
 
+const barHeights = [84, 156, 228, 300, 228, 156, 84];
+
 export default function Image() {
   return new ImageResponse(
     (
@@ -25,12 +27,37 @@ export default function Image() {
       >
         <div
           style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 18,
             color: "#c9a96e",
             fontSize: 32,
             fontStyle: "italic",
           }}
         >
-          Murmur
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 5,
+              width: 44,
+              height: 44,
+            }}
+          >
+            {barHeights.map((height, index) => (
+              <div
+                key={index}
+                style={{
+                  width: 4,
+                  height: Math.round(height * 0.12),
+                  borderRadius: 999,
+                  background: "linear-gradient(180deg, #debc68 0%, #c9a44d 100%)",
+                }}
+              />
+            ))}
+          </div>
+          <span>Murmur</span>
         </div>
         <div
           style={{

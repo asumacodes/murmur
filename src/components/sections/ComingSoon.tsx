@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useRef, useState } from "react";
+import { MurmurMark } from "@/components/brand/MurmurMark";
 import { GhostButton, GoldButton } from "@/components/ui";
 import { comingSoon } from "@/content/coming-soon";
 import { gsap, useGSAP } from "@/lib/gsap";
@@ -72,8 +73,9 @@ export function ComingSoon() {
       </a>
 
       <header className="coming-soon-header">
-        <p className="cs-wordmark coming-soon-brand font-serif-display italic text-[var(--gold)]">
-          {comingSoon.brand}
+        <p className="cs-wordmark coming-soon-brand flex items-center gap-3 font-serif-display italic text-[var(--gold)]">
+          <MurmurMark className="size-8 shrink-0 sm:size-9" />
+          <span>{comingSoon.brand}</span>
         </p>
       </header>
 
