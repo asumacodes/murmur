@@ -81,7 +81,7 @@ You may withdraw consent at any time (see Section 8). Withdrawing consent for co
 
 We use a small number of trusted service providers ("Data Processors" / "sub-processors") to run the Service. Each processes personal data only on our instructions, under a written data-processing agreement.
 
-**We do not use your data to train AI models, and we have configured our AI sub-processors so that they do not use your data to train theirs.**
+**We do not use your data to train AI models, and we work only with sub-processors whose data-handling terms we consider appropriate for the personal data they process.**
 
 | Provider | What it does | Data it handles | Location |
 |---|---|---|---|
