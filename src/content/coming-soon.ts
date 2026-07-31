@@ -10,11 +10,11 @@ export const comingSoon = {
   social: {
     x: {
       label: "Follow on X",
-      href: "https://x.com/AsumaCodes",
+      href: "https://x.com/trymurmurhq",
     },
     youtube: {
       label: "Watch on YouTube",
-      href: "https://www.youtube.com/@AsumaCodes",
+      href: "https://www.youtube.com/@trymurmurhq",
     },
   },
   notify: {
