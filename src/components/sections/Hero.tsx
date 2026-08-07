@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { ListenerMockup } from "@/components/mockups";
 import { Container, GhostButton, PlayIcon, SectionEyebrow } from "@/components/ui";
 import { MagneticGoldButton } from "@/components/ui/MagneticGoldButton";
+import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { pipelineLabels } from "@/content/home";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { REPLAY_PIPELINE_EVENT } from "@/lib/pipeline-tracer";
@@ -174,6 +175,7 @@ export function Hero() {
                   <MagneticGoldButton
                     href="#early-access"
                     className="hero-btn hero-btn--primary font-medium"
+                    onClick={() => trackWaitlistCtaClicked("hero")}
                   >
                     Join early access →
                   </MagneticGoldButton>

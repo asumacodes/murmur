@@ -4,6 +4,7 @@ import { FormEvent, useRef, useState } from "react";
 import { MurmurMark } from "@/components/brand/MurmurMark";
 import { GhostButton, GoldButton } from "@/components/ui";
 import { comingSoon } from "@/content/coming-soon";
+import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { motionDefaults, PREMIUM_EASE } from "@/lib/motion";
 
@@ -156,6 +157,7 @@ export function ComingSoon() {
                   type="submit"
                   disabled={status === "loading"}
                   className="coming-soon-notify-submit focus-ring"
+                  onClick={() => trackWaitlistCtaClicked("hero")}
                 >
                   {status === "loading" ? "Sending…" : notify.cta}
                 </button>

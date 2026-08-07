@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { Providers } from "./providers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -87,7 +88,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
     >
       <body>
-        <SmoothScroll>{children}</SmoothScroll>
+        <Providers>
+          <SmoothScroll>{children}</SmoothScroll>
+        </Providers>
       </body>
     </html>
   );

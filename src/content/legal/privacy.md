@@ -1,7 +1,7 @@
 # Privacy Policy — Murmur
 
 **Effective date:** 1st August 2026
-**Last updated:** 1st August 2026
+**Last updated:** 7th August 2026
 
 This Privacy Policy explains how **SprintZero Studios (OPC) Private Limited** ("SprintZero Studios," "we," "us," or "our") collects, uses, stores, shares, and protects your personal data when you use **Murmur** (the "Service") at `www.trymurmur.studio` and `app.trymurmur.studio`.
 
@@ -120,7 +120,20 @@ Despite our safeguards, no system is perfectly secure. If a personal-data breach
 
 ## 8. Cookies and analytics
 
-We do not use tracking or advertising cookies. We use **privacy-friendly, cookieless website analytics** (via Cloudflare) to understand aggregate traffic, which does not identify you individually. Because we set no tracking cookies, no cookie-consent banner is presented. We use only the essential cookies required to keep you signed in and to operate the Service securely.
+We do not use advertising cookies, and we do not sell your data or use it
+for cross-site ad targeting.
+
+We use privacy-respecting analytics to understand aggregate traffic and to
+improve the Service. This includes cookieless website analytics (via
+Cloudflare) and product analytics that set a first-party analytics cookie on
+our own domain. This cookie is used only to measure usage of our own websites
+and app — for example, to understand how visitors move from our marketing site
+to the product — and is not shared with advertisers or used to track you across
+other companies' websites. The information is used in an aggregated, de-identified
+form and is not used to determine your individual identity.
+
+Alongside these, we use only the essential cookies required to keep you signed
+in and to operate the Service securely.
 
 ---
 

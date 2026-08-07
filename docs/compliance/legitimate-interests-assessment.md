@@ -46,7 +46,7 @@ On balance, no — the processing does not override the data subject's rights an
 
 - **Low intrusion.** The data is technical run metadata, tied to activity the user deliberately initiated (running a pipeline). It is not sensitive, not behavioural-tracking across the web, and not used for profiling or advertising.
 - **Reasonable expectations.** A user running an automated pipeline reasonably expects the operator to record whether the run worked and what it cost — this is ordinary service operation, not a surprising secondary use.
-- **No targeting or ad use.** The data is never used for targeted advertising or sold. Analytics elsewhere on the site are cookieless and aggregate.
+- **No targeting or ad use.** The data is never used for targeted advertising or sold. Website analytics via Cloudflare are cookieless. Product analytics (PostHog) set a first-party, own-domain analytics cookie and process de-identified usage data (a pseudonymous user identifier, not name or email); this is assessed under legitimate interests and detailed in the full analytics LIA update (pending, Phase 5).
 - **Retention is bounded.** The data is retained with the associated run record and deleted when the run or the account is deleted (Privacy Policy Section 4) — it does not persist independently.
 - **Safeguards.** Row-level security restricts each user's data to that user; data is encrypted in transit; core storage is in India.
 - **Rights preserved.** The user can delete runs and their account, which removes this data; they can object; and the grievance mechanism is available.

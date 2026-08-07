@@ -1,0 +1,23 @@
+---
+description: Keep PostHog funnel instrumentation complete when adding or changing UI (KAN-59)
+alwaysApply: true
+---
+
+# Analytics instrumentation rule (KAN-59)
+
+This repo has PostHog product analytics (`src/lib/analytics/`). When adding or
+changing UI, keep the funnel complete:
+
+- New CTA, funnel step, or user action → add a PostHog event via a typed helper
+  in `src/lib/analytics/events.ts`. Never call `posthog.capture()` inline at the
+  call site; add/extend a helper so event names stay typo-proof and greppable.
+- Events are ACTION- or ROUTE-based, never element/DOM-based. Do not enable
+  autocapture. An event must survive a visual redesign unchanged.
+- Never send PII (email, name, raw transcript/recording content) as an event
+  property or identifier. User identity is the Supabase user UUID only.
+- New route that's a funnel milestone → fire the milestone event from the route,
+  not from a component inside it.
+- When the `comingSoon` gate flips or a purchase/checkout path (KAN-65) is built,
+  add the corresponding funnel events (`signup_cta_clicked` call site,
+  `pack_selected` → `checkout_started` → `purchase_completed`) at that time.
+- Mirror any new data category in `src/content/legal/privacy.md` §8 before shipping.

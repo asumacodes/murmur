@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { Container, GhostButton, GoldButton, SectionEyebrow } from "@/components/ui";
 import { packs, type Pack, type PackFeature } from "@/content/home";
+import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
 
@@ -169,11 +170,19 @@ function PackCard({ pack, className = "" }: { pack: Pack; className?: string }) 
         </div>
 
         {isFeatured ? (
-          <GoldButton href="#early-access" className="pack-card-btn pack-card-btn--primary">
+          <GoldButton
+            href="#early-access"
+            className="pack-card-btn pack-card-btn--primary"
+            onClick={() => trackWaitlistCtaClicked("pricing", { pack: pack.letter })}
+          >
             {pack.cta}
           </GoldButton>
         ) : (
-          <GhostButton href="#early-access" className="pack-card-btn pack-card-btn--ghost">
+          <GhostButton
+            href="#early-access"
+            className="pack-card-btn pack-card-btn--ghost"
+            onClick={() => trackWaitlistCtaClicked("pricing", { pack: pack.letter })}
+          >
             {pack.cta}
           </GhostButton>
         )}

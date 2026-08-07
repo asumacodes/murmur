@@ -6,6 +6,7 @@ import { navItems } from "@/content/home";
 import { GhostButton, VersionChip } from "@/components/ui";
 import { features } from "@/config/features";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
+import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { sectionSpyIds } from "@/lib/motion";
 
 const headerNavItems = navItems.filter(
@@ -137,7 +138,11 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <div className="hidden md:block">
-            <GhostButton href="#early-access" className="text-sm">
+            <GhostButton
+              href="#early-access"
+              className="text-sm"
+              onClick={() => trackWaitlistCtaClicked("nav")}
+            >
               Join early access
             </GhostButton>
           </div>
@@ -201,7 +206,14 @@ export function Header() {
         </ul>
 
         <div className="mobile-nav-cta">
-          <GhostButton href="#early-access" className="mobile-nav-cta-btn" onClick={() => setOpen(false)}>
+          <GhostButton
+            href="#early-access"
+            className="mobile-nav-cta-btn"
+            onClick={() => {
+              trackWaitlistCtaClicked("nav");
+              setOpen(false);
+            }}
+          >
             Join early access
           </GhostButton>
         </div>

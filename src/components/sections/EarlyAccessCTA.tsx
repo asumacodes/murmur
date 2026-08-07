@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { Container, SectionEyebrow } from "@/components/ui";
 import { waitlistSection } from "@/content/home";
+import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
 
@@ -84,7 +85,11 @@ export function EarlyAccessCTA() {
               required
               className="waitlist-input flex-1 rounded-sm border bg-[var(--bg-deep)] px-4 text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)]"
             />
-            <button type="submit" className="waitlist-submit focus-ring">
+            <button
+              type="submit"
+              className="waitlist-submit focus-ring"
+              onClick={() => trackWaitlistCtaClicked("form_submit")}
+            >
               {waitlistSection.cta}
             </button>
           </form>
