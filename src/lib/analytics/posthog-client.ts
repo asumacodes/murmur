@@ -20,8 +20,9 @@ export function initPostHog() {
     capture_pageleave: true, // needed for bounce/duration in funnels
     disable_session_recording: true,
     disable_surveys: true,
-    // first-touch UTMs are captured as $initial_* set-once by default;
-    // no extra config needed — they persist on the person and survive the hop.
+    // Under identified_only, PostHog does not persist $initial_* on anonymous
+    // persons. Durable first-touch UTMs live in mm_ft via first-touch.ts;
+    // Step 2 feeds them into identify() $set_once after auth.
   });
   initialized = true;
 }

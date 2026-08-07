@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { FormEvent, useRef } from "react";
 import { Container, SectionEyebrow } from "@/components/ui";
 import { waitlistSection } from "@/content/home";
 import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
@@ -9,6 +9,7 @@ import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
 
 export function EarlyAccessCTA() {
   const sectionRef = useRef<HTMLElement>(null);
+  const submitGuardRef = useRef(false);
 
   useGSAP(
     () => {
@@ -45,6 +46,19 @@ export function EarlyAccessCTA() {
     { scope: sectionRef },
   );
 
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    if (submitGuardRef.current) {
+      event.preventDefault();
+      return;
+    }
+    submitGuardRef.current = true;
+    trackWaitlistCtaClicked("form_submit");
+    // mailto action proceeds; reset after a tick so a later retry can fire
+    window.setTimeout(() => {
+      submitGuardRef.current = false;
+    }, 1000);
+  }
+
   return (
     <section id="early-access" ref={sectionRef} className="waitlist-section section-pad">
       <Container>
@@ -72,6 +86,7 @@ export function EarlyAccessCTA() {
             method="post"
             encType="text/plain"
             aria-label="Early access waitlist"
+            onSubmit={handleSubmit}
           >
             <label className="sr-only" htmlFor="waitlist-email">
               Email address
@@ -85,11 +100,7 @@ export function EarlyAccessCTA() {
               required
               className="waitlist-input flex-1 rounded-sm border bg-[var(--bg-deep)] px-4 text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)]"
             />
-            <button
-              type="submit"
-              className="waitlist-submit focus-ring"
-              onClick={() => trackWaitlistCtaClicked("form_submit")}
-            >
+            <button type="submit" className="waitlist-submit focus-ring">
               {waitlistSection.cta}
             </button>
           </form>

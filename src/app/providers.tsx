@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import { captureFirstTouchOnce } from "@/lib/analytics/first-touch";
 import { initPostHog, posthog } from "@/lib/analytics/posthog-client";
 
 function PageviewTracker() {
@@ -24,6 +25,7 @@ function PageviewTracker() {
 export function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     initPostHog();
+    captureFirstTouchOnce(); // durable first-touch; survives OAuth hop (Step 2 reads mm_ft)
   }, []);
 
   return (

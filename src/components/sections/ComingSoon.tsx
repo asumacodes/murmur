@@ -12,6 +12,7 @@ type SubscribeStatus = "idle" | "loading" | "success" | "error";
 
 export function ComingSoon() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const submitGuardRef = useRef(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<SubscribeStatus>("idle");
 
@@ -44,9 +45,11 @@ export function ComingSoon() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (status === "loading") {
+    if (submitGuardRef.current || status === "loading") {
       return;
     }
+    submitGuardRef.current = true;
+    trackWaitlistCtaClicked("hero");
 
     setStatus("loading");
     try {
@@ -63,6 +66,7 @@ export function ComingSoon() {
       setStatus("success");
       setEmail("");
     } catch {
+      submitGuardRef.current = false;
       setStatus("error");
     }
   }
@@ -157,7 +161,6 @@ export function ComingSoon() {
                   type="submit"
                   disabled={status === "loading"}
                   className="coming-soon-notify-submit focus-ring"
-                  onClick={() => trackWaitlistCtaClicked("hero")}
                 >
                   {status === "loading" ? "Sending…" : notify.cta}
                 </button>
