@@ -1,7 +1,7 @@
 # Privacy Policy — Murmur
 
 **Effective date:** 1st August 2026
-**Last updated:** 7th August 2026
+**Last updated:** 8th August 2026
 
 This Privacy Policy explains how **SprintZero Studios (OPC) Private Limited** ("SprintZero Studios," "we," "us," or "our") collects, uses, stores, shares, and protects your personal data when you use **Murmur** (the "Service") at `www.trymurmur.studio` and `app.trymurmur.studio`.
 
@@ -44,6 +44,8 @@ We collect only what the Service needs to function. We do not sell your personal
 
 **h. Marketing sign-ups.** If you ask to be notified about availability, we store the **email address** you submit.
 
+**i. Product and usage analytics.** To understand how our marketing site and app are used and how to improve them, we collect **product-analytics events** describing pages viewed and actions taken (for example, sign-up, connecting Atlassian, and completing a run), together with **first-touch attribution** (how you arrived, such as UTM parameters or referring site). These events are keyed to a **pseudonymous identifier** — an account identifier if you are signed in, or an anonymous device identifier before sign-in — and **not** to your name or email. We do **not** send your **recordings, transcripts, or run results** to our analytics provider, and we do **not** use session replay or advertising/cross-site tracking.
+
 We do **not** intentionally collect special-category / sensitive personal data. Please do not include such information in your recordings.
 
 ---
@@ -56,6 +58,7 @@ We do **not** intentionally collect special-category / sensitive personal data. 
 | Storing and transcribing your recordings; running the pipeline; producing and storing run results | Your consent | Performance of a contract (Art. 6(1)(b)) |
 | Creating Jira/Confluence artifacts in your Atlassian workspace | Your consent | Performance of a contract (Art. 6(1)(b)) |
 | Operational data, abuse prevention, cost management | Legitimate use / our legitimate interests | Legitimate interests (Art. 6(1)(f)) |
+| Product and usage analytics, to understand and improve the Service | Legitimate use / our legitimate interests | Legitimate interests (Art. 6(1)(f)) |
 | Completion notifications | Your consent | Consent (Art. 6(1)(a)) |
 | Marketing sign-up emails | Your consent | Consent (Art. 6(1)(a)) |
 
@@ -71,6 +74,7 @@ You may withdraw consent at any time (see Section 10). Withdrawing consent for c
 | Voice recordings and transcripts | For as long as your account is active; deleted when you delete the recording or your account. |
 | Run results (dashboard content) | Retained on a **tiered basis** — **1 month** on the Free and Starter plans, **6 months** on the Builder and Studio plans. When a run reaches the end of its retention period, we notify you and provide a **7-day grace window** during which the content stays available and downloadable. After the grace window, the run results are purged and the idea is removed from your Murmur history. Your underlying recording is not affected, and you can re-run the pipeline on it. |
 | Operational and usage data | Retained with the associated run record; deleted when the run or your account is deleted. |
+| Product and usage analytics | Retained by our analytics provider (PostHog); retention is currently configured to 12 months. |
 | Atlassian tokens | Until you disconnect Atlassian or delete your account, at which point they are permanently deleted. |
 | Notification subscriptions | Until you disable notifications or delete your account. |
 | Marketing emails | Until you unsubscribe. |
@@ -93,7 +97,8 @@ We use a small number of trusted service providers ("Data Processors" / "sub-pro
 | **Anthropic, PBC** | AI models that generate your run results | Transcript and generated content | United States |
 | **AssemblyAI, Inc.** | Transcribes your recordings | Audio and transcript | United States |
 | **Resend (Plus Five Five, Inc.)** | Sends our emails | Email address | United States |
-| **Cloudflare, Inc.** | DNS, email routing, and website analytics | Routing and analytics data | United States / global |
+| **Cloudflare, Inc.** | DNS, email routing, and cookieless website/performance analytics | Routing and aggregate website-performance analytics | United States / global |
+| **PostHog** | Product and behavioural analytics | Pseudonymous usage events and first-touch attribution (no recordings, transcripts, or run results) | European Union |
 
 We may also disclose personal data where required by law, to enforce our Terms, or to protect the rights, safety, and security of our users, the public, or SprintZero Studios.
 
