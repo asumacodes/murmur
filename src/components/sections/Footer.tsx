@@ -1,7 +1,12 @@
+"use client";
+
+import { useRef } from "react";
 import { MurmurMark } from "@/components/brand/MurmurMark";
 import { Container } from "@/components/ui";
 import { footerLinks } from "@/content/home";
 import { features } from "@/config/features";
+import { useSectionReveal } from "@/hooks/useSectionReveal";
+import { PREMIUM_EASE, scrollEnterSoft } from "@/lib/motion";
 
 const footerLinkGroups = {
   ...footerLinks,
@@ -21,11 +26,26 @@ const socialLinks: { label: string; href: string; handle?: string }[] = [
 ];
 
 export function Footer() {
+  const footerRef = useRef<HTMLElement>(null);
+
+  useSectionReveal({
+    scope: footerRef,
+    scrollEnter: scrollEnterSoft,
+    groups: [
+      {
+        selector: ".footer-reveal",
+        trigger: ".footer-main-grid",
+        from: { autoAlpha: 0, y: 28 },
+        to: { duration: 0.85, stagger: 0.1, ease: PREMIUM_EASE },
+      },
+    ],
+  });
+
   return (
-    <footer className="border-t border-[var(--border-subtle)] py-12">
+    <footer ref={footerRef} className="border-t border-[var(--border-subtle)] py-12">
       <Container>
-        <div className="footer-main-grid grid gap-8 lg:grid-cols-[1.2fr_1fr_auto] lg:gap-10 lg:items-start lg:text-left">
-          <div>
+        <div className="footer-main-grid grid gap-8 lg:grid-cols-[1.2fr_1fr_auto] lg:items-start lg:gap-10 lg:text-left">
+          <div className="footer-reveal opacity-0">
             <p className="flex items-center gap-3 font-serif-display text-4xl italic text-[var(--gold)]">
               <MurmurMark className="size-9 shrink-0" />
               <span>Murmur</span>
@@ -43,7 +63,7 @@ export function Footer() {
 
           <hr aria-hidden="true" className="footer-mobile-divider lg:hidden" />
 
-          <div className="footer-link-grid grid grid-cols-3 gap-6">
+          <div className="footer-reveal footer-link-grid grid grid-cols-3 gap-6 opacity-0">
             {Object.entries(footerLinkGroups).map(([group, links]) => (
               <nav key={group} aria-label={`Footer ${group} links`}>
                 <p className="font-mono-text mb-4 text-xs uppercase tracking-[0.14em] text-[var(--gold)]">
@@ -67,7 +87,7 @@ export function Footer() {
 
           <hr aria-hidden="true" className="footer-mobile-divider lg:hidden" />
 
-          <div className="footer-social-block w-fit lg:justify-self-end">
+          <div className="footer-reveal footer-social-block w-fit opacity-0 lg:justify-self-end">
             <ul className="footer-social grid gap-3">
               {socialLinks.map((item) => (
                 <li key={item.label}>

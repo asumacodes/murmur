@@ -5,8 +5,9 @@ import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Packs } from "@/components/sections/Packs";
+import { Pricing } from "@/components/sections/Pricing";
 import { Pipeline } from "@/components/sections/Pipeline";
+import { SprintZeroBand } from "@/components/sections/SprintZeroBand";
 import { StackStrip } from "@/components/sections/StackStrip";
 import { StudioLog } from "@/components/sections/StudioLog";
 import { features } from "@/config/features";
@@ -23,10 +24,11 @@ export function FullLandingPage() {
         <HowItWorks />
         <Pipeline />
         <Comparison />
-        <Packs />
+        <Pricing />
         {features.studioLog ? <StudioLog /> : null}
         <StackStrip />
         <FAQ />
+        <SprintZeroBand />
         <EarlyAccessCTA />
       </main>
       <Footer />

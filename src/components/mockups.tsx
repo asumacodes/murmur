@@ -54,7 +54,10 @@ export function VoiceCaptureMockup() {
 
 export function HowItWorksRecordingMockup() {
   return (
-    <div className="step-mockup-panel step-mockup-panel--cream p-6 sm:p-7" aria-hidden="true">
+    <div
+      className="overflow-hidden rounded-[1.25rem] border border-[rgba(42,34,24,0.14)] bg-[#faf6ec] p-6 text-[#2a2218] shadow-[0_24px_64px_rgba(0,0,0,0.32)] sm:p-7"
+      aria-hidden="true"
+    >
       <div className="flex flex-col items-center text-center">
         <div className="grid size-16 place-items-center rounded-full border border-[rgba(42,34,24,0.2)]">
           <span className="size-5 rounded-sm bg-[var(--red-seal)]" />
@@ -66,13 +69,13 @@ export function HowItWorksRecordingMockup() {
           {WAVEFORM_HEIGHTS.slice(0, 24).map((height, index) => (
             <span
               key={index}
-              className="how-recording-bar w-[3px] rounded-full bg-[#2a2218]/70"
+              className="how-recording-bar origin-bottom will-change-transform w-[3px] rounded-full bg-[#2a2218]/70"
               style={{ height: `${Math.max(6, height * 0.55)}px` }}
             />
           ))}
         </div>
         <p className="font-mono-text mt-5 text-[0.62rem] uppercase tracking-[0.16em] text-[#6b6760]">
-          Listener — recording
+          Listener · recording
         </p>
       </div>
     </div>
@@ -167,9 +170,12 @@ export function ListenerMockup({
 
 export function TranscriptMockup() {
   return (
-    <div className="step-mockup-panel step-mockup-panel--cream p-6 sm:p-7" aria-hidden="true">
+    <div
+      className="overflow-hidden rounded-[1.25rem] border border-[rgba(42,34,24,0.14)] bg-[#faf6ec] p-6 text-[#2a2218] shadow-[0_24px_64px_rgba(0,0,0,0.32)] sm:p-7"
+      aria-hidden="true"
+    >
       <p className="font-mono-text text-[0.62rem] uppercase tracking-[0.14em] text-[#6b6760]">
-        Transcription — EN
+        Transcription · EN
       </p>
       <p className="mt-5 font-serif-display text-[1.05rem] leading-[1.65] text-[#2a2218] sm:text-[1.1rem]">
         I want to build a calm app for founders who only have a messy voice memo and no time to
@@ -212,9 +218,15 @@ export function ResearchMockup() {
   ];
 
   return (
-    <div className="step-mockup-panel step-mockup-panel--dark p-5 sm:p-6" aria-hidden="true">
+    <div
+      className="overflow-hidden rounded-[1.25rem] border border-[color-mix(in_srgb,var(--gold)_28%,var(--border-subtle))] bg-[rgba(10,10,10,0.78)] p-5 text-[var(--text-primary)] shadow-[0_24px_64px_rgba(0,0,0,0.32)] sm:p-6"
+      aria-hidden="true"
+    >
       {items.map((item) => (
-        <div key={item.title} className="step-research-item">
+        <div
+          key={item.title}
+          className="mt-4 border-t border-[rgba(201,169,110,0.12)] pt-4 first:mt-0 first:border-t-0 first:pt-0"
+        >
           <p className="font-serif-display text-[1.05rem] text-[var(--text-primary)]">
             {item.title}
           </p>
@@ -235,12 +247,15 @@ export function ResearchMockup() {
 
 export function FoundationMockup() {
   return (
-    <div className="step-mockup-panel step-mockup-panel--mixed overflow-hidden" aria-hidden="true">
-      <div className="border-b border-[rgba(201,169,110,0.12)] bg-[#faf6ec] p-5 text-[#2a2218]">
+    <div
+      className="overflow-hidden rounded-[1.25rem] border border-[color-mix(in_srgb,var(--gold)_28%,var(--border-subtle))] bg-[rgba(10,10,10,0.78)] text-[var(--text-primary)] shadow-[0_24px_64px_rgba(0,0,0,0.32)]"
+      aria-hidden="true"
+    >
+      <div className="border-b border-[rgba(201,169,110,0.12)] bg-[#faf6ec] px-5 pb-5 pt-4 text-[#2a2218]">
         <p className="font-mono-text text-[0.58rem] uppercase tracking-[0.12em] text-[#6b6760]">
-          PRD.md v1 — validated
+          PRD.md v1 · validated
         </p>
-        <p className="font-serif-display mt-2 text-xl">Murmur — product requirements</p>
+        <p className="font-serif-display mt-2 text-xl">Murmur · product requirements</p>
         <div className="mt-4 space-y-2">
           <div className="h-1 rounded bg-[#2a2218]/10" />
           <div className="h-1 w-4/5 rounded bg-[#2a2218]/10" />
@@ -250,7 +265,7 @@ export function FoundationMockup() {
           Goals · non-goals · constraints · open questions
         </p>
       </div>
-      <div className="grid gap-4 p-5 sm:grid-cols-2">
+      <div className="grid gap-4 px-5 pb-5 pt-4 sm:grid-cols-2">
         <div>
           <p className="font-mono-text text-[0.58rem] uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
             Brand kit
@@ -265,7 +280,7 @@ export function FoundationMockup() {
             ))}
           </div>
           <p className="font-mono-text mt-3 text-[0.58rem] uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
-            Murmur — brand kit
+            Murmur · brand kit
           </p>
         </div>
         <div>
@@ -289,29 +304,38 @@ export function FoundationMockup() {
   );
 }
 
-export function DeployMockup() {
+/** Step 05 — honest handoff package (not a fake Murmur deploy). */
+export function HandoffMockup() {
   return (
-    <div className="step-mockup-panel step-mockup-panel--dark overflow-hidden" aria-hidden="true">
-      <div className="step-terminal-bar">
-        <span className="step-terminal-dot" />
-        <span className="step-terminal-dot" />
-        <span className="step-terminal-dot" />
+    <div
+      className="overflow-hidden rounded-[1.25rem] border border-[color-mix(in_srgb,var(--gold)_28%,var(--border-subtle))] bg-[rgba(10,10,10,0.92)] text-[var(--text-primary)] shadow-[0_24px_64px_rgba(0,0,0,0.32)]"
+      aria-hidden="true"
+    >
+      <div className="flex items-center gap-2 border-b border-[rgba(201,169,110,0.12)] px-4 py-3">
+        <span className="size-2 rounded-full bg-[rgba(168,163,154,0.35)]" />
+        <span className="size-2 rounded-full bg-[rgba(168,163,154,0.35)]" />
+        <span className="size-2 rounded-full bg-[rgba(168,163,154,0.35)]" />
+        <p className="font-mono-text ml-2 text-[0.58rem] uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+          Murmur · handoff
+        </p>
       </div>
-      <div className="space-y-2 p-5 font-mono-text text-[0.72rem] leading-6 text-[var(--text-secondary)]">
+      <div className="space-y-2.5 px-5 py-4 font-mono-text text-[0.72rem] leading-6 text-[var(--text-secondary)]">
         <p>
-          <span className="text-[var(--gold)]">$</span> pnpm create murmur-app idea-quiet-river
+          <span className="text-[var(--gold)]">$</span> murmur package --for sprintzero
         </p>
-        <p className="text-[var(--text-tertiary)]">✓ next.js 15 + supabase scaffold</p>
-        <p className="text-[var(--text-tertiary)]">✓ auth, db schema, rls policies</p>
-        <p className="text-[var(--text-tertiary)]">✓ brand tokens applied</p>
-        <p className="text-[var(--text-tertiary)]">✓ ci wired</p>
-        <p className="pt-1">
-          <span className="text-[var(--gold)]">$</span> murmur deploy
+        <p className="text-[var(--gold)]">✓ PRD.md validated</p>
+        <p className="text-[var(--gold)]">✓ brand kit · palette + type</p>
+        <p className="text-[var(--gold)]">✓ Jira board + Confluence space</p>
+        <p className="text-[var(--gold)]">✓ research brief attached</p>
+        <p className="pt-1 text-[var(--text-primary)]">
+          → SprintZero Studio{" "}
+          <span className="text-[var(--gold-bright)] underline decoration-[var(--gold)]/40 underline-offset-2">
+            awaiting kickoff
+          </span>
         </p>
-        <p className="text-[var(--gold-bright)] underline decoration-[var(--gold)]/40 underline-offset-2">
-          ✓ Deployed — idea-quiet-river.murmur.studio
-        </p>
+        <p className="pt-1 text-[var(--text-tertiary)]">foundation ready · 72h sprints from here</p>
       </div>
     </div>
   );
 }
+

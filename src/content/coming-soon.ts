@@ -3,7 +3,7 @@ export const comingSoon = {
   headline: "Speak. Transcribe. Ship.",
   subhead: "Voice → a complete project foundation under 10 minutes.",
   differentiation:
-    "Not another AI dashboard. An agentic pipeline that does the founder-ops work — research, PRD, brand, board — while you talk.",
+    "Not another AI dashboard. An agentic pipeline that does the founder-ops work (research, PRD, brand, board) while you talk.",
   /** Display as ALL CAPS in the UI */
   status: "Coming soon.",
   statusDisplay: "COMING SOON",

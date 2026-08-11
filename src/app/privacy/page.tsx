@@ -3,7 +3,7 @@ import { LegalDocument } from "@/components/legal/LegalDocument";
 import { getLegalMarkdown } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Murmur",
+  title: "Privacy Policy · Murmur",
   description:
     "How SprintZero Studios collects, uses, and protects personal data when you use Murmur.",
   alternates: {

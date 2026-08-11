@@ -162,7 +162,9 @@ export function Header() {
       </div>
 
       <div
-        className={`mobile-nav-backdrop md:hidden ${open ? "is-open" : ""}`}
+        className={`fixed inset-0 z-40 bg-black/55 transition-opacity duration-[280ms] ease-[var(--ease)] md:hidden ${
+          open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        }`}
         aria-hidden={!open}
         onClick={() => setOpen(false)}
       />
@@ -172,9 +174,11 @@ export function Header() {
         ref={drawerRef}
         aria-label="Mobile navigation"
         aria-hidden={!open}
-        className={`mobile-nav-drawer md:hidden ${open ? "is-open" : ""}`}
+        className={`fixed top-0 right-0 z-50 flex h-dvh w-[min(100%,20rem)] flex-col border-l border-[var(--border-gold)] bg-[var(--bg-elevated)] px-5 pt-5 pb-6 transition-transform duration-[320ms] ease-[var(--ease)] will-change-transform md:hidden ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
       >
-        <div className="mobile-nav-drawer-head">
+        <div className="flex items-center gap-[0.65rem] border-b border-[var(--border-subtle)] pb-5">
           <span className="flex items-center gap-2">
             <MurmurMark className="size-6 shrink-0" />
             <span className="font-serif-display text-2xl italic text-[var(--gold)]">
@@ -184,7 +188,7 @@ export function Header() {
           <VersionChip />
         </div>
 
-        <ul className="mobile-nav-list">
+        <ul className="m-0 grid list-none gap-[0.35rem] py-5">
           {headerNavItems.map((item, index) => {
             const sectionId = item.href.replace("#", "");
             const isActive = activeSection === sectionId;
@@ -195,7 +199,11 @@ export function Header() {
                   ref={index === 0 ? firstDrawerLinkRef : undefined}
                   href={item.href}
                   aria-current={isActive ? "location" : undefined}
-                  className={`mobile-nav-link ${isActive ? "is-active" : ""}`}
+                  className={`block rounded px-3 py-[0.85rem] text-[0.9375rem] text-[var(--text-secondary)] transition-[background-color,color] duration-200 ease-[var(--ease)] hover:bg-[rgba(201,169,110,0.08)] hover:text-[var(--text-primary)] ${
+                    isActive
+                      ? "bg-[rgba(201,169,110,0.08)] text-[var(--text-primary)]"
+                      : ""
+                  }`}
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
@@ -205,10 +213,10 @@ export function Header() {
           })}
         </ul>
 
-        <div className="mobile-nav-cta">
+        <div className="mt-auto flex justify-center">
           <GhostButton
             href="#early-access"
-            className="mobile-nav-cta-btn"
+            className="max-lg:min-w-[min(100%,16rem)] max-lg:max-w-[calc(100%-2rem)]"
             onClick={() => {
               trackWaitlistCtaClicked("nav");
               setOpen(false);

@@ -3,60 +3,33 @@
 import { useRef } from "react";
 import { Container, SectionEyebrow } from "@/components/ui";
 import { studioLog } from "@/content/home";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { useSectionReveal } from "@/hooks/useSectionReveal";
 import { scrollEnter } from "@/lib/motion";
 
 export function StudioLog() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  useGSAP(
-    () => {
-      const revealTargets = [".studio-header-line", ".log-item"];
-
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        gsap.set(revealTargets, { autoAlpha: 1, y: 0 });
-        return;
-      }
-
-      gsap.fromTo(
-          ".studio-header-line",
-          { autoAlpha: 0, y: 24 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.9,
-            stagger: 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: ".studio-header",
-              ...scrollEnter,
-            },
-          },
-        );
-
-        const entries = gsap.utils.toArray<HTMLElement>(".log-item", sectionRef.current);
-
-        gsap.fromTo(
-          entries,
-          { autoAlpha: 0, y: 20 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: ".log-items-container",
-              ...scrollEnter,
-            },
-          },
-        );
-    },
-    { scope: sectionRef },
-  );
+  useSectionReveal({
+    scope: sectionRef,
+    scrollEnter,
+    groups: [
+      {
+        selector: ".studio-header-line",
+        trigger: ".studio-header",
+        from: { autoAlpha: 0, y: 28 },
+        to: { duration: 0.95, stagger: 0.12, ease: "power3.out" },
+      },
+      {
+        selector: ".log-item",
+        from: { autoAlpha: 0, y: 24 },
+        to: { duration: 0.8, stagger: 0.1, ease: "power3.out" },
+        batch: true,
+      },
+    ],
+  });
 
   return (
-    <section id="studio-log" ref={sectionRef} className="py-20 sm:py-24">
+    <section id="studio-log" ref={sectionRef} className="section-pad">
       <Container>
         <div className="studio-header mb-10 grid gap-6 lg:grid-cols-[0.75fr_1fr] lg:items-end">
           <div>

@@ -1,4 +1,4 @@
-# Privacy Policy — Murmur
+# Privacy Policy · Murmur
 
 **Effective date:** 1st August 2026
 **Last updated:** 8th August 2026
@@ -13,7 +13,7 @@ By using Murmur, you agree to the practices described in this Policy. If you do 
 
 ## 1. Who we are
 
-Murmur is an automated pipeline that turns a voice recording into a structured project foundation — a product requirements document, brand direction, competitor analysis, and a Jira project and Confluence space created in **your own** Atlassian workspace.
+Murmur is an automated pipeline that turns a voice recording into a structured project foundation: a product requirements document, brand direction, competitor analysis, and a Jira project and Confluence space created in **your own** Atlassian workspace.
 
 **Data Fiduciary / Data Controller:**
 SprintZero Studios (OPC) Private Limited
@@ -44,7 +44,7 @@ We collect only what the Service needs to function. We do not sell your personal
 
 **h. Marketing sign-ups.** If you ask to be notified about availability, we store the **email address** you submit.
 
-**i. Product and usage analytics.** To understand how our marketing site and app are used and how to improve them, we collect **product-analytics events** describing pages viewed and actions taken (for example, sign-up, connecting Atlassian, and completing a run), together with **first-touch attribution** (how you arrived, such as UTM parameters or referring site). These events are keyed to a **pseudonymous identifier** — an account identifier if you are signed in, or an anonymous device identifier before sign-in — and **not** to your name or email. We do **not** send your **recordings, transcripts, or run results** to our analytics provider, and we do **not** use session replay or advertising/cross-site tracking.
+**i. Product and usage analytics.** To understand how our marketing site and app are used and how to improve them, we collect **product-analytics events** describing pages viewed and actions taken (for example, sign-up, connecting Atlassian, and completing a run), together with **first-touch attribution** (how you arrived, such as UTM parameters or referring site). These events are keyed to a **pseudonymous identifier** (an account identifier if you are signed in, or an anonymous device identifier before sign-in) and **not** to your name or email. We do **not** send your **recordings, transcripts, or run results** to our analytics provider, and we do **not** use session replay or advertising/cross-site tracking.
 
 We do **not** intentionally collect special-category / sensitive personal data. Please do not include such information in your recordings.
 
@@ -72,7 +72,7 @@ You may withdraw consent at any time (see Section 10). Withdrawing consent for c
 |---|---|
 | Account information | For as long as your account is active; deleted when you delete your account. |
 | Voice recordings and transcripts | For as long as your account is active; deleted when you delete the recording or your account. |
-| Run results (dashboard content) | Retained on a **tiered basis** — **1 month** on the Free and Starter plans, **6 months** on the Builder and Studio plans. When a run reaches the end of its retention period, we notify you and provide a **7-day grace window** during which the content stays available and downloadable. After the grace window, the run results are purged and the idea is removed from your Murmur history. Your underlying recording is not affected, and you can re-run the pipeline on it. |
+| Run results (dashboard content) | Retained on a **tiered basis**: **1 month** on the Free and Starter plans, **6 months** on the Builder and Studio plans. When a run reaches the end of its retention period, we notify you and provide a **7-day grace window** during which the content stays available and downloadable. After the grace window, the run results are purged and the idea is removed from your Murmur history. Your underlying recording is not affected, and you can re-run the pipeline on it. |
 | Operational and usage data | Retained with the associated run record; deleted when the run or your account is deleted. |
 | Product and usage analytics | Retained by our analytics provider (PostHog); retention is currently configured to 12 months. |
 | Atlassian tokens | Until you disconnect Atlassian or delete your account, at which point they are permanently deleted. |
@@ -108,10 +108,10 @@ We may also disclose personal data where required by law, to enforce our Terms, 
 
 We apply appropriate technical and organizational measures, including:
 
-- **Encryption in transit** — all data moves over HTTPS/TLS.
-- **Encryption at rest for your Atlassian tokens** — stored using **AES-256-GCM authenticated encryption**, with the encryption key held only on our server and never exposed to our pipeline engine or your browser.
-- **Signed, replay-protected internal requests** — communication between our web application and pipeline engine is authenticated with HMAC-SHA256 signatures and a short validity window.
-- **Access controls** — database row-level security restricts each user's data to that user; administrative credentials are never embedded in client code.
+- **Encryption in transit.** All data moves over HTTPS/TLS.
+- **Encryption at rest for your Atlassian tokens.** Stored using **AES-256-GCM authenticated encryption**, with the encryption key held only on our server and never exposed to our pipeline engine or your browser.
+- **Signed, replay-protected internal requests.** Communication between our web application and pipeline engine is authenticated with HMAC-SHA256 signatures and a short validity window.
+- **Access controls.** Database row-level security restricts each user's data to that user; administrative credentials are never embedded in client code.
 
 No system is perfectly secure, but we work to protect your data in line with recognized practices and applicable law.
 
@@ -132,8 +132,8 @@ We use privacy-respecting analytics to understand aggregate traffic and to
 improve the Service. This includes cookieless website analytics (via
 Cloudflare) and product analytics that set a first-party analytics cookie on
 our own domain. This cookie is used only to measure usage of our own websites
-and app — for example, to understand how visitors move from our marketing site
-to the product — and is not shared with advertisers or used to track you across
+and app (for example, to understand how visitors move from our marketing site
+to the product) and is not shared with advertisers or used to track you across
 other companies' websites. The information is used in an aggregated, de-identified
 form and is not used to determine your individual identity.
 
@@ -144,9 +144,9 @@ in and to operate the Service securely.
 
 ## 9. International data transfers
 
-Your core data — recordings, transcripts, run results, and Atlassian tokens — is stored on infrastructure located **in India** (Mumbai and Bangalore).
+Your core data (recordings, transcripts, run results, and Atlassian tokens) is stored on infrastructure located **in India** (Mumbai and Bangalore).
 
-Certain sub-processors — specifically **Anthropic, AssemblyAI, and Resend** — process a limited set of personal data **outside India, in the United States**. Where these transfers occur, they are governed by each provider's data-processing agreement incorporating the European Commission's **Standard Contractual Clauses**, which provide contractual safeguards for your data.
+Certain sub-processors, specifically **Anthropic, AssemblyAI, and Resend**, process a limited set of personal data **outside India, in the United States**. Where these transfers occur, they are governed by each provider's data-processing agreement incorporating the European Commission's **Standard Contractual Clauses**, which provide contractual safeguards for your data.
 
 ---
 
@@ -154,14 +154,14 @@ Certain sub-processors — specifically **Anthropic, AssemblyAI, and Resend** �
 
 Under the DPDP Act and the GDPR, you have the following rights over your personal data. You can exercise most of them directly in the Service; for the rest, contact us using the details in Section 12.
 
-- **Right to access** — you can view all of your recordings, transcripts, and run results in your dashboard, and export documents via Confluence's native export.
-- **Right to correction** — you can edit your display name and profile details in your account settings.
-- **Right to erasure / to be forgotten** — you can delete an individual recording, a single run, a project, or **your entire account**, directly in the Service. Deleting your account permanently removes all Murmur-held personal data — your account, recordings, transcripts, run results, operational data, notification subscriptions, and Atlassian tokens — **except** where we are required to retain limited data to comply with a legal obligation (see Section 4).
-- **Right to withdraw consent** — you can disconnect Atlassian (which permanently deletes the stored tokens), unsubscribe from emails, or delete your account at any time.
-- **Right to grievance redressal (DPDP)** — you can raise any concern with our Grievance Officer (Section 12) and receive a timely response.
-- **Rights under the GDPR** — if you are in the EU/EEA, you additionally have the rights to restrict or object to processing, to data portability, and to lodge a complaint with your local supervisory authority.
+- **Right to access.** You can view all of your recordings, transcripts, and run results in your dashboard, and export documents via Confluence's native export.
+- **Right to correction.** You can edit your display name and profile details in your account settings.
+- **Right to erasure / to be forgotten.** You can delete an individual recording, a single run, a project, or **your entire account**, directly in the Service. Deleting your account permanently removes all Murmur-held personal data (your account, recordings, transcripts, run results, operational data, notification subscriptions, and Atlassian tokens), **except** where we are required to retain limited data to comply with a legal obligation (see Section 4).
+- **Right to withdraw consent.** You can disconnect Atlassian (which permanently deletes the stored tokens), unsubscribe from emails, or delete your account at any time.
+- **Right to grievance redressal (DPDP).** You can raise any concern with our Grievance Officer (Section 12) and receive a timely response.
+- **Rights under the GDPR.** If you are in the EU/EEA, you additionally have the rights to restrict or object to processing, to data portability, and to lodge a complaint with your local supervisory authority.
 
-**Important — your Atlassian workspace is yours.** The Jira project and Confluence space that Murmur creates live in **your own** Atlassian workspace, not ours. Because they are yours and under your control, deleting your Murmur account does **not** delete them — we have no ability to reach into your Atlassian workspace once your tokens are deleted. If you want those artifacts removed, you can delete them directly in your own Atlassian account at any time.
+**Important: your Atlassian workspace is yours.** The Jira project and Confluence space that Murmur creates live in **your own** Atlassian workspace, not ours. Because they are yours and under your control, deleting your Murmur account does **not** delete them. We have no ability to reach into your Atlassian workspace once your tokens are deleted. If you want those artifacts removed, you can delete them directly in your own Atlassian account at any time.
 
 ---
 

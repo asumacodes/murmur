@@ -147,14 +147,13 @@ function createScrubHandlers(refs: ScrubRefs, section: HTMLElement, pinWrap: HTM
       scrub: 0.55,
       anticipatePin: 1,
       invalidateOnRefresh: true,
+      // Refresh before downstream section reveals so pin spacer is accounted for.
+      refreshPriority: -10,
       onUpdate: (self) => {
         scrubTo(self.progress);
       },
       onEnter: () => {
-        requestAnimationFrame(() => {
-          ScrollTrigger.refresh();
-          scrubTo(scrubTrigger?.progress ?? 0);
-        });
+        scrubTo(scrubTrigger?.progress ?? 0);
       },
       onLeave: () => {
         refs.run.classList.remove("is-scrubbing");
@@ -167,7 +166,9 @@ function createScrubHandlers(refs: ScrubRefs, section: HTMLElement, pinWrap: HTM
     });
 
     scrubTo(scrubTrigger.progress);
-    ScrollTrigger.refresh();
+    // One refresh after pin exists — do NOT refresh on every onEnter (that
+    // auto-completes tween-linked reveals further down the page).
+    requestAnimationFrame(() => ScrollTrigger.refresh());
   };
 
   const kill = () => {
@@ -349,7 +350,7 @@ export function Pipeline() {
   );
 
   return (
-    <section id="pipeline" ref={sectionRef} className="section-pad bg-[var(--bg-warm)] lg:py-0">
+    <section id="pipeline" ref={sectionRef} className="section-pad bg-[var(--bg-warm)] lg:pb-0">
       <div ref={pinWrapRef} className="pipeline-pin-wrap hidden lg:flex">
         <Container className="pipeline-pin-header shrink-0">
           <PipelineTopBar />
@@ -442,38 +443,44 @@ function PipelineStageCard({
 
   return (
     <article className="pipeline-node pipeline-node--stage" data-index={index}>
-      <header className="pipeline-card-head">
-        <div className="pipeline-card-head-main">
-          <span className="pipeline-card-step font-mono-text font-semibold uppercase text-[var(--gold)]">
+      <header className="flex items-start justify-between gap-6">
+        <div className="flex min-w-0 flex-col items-start gap-[0.35rem]">
+          <span className="shrink-0 font-mono-text text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-[var(--gold)]">
             {step}
           </span>
-          <h3 className="pipeline-card-title font-serif-display font-medium text-[var(--text-primary)]">
+          <h3 className="font-serif-display text-[clamp(1.35rem,5vw,1.75rem)] font-medium leading-[1.02] tracking-[-0.01em] text-[var(--text-primary)] lg:text-[clamp(1.875rem,2.25vw,2.375rem)]">
             {node.name}
           </h3>
         </div>
       </header>
 
-      <div className="pipeline-card-divider" aria-hidden="true" />
+      <div
+        className="mx-0 mt-[0.9rem] mb-4 h-px bg-[color-mix(in_srgb,var(--border-gold)_70%,var(--border-subtle))] lg:mt-[1.35rem] lg:mb-[1.65rem]"
+        aria-hidden="true"
+      />
 
-      <div className="pipeline-card-content">
-        <div className="pipeline-card-copy">
-          <p className="pipeline-card-copy-header font-mono-text font-semibold uppercase text-[var(--text-primary)]">
+      <div className="grid min-h-0 flex-1 grid-cols-1 items-stretch justify-between gap-5 sm:grid-cols-[45%_45%] sm:gap-0">
+        <div className="flex min-w-0 flex-col">
+          <p className="font-mono-text text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-[var(--text-primary)]">
             {node.role}
           </p>
-          <p className="pipeline-card-body-copy font-medium text-[var(--text-secondary)]">
+          <p className="mt-[0.55rem] text-[0.875rem] font-medium leading-[1.5] text-[var(--text-secondary)] lg:mt-3 lg:text-[clamp(0.9375rem,1vw,1rem)] lg:leading-[1.65]">
             {cardBody}
           </p>
           {outputLabel ? (
             <>
-              <div className="pipeline-card-copy-divider" aria-hidden="true" />
-              <p className="pipeline-card-output font-mono-text font-semibold uppercase text-[var(--gold)]">
+              <div
+                className="mt-[clamp(1.25rem,1.5vh,1.5rem)] mb-4 h-px w-full bg-[color-mix(in_srgb,var(--border-gold)_70%,var(--border-subtle))]"
+                aria-hidden="true"
+              />
+              <p className="font-mono-text text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-[var(--gold)]">
                 {outputLabel}
               </p>
             </>
           ) : null}
         </div>
 
-        <div className="pipeline-card-visual">
+        <div className="flex h-full min-w-0 items-stretch justify-center [&_.pipeline-card-art]:h-full [&_.pipeline-card-art]:w-full [&_.pipeline-card-art]:min-h-[9.5rem] lg:[&_.pipeline-card-art]:min-h-[12.5rem]">
           <PipelineCardIllustration variant={cardIllustration} hero />
         </div>
       </div>

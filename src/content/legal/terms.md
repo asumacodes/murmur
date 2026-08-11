@@ -1,4 +1,4 @@
-# Terms of Service — Murmur
+# Terms of Service · Murmur
 
 **Effective date:** 1st August 2026
 **Last updated:** 1st August 2026
@@ -11,7 +11,7 @@ By accessing or using the Service, you agree to these Terms and to our [Privacy 
 
 ## 1. The Service
 
-Murmur is an automated pipeline that converts a voice recording you provide into a structured project foundation — including a product requirements document, brand direction, competitor analysis, and a Jira project and Confluence space created in **your own** Atlassian workspace.
+Murmur is an automated pipeline that converts a voice recording you provide into a structured project foundation, including a product requirements document, brand direction, competitor analysis, and a Jira project and Confluence space created in **your own** Atlassian workspace.
 
 The Service is provided on an "as available" basis and is under active development. Features, limits, and pricing may change over time as described in these Terms.
 
@@ -59,7 +59,7 @@ We may suspend or terminate access for conduct that violates this section (see S
 
 **You own your content.** You retain all rights to the recordings you provide and to the run results the Service generates for you. We do not claim ownership of them.
 
-You grant us a limited license to process your recordings and related data solely to operate and provide the Service to you — including transcribing, running the pipeline, storing results, and creating artifacts in your Atlassian workspace — as described in our [Privacy Policy](/privacy).
+You grant us a limited license to process your recordings and related data solely to operate and provide the Service to you, including transcribing, running the pipeline, storing results, and creating artifacts in your Atlassian workspace, as described in our [Privacy Policy](/privacy).
 
 You are responsible for the content of your recordings and for ensuring you have the right to submit them.
 
@@ -79,7 +79,7 @@ The output is provided for your use as a starting point, not as professional, le
 
 ## 7. Plans, usage, and payment
 
-The Service offers a free tier and paid subscription plans, along with pay-as-you-go options. Usage is metered by **delivered idea** — a completed pipeline result. Failed attempts do not count against your usage.
+The Service offers a free tier and paid subscription plans, along with pay-as-you-go options. Usage is metered by **delivered idea**: a completed pipeline result. Failed attempts do not count against your usage.
 
 Details of current plans, allowances, prices, and payment terms are presented to you **at the point of purchase** and are incorporated into these Terms when you subscribe or purchase. Paid features are not available until our payment functionality is live; until then, no purchase obligations arise.
 
@@ -107,7 +107,7 @@ Our handling of your personal data is described in our [Privacy Policy](/privacy
 
 **By us.** We may suspend or terminate your access, with or without notice, if you breach these Terms, misuse the Service, or where required to protect the Service, other users, or our lawful interests.
 
-**Effect of termination.** On termination, your right to use the Service ends. Deletion of your account removes your Murmur-held data as described in the Privacy Policy. Note that any Jira projects and Confluence spaces already created in your own Atlassian workspace remain in **your** workspace and are yours to keep or delete — we cannot remove them for you.
+**Effect of termination.** On termination, your right to use the Service ends. Deletion of your account removes your Murmur-held data as described in the Privacy Policy. Note that any Jira projects and Confluence spaces already created in your own Atlassian workspace remain in **your** workspace and are yours to keep or delete. We cannot remove them for you.
 
 Sections that by their nature should survive termination (including ownership, disclaimers, limitation of liability, and governing law) will survive.
 

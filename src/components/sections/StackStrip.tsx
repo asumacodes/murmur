@@ -3,92 +3,50 @@
 import { useRef } from "react";
 import { Container, SectionEyebrow } from "@/components/ui";
 import { stackLayers } from "@/content/home";
-import { gsap, useGSAP } from "@/lib/gsap";
-import { scrollEnterSoft } from "@/lib/motion";
+import { useSectionReveal } from "@/hooks/useSectionReveal";
+import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
 
 export function StackStrip() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  useGSAP(
-    () => {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        gsap.set([".stack-header-line", ".stack-layer", ".stack-tool", ".stack-divider"], {
+  useSectionReveal({
+    scope: sectionRef,
+    scrollEnter,
+    reducedMotionTargets: [".stack-header-line", ".stack-layer", ".stack-divider"],
+    groups: [
+      {
+        selector: ".stack-header-line",
+        trigger: ".stack-header",
+        from: { autoAlpha: 0, y: 36 },
+        to: { duration: 0.9, stagger: 0.12, ease: PREMIUM_EASE },
+      },
+      // Animate columns only — not nested tools (parent opacity was masking children).
+      {
+        selector: ".stack-layer",
+        trigger: ".stack-registry",
+        from: { autoAlpha: 0, y: 40 },
+        to: { duration: 0.95, stagger: 0.14, ease: PREMIUM_EASE },
+        batch: true,
+      },
+      {
+        selector: ".stack-divider",
+        trigger: ".stack-registry",
+        from: { autoAlpha: 1, y: 0, scaleY: 0 },
+        to: {
           autoAlpha: 1,
           y: 0,
           scaleY: 1,
-        });
-        return;
-      }
-
-      gsap.fromTo(
-        ".stack-header-line",
-        { autoAlpha: 0, y: 14 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.75,
-          stagger: 0.08,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            ...scrollEnterSoft,
-          },
-        },
-      );
-
-      gsap.fromTo(
-        ".stack-layer",
-        { autoAlpha: 0, y: 16 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".stack-registry",
-            ...scrollEnterSoft,
-          },
-        },
-      );
-
-      gsap.fromTo(
-        ".stack-tool",
-        { autoAlpha: 0, y: 10 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          stagger: 0.05,
-          duration: 0.65,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".stack-registry",
-            ...scrollEnterSoft,
-          },
-        },
-      );
-
-      gsap.fromTo(
-        ".stack-divider",
-        { scaleY: 0 },
-        {
-          scaleY: 1,
-          duration: 1,
-          stagger: 0.12,
-          ease: "power2.out",
+          duration: 1.1,
+          stagger: 0.14,
           transformOrigin: "top center",
-          scrollTrigger: {
-            trigger: ".stack-registry",
-            ...scrollEnterSoft,
-          },
+          ease: PREMIUM_EASE,
         },
-      );
-    },
-    { scope: sectionRef },
-  );
+      },
+    ],
+  });
 
   return (
-    <section ref={sectionRef} className="py-20 sm:py-28">
+    <section ref={sectionRef} className="section-pad">
       <Container>
         <div className="border-y border-[var(--border-subtle)] py-12 sm:py-16">
           <div className="stack-header mb-10 max-w-3xl lg:mb-12">
@@ -96,10 +54,8 @@ export function StackStrip() {
             <h2 className="stack-header-line font-serif-display mt-4 text-[clamp(2rem,3.5vw,3.2rem)] leading-[1.05] opacity-0">
               Every layer is <span className="text-invert">named</span>.
             </h2>
-            <p className="stack-header-line mt-5 max-w-2xl text-base leading-7 text-[var(--text-secondary)] opacity-0">
-              Proven primitives at each step of the pipeline — intelligence,
-              orchestration, ship stack, and infrastructure. Nothing hidden in a
-              black box.
+            <p className="stack-header-line mt-5 max-w-xl text-base leading-7 text-[var(--text-secondary)] opacity-0">
+              Named primitives at every layer. Nothing hidden in a black box.
             </p>
           </div>
 
@@ -122,7 +78,7 @@ export function StackStrip() {
                 </p>
                 <ul className="space-y-5">
                   {layer.tools.map((tool) => (
-                    <li key={tool.name} className="stack-tool opacity-0">
+                    <li key={tool.name}>
                       <div className="group flex items-baseline justify-between gap-4 border-b border-[var(--border-subtle)] pb-4 transition-colors duration-300 hover:border-[var(--border-gold)]">
                         <span className="font-serif-display text-[clamp(1.35rem,2vw,1.65rem)] leading-none text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--gold)]">
                           {tool.name}

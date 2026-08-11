@@ -3,13 +3,15 @@
 import { useRef } from "react";
 import {
   FoundationMockup,
+  HandoffMockup,
   HowItWorksRecordingMockup,
   ResearchMockup,
   TranscriptMockup,
 } from "@/components/mockups";
-import { Container, SectionEyebrow } from "@/components/ui";
+import { Container, SectionHeader } from "@/components/ui";
 import { StepArtifact } from "@/components/ui/StepArtifact";
 import { howItWorks } from "@/content/home";
+import { useSectionReveal } from "@/hooks/useSectionReveal";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { desktopMedia, mobileMedia, scrollEnter } from "@/lib/motion";
 
@@ -18,21 +20,30 @@ const stepArtifacts = [
   { tilt: "ccw" as const, variant: "cream" as const, flat: false, mockup: <TranscriptMockup /> },
   { tilt: "cw" as const, variant: "dark" as const, flat: false, mockup: <ResearchMockup /> },
   { tilt: "ccw" as const, variant: "dark" as const, flat: false, mockup: <FoundationMockup /> },
-  { tilt: "cw" as const, variant: "dark" as const, flat: false, mockup: <FoundationMockup /> },
+  { tilt: "cw" as const, variant: "dark" as const, flat: false, mockup: <HandoffMockup /> },
 ];
 
 export function HowItWorks() {
   const sectionRef = useRef<HTMLElement>(null);
   const mobilePinRef = useRef<HTMLDivElement>(null);
 
+  useSectionReveal({
+    scope: sectionRef,
+    scrollEnter,
+    reducedMotionTargets: [".how-header > *"],
+    groups: [
+      {
+        selector: ".how-header > *",
+        from: { autoAlpha: 0, y: 24 },
+        to: { duration: 0.9, stagger: 0.12, ease: "power3.out" },
+        trigger: ".how-header",
+      },
+    ],
+  });
+
   useGSAP(
     () => {
-      const revealTargets = [
-        ".how-header > *",
-        ".step-numeral",
-        ".step-content",
-        ".step-visual",
-      ];
+      const revealTargets = [".step-numeral", ".step-content", ".step-visual"];
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       if (reduceMotion) {
@@ -57,22 +68,6 @@ export function HowItWorks() {
             ease: "power1.inOut",
           });
         });
-
-        gsap.fromTo(
-          ".how-header > *",
-          { autoAlpha: 0, y: 24 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.9,
-            stagger: 0.12,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: ".how-header",
-              ...scrollEnter,
-            },
-          },
-        );
       }
 
       const mm = gsap.matchMedia();
@@ -277,41 +272,50 @@ export function HowItWorks() {
     <section
       id="how-it-works"
       ref={sectionRef}
-      className="pb-[clamp(2rem,5vw,10rem)] pt-6 lg:pb-[clamp(4.5rem,10vw,10rem)] lg:pt-12"
+      className="pb-[clamp(2rem,4vw,5rem)] pt-5 lg:pb-[clamp(3rem,6vw,6rem)] lg:pt-10"
     >
       <hr
         aria-hidden="true"
-        className="how-section-divider mb-6 hidden w-full border-0 border-t lg:mb-20 lg:block"
+        className="how-section-divider mb-6 hidden w-full border-0 border-t border-[rgba(168,163,154,0.12)] lg:mb-12 lg:block"
       />
       <Container>
-        <div className="how-header mb-8 max-w-4xl lg:mb-20">
-          <SectionEyebrow className="opacity-0">How it works</SectionEyebrow>
-          <h2 className="how-header-headline font-serif-display mt-4 text-[clamp(2.25rem,5vw,4.75rem)] leading-[1.05] opacity-0 lg:text-[clamp(2.5rem,5vw,4.75rem)]">
-            <span style={{ color: "#ffffff" }}>From a voice memo to </span>
-            <span style={{ color: "#c9a96e", fontStyle: "italic" }}>a project that already exists.</span>
-          </h2>
-        </div>
+        <SectionHeader
+          className="how-header !mb-8 max-w-4xl max-lg:mx-auto max-lg:text-center lg:!mb-12"
+          eyebrowClassName="opacity-0"
+          titleClassName="how-header-headline !text-[clamp(2.25rem,5vw,4.75rem)] leading-[1.05] opacity-0 lg:!text-[clamp(2.5rem,5vw,4.75rem)]"
+          eyebrow="How it works"
+          title={
+            <>
+              <span style={{ color: "#ffffff" }}>From a voice memo to </span>
+              <span style={{ color: "#c9a96e", fontStyle: "italic" }}>a project that already exists.</span>
+            </>
+          }
+        />
 
-        <div className="how-mobile-experience lg:hidden">
-          <div className="how-mobile-pin-shell">
-            <div ref={mobilePinRef} className="how-mobile-pin">
-              <div className="how-mobile-stage">
+        <div className="how-mobile-experience mt-2 lg:hidden">
+          <div className="how-mobile-pin-shell relative">
+            <div ref={mobilePinRef} className="how-mobile-pin min-h-[min(62vh,560px)] pt-4">
+              <div className="how-mobile-stage relative min-h-[min(62vh,560px)]">
                 {howItWorks.map((step, index) => {
                   const artifact = stepArtifacts[index];
 
                   return (
                     <article
                       key={step.number}
-                      className={`how-mobile-panel ${index === 0 ? "is-active" : ""}`}
+                      className={`how-mobile-panel absolute inset-0 flex flex-col items-center gap-4 pt-4 text-center opacity-0 invisible pointer-events-none [&.is-active]:pointer-events-auto [&.is-active]:visible [&.is-active]:opacity-100 ${
+                        index === 0 ? "is-active" : ""
+                      }`}
                       data-step={index}
                       aria-hidden={index !== 0}
                     >
-                      <p className="how-mobile-numeral font-mono-text text-[var(--gold)]">{step.number}</p>
+                      <p className="how-mobile-numeral font-mono-text text-[clamp(2.5rem,10vw,3.5rem)] leading-none text-[var(--gold)]">
+                        {step.number}
+                      </p>
                       <div className="max-w-md">
-                        <p className="how-step-label font-mono-text mb-2 text-[0.6875rem] uppercase tracking-[0.14em]">
+                        <p className="how-step-label mb-2 font-mono-text text-[0.6875rem] uppercase tracking-[0.14em] text-[var(--gold)]">
                           {step.label}
                         </p>
-                        <h3 className="how-step-headline font-serif-display text-[clamp(1.45rem,5vw,1.85rem)] leading-[1.12]">
+                        <h3 className="how-step-headline font-serif-display text-[clamp(1.45rem,5vw,1.85rem)] leading-[1.12] text-[#f5f1e8]">
                           {step.headline}
                         </h3>
                         <p className="how-step-body mx-auto mt-3 max-w-sm text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
@@ -331,21 +335,26 @@ export function HowItWorks() {
           </div>
         </div>
 
-        <div className="how-steps-layout hidden lg:grid lg:grid-cols-12 lg:gap-12">
-          <aside className="how-progress-aside relative lg:col-span-1" aria-hidden="true">
-            <div className="how-progress-rail">
-              <div className="how-progress-track" aria-hidden="true">
-                <div className="how-progress-fill" />
+        <div className="how-steps-layout hidden items-stretch lg:grid lg:grid-cols-12 lg:gap-12">
+          <aside className="how-progress-aside relative self-stretch lg:col-span-1" aria-hidden="true">
+            <div className="how-progress-rail absolute inset-0 block">
+              <div
+                className="how-progress-track absolute top-[var(--how-progress-start,0)] left-1/2 h-[var(--how-progress-span,100%)] w-px -translate-x-1/2 bg-[var(--border-subtle)]"
+                aria-hidden="true"
+              >
+                <div className="how-progress-fill absolute inset-0 top-0 left-0 h-full w-full origin-top scale-y-0 bg-[var(--gold)]" />
               </div>
-              <ol className="how-progress-list relative">
+              <ol className="how-progress-list relative m-0 block h-full list-none p-0">
                 {howItWorks.map((step, index) => (
                   <li
                     key={step.number}
-                    className={`how-progress-step ${index === 0 ? "is-active" : ""}`}
+                    className={`how-progress-step group/dot absolute top-0 left-1/2 m-0 flex -translate-x-1/2 -translate-y-1/2 justify-center ${
+                      index === 0 ? "is-active" : ""
+                    }`}
                     aria-label={`Step ${step.number}`}
                   >
-                    <span className="how-progress-dot-wrap">
-                      <span className="how-progress-dot" />
+                    <span className="flex w-4 items-center justify-center">
+                      <span className="how-progress-dot relative z-[1] size-2 shrink-0 rounded-full border border-[var(--border-gold)] bg-[var(--bg-deep)] transition-[border-color,background-color,box-shadow] duration-200 ease-[var(--ease-out)] group-[.is-active]/dot:border-[var(--gold-bright)] group-[.is-active]/dot:bg-[var(--gold-bright)] group-[.is-active]/dot:shadow-[0_0_0_3px_color-mix(in_srgb,var(--gold-bright)_18%,transparent)] group-[.is-complete]/dot:border-[var(--gold)] group-[.is-complete]/dot:bg-[var(--gold)]" />
                     </span>
                   </li>
                 ))}
@@ -360,19 +369,19 @@ export function HowItWorks() {
               return (
                 <article
                   key={step.number}
-                  className="how-step-row step-row grid gap-10 border-t border-[var(--border-subtle)]/35 py-16 md:gap-12 md:py-24 lg:grid-cols-12 lg:items-start"
+                  className="how-step-row step-row grid min-h-0 gap-8 border-t border-[var(--border-subtle)]/35 py-8 md:gap-10 md:py-12 lg:min-h-0 lg:grid-cols-12 lg:items-start lg:py-14"
                 >
                   <div className="step-numeral font-mono-text text-6xl text-[var(--gold)] opacity-0 lg:col-span-2 lg:pt-1 lg:text-8xl">
                     {step.number}
                   </div>
                   <div className="step-content opacity-0 lg:col-span-5">
-                    <p className="how-step-label font-mono-text mb-3 text-xs uppercase tracking-[0.15em]">
+                    <p className="how-step-label mb-3 font-mono-text text-xs uppercase tracking-[0.15em] text-[var(--gold)]">
                       {step.label}
                     </p>
-                    <h3 className="how-step-headline font-serif-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.15]">
+                    <h3 className="how-step-headline font-serif-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.15] text-[#f5f1e8]">
                       {step.headline}
                     </h3>
-                    <p className="how-step-body mt-4 max-w-md leading-7">
+                    <p className="how-step-body mt-4 max-w-md leading-7 text-[var(--text-secondary)]">
                       {step.body}
                     </p>
                   </div>

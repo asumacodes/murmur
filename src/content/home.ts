@@ -1,7 +1,8 @@
 export const navItems = [
   { label: "How it works", href: "#how-it-works" },
   { label: "Pipeline", href: "#pipeline" },
-  { label: "Packs", href: "#packs" },
+  { label: "Compare", href: "#comparison" },
+  { label: "Pricing", href: "#pricing" },
   { label: "Studio log", href: "#studio-log" },
   { label: "FAQ", href: "#faq" },
 ];
@@ -26,7 +27,7 @@ export const howItWorks = [
     number: "02",
     label: "Transcription",
     headline: "Your voice becomes structured text in seconds.",
-    body: "Speaker turns, punctuation, paragraph breaks. Clean transcript in, clean transcript out — it's what the rest of the pipeline reads.",
+    body: "Speaker turns, punctuation, paragraph breaks. Clean transcript in, clean transcript out. It's what the rest of the pipeline reads.",
     artifact: "Transcript",
   },
   {
@@ -45,9 +46,9 @@ export const howItWorks = [
   },
   {
     number: "05",
-    label: "Ship it — with SprintZero",
+    label: "Ship it with SprintZero",
     headline: "When the foundation is ready to become working software, SprintZero Studio takes it from there.",
-    body: "Murmur ends where automation ends. Turning the PRD, board, and brand into a shipped landing page, MVP, or full build is human-led studio work — delivered in 72-hour sprints.",
+    body: "Murmur ends where automation ends. Turning the PRD, board, and brand into a shipped landing page, MVP, or full build is human-led studio work, delivered in 72-hour sprints.",
     artifact: "Handoff",
   },
 ];
@@ -73,11 +74,11 @@ export const pipelineNodeOutputs = [
 ];
 
 export const pipelineNodeBodies = [
-  "Speak once. Murmur captures your voice in one tap — no uploads to fumble, no prompt wrangling, no leaving your flow.",
-  "Speech becomes structured text — speaker turns, punctuation, paragraph breaks. The transcript is what the pipeline reads.",
-  "Live web search for competitors and prior art. Citations you can open — not invented market research.",
+  "Speak once. Murmur captures your voice in one tap: no uploads to fumble, no prompt wrangling, no leaving your flow.",
+  "Speech becomes structured text: speaker turns, punctuation, paragraph breaks. The transcript is what the pipeline reads.",
+  "Live web search for competitors and prior art. Citations you can open, not invented market research.",
   "One agent turns the memo into a typed PRD, validated against a Zod schema before anything downstream runs.",
-  "Palette, typography, and voice pulled from the spec — not a generic mood board.",
+  "Palette, typography, and voice pulled from the spec, not a generic mood board.",
   "Epics and stories generated from the PRD. The backlog follows the product, not reverse-engineered docs.",
   "Confluence space and pages scaffolded to mirror the PRD structure your team can fill in.",
 ];
@@ -90,10 +91,7 @@ export type PipelineIllustration =
   | "parallel"
   | "brand"
   | "jira"
-  | "confluence"
-  | "engineering"
-  | "repo"
-  | "deploy";
+  | "confluence";
 
 export const pipelineNodeIllustrations: PipelineIllustration[] = [
   "capture",
@@ -128,7 +126,7 @@ export const pipelineStages: PipelineStage[] = [
     title: "Listener",
     role: "PWA Capture",
     output: "→ Voice capture session",
-    body: "Speak once. Murmur captures your voice in one tap — no uploads to fumble, no prompt wrangling, no leaving your flow.",
+    body: "Speak once. Murmur captures your voice in one tap: no uploads to fumble, no prompt wrangling, no leaving your flow.",
     glowTarget: 0,
   },
   {
@@ -136,7 +134,7 @@ export const pipelineStages: PipelineStage[] = [
     title: "Transcription",
     role: "Transcription",
     output: "→ Structured transcript",
-    body: "Speech becomes structured text — speaker turns, punctuation, paragraph breaks. The transcript is what the pipeline reads.",
+    body: "Speech becomes structured text: speaker turns, punctuation, paragraph breaks. The transcript is what the pipeline reads.",
     glowTarget: 1,
   },
   {
@@ -144,7 +142,7 @@ export const pipelineStages: PipelineStage[] = [
     title: "Exa",
     role: "Market Research",
     output: "→ Competitive brief",
-    body: "Live web search for competitors and prior art. Citations you can open — not invented market research.",
+    body: "Live web search for competitors and prior art. Citations you can open, not invented market research.",
     glowTarget: 2,
   },
   {
@@ -160,7 +158,7 @@ export const pipelineStages: PipelineStage[] = [
     title: "Parallel agents",
     role: "PRD Fans Out",
     output: "→ Brand · Jira · Confluence",
-    body: "The PRD fans out to three specialists at once — brand identity, Jira board, and Confluence space, generated in parallel.",
+    body: "The PRD fans out to three specialists at once: brand identity, Jira board, and Confluence space, generated in parallel.",
     glowTarget: "hub",
   },
 ];
@@ -197,7 +195,7 @@ export const packs: Pack[] = [
       { text: "5 ideas / month", bold: true },
       "1-month retention",
       "Top-up at $5 / idea",
-      "USD, no rollover — monthly reset",
+      "USD, no rollover. Monthly reset",
     ],
     cta: "Join the waitlist →",
     featured: true,
@@ -239,7 +237,7 @@ export const paygEntry = {
   priceUnit: "/ idea",
   label: "Pay as you go",
   description:
-    "One idea, no subscription. The no-commitment way in. Three PAYG ideas cost more than Starter and deliver fewer — the upgrade math is deliberately obvious.",
+    "One idea, no subscription. The no-commitment way in. Three PAYG ideas cost more than Starter and deliver fewer. The upgrade math is deliberately obvious.",
 } as const;
 
 // Full-width band below the tier cards. The ONLY Contact Sales surface —
@@ -247,7 +245,7 @@ export const paygEntry = {
 export const sprintZeroBand = {
   eyebrow: "From foundation to shipped",
   headline: "Want to turn your Murmur artifacts into real, working software?",
-  body: "Murmur turns your idea into a complete project foundation. SprintZero Studio turns that foundation into shipped software — landing page, MVP, or full product build, in 72-hour sprints.",
+  body: "Murmur turns your idea into a complete project foundation. SprintZero Studio turns that foundation into shipped software: landing page, MVP, or full product build, in 72-hour sprints.",
   cta: "Contact SprintZero",
   ctaHref: "https://sprint0.trymurmur.studio",
   responsePromise: "We reply to every enquiry within one business day.",
@@ -292,43 +290,43 @@ export const comparison = {
   eyebrow: "Murmur vs. by hand",
   headline: "The same foundation. One afternoon versus one tap.",
   subhead:
-    "Doing this by hand isn't wrong — it's just a day of context-switching across five tools. Murmur runs the same work in parallel and hands you the artifacts, coherent with each other.",
+    "By hand is a day of context-switching. Murmur runs the same work in parallel and hands you coherent artifacts.",
   manualLabel: "By hand",
   murmurLabel: "With Murmur",
   rows: [
     {
       dimension: "Getting started",
-      manual: "Open a blank doc and a blank Jira board, and stare.",
-      murmur: "Talk through the idea for five minutes. That's the input.",
+      manual: "Blank doc, blank board. Stare.",
+      murmur: "Talk for five minutes. That's the input.",
     },
     {
       dimension: "The PRD",
-      manual: "Write it, second-guess the structure, rewrite the structure.",
-      murmur: "A typed PRD, validated against a schema before anything downstream runs.",
+      manual: "Write it, rewrite the structure, rewrite again.",
+      murmur: "Typed PRD, schema-validated before anything runs.",
     },
     {
       dimension: "Market research",
-      manual: "Twenty tabs of competitors, half of them stale, none cited.",
-      murmur: "A competitive brief with citations you can open — not invented.",
+      manual: "Twenty tabs, half stale, none cited.",
+      murmur: "Competitive brief with citations you can open.",
     },
     {
       dimension: "Brand",
-      manual: "A mood board, or a placeholder you'll fix later (you won't).",
-      murmur: "Palette, type, and voice pulled from the spec — not a generic kit.",
+      manual: "Mood board now, fix later (you won't).",
+      murmur: "Palette, type, and voice from the spec.",
     },
     {
       dimension: "The backlog",
-      manual: "Reverse-engineer epics and stories from the doc, by hand.",
-      murmur: "Jira epics and stories generated from the PRD, in your tenant.",
+      manual: "Reverse-engineer epics from the doc.",
+      murmur: "Jira epics and stories from the PRD, in your tenant.",
     },
     {
       dimension: "The workspace",
-      manual: "Set up Confluence structure before you've written a word.",
-      murmur: "A Confluence space scaffolded to mirror the PRD, ready to fill in.",
+      manual: "Set up Confluence before you've written a word.",
+      murmur: "Space scaffolded to mirror the PRD.",
     },
     {
       dimension: "How long",
-      manual: "An afternoon of context-switching across five tools.",
+      manual: "An afternoon across five tools.",
       murmur: "Under ten minutes, start to foundation.",
     },
   ],
@@ -338,7 +336,7 @@ export const waitlistSection = {
   eyebrow: "Join the waitlist",
   headline: "Be early.",
   description:
-    "Murmur is being built carefully. Join the waitlist and you'll be first in when it opens — no date promised, no spam.",
+    "Murmur is being built carefully. Join the waitlist and you'll be first in when it opens. No date promised, no spam.",
   placeholder: "you@studio.com",
   cta: "Reserve a seat →",
   footnote: "One welcome email now, then only what matters. Unsubscribe anytime.",
@@ -378,7 +376,7 @@ export const footerLinks = {
   product: [
     { label: "How it works", href: "#how-it-works" },
     { label: "Pipeline", href: "#pipeline" },
-    { label: "Packs", href: "#packs" },
+    { label: "Pricing", href: "#pricing" },
   ],
   studio: [
     { label: "Log", href: "#studio-log" },

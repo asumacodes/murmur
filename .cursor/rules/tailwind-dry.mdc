@@ -1,0 +1,28 @@
+---
+description: Tailwind-first styling and DRY frontend standards for Murmur marketing UI
+alwaysApply: true
+---
+
+# Tailwind / DRY frontend rule
+
+When adding or changing marketing UI in this repo:
+
+- **Tailwind in components.** Style with Tailwind utility classes in TSX
+  (`className`), including `before:` / `after:` / `group-open:` / responsive
+  variants. Do **not** add new component-specific rules to
+  `src/app/globals.css`.
+- **`globals.css` exceptions only:** `:root` design tokens, base reset, font
+  utility bridges (`.font-serif-display`, `.font-mono-text` until moved into
+  the Tailwind theme), and keyframes that cannot be expressed cleanly as
+  utilities. No new `.faq-*`, `.comparison-*`, `.pack-*`, `.waitlist-*`,
+  `.coming-soon-*`, etc. blocks.
+- **Shared behavior → hooks** under `src/hooks/` (or `src/lib/gsap/` for GSAP
+  helpers). Repeated GSAP section reveals use `useSectionReveal`. Subscribe
+  forms use `useSubscribeForm`.
+- **Shared chrome → UI primitives** under `src/components/ui/`. Prefer
+  `SectionHeader`, `GoldButton` / `GhostButton`, and shared form components
+  over copy-pasted eyebrow/headline/form markup.
+- **One composition pattern per concern.** Do not invent a second subscribe
+  form, section header, or reveal orchestration style.
+- Migrating legacy globals classes: convert the TSX to Tailwind first, then
+  delete the unused CSS in the same change. Do not leave orphaned selectors.

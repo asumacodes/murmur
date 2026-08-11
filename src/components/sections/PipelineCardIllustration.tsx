@@ -90,30 +90,6 @@ export function PipelineCardIllustration({
           ))}
         </div>
       ) : null}
-
-      {variant === "engineering" ? (
-        <div className="pipeline-art-code">
-          <span>&lt;/&gt;</span>
-        </div>
-      ) : null}
-
-      {variant === "repo" ? (
-        <div className="pipeline-art-repo">
-          <span className="pipeline-art-folder" />
-          <div className="pipeline-art-lines">
-            {[76, 58, 68].map((width) => (
-              <span key={width} className="pipeline-art-line" style={{ width: `${width}%` }} />
-            ))}
-          </div>
-        </div>
-      ) : null}
-
-      {variant === "deploy" ? (
-        <div className="pipeline-art-deploy">
-          <span className="pipeline-art-browser-bar" />
-          <span className="pipeline-art-browser-body" />
-        </div>
-      ) : null}
     </div>
   );
 }

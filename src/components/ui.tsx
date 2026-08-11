@@ -1,25 +1,13 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
+export { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+export { SectionHeader } from "@/components/ui/SectionHeader";
+export { WaitlistForm } from "@/components/ui/WaitlistForm";
+
 type ContainerProps = ComponentPropsWithoutRef<"div">;
 
 export function Container({ className = "", ...props }: ContainerProps) {
   return <div className={`murmur-container ${className}`} {...props} />;
-}
-
-export function SectionEyebrow({
-  children,
-  className = "",
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <p
-      className={`font-mono-text text-xs uppercase tracking-[0.15em] text-[var(--gold)] ${className}`}
-    >
-      {children}
-    </p>
-  );
 }
 
 type ButtonLinkProps = ComponentPropsWithoutRef<"a">;
@@ -27,7 +15,7 @@ type ButtonLinkProps = ComponentPropsWithoutRef<"a">;
 export function GoldButton({ className = "", ...props }: ButtonLinkProps) {
   return (
     <a
-      className={`focus-ring inline-flex h-11 items-center justify-center rounded-sm bg-[var(--gold-bright)] px-5 text-sm font-semibold text-[var(--bg-deep)] transition duration-200 hover:bg-[var(--gold)] ${className}`}
+      className={`focus-ring inline-flex h-11 items-center justify-center rounded-sm bg-[var(--gold-bright)] px-5 text-sm font-semibold !text-[var(--bg-deep)] transition duration-200 hover:bg-[var(--gold)] hover:!text-[var(--bg-deep)] ${className}`}
       {...props}
     />
   );
