@@ -198,7 +198,7 @@ export function Hero() {
                 </div>
               </div>
               <p className="hero-honesty mx-auto text-center font-mono-text text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)] opacity-0 lg:mx-0 lg:text-left">
-                4 users · 1 builder · phase 0 in progress
+                Waitlist open · no launch date promised
               </p>
             </div>
           </div>

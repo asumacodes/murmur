@@ -42,7 +42,7 @@ We collect only what the Service needs to function. We do not sell your personal
 
 **g. Notification data.** If you enable completion notifications, we store the **push-notification subscription** your browser provides.
 
-**h. Marketing sign-ups.** If you ask to be notified about availability, we store the **email address** you submit.
+**h. Marketing sign-ups.** If you ask to be notified about availability, we store the **email address** you submit via Resend and send a **one-time welcome email**. Further product emails only if you remain subscribed; you can unsubscribe anytime.
 
 **i. Product and usage analytics.** To understand how our marketing site and app are used and how to improve them, we collect **product-analytics events** describing pages viewed and actions taken (for example, sign-up, connecting Atlassian, and completing a run), together with **first-touch attribution** (how you arrived, such as UTM parameters or referring site). These events are keyed to a **pseudonymous identifier** (an account identifier if you are signed in, or an anonymous device identifier before sign-in) and **not** to your name or email. We do **not** send your **recordings, transcripts, or run results** to our analytics provider, and we do **not** use session replay or advertising/cross-site tracking.
 

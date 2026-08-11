@@ -175,7 +175,6 @@ export type Pack = {
   subtitle?: string;
   priceAmount: string;
   priceUnit: string;
-  priceNote?: string;
   idealFor?: string;
   features: PackFeature[];
   cta: string;
@@ -380,7 +379,7 @@ export const footerLinks = {
   ],
   studio: [
     { label: "Log", href: "#studio-log" },
-    { label: "About", href: "https://sprintzero.studio" },
+    { label: "About", href: "https://sprint0.trymurmur.studio" },
     { label: "Roadmap", href: "#pipeline" },
   ],
   legal: [

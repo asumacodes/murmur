@@ -5,19 +5,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: "https://murmur.studio",
+      url: "https://www.trymurmur.studio",
       lastModified,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: "https://murmur.studio/privacy",
+      url: "https://www.trymurmur.studio/privacy",
       lastModified,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: "https://murmur.studio/terms",
+      url: "https://www.trymurmur.studio/terms",
       lastModified,
       changeFrequency: "yearly",
       priority: 0.3,

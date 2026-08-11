@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Murmur - Speak. Transcribe. Ship.";
+export const alt = "Murmur — Speak. Structure. Handoff.";
 export const size = {
   width: 1200,
   height: 630,

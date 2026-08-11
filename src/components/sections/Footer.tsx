@@ -51,10 +51,10 @@ export function Footer() {
               <span>Murmur</span>
             </p>
             <p className="mt-3 text-[var(--text-secondary)]">
-              Speak. Transcribe. Ship.
+              Speak. Structure. Handoff.
             </p>
             <a
-              href="https://sprintzero.studio"
+              href="https://sprint0.trymurmur.studio"
               className="gold-link mt-5 inline-block text-sm"
             >
               A SprintZero Studio product →

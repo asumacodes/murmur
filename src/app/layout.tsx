@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.trymurmur.studio"),
-  title: "Murmur - Speak. Transcribe. Ship.",
+  title: "Murmur — Voice to project foundation",
   description:
     "A five-minute voice memo becomes a validated PRD, brand kit, Jira board, Confluence space, and launch foundation.",
   applicationName: "Murmur",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Murmur - Speak. Transcribe. Ship.",
+    title: "Murmur — Speak. Structure. Handoff.",
     description:
       "The agentic pipeline that turns a voice memo into a complete project foundation.",
     url: "https://www.trymurmur.studio",
@@ -55,14 +55,14 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Murmur - Speak. Transcribe. Ship.",
+        alt: "Murmur — Speak. Structure. Handoff.",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Murmur - Speak. Transcribe. Ship.",
+    title: "Murmur — Speak. Structure. Handoff.",
     description:
       "The agentic pipeline that turns a voice memo into a complete project foundation.",
     creator: "@AsumaCodes",
