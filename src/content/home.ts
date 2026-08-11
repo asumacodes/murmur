@@ -288,6 +288,52 @@ export const stackLayers = [
   },
 ] as const;
 
+export const comparison = {
+  eyebrow: "Murmur vs. by hand",
+  headline: "The same foundation. One afternoon versus one tap.",
+  subhead:
+    "Doing this by hand isn't wrong — it's just a day of context-switching across five tools. Murmur runs the same work in parallel and hands you the artifacts, coherent with each other.",
+  manualLabel: "By hand",
+  murmurLabel: "With Murmur",
+  rows: [
+    {
+      dimension: "Getting started",
+      manual: "Open a blank doc and a blank Jira board, and stare.",
+      murmur: "Talk through the idea for five minutes. That's the input.",
+    },
+    {
+      dimension: "The PRD",
+      manual: "Write it, second-guess the structure, rewrite the structure.",
+      murmur: "A typed PRD, validated against a schema before anything downstream runs.",
+    },
+    {
+      dimension: "Market research",
+      manual: "Twenty tabs of competitors, half of them stale, none cited.",
+      murmur: "A competitive brief with citations you can open — not invented.",
+    },
+    {
+      dimension: "Brand",
+      manual: "A mood board, or a placeholder you'll fix later (you won't).",
+      murmur: "Palette, type, and voice pulled from the spec — not a generic kit.",
+    },
+    {
+      dimension: "The backlog",
+      manual: "Reverse-engineer epics and stories from the doc, by hand.",
+      murmur: "Jira epics and stories generated from the PRD, in your tenant.",
+    },
+    {
+      dimension: "The workspace",
+      manual: "Set up Confluence structure before you've written a word.",
+      murmur: "A Confluence space scaffolded to mirror the PRD, ready to fill in.",
+    },
+    {
+      dimension: "How long",
+      manual: "An afternoon of context-switching across five tools.",
+      murmur: "Under ten minutes, start to foundation.",
+    },
+  ],
+} as const;
+
 export const waitlistSection = {
   eyebrow: "Join the waitlist",
   headline: "Be early.",

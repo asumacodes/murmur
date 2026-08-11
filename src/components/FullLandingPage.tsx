@@ -1,3 +1,4 @@
+import { Comparison } from "@/components/sections/Comparison";
 import { EarlyAccessCTA } from "@/components/sections/EarlyAccessCTA";
 import { FAQ } from "@/components/sections/FAQ";
 import { Footer } from "@/components/sections/Footer";
@@ -21,6 +22,7 @@ export function FullLandingPage() {
         <Hero />
         <HowItWorks />
         <Pipeline />
+        <Comparison />
         <Packs />
         {features.studioLog ? <StudioLog /> : null}
         <StackStrip />

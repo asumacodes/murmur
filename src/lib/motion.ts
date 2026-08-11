@@ -20,8 +20,8 @@ export const scrollEnterSoft = {
 };
 
 export const sectionSpyIds = features.studioLog
-  ? (["how-it-works", "pipeline", "packs", "studio-log", "faq"] as const)
-  : (["how-it-works", "pipeline", "packs", "faq"] as const);
+  ? (["how-it-works", "pipeline", "comparison", "packs", "studio-log", "faq"] as const)
+  : (["how-it-works", "pipeline", "comparison", "packs", "faq"] as const);
 
 export const DESKTOP_BREAKPOINT = 1024;
 export const desktopMedia = `(min-width: ${DESKTOP_BREAKPOINT}px)`;

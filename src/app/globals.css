@@ -2898,3 +2898,94 @@ section[id] {
   line-height: 1.65;
 }
 
+/* ── KAN-63 Phase 7: Comparison ────────────────────────────────────── */
+.comparison-colhead,
+.comparison-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.comparison-colhead {
+  display: none;
+}
+
+.comparison-inline-label {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.35rem;
+}
+
+.comparison-row {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.comparison-row:first-of-type {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.comparison-dim {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.comparison-manual,
+.comparison-murmur {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.comparison-murmur {
+  padding-left: 0.875rem;
+  border-left: 2px solid var(--border-gold);
+}
+
+@media (min-width: 768px) {
+  .comparison-colhead,
+  .comparison-row {
+    grid-template-columns: 0.7fr 1.15fr 1.15fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .comparison-colhead {
+    display: grid;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .comparison-colhead-manual,
+  .comparison-colhead-murmur {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+  .comparison-colhead-murmur {
+    color: var(--gold);
+  }
+
+  .comparison-dim {
+    margin-bottom: 0;
+    padding-top: 0.15rem;
+  }
+
+  /* desktop: column headers carry the labels; hide the inline ones */
+  .comparison-inline-label {
+    display: none;
+  }
+
+  .comparison-murmur {
+    padding-left: 0;
+    border-left: none;
+  }
+  .comparison-murmur::before {
+    content: "";
+  }
+}
+
+
