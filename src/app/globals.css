@@ -1911,6 +1911,126 @@ section[id] {
   color: var(--text-secondary);
 }
 
+/* ── KAN-63 Phase 2: 3-tier grid additions ────────────────────────── */
+
+.packs-subhead {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0;
+}
+
+.pack-card-price-row--top {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.pack-card-head--stacked {
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.pack-card-idealfor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  margin-bottom: 0.25rem;
+}
+
+.pack-card-idealfor-label {
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+}
+
+.pack-card--featured.pack-card-surface {
+  border-color: color-mix(in srgb, var(--gold) 42%, var(--border-gold));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 20%, transparent);
+}
+
+/* ── PAYG strip ────────────────────────────────────────────────────── */
+.packs-payg {
+  border: 1px solid var(--border-gold);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--bg-elevated) 70%, var(--bg-deep));
+  padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.packs-payg-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.packs-payg-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.packs-payg-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+}
+
+.packs-payg-desc {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  max-width: 42rem;
+}
+
+.packs-payg-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.packs-payg-amount {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1;
+}
+
+.packs-payg-unit {
+  font-size: 0.9375rem;
+}
+
+@media (min-width: 768px) {
+  .packs-payg-inner {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+  .packs-payg-copy {
+    flex: 1;
+  }
+  .packs-payg-cta {
+    flex-shrink: 0;
+  }
+}
+
+/* ── SprintZero handoff band ───────────────────────────────────────── */
+.sprintzero-band {
+  border: 1px solid var(--border-gold);
+  border-radius: 4px;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--bg-elevated) 92%, var(--gold)) 0%,
+      var(--bg-elevated) 60%
+    );
+  padding: clamp(2rem, 4vw, 3.25rem) clamp(1.75rem, 4vw, 3.25rem);
+}
+
+.sprintzero-band-body {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.sprintzero-band-promise {
+  opacity: 0.85;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pack-card-surface,
   .pack-card-btn--ghost {

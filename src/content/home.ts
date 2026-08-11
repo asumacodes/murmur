@@ -210,7 +210,6 @@ export type PackFeature =
     };
 
 export type Pack = {
-  letter: string;
   name: string;
   subtitle?: string;
   priceAmount: string;
@@ -226,23 +225,6 @@ export type Pack = {
 
 export const packs: Pack[] = [
   {
-    letter: "—",
-    name: "Free",
-    subtitle: "Try Murmur on one real idea.",
-    priceAmount: "$0",
-    priceUnit: "",
-    idealFor: "Trying Murmur on one real idea",
-    features: [
-      "1 delivered idea — ever",
-      "Full pipeline: PRD, brand, Jira, Confluence",
-      "1-month retention",
-      "Failures are on us — a failed run never counts",
-    ],
-    cta: "Join the waitlist →",
-    footnote: "One idea is enough to prove the mechanism end to end.",
-  },
-  {
-    letter: "A",
     name: "Starter",
     subtitle: "Validate a few ideas at a time.",
     priceAmount: "$19",
@@ -258,7 +240,6 @@ export const packs: Pack[] = [
     featured: true,
   },
   {
-    letter: "B",
     name: "Builder",
     subtitle: "For serial builders and small teams.",
     priceAmount: "$49",
@@ -273,7 +254,6 @@ export const packs: Pack[] = [
     tag: "Popular",
   },
   {
-    letter: "C",
     name: "Studio",
     subtitle: "For agencies pitching clients at volume.",
     priceAmount: "$79",
@@ -306,7 +286,7 @@ export const sprintZeroBand = {
   headline: "Want to turn your Murmur artifacts into real, working software?",
   body: "Murmur turns your idea into a complete project foundation. SprintZero Studio turns that foundation into shipped software — landing page, MVP, or full product build, in 72-hour sprints.",
   cta: "Contact SprintZero",
-  ctaHref: "https://sprintzero.studio",
+  ctaHref: "https://sprint0.trymurmur.studio",
   responsePromise: "We reply to every enquiry within one business day.",
 } as const;
 
