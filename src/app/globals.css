@@ -2828,3 +2828,73 @@ section[id] {
     padding: 0.65rem 0.7rem;
   }
 }
+
+/* ── KAN-63 Phase 6: FAQ ───────────────────────────────────────────── */
+.faq-item {
+  border-bottom: 1px solid var(--border-subtle);
+}
+.faq-item:first-child {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.faq-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.3s ease;
+}
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+.faq-item[open] .faq-question,
+.faq-summary:hover .faq-question {
+  color: var(--gold);
+}
+
+.faq-marker {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+.faq-marker::before,
+.faq-marker::after {
+  content: "";
+  position: absolute;
+  background: var(--gold);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.faq-marker::before {
+  top: 6px;
+  left: 0;
+  width: 14px;
+  height: 2px;
+}
+.faq-marker::after {
+  top: 0;
+  left: 6px;
+  width: 2px;
+  height: 14px;
+}
+.faq-item[open] .faq-marker::after {
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.faq-answer {
+  padding: 0 0 1.75rem;
+  max-width: 60ch;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+

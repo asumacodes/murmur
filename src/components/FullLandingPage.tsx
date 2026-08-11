@@ -1,6 +1,6 @@
 import { EarlyAccessCTA } from "@/components/sections/EarlyAccessCTA";
+import { FAQ } from "@/components/sections/FAQ";
 import { Footer } from "@/components/sections/Footer";
-import { FutureSections } from "@/components/future/FutureSections";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -24,7 +24,7 @@ export function FullLandingPage() {
         <Packs />
         {features.studioLog ? <StudioLog /> : null}
         <StackStrip />
-        <FutureSections />
+        <FAQ />
         <EarlyAccessCTA />
       </main>
       <Footer />

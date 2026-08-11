@@ -3,6 +3,7 @@ export const navItems = [
   { label: "Pipeline", href: "#pipeline" },
   { label: "Packs", href: "#packs" },
   { label: "Studio log", href: "#studio-log" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export const pipelineLabels = [
