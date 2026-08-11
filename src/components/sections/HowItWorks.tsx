@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import {
-  DeployMockup,
   FoundationMockup,
   HowItWorksRecordingMockup,
   ResearchMockup,
@@ -19,7 +18,7 @@ const stepArtifacts = [
   { tilt: "ccw" as const, variant: "cream" as const, flat: false, mockup: <TranscriptMockup /> },
   { tilt: "cw" as const, variant: "dark" as const, flat: false, mockup: <ResearchMockup /> },
   { tilt: "ccw" as const, variant: "dark" as const, flat: false, mockup: <FoundationMockup /> },
-  { tilt: "cw" as const, variant: "dark" as const, flat: false, mockup: <DeployMockup /> },
+  { tilt: "cw" as const, variant: "dark" as const, flat: false, mockup: <FoundationMockup /> },
 ];
 
 export function HowItWorks() {

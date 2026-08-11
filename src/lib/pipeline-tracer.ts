@@ -3,8 +3,8 @@ import { gsap } from "@/lib/gsap";
 
 export const REPLAY_PIPELINE_EVENT = "murmur:pipeline-replay";
 
-/** Progress breakpoints for 7 narrative stages (aligned to scrub scroll). */
-const STAGE_THRESHOLDS = [0, 0.12, 0.26, 0.4, 0.52, 0.7, 0.86, 1];
+/** Progress breakpoints for 5 narrative stages (aligned to scrub scroll). */
+const STAGE_THRESHOLDS = [0, 0.18, 0.36, 0.54, 0.72, 1];
 
 export function getPipelineStageIndex(progress: number): number {
   const clamped = Math.max(0, Math.min(1, progress));

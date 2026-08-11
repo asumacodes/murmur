@@ -20,7 +20,6 @@ import {
 } from "@/lib/pipeline-tracer";
 
 const mainFlow = pipelineNodes.slice(0, 4);
-const shipFlow = pipelineNodes.slice(8);
 const parallelStage = pipelineStages[4];
 
 function PipelineTopBar({ className = "" }: { className?: string }) {
@@ -287,14 +286,14 @@ export function Pipeline() {
         );
 
         gsap.set(run, { autoAlpha: 1, y: 0 });
-        requestAnimationFrame(() => desktopScrub?.setupScrub("+=320%"));
+        requestAnimationFrame(() => desktopScrub?.setupScrub("+=240%"));
 
         const onResize = () => {
           if (!run.classList.contains("is-live")) {
             return;
           }
 
-          desktopScrub?.setupScrub("+=320%");
+          desktopScrub?.setupScrub("+=240%");
         };
 
         window.addEventListener("resize", onResize);
@@ -326,7 +325,7 @@ export function Pipeline() {
         gsap.set(run, { autoAlpha: 1, y: 0 });
         gsap.set(track, { x: 0 });
         requestAnimationFrame(() => {
-          mobileScrub?.setupScrub("+=240%");
+          mobileScrub?.setupScrub("+=180%");
           mobileScrub?.scrubTo(0);
         });
 
@@ -404,7 +403,6 @@ function HorizontalPipelineTrack() {
             name: parallelStage.title,
             role: parallelStage.role,
             level: 1,
-            pack: parallelStage.pack,
           }}
           index={4}
           body={parallelStage.body}
@@ -413,22 +411,12 @@ function HorizontalPipelineTrack() {
           stepLabel={parallelStage.step}
         />
       </div>
-
-      {shipFlow.map((node, index) => (
-        <div key={node.name} className="pipeline-card-slot shrink-0">
-          <PipelineStageCard node={node} index={index + 8} />
-        </div>
-      ))}
     </>
   );
 }
 
 function formatCardOutput(output: string): string {
   return output.replace(/^→\s*/, "");
-}
-
-function formatPackLabel(pack: string): string {
-  return `Pack ${pack} · Included`;
 }
 
 function PipelineStageCard({
@@ -439,7 +427,7 @@ function PipelineStageCard({
   illustration,
   stepLabel,
 }: {
-  node: { name: string; role: string; level: number; pack: string };
+  node: { name: string; role: string; level: number };
   index: number;
   body?: string;
   output?: string;
@@ -463,9 +451,6 @@ function PipelineStageCard({
             {node.name}
           </h3>
         </div>
-        <span className="pipeline-card-pack font-mono-text rounded-full border border-[var(--border-gold)] bg-[rgba(201,169,110,0.06)] font-semibold uppercase text-[var(--gold)]">
-          {formatPackLabel(node.pack)}
-        </span>
       </header>
 
       <div className="pipeline-card-divider" aria-hidden="true" />
