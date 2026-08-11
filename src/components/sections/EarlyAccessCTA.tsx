@@ -17,7 +17,6 @@ export function EarlyAccessCTA() {
         ".waitlist-eyebrow",
         ".waitlist-headline",
         ".waitlist-copy",
-        ".waitlist-counter",
         ".waitlist-form",
         ".waitlist-footnote",
       ];
@@ -73,11 +72,6 @@ export function EarlyAccessCTA() {
 
           <p className="waitlist-copy mx-auto mt-6 max-w-xl text-base leading-7 text-[var(--text-secondary)] opacity-0 sm:text-lg sm:leading-8">
             {waitlistSection.description}
-          </p>
-
-          <p className="waitlist-counter font-mono-text mx-auto mt-8 inline-flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--gold)_38%,transparent)] px-4 py-2 text-[0.6875rem] uppercase tracking-[0.12em] text-[var(--gold)] opacity-0">
-            <span className="waitlist-counter-dot" aria-hidden="true" />
-            {waitlistSection.count} {waitlistSection.countLabel}
           </p>
 
           <form

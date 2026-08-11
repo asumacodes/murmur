@@ -34,54 +34,87 @@ export function HowItWorks() {
         ".step-content",
         ".step-visual",
       ];
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (reduceMotion) {
         gsap.set(revealTargets, { autoAlpha: 1, x: 0, y: 0 });
         gsap.set(".how-progress-fill", { scaleY: 1 });
         gsap.utils.toArray<HTMLElement>(".how-mobile-panel").forEach((panel, index) => {
           panel.classList.toggle("is-active", index === 0);
         });
-        return;
-      }
+      } else {
+        const recordingBars = gsap.utils.toArray<HTMLElement>(
+          ".how-recording-bar",
+          sectionRef.current,
+        );
 
-      const recordingBars = gsap.utils.toArray<HTMLElement>(
-        ".how-recording-bar",
-        sectionRef.current,
-      );
-
-      recordingBars.forEach((bar) => {
-        gsap.to(bar, {
-          scaleY: "random(0.55, 1.35)",
-          transformOrigin: "bottom center",
-          duration: "random(0.18, 0.42)",
-          repeat: -1,
-          yoyo: true,
-          ease: "power1.inOut",
+        recordingBars.forEach((bar) => {
+          gsap.to(bar, {
+            scaleY: "random(0.55, 1.35)",
+            transformOrigin: "bottom center",
+            duration: "random(0.18, 0.42)",
+            repeat: -1,
+            yoyo: true,
+            ease: "power1.inOut",
+          });
         });
-      });
 
-      gsap.fromTo(
-        ".how-header > *",
-        { autoAlpha: 0, y: 24 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.9,
-          stagger: 0.12,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".how-header",
-            ...scrollEnter,
+        gsap.fromTo(
+          ".how-header > *",
+          { autoAlpha: 0, y: 24 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".how-header",
+              ...scrollEnter,
+            },
           },
-        },
-      );
+        );
+      }
 
       const mm = gsap.matchMedia();
 
       mm.add(desktopMedia, () => {
+        const aside = sectionRef.current?.querySelector<HTMLElement>(".how-progress-aside");
         const rows = gsap.utils.toArray<HTMLElement>(".step-row", sectionRef.current);
         const progressSteps = gsap.utils.toArray<HTMLElement>(".how-progress-step", sectionRef.current);
         const progressFill = sectionRef.current?.querySelector<HTMLElement>(".how-progress-fill");
+        let dotCenters: number[] = [];
+
+        function syncProgressDotPositions() {
+          if (!aside || rows.length === 0 || progressSteps.length === 0) {
+            return;
+          }
+
+          const asideRect = aside.getBoundingClientRect();
+          const centers: number[] = [];
+
+          rows.forEach((row, index) => {
+            const numeral = row.querySelector<HTMLElement>(".step-numeral");
+            const step = progressSteps[index];
+            if (!numeral || !step) {
+              return;
+            }
+
+            const numeralRect = numeral.getBoundingClientRect();
+            const center = numeralRect.top + numeralRect.height / 2 - asideRect.top;
+            centers.push(center);
+            step.style.top = `${center}px`;
+          });
+
+          dotCenters = centers;
+
+          if (centers.length >= 2) {
+            const start = centers[0];
+            const end = centers[centers.length - 1];
+            aside.style.setProperty("--how-progress-start", `${start}px`);
+            aside.style.setProperty("--how-progress-span", `${Math.max(0, end - start)}px`);
+          }
+        }
 
         function setActiveStep(activeIndex: number) {
           progressSteps.forEach((step, index) => {
@@ -89,14 +122,46 @@ export function HowItWorks() {
             step.classList.toggle("is-complete", index < activeIndex);
           });
 
-          if (progressFill) {
-            gsap.to(progressFill, {
-              scaleY: (activeIndex + 1) / howItWorks.length,
-              duration: 0.45,
-              ease: "power2.out",
-              transformOrigin: "top center",
-            });
+          if (!progressFill || dotCenters.length < 2 || reduceMotion) {
+            return;
           }
+
+          const start = dotCenters[0];
+          const end = dotCenters[dotCenters.length - 1];
+          const active = dotCenters[activeIndex] ?? start;
+          const scaleY = end === start ? 1 : (active - start) / (end - start);
+
+          gsap.to(progressFill, {
+            scaleY,
+            duration: 0.45,
+            ease: "power2.out",
+            transformOrigin: "top center",
+          });
+        }
+
+        syncProgressDotPositions();
+        setActiveStep(0);
+
+        const onResize = () => {
+          syncProgressDotPositions();
+          const activeIndex = progressSteps.findIndex((step) =>
+            step.classList.contains("is-active"),
+          );
+          setActiveStep(activeIndex >= 0 ? activeIndex : 0);
+          ScrollTrigger.refresh();
+        };
+
+        window.addEventListener("resize", onResize);
+        void document.fonts?.ready.then(() => {
+          syncProgressDotPositions();
+          setActiveStep(0);
+          ScrollTrigger.refresh();
+        });
+
+        if (reduceMotion) {
+          return () => {
+            window.removeEventListener("resize", onResize);
+          };
         }
 
         rows.forEach((row, index) => {
@@ -145,7 +210,15 @@ export function HowItWorks() {
             onEnterBack: () => setActiveStep(index),
           });
         });
+
+        return () => {
+          window.removeEventListener("resize", onResize);
+        };
       });
+
+      if (reduceMotion) {
+        return () => mm.revert();
+      }
 
       mm.add(mobileMedia, () => {
         const pin = mobilePinRef.current;
@@ -269,7 +342,7 @@ export function HowItWorks() {
                 {howItWorks.map((step, index) => (
                   <li
                     key={step.number}
-                    className={`how-progress-step flex justify-center ${index === 0 ? "is-active" : ""}`}
+                    className={`how-progress-step ${index === 0 ? "is-active" : ""}`}
                     aria-label={`Step ${step.number}`}
                   >
                     <span className="how-progress-dot-wrap">

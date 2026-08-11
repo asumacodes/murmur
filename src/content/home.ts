@@ -44,10 +44,10 @@ export const howItWorks = [
   },
   {
     number: "05",
-    label: "Scaffold & deploy — optional",
-    headline: "For Pack B and C: a Next.js + Supabase repo lands in your hands. For Pack C: it's live before you close the tab.",
-    body: "Auth wired. Database typed. Vercel preview URL. The scaffold matches the PRD schema, not a generic template.",
-    artifact: "Deploy",
+    label: "Ship it — with SprintZero",
+    headline: "When the foundation is ready to become working software, SprintZero Studio takes it from there.",
+    body: "Murmur ends where automation ends. Turning the PRD, board, and brand into a shipped landing page, MVP, or full build is human-led studio work — delivered in 72-hour sprints.",
+    artifact: "Handoff",
   },
 ];
 
@@ -216,6 +216,7 @@ export type Pack = {
   priceAmount: string;
   priceUnit: string;
   priceNote?: string;
+  idealFor?: string;
   features: PackFeature[];
   cta: string;
   tag?: string;
@@ -225,55 +226,89 @@ export type Pack = {
 
 export const packs: Pack[] = [
   {
-    letter: "A",
-    name: "Pipeline",
-    subtitle: "Voice memo → PRD, brand kit, Jira, Confluence.",
-    priceAmount: "$49",
-    priceUnit: "/ month",
-    priceNote: "Early access",
+    letter: "—",
+    name: "Free",
+    subtitle: "Try Murmur on one real idea.",
+    priceAmount: "$0",
+    priceUnit: "",
+    idealFor: "Trying Murmur on one real idea",
     features: [
-      "Unlimited voice memos via Listener PWA",
-      "Local Whisper transcription",
-      "Exa-backed market research brief",
-      "Validated PRD (Zod schema, exportable)",
-      "Brand kit — palette, type, logo marks",
-      "Jira board + Confluence space scaffold",
+      "1 delivered idea — ever",
+      "Full pipeline: PRD, brand, Jira, Confluence",
+      "1-month retention",
+      "Failures are on us — a failed run never counts",
     ],
-    cta: "Start with Pack A →",
-    footnote: "The base. Most builders start here.",
+    cta: "Join the waitlist →",
+    footnote: "One idea is enough to prove the mechanism end to end.",
+  },
+  {
+    letter: "A",
+    name: "Starter",
+    subtitle: "Validate a few ideas at a time.",
+    priceAmount: "$19",
+    priceUnit: "/ month",
+    idealFor: "Founders validating a few ideas at a time",
+    features: [
+      { text: "5 ideas / month", bold: true },
+      "1-month retention",
+      "Top-up at $5 / idea",
+      "USD, no rollover — monthly reset",
+    ],
+    cta: "Join the waitlist →",
     featured: true,
   },
   {
     letter: "B",
-    name: "Pipeline + Scaffold",
-    subtitle: "Adds a Next.js + Supabase repo, in your hands.",
-    priceAmount: "$199",
-    priceUnit: "/ project",
+    name: "Builder",
+    subtitle: "For serial builders and small teams.",
+    priceAmount: "$49",
+    priceUnit: "/ month",
+    idealFor: "Serial builders and small teams shipping regularly",
     features: [
-      { text: "Everything in Pack A", bold: true },
-      "Next.js 15 + Supabase scaffold",
-      "Auth, RLS policies, typed DB schema",
-      "Brand tokens applied to UI",
+      { text: "15 ideas / month", bold: true },
+      "6-month retention",
+      "Top-up at $4 / idea",
     ],
-    cta: "Add Scaffold",
-    tag: "+ Scaffold",
+    cta: "Join the waitlist →",
+    tag: "Popular",
   },
   {
     letter: "C",
-    name: "Pipeline + Scaffold + Deploy",
-    subtitle: "Live URL, in your hands",
-    priceAmount: "$399",
-    priceUnit: "/ project",
+    name: "Studio",
+    subtitle: "For agencies pitching clients at volume.",
+    priceAmount: "$79",
+    priceUnit: "/ month",
+    idealFor: "Agencies and studios pitching clients at volume",
     features: [
-      { text: "Everything in Pack B", bold: true },
-      "Vercel deploy + preview URL",
-      "Custom subdomain on murmur.studio",
-      "CI & environment wired",
+      { text: "30 ideas / month", bold: true },
+      "6-month retention",
+      "Top-up at $3 / idea",
     ],
-    cta: "Add Deploy",
-    tag: "+ Deploy",
+    cta: "Join the waitlist →",
+    tag: "For agencies",
   },
 ];
+
+// Presented prominently alongside the tiers as the no-commitment entry —
+// not buried. KAN-49: the answer for anyone who balks at a subscription.
+export const paygEntry = {
+  priceAmount: "$7",
+  priceUnit: "/ idea",
+  label: "Pay as you go",
+  description:
+    "One idea, no subscription. The no-commitment way in. Three PAYG ideas cost more than Starter and deliver fewer — the upgrade math is deliberately obvious.",
+} as const;
+
+// Full-width band below the tier cards. The ONLY Contact Sales surface —
+// Studio is fully self-serve and never sits behind Contact Sales.
+export const sprintZeroBand = {
+  eyebrow: "From foundation to shipped",
+  headline: "Want to turn your Murmur artifacts into real, working software?",
+  body: "Murmur turns your idea into a complete project foundation. SprintZero Studio turns that foundation into shipped software — landing page, MVP, or full product build, in 72-hour sprints.",
+  cta: "Contact SprintZero",
+  ctaHref: "https://sprintzero.studio",
+  responsePromise: "We reply to every enquiry within one business day.",
+} as const;
 
 export const stackLayers = [
   {
@@ -303,12 +338,10 @@ export const waitlistSection = {
   eyebrow: "Join the waitlist",
   headline: "Be early.",
   description:
-    "Murmur opens in private beta this summer. No spam, occasional updates, first access when Pack A is live.",
-  count: 4,
-  countLabel: "builders on the waitlist",
+    "Murmur is being built carefully. Join the waitlist and you'll be first in when it opens — no date promised, no spam.",
   placeholder: "you@studio.com",
   cta: "Reserve a seat →",
-  footnote: "Powered by Buttondown · no tracking pixels · unsubscribe one-click",
+  footnote: "One welcome email now, then only what matters. Unsubscribe anytime.",
 } as const;
 
 export const studioLog = [
