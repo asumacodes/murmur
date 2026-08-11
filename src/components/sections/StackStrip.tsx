@@ -88,9 +88,9 @@ export function StackStrip() {
   );
 
   return (
-    <section ref={sectionRef} className="py-16 !pb-0 sm:py-20">
+    <section ref={sectionRef} className="py-20 sm:py-28">
       <Container>
-        <div className="border-y border-[var(--border-subtle)] py-10 sm:py-12">
+        <div className="border-y border-[var(--border-subtle)] py-12 sm:py-16">
           <div className="stack-header mb-10 max-w-3xl lg:mb-12">
             <SectionEyebrow className="stack-header-line opacity-0">Built on</SectionEyebrow>
             <h2 className="stack-header-line font-serif-display mt-4 text-[clamp(2rem,3.5vw,3.2rem)] leading-[1.05] opacity-0">
@@ -98,15 +98,16 @@ export function StackStrip() {
             </h2>
             <p className="stack-header-line mt-5 max-w-2xl text-base leading-7 text-[var(--text-secondary)] opacity-0">
               Proven primitives at each step of the pipeline — intelligence,
-              orchestration, and ship stack. Nothing hidden in a black box.
+              orchestration, ship stack, and infrastructure. Nothing hidden in a
+              black box.
             </p>
           </div>
 
-          <div className="stack-registry relative grid gap-10 lg:grid-cols-3 lg:gap-0">
+          <div className="stack-registry relative grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
             {stackLayers.map((layer, layerIndex) => (
               <div
                 key={layer.label}
-                className={`stack-layer relative opacity-0 lg:px-8 ${
+                className={`stack-layer relative opacity-0 lg:px-6 ${
                   layerIndex === 0 ? "lg:pl-0" : ""
                 } ${layerIndex === stackLayers.length - 1 ? "lg:pr-0" : ""}`}
               >

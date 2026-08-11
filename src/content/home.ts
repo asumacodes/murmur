@@ -257,21 +257,32 @@ export const stackLayers = [
     label: "Intelligence",
     tools: [
       { name: "Claude", note: "PRD + agent reasoning" },
-      { name: "Whisper", note: "Local transcription" },
-      { name: "Ollama", note: "On-device models" },
+      { name: "AssemblyAI", note: "Speech to text" },
       { name: "Exa", note: "Market research" },
     ],
   },
   {
     label: "Orchestration",
-    tools: [{ name: "n8n", note: "Self-hosted workflows" }],
+    tools: [
+      { name: "n8n", note: "Self-hosted workflows" },
+      { name: "Atlassian", note: "Jira + Confluence" },
+    ],
   },
   {
     label: "Ship stack",
     tools: [
       { name: "Next.js", note: "App shell" },
       { name: "Supabase", note: "Auth + data" },
-      { name: "Vercel", note: "Staging deploy" },
+      { name: "Vercel", note: "Hosting" },
+    ],
+  },
+  {
+    label: "Infrastructure",
+    tools: [
+      { name: "Cloudflare", note: "DNS + edge" },
+      { name: "Resend", note: "Transactional email" },
+      { name: "PostHog", note: "Product analytics" },
+      { name: "DigitalOcean", note: "Pipeline compute" },
     ],
   },
 ] as const;
