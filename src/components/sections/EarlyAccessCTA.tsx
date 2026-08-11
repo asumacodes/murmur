@@ -1,15 +1,19 @@
 "use client";
 
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Container, SectionEyebrow } from "@/components/ui";
 import { waitlistSection } from "@/content/home";
 import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
 
+type SubscribeStatus = "idle" | "loading" | "success" | "error";
+
 export function EarlyAccessCTA() {
   const sectionRef = useRef<HTMLElement>(null);
   const submitGuardRef = useRef(false);
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<SubscribeStatus>("idle");
 
   useGSAP(
     () => {
@@ -45,17 +49,32 @@ export function EarlyAccessCTA() {
     { scope: sectionRef },
   );
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    if (submitGuardRef.current) {
-      event.preventDefault();
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (submitGuardRef.current || status === "loading") {
       return;
     }
     submitGuardRef.current = true;
     trackWaitlistCtaClicked("form_submit");
-    // mailto action proceeds; reset after a tick so a later retry can fire
-    window.setTimeout(() => {
+
+    setStatus("loading");
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error("subscribe failed");
+      }
+
+      setStatus("success");
+      setEmail("");
+    } catch {
       submitGuardRef.current = false;
-    }, 1000);
+      setStatus("error");
+    }
   }
 
   return (
@@ -74,32 +93,61 @@ export function EarlyAccessCTA() {
             {waitlistSection.description}
           </p>
 
-          <form
-            className="waitlist-form mx-auto mt-8 flex flex-col items-center gap-3 opacity-0 sm:flex-row sm:items-stretch"
-            action="mailto:hello@sprintzero.studio?subject=Murmur%20early%20access"
-            method="post"
-            encType="text/plain"
-            aria-label="Early access waitlist"
-            onSubmit={handleSubmit}
-          >
-            <label className="sr-only" htmlFor="waitlist-email">
-              Email address
-            </label>
-            <input
-              id="waitlist-email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              placeholder={waitlistSection.placeholder}
-              required
-              className="waitlist-input flex-1 rounded-sm border bg-[var(--bg-deep)] px-4 text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)]"
-            />
-            <button type="submit" className="waitlist-submit focus-ring">
-              {waitlistSection.cta}
-            </button>
-          </form>
+          <div className="waitlist-form mx-auto mt-8 opacity-0">
+            {status === "success" ? (
+              <p
+                className="waitlist-done font-mono-text text-[var(--gold)]"
+                role="status"
+                aria-live="polite"
+              >
+                You&rsquo;re on the list — we&rsquo;ll email you when it&rsquo;s live.
+              </p>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="waitlist-form-row mx-auto flex flex-col items-center gap-3 sm:flex-row sm:items-stretch"
+                aria-label="Early access waitlist"
+              >
+                <label className="sr-only" htmlFor="waitlist-email">
+                  Email address
+                </label>
+                <input
+                  id="waitlist-email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                    if (status === "error") {
+                      setStatus("idle");
+                    }
+                  }}
+                  placeholder={waitlistSection.placeholder}
+                  disabled={status === "loading"}
+                  className="waitlist-input flex-1 rounded-sm border bg-[var(--bg-deep)] px-4 text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)]"
+                />
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="waitlist-submit focus-ring"
+                >
+                  {status === "loading" ? "Sending…" : waitlistSection.cta}
+                </button>
+              </form>
+            )}
 
-          <p className="waitlist-footnote opacity-0">{waitlistSection.footnote}</p>
+            {status === "error" ? (
+              <p className="waitlist-error mt-3" role="alert" aria-live="assertive">
+                Something went wrong — try again in a moment.
+              </p>
+            ) : null}
+          </div>
+
+          {status !== "success" ? (
+            <p className="waitlist-footnote opacity-0">{waitlistSection.footnote}</p>
+          ) : null}
         </div>
       </Container>
     </section>

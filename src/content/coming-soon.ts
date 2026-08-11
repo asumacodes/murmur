@@ -20,7 +20,7 @@ export const comingSoon = {
   notify: {
     placeholder: "you@studio.com",
     cta: "Notify me",
-    footnote: "No spam. No drip. Just one email, when it's live.",
+    footnote: "One welcome email now, then only what matters. Unsubscribe anytime.",
     success: "You're on the list.",
     alreadySubscribed: "You're already on the list.",
     error: "Something went wrong. Try again.",
