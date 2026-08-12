@@ -153,7 +153,7 @@ export function PipelineCardIllustration({
             hero ? "w-[76%] gap-[0.45rem]" : compact ? "w-[82%] gap-[0.3rem]" : "w-[78%] gap-2",
           ].join(" ")}
         >
-          {["Brand", "Jira", "Confluence", "Eng"].map((label) => (
+          {["Brand", "Jira", "Confluence"].map((label) => (
             <span
               key={label}
               className={[

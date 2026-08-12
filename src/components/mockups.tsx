@@ -43,7 +43,7 @@ export function VoiceCaptureMockup() {
           <hr className="my-4 border-[var(--border-subtle)]/40" />
 
           <div className="flex items-center justify-between font-mono-text text-[0.62rem] uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-            <span>Mem: local</span>
+            <span>Ready</span>
             <span>dB: -42.4</span>
           </div>
         </div>
@@ -156,7 +156,7 @@ export function ListenerMockup({
               <span className="lc-timer-sec">34</span>
             </div>
             <div className="lc-caption font-mono-text text-[10px] tracking-[0.1em] text-[#6b6760] uppercase">
-              tap to stop &nbsp;·&nbsp; auto-saves locally
+              tap to stop &nbsp;·&nbsp; auto-saves
             </div>
 
             <div className="lc-waveform mt-1.5 flex h-9 items-center justify-center gap-[2.5px]" aria-hidden="true">
@@ -182,13 +182,13 @@ export function ListenerMockup({
                 capturing voice memo
               </span>
               <span className="lc-foot-meta text-[10px] tracking-[0.04em] text-[#8a8278]">
-                local · 48 kHz
+                48 kHz
               </span>
             </div>
             <div className="lc-foot-row font-mono-text grid grid-cols-[auto_1fr_auto] items-center gap-2.5 text-[10.5px] text-[#6b6760]">
               <span className="dot dot-q listener-whisper-dot box-border size-[7px] rounded-full border border-[var(--gold)] bg-transparent" />
               <span className="lc-foot-label text-[10px] tracking-[0.12em] text-[#2a2218] uppercase">
-                whisper queued
+                transcript queued
               </span>
               <span className="lc-foot-meta text-[10px] tracking-[0.04em] text-[#8a8278]">
                 on stop

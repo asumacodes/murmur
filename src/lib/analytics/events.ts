@@ -15,3 +15,19 @@ export function trackWaitlistCtaClicked(
 export function trackSignupCtaClicked(location: CtaLocation) {
   posthog?.capture("signup_cta_clicked", { cta_location: location });
 }
+
+export function trackSectionViewed(
+  sectionId: string,
+  extra?: Record<string, unknown>,
+) {
+  posthog?.capture("marketing_section_viewed", {
+    section_id: sectionId,
+    ...extra,
+  });
+}
+
+export function trackScrollDepth(percent: 25 | 50 | 75 | 100) {
+  posthog?.capture("marketing_scroll_depth", {
+    depth_percent: percent,
+  });
+}

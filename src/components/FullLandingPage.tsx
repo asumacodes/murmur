@@ -11,6 +11,7 @@ import { SprintZeroBand } from "@/components/sections/SprintZeroBand";
 import { StackStrip } from "@/components/sections/StackStrip";
 import { StudioLog } from "@/components/sections/StudioLog";
 import { features } from "@/config/features";
+import { SectionAnalytics } from "@/components/SectionAnalytics";
 import { skipLinkClass } from "@/lib/styles";
 
 export function FullLandingPage() {
@@ -21,6 +22,7 @@ export function FullLandingPage() {
       </a>
       <Header />
       <main id="main-content" tabIndex={-1} className="overflow-x-hidden">
+        <SectionAnalytics />
         <Hero />
         <HowItWorks />
         <Pipeline />

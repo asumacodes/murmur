@@ -24,6 +24,18 @@ export const sectionSpyIds = features.studioLog
   ? (["how-it-works", "pipeline", "comparison", "pricing", "studio-log", "faq"] as const)
   : (["how-it-works", "pipeline", "comparison", "pricing", "faq"] as const);
 
+/** All trackable content sections, in page order — analytics drop-off (not nav). */
+export const analyticsSectionIds = [
+  "how-it-works",
+  "pipeline",
+  "comparison",
+  "pricing",
+  ...(features.studioLog ? (["studio-log"] as const) : []),
+  "faq",
+  "sprintzero",
+  "early-access",
+] as const;
+
 export const DESKTOP_BREAKPOINT = 1024;
 export const desktopMedia = `(min-width: ${DESKTOP_BREAKPOINT}px)`;
 export const mobileMedia = `(max-width: ${DESKTOP_BREAKPOINT - 1}px)`;
