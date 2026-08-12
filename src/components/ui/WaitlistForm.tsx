@@ -2,6 +2,7 @@
 
 import type { FormEvent } from "react";
 import type { SubscribeStatus } from "@/hooks/useSubscribeForm";
+import { focusRingClass } from "@/lib/styles";
 
 type WaitlistFormProps = {
   email: string;
@@ -81,8 +82,8 @@ export function WaitlistForm({
           disabled={status === "loading"}
           className={
             isComingSoon
-              ? "focus-ring h-12 w-full min-w-0 flex-1 rounded-sm border border-[var(--border-subtle)] bg-[var(--bg-elevated)] px-4 text-[0.95rem] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] disabled:cursor-not-allowed disabled:opacity-70"
-              : "focus-ring h-12 w-full min-w-0 rounded-sm border border-[color-mix(in_srgb,var(--gold)_42%,var(--border-gold))] bg-[var(--bg-elevated)] px-4 text-[0.9375rem] text-[var(--text-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] placeholder:text-[var(--text-tertiary)] transition-[border-color,box-shadow] duration-200 focus:border-[var(--gold)] focus:shadow-[0_0_0_1px_color-mix(in_srgb,var(--gold)_35%,transparent)] disabled:cursor-not-allowed disabled:opacity-65 sm:w-[min(100%,18.75rem)] sm:flex-[0_1_18.75rem]"
+              ? "h-12 w-full min-w-0 flex-1 rounded-sm border border-[var(--border-subtle)] bg-[var(--bg-elevated)] px-4 text-[0.95rem] text-[var(--text-primary)] outline-none placeholder:text-[var(--text-tertiary)] transition-[border-color,box-shadow] duration-200 focus:border-[var(--gold)] focus:shadow-[0_0_0_1px_color-mix(in_srgb,var(--gold)_35%,transparent)] disabled:cursor-not-allowed disabled:opacity-70"
+              : "h-12 w-full min-w-0 rounded-sm border border-[color-mix(in_srgb,var(--gold)_42%,var(--border-gold))] bg-[var(--bg-elevated)] px-4 text-[0.9375rem] text-[var(--text-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] outline-none placeholder:text-[var(--text-tertiary)] transition-[border-color,box-shadow] duration-200 focus:border-[var(--gold)] focus:shadow-[0_0_0_1px_color-mix(in_srgb,var(--gold)_35%,transparent)] disabled:cursor-not-allowed disabled:opacity-65 sm:w-[min(100%,18.75rem)] sm:flex-[0_1_18.75rem]"
           }
         />
         <button
@@ -90,8 +91,8 @@ export function WaitlistForm({
           disabled={status === "loading"}
           className={
             isComingSoon
-              ? "focus-ring inline-flex h-12 w-full shrink-0 items-center justify-center rounded-sm bg-[var(--text-primary)] px-6 text-[0.9375rem] font-semibold text-[var(--bg-deep)] transition-[background-color] duration-200 hover:bg-[color-mix(in_srgb,var(--text-primary)_88%,var(--gold))] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:min-w-[7.5rem]"
-              : "focus-ring inline-flex h-12 w-full shrink-0 items-center justify-center rounded-sm bg-[var(--gold-bright)] px-6 text-[0.9375rem] font-semibold tracking-[0.01em] !text-[var(--bg-deep)] transition-[background-color] duration-200 hover:bg-[var(--gold)] hover:!text-[var(--bg-deep)] disabled:cursor-not-allowed disabled:opacity-65 sm:w-auto sm:min-w-[10rem]"
+              ? `${focusRingClass} inline-flex h-12 w-full shrink-0 items-center justify-center rounded-sm bg-[var(--text-primary)] px-6 text-[0.9375rem] font-semibold text-[var(--bg-deep)] transition-[background-color] duration-200 hover:bg-[color-mix(in_srgb,var(--text-primary)_88%,var(--gold))] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:min-w-[7.5rem]`
+              : `${focusRingClass} inline-flex h-12 w-full shrink-0 items-center justify-center rounded-sm bg-[var(--gold-bright)] px-6 text-[0.9375rem] font-semibold tracking-[0.01em] !text-[var(--bg-deep)] transition-[background-color] duration-200 hover:bg-[var(--gold)] hover:!text-[var(--bg-deep)] disabled:cursor-not-allowed disabled:opacity-65 sm:w-auto sm:min-w-[10rem]`
           }
         >
           {status === "loading" ? "Sending…" : ctaLabel}

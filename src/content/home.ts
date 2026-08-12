@@ -239,6 +239,13 @@ export const paygEntry = {
     "One idea, no subscription. The no-commitment way in. Three PAYG ideas cost more than Starter and deliver fewer. The upgrade math is deliberately obvious.",
 } as const;
 
+export const foundingReward = {
+  eyebrow: "Founding members",
+  headline: "First 50 subscribers get double the ideas, for a year.",
+  body:
+    "When Murmur opens, the first 50 people to subscribe get double their tier's idea allowance, for a year. Join the waitlist to be ready when that window opens.",
+} as const;
+
 // Full-width band below the tier cards. The ONLY Contact Sales surface —
 // Studio is fully self-serve and never sits behind Contact Sales.
 export const sprintZeroBand = {

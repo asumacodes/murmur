@@ -7,6 +7,7 @@ import { footerLinks } from "@/content/home";
 import { features } from "@/config/features";
 import { useSectionReveal } from "@/hooks/useSectionReveal";
 import { PREMIUM_EASE, scrollEnterSoft } from "@/lib/motion";
+import { focusRingClass, goldLinkClass } from "@/lib/styles";
 
 const footerLinkGroups = {
   ...footerLinks,
@@ -44,7 +45,7 @@ export function Footer() {
   return (
     <footer ref={footerRef} className="border-t border-[var(--border-subtle)] py-12">
       <Container>
-        <div className="footer-main-grid grid gap-8 lg:grid-cols-[1.2fr_1fr_auto] lg:items-start lg:gap-10 lg:text-left">
+        <div className="footer-main-grid grid gap-8 max-lg:flex max-lg:flex-col max-lg:items-center max-lg:text-center lg:grid-cols-[1.2fr_1fr_auto] lg:items-start lg:gap-10 lg:text-left">
           <div className="footer-reveal opacity-0">
             <p className="flex items-center gap-3 font-serif-display text-4xl italic text-[var(--gold)]">
               <MurmurMark className="size-9 shrink-0" />
@@ -55,26 +56,29 @@ export function Footer() {
             </p>
             <a
               href="https://sprint0.trymurmur.studio"
-              className="gold-link mt-5 inline-block text-sm"
+              className={`${goldLinkClass} mt-5 inline-block text-sm`}
             >
               A SprintZero Studio product →
             </a>
           </div>
 
-          <hr aria-hidden="true" className="footer-mobile-divider lg:hidden" />
+          <hr
+            aria-hidden="true"
+            className="h-0.5 w-screen max-w-none border-0 bg-[color-mix(in_srgb,var(--border-subtle)_32%,transparent)] max-lg:mx-[calc(50%-50vw)] lg:hidden"
+          />
 
-          <div className="footer-reveal footer-link-grid grid grid-cols-3 gap-6 opacity-0">
+          <div className="footer-reveal grid w-full grid-cols-3 gap-6 opacity-0 max-lg:gap-[clamp(0.75rem,3vw,1.5rem)] max-lg:text-center">
             {Object.entries(footerLinkGroups).map(([group, links]) => (
               <nav key={group} aria-label={`Footer ${group} links`}>
-                <p className="font-mono-text mb-4 text-xs uppercase tracking-[0.14em] text-[var(--gold)]">
+                <p className="font-mono-text mb-4 text-xs uppercase tracking-[0.14em] text-[var(--gold)] max-lg:text-[0.625rem] max-lg:tracking-[0.1em]">
                   {group}
                 </p>
-                <ul className="grid gap-3">
+                <ul className="grid gap-3 max-lg:gap-[0.65rem]">
                   {links.map((link) => (
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="focus-ring rounded-sm text-sm text-[var(--text-secondary)] transition hover:text-[var(--text-primary)]"
+                        className={`${focusRingClass} rounded-sm text-sm text-[var(--text-secondary)] transition hover:text-[var(--text-primary)] max-lg:text-[0.8125rem]`}
                       >
                         {link.label}
                       </a>
@@ -85,17 +89,20 @@ export function Footer() {
             ))}
           </div>
 
-          <hr aria-hidden="true" className="footer-mobile-divider lg:hidden" />
+          <hr
+            aria-hidden="true"
+            className="h-0.5 w-screen max-w-none border-0 bg-[color-mix(in_srgb,var(--border-subtle)_32%,transparent)] max-lg:mx-[calc(50%-50vw)] lg:hidden"
+          />
 
-          <div className="footer-reveal footer-social-block w-fit opacity-0 lg:justify-self-end">
-            <ul className="footer-social grid gap-3">
+          <div className="footer-reveal w-fit opacity-0 max-lg:mx-auto lg:justify-self-end">
+            <ul className="grid gap-3 max-lg:mx-auto">
               {socialLinks.map((item) => (
                 <li key={item.label}>
                   <a
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="footer-social-link focus-ring rounded-sm text-sm text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-primary)]"
+                    className={`${focusRingClass} rounded-sm text-sm text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-primary)]`}
                   >
                     {item.label}
                     {item.handle ? ` · ${item.handle}` : null} ↗
@@ -103,13 +110,13 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            <p className="footer-location font-mono-text mt-6 text-sm text-[var(--text-tertiary)]">
+            <p className="font-mono-text mt-6 text-sm text-[var(--text-tertiary)] max-lg:mx-auto">
               Made in Chandigarh · 2026
             </p>
           </div>
         </div>
 
-        <div className="footer-bar">
+        <div className="mt-12 flex flex-col gap-3 border-t border-[var(--border-subtle)] pt-6 font-mono-text text-xs font-normal tracking-[0.01em] text-[color-mix(in_srgb,var(--gold)_58%,var(--text-tertiary))] max-lg:items-center max-lg:border-[color-mix(in_srgb,var(--border-subtle)_32%,transparent)] max-lg:text-center sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026 SprintZero Studio</span>
           <span>v0.5 · early access</span>
         </div>

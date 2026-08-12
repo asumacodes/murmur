@@ -107,7 +107,7 @@ Our handling of your personal data is described in our [Privacy Policy](/privacy
 
 **By us.** We may suspend or terminate your access, with or without notice, if you breach these Terms, misuse the Service, or where required to protect the Service, other users, or our lawful interests.
 
-**Effect of termination.** On termination, your right to use the Service ends. Deletion of your account removes your Murmur-held data as described in the Privacy Policy. Note that any Jira projects and Confluence spaces already created in your own Atlassian workspace remain in **your** workspace and are yours to keep or delete. We cannot remove them for you.
+**Effect of termination.** On termination, your right to use the Service ends. Deletion of your account removes your Murmur-held data as described in the [Privacy Policy](/privacy). Note that any Jira projects and Confluence spaces already created in your own Atlassian workspace remain in **your** workspace and are yours to keep or delete. We cannot remove them for you.
 
 Sections that by their nature should survive termination (including ownership, disclaimers, limitation of liability, and governing law) will survive.
 

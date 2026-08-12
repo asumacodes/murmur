@@ -8,6 +8,7 @@ import { features } from "@/config/features";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { sectionSpyIds } from "@/lib/motion";
+import { containerClass, focusRingClass, navLinkClass } from "@/lib/styles";
 
 const headerNavItems = navItems.filter(
   (item) => features.studioLog || item.href !== "#studio-log",
@@ -106,8 +107,8 @@ export function Header() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="murmur-container flex h-20 items-center justify-between gap-4">
-        <a href="#top" className="focus-ring flex items-center gap-2.5 rounded-lg">
+      <div className={`${containerClass} flex h-20 items-center justify-between gap-4`}>
+        <a href="#top" className={`${focusRingClass} flex items-center gap-2.5 rounded-lg`}>
           <MurmurMark className="size-7 shrink-0" />
           <span className="font-serif-display text-3xl italic text-[var(--gold)]">
             Murmur
@@ -126,7 +127,7 @@ export function Header() {
                   <a
                     href={item.href}
                     aria-current={isActive ? "location" : undefined}
-                    className="focus-ring nav-link rounded-sm text-sm"
+                    className={`${focusRingClass} ${navLinkClass} rounded-sm text-sm`}
                   >
                     {item.label}
                   </a>
@@ -150,7 +151,7 @@ export function Header() {
           <button
             ref={menuButtonRef}
             type="button"
-            className="mobile-menu-trigger focus-ring flex size-10 items-center justify-center rounded-sm border border-[var(--border-gold)] text-[var(--gold)] md:hidden"
+            className={`mobile-menu-trigger ${focusRingClass} flex size-10 items-center justify-center rounded-sm border border-[var(--border-gold)] text-[var(--gold)] md:hidden`}
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
             aria-controls="mobile-nav-drawer"

@@ -5,6 +5,7 @@ import { Container, SectionEyebrow } from "@/components/ui";
 import { stackLayers } from "@/content/home";
 import { useSectionReveal } from "@/hooks/useSectionReveal";
 import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
+import { sectionPadClass, textInvertClass } from "@/lib/styles";
 
 export function StackStrip() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -46,13 +47,13 @@ export function StackStrip() {
   });
 
   return (
-    <section ref={sectionRef} className="section-pad">
+    <section ref={sectionRef} className={sectionPadClass}>
       <Container>
         <div className="border-y border-[var(--border-subtle)] py-12 sm:py-16">
-          <div className="stack-header mb-10 max-w-3xl lg:mb-12">
+          <div className="stack-header mb-10 max-w-3xl max-lg:mx-auto max-lg:text-center lg:mb-12">
             <SectionEyebrow className="stack-header-line opacity-0">Built on</SectionEyebrow>
             <h2 className="stack-header-line font-serif-display mt-4 text-[clamp(2rem,3.5vw,3.2rem)] leading-[1.05] opacity-0">
-              Every layer is <span className="text-invert">named</span>.
+              Every layer is <span className={textInvertClass}>named</span>.
             </h2>
             <p className="stack-header-line mt-5 max-w-xl text-base leading-7 text-[var(--text-secondary)] opacity-0">
               Named primitives at every layer. Nothing hidden in a black box.

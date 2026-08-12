@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import { containerClass, focusRingClass } from "@/lib/styles";
 
 export { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 export { SectionHeader } from "@/components/ui/SectionHeader";
@@ -7,7 +8,7 @@ export { WaitlistForm } from "@/components/ui/WaitlistForm";
 type ContainerProps = ComponentPropsWithoutRef<"div">;
 
 export function Container({ className = "", ...props }: ContainerProps) {
-  return <div className={`murmur-container ${className}`} {...props} />;
+  return <div className={`${containerClass} ${className}`} {...props} />;
 }
 
 type ButtonLinkProps = ComponentPropsWithoutRef<"a">;
@@ -15,7 +16,7 @@ type ButtonLinkProps = ComponentPropsWithoutRef<"a">;
 export function GoldButton({ className = "", ...props }: ButtonLinkProps) {
   return (
     <a
-      className={`focus-ring inline-flex h-11 items-center justify-center rounded-sm bg-[var(--gold-bright)] px-5 text-sm font-semibold !text-[var(--bg-deep)] transition duration-200 hover:bg-[var(--gold)] hover:!text-[var(--bg-deep)] ${className}`}
+      className={`${focusRingClass} inline-flex h-11 items-center justify-center rounded-sm bg-[var(--gold-bright)] px-5 text-sm font-semibold !text-[var(--bg-deep)] transition duration-200 hover:bg-[var(--gold)] hover:!text-[var(--bg-deep)] ${className}`}
       {...props}
     />
   );
@@ -24,7 +25,7 @@ export function GoldButton({ className = "", ...props }: ButtonLinkProps) {
 export function GhostButton({ className = "", ...props }: ButtonLinkProps) {
   return (
     <a
-      className={`group focus-ring inline-flex h-11 items-center justify-center gap-2.5 rounded-sm border border-[color-mix(in_srgb,var(--gold)_38%,transparent)] px-5 text-sm font-semibold text-[var(--gold)] transition-[border-color,background-color,box-shadow] duration-200 hover:border-[var(--gold)] hover:bg-[rgba(201,169,110,0.04)] hover:shadow-[inset_0_0_0_1px_rgba(201,169,110,0.06)] ${className}`}
+      className={`group ${focusRingClass} inline-flex h-11 items-center justify-center gap-2.5 rounded-sm border border-[color-mix(in_srgb,var(--gold)_38%,transparent)] px-5 text-sm font-semibold text-[var(--gold)] transition-[border-color,background-color,box-shadow] duration-200 hover:border-[var(--gold)] hover:bg-[rgba(201,169,110,0.04)] hover:shadow-[inset_0_0_0_1px_rgba(201,169,110,0.06)] ${className}`}
       {...props}
     />
   );

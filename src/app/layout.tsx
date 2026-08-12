@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.trymurmur.studio"),
-  title: "Murmur — Voice to project foundation",
+  title: "Murmur · Voice to project foundation",
   description:
     "A five-minute voice memo becomes a validated PRD, brand kit, Jira board, Confluence space, and launch foundation.",
   applicationName: "Murmur",

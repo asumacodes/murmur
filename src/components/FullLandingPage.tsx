@@ -11,15 +11,16 @@ import { SprintZeroBand } from "@/components/sections/SprintZeroBand";
 import { StackStrip } from "@/components/sections/StackStrip";
 import { StudioLog } from "@/components/sections/StudioLog";
 import { features } from "@/config/features";
+import { skipLinkClass } from "@/lib/styles";
 
 export function FullLandingPage() {
   return (
     <>
-      <a href="#main-content" className="skip-link">
+      <a href="#main-content" className={skipLinkClass}>
         Skip to content
       </a>
       <Header />
-      <main id="main-content" tabIndex={-1}>
+      <main id="main-content" tabIndex={-1} className="overflow-x-hidden">
         <Hero />
         <HowItWorks />
         <Pipeline />

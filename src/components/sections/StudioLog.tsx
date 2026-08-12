@@ -5,6 +5,11 @@ import { Container, SectionEyebrow } from "@/components/ui";
 import { studioLog } from "@/content/home";
 import { useSectionReveal } from "@/hooks/useSectionReveal";
 import { scrollEnter } from "@/lib/motion";
+import {
+  focusRingClass,
+  goldLinkClass,
+  sectionPadClass,
+} from "@/lib/styles";
 
 export function StudioLog() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -29,7 +34,7 @@ export function StudioLog() {
   });
 
   return (
-    <section id="studio-log" ref={sectionRef} className="section-pad">
+    <section id="studio-log" ref={sectionRef} className={sectionPadClass}>
       <Container>
         <div className="studio-header mb-10 grid gap-6 lg:grid-cols-[0.75fr_1fr] lg:items-end">
           <div>
@@ -68,7 +73,7 @@ export function StudioLog() {
               </div>
               <a
                 href={entry.href}
-                className="focus-ring gold-link w-fit rounded-sm text-sm text-[var(--gold)]"
+                className={`${focusRingClass} ${goldLinkClass} w-fit rounded-sm text-sm`}
               >
                 ↗ {entry.action} ({entry.duration})
               </a>
@@ -77,7 +82,7 @@ export function StudioLog() {
         </div>
         <a
           href="#early-access"
-          className="focus-ring gold-link mt-8 inline-block rounded-sm text-sm text-[var(--gold)]"
+          className={`${focusRingClass} ${goldLinkClass} mt-8 inline-block rounded-sm text-sm`}
         >
           View all updates →
         </a>

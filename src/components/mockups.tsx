@@ -95,14 +95,19 @@ export function ListenerMockup({
 
   return (
     <div
-      className={`listener listener-classic pointer-events-none ${tall ? "listener-tall" : ""}`}
+      className={[
+        "listener listener-classic pointer-events-none relative z-[1] mx-auto origin-center -rotate-[2deg]",
+        tall ? "listener-tall w-[min(360px,100%)]" : "w-[min(340px,100%)]",
+      ].join(" ")}
       aria-hidden="true"
     >
-      <div className="listener-bezel lc-bezel">
-        <div className="listener-screen lc-screen">
-          <div className="ls-statusbar">
+      <div className="listener-bezel lc-bezel rounded-[44px] border border-[rgba(201,169,110,0.55)] bg-[#f5f1e8] p-[14px]">
+        <div
+          className="listener-screen lc-screen relative flex aspect-[390/844] flex-col overflow-hidden rounded-[32px] bg-[#faf6ec] px-5 pt-4 pb-[22px] text-[#2a2218] before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_30%_20%,rgba(201,169,110,0.08),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(201,169,110,0.06),transparent_50%)] before:content-['']"
+        >
+          <div className="ls-statusbar relative mb-4 flex items-center justify-between text-sm font-semibold text-[#2a2218]">
             <span>9:41</span>
-            <span className="ls-status-right">
+            <span className="ls-status-right inline-flex items-center gap-1.5 text-[#2a2218]">
               <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
                 <path
                   d="M0 8 H2 V10 H0 Z M3 6 H5 V10 H3 Z M6 4 H8 V10 H6 Z M9 2 H11 V10 H9 Z M12 0 H14 V10 H12 Z"
@@ -116,33 +121,50 @@ export function ListenerMockup({
                   fill="none"
                 />
               </svg>
-              <span className="ls-batt" />
+              <span className="ls-batt relative inline-block h-[11px] w-[22px] rounded-[2.5px] border border-[#2a2218] p-px before:block before:h-full before:w-[70%] before:rounded-[1px] before:bg-[#2a2218] before:content-[''] after:absolute after:top-[3px] after:-right-[3px] after:h-[3px] after:w-0.5 after:rounded-r-sm after:bg-[#2a2218] after:content-['']" />
             </span>
           </div>
 
-          <div className="lc-header">
-            <span className="lc-brand">Listener</span>
-            <span className="lc-mode">·&nbsp; recording</span>
+          <div className="lc-header font-serif-display flex items-baseline gap-1.5">
+            <span className="lc-brand text-[22px] tracking-[-0.01em] text-[var(--gold)] italic">
+              Listener
+            </span>
+            <span className="lc-mode font-mono-text text-[10px] tracking-[0.15em] text-[#6b6760] uppercase">
+              ·&nbsp; recording
+            </span>
           </div>
 
-          <div className="lc-stage">
-            <button type="button" className="lc-ring" tabIndex={-1} aria-label="Stop recording">
-              <span className="lc-square" />
-              <span className="lc-pulse" />
+          <div className="lc-stage relative flex flex-1 flex-col items-center justify-center gap-3.5 py-5">
+            <button
+              type="button"
+              className="lc-ring relative flex size-[130px] cursor-default items-center justify-center rounded-full border-2 border-[var(--gold)] bg-transparent outline-none before:absolute before:-inset-2 before:rounded-full before:border before:border-[rgba(201,169,110,0.35)] before:content-['']"
+              tabIndex={-1}
+              aria-label="Stop recording"
+            >
+              <span className="lc-square block size-8 rounded-[3px] bg-[var(--red-seal)] shadow-[0_0_0_1px_rgba(214,59,48,0.25),0_0_20px_rgba(214,59,48,0.2)]" />
+              <span
+                className="lc-pulse absolute -inset-0.5 rounded-full border-2 border-[var(--red-seal)] opacity-0 motion-reduce:animate-none"
+                style={{ animation: "listener-ringpulse 2s var(--ease-out) infinite" }}
+              />
             </button>
-            <div className="lc-timer" aria-hidden="true">
+            <div
+              className="lc-timer font-serif-display mt-2 inline-flex items-baseline gap-[0.06em] text-[clamp(2.15rem,7vw,3.25rem)] leading-none font-normal tracking-[0.02em] text-[#2a2218] [font-feature-settings:'lnum'_1,'tnum'_1] [font-variant-numeric:lining-nums_tabular-nums]"
+              aria-hidden="true"
+            >
               <span className="lc-timer-min">0</span>
-              <span className="lc-timer-colon">:</span>
+              <span className="lc-timer-colon px-[0.04em] text-[#2a2218]">:</span>
               <span className="lc-timer-sec">34</span>
             </div>
-            <div className="lc-caption">tap to stop &nbsp;·&nbsp; auto-saves locally</div>
+            <div className="lc-caption font-mono-text text-[10px] tracking-[0.1em] text-[#6b6760] uppercase">
+              tap to stop &nbsp;·&nbsp; auto-saves locally
+            </div>
 
-            <div className="lc-waveform" aria-hidden="true">
+            <div className="lc-waveform mt-1.5 flex h-9 items-center justify-center gap-[2.5px]" aria-hidden="true">
               {Array.from({ length: barCount }).map((_, index) => (
                 <span
                   key={index}
-                  className={`lc-waveform-bar ${
-                    index % 2 === 0 ? "lc-waveform-bar-dark" : "lc-waveform-bar-gold"
+                  className={`lc-waveform-bar w-[3px] rounded-full ${
+                    index % 2 === 0 ? "lc-waveform-bar-dark bg-[#2a2218]" : "lc-waveform-bar-gold bg-[var(--gold)]"
                   } ${animateWaveform ? "waveform-bar" : ""}`}
                   style={{ height: `${getWaveformHeight(index)}px` }}
                 />
@@ -150,16 +172,27 @@ export function ListenerMockup({
             </div>
           </div>
 
-          <div className="lc-foot">
-            <div className="lc-foot-row">
-              <span className="dot dot-rec listener-status-dot" />
-              <span className="lc-foot-label">capturing voice memo</span>
-              <span className="lc-foot-meta">local · 48 kHz</span>
+          <div className="lc-foot flex flex-col gap-2 border-t border-[rgba(42,34,24,0.12)] pt-3.5">
+            <div className="lc-foot-row font-mono-text grid grid-cols-[auto_1fr_auto] items-center gap-2.5 text-[10.5px] text-[#6b6760]">
+              <span
+                className="dot dot-rec listener-status-dot size-[7px] rounded-full bg-[var(--red-seal)] motion-reduce:animate-none"
+                style={{ animation: "listener-blink 1.4s ease-in-out infinite" }}
+              />
+              <span className="lc-foot-label text-[10px] tracking-[0.12em] text-[#2a2218] uppercase">
+                capturing voice memo
+              </span>
+              <span className="lc-foot-meta text-[10px] tracking-[0.04em] text-[#8a8278]">
+                local · 48 kHz
+              </span>
             </div>
-            <div className="lc-foot-row">
-              <span className="dot dot-q listener-whisper-dot" />
-              <span className="lc-foot-label">whisper queued</span>
-              <span className="lc-foot-meta">on stop</span>
+            <div className="lc-foot-row font-mono-text grid grid-cols-[auto_1fr_auto] items-center gap-2.5 text-[10.5px] text-[#6b6760]">
+              <span className="dot dot-q listener-whisper-dot box-border size-[7px] rounded-full border border-[var(--gold)] bg-transparent" />
+              <span className="lc-foot-label text-[10px] tracking-[0.12em] text-[#2a2218] uppercase">
+                whisper queued
+              </span>
+              <span className="lc-foot-meta text-[10px] tracking-[0.04em] text-[#8a8278]">
+                on stop
+              </span>
             </div>
           </div>
         </div>

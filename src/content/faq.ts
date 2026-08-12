@@ -18,7 +18,7 @@ export const faq: FaqItem[] = [
     a: "No. A free Atlassian account is enough. Murmur writes your Jira board and Confluence space into your own tenant.",
   },
   {
-    q: "Will prices change after I sign up?",
-    a: "The first 100 subscribers keep their price for 12 months. It's a price lock, not a limited-time discount, and it's explicitly not lifetime.",
+    q: "What's the founding member reward?",
+    a: "When Murmur opens, the first 50 people to subscribe get double their tier's idea allowance, for a year. Join the waitlist to be ready when that window opens.",
   },
 ] as const;

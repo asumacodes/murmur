@@ -5,6 +5,7 @@ import { Container, SectionHeader } from "@/components/ui";
 import { comparison } from "@/content/home";
 import { useSectionReveal } from "@/hooks/useSectionReveal";
 import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
+import { sectionPadClass } from "@/lib/styles";
 
 export function Comparison() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -35,7 +36,7 @@ export function Comparison() {
   });
 
   return (
-    <section id="comparison" ref={sectionRef} className="section-pad">
+    <section id="comparison" ref={sectionRef} className={sectionPadClass}>
       <Container>
         <SectionHeader
           className="comparison-header !max-w-3xl"

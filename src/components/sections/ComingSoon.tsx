@@ -8,6 +8,7 @@ import { useSubscribeForm } from "@/hooks/useSubscribeForm";
 import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { motionDefaults, PREMIUM_EASE } from "@/lib/motion";
+import { skipLinkClass } from "@/lib/styles";
 
 export function ComingSoon() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -47,7 +48,7 @@ export function ComingSoon() {
       ref={rootRef}
       className="relative flex min-h-svh flex-col bg-[var(--bg-deep)] text-[var(--text-primary)]"
     >
-      <a href="#main-content" className="skip-link">
+      <a href="#main-content" className={skipLinkClass}>
         Skip to content
       </a>
 

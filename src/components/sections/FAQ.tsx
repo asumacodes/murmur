@@ -6,6 +6,7 @@ import { faq, type FaqItem } from "@/content/faq";
 import { useSectionReveal } from "@/hooks/useSectionReveal";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
+import { focusRingClass } from "@/lib/styles";
 
 export function FAQ() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -150,7 +151,7 @@ function FaqAccordionItem({
           aria-expanded={isOpen}
           aria-controls={panelId}
           onClick={onToggle}
-          className="focus-ring flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left sm:py-7"
+          className={`${focusRingClass} flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left sm:py-7`}
         >
           <span
             className={`font-serif-display text-[clamp(1.2rem,2.2vw,1.55rem)] leading-[1.3] transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
@@ -178,7 +179,7 @@ function FaqAccordionItem({
         className="overflow-hidden"
         style={{ height: 0, opacity: 0 }}
       >
-        <p className="max-w-[60ch] pb-7 pr-12 text-[1.05rem] leading-7 text-[var(--text-secondary)]">
+        <p className="pb-7 pr-12 text-[1.05rem] leading-7 text-[var(--text-secondary)]">
           {item.a}
         </p>
       </div>

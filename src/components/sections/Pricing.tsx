@@ -13,9 +13,11 @@ import {
   type Pack,
   type PackFeature,
 } from "@/content/home";
+import { FoundingOffer } from "@/components/sections/FoundingOffer";
 import { useSectionReveal } from "@/hooks/useSectionReveal";
 import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
+import { sectionPadClass } from "@/lib/styles";
 
 function featureText(feature: PackFeature): { text: string; bold: boolean } {
   if (typeof feature === "string") {
@@ -37,7 +39,7 @@ export function Pricing() {
       ".packs-header > *",
       ".pack-card",
       ".packs-payg",
-      ".packs-lock",
+      ".packs-founding",
     ],
     groups: [
       {
@@ -59,16 +61,16 @@ export function Pricing() {
         to: { duration: 0.95, ease: PREMIUM_EASE },
       },
       {
-        selector: ".packs-lock",
-        trigger: ".packs-lock",
-        from: { autoAlpha: 0, y: 20 },
-        to: { duration: 0.8, ease: PREMIUM_EASE },
+        selector: ".packs-founding",
+        trigger: ".packs-founding",
+        from: { autoAlpha: 0, y: 28 },
+        to: { duration: 0.9, ease: PREMIUM_EASE },
       },
     ],
   });
 
   return (
-    <section id="pricing" ref={sectionRef} className="section-pad">
+    <section id="pricing" ref={sectionRef} className={`${sectionPadClass} overflow-x-hidden`}>
       <Container>
         <SectionHeader
           className="packs-header !mb-12 max-w-3xl max-lg:mx-auto max-lg:text-center lg:!mb-14"
@@ -128,11 +130,8 @@ export function Pricing() {
           </div>
         </div>
 
-        {/* Grandfathering — one-line strip, same copy the FAQ carries */}
-        <p className="packs-lock mt-5 text-center font-mono-text text-xs uppercase tracking-[0.12em] text-[var(--text-tertiary)] opacity-0">
-          First 100 subscribers keep their price for 12 months: a price lock, not a limited-time
-          discount.
-        </p>
+        {/* Founding members — ink seal under PAYG */}
+        <FoundingOffer />
       </Container>
     </section>
   );
@@ -144,9 +143,9 @@ function PackCard({ pack }: { pack: Pack }) {
   return (
     <article
       className={[
-        "pack-card group flex h-full flex-col rounded border border-[var(--border-gold)] bg-[var(--bg-elevated)] px-[clamp(1.75rem,2.5vw,2.5rem)] py-[clamp(1.75rem,2.5vw,2.25rem)] opacity-0",
-        "pointer-fine:transition-[transform,border-color,box-shadow,background-color] pointer-fine:duration-[400ms] pointer-fine:ease-[var(--ease)]",
-        "pointer-fine:hover:-translate-y-[3px] pointer-fine:hover:border-[color-mix(in_srgb,var(--gold)_48%,var(--border-gold))] pointer-fine:hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--gold)_12%,transparent),0_20px_48px_rgba(0,0,0,0.34)]",
+        "pack-card group flex h-full flex-col rounded border border-(--border-gold) bg-(--bg-elevated) px-[clamp(1.75rem,2.5vw,2.5rem)] py-[clamp(1.75rem,2.5vw,2.25rem)] opacity-0",
+        "pointer-fine:transition-[transform,border-color,box-shadow,background-color] pointer-fine:duration-400 pointer-fine:ease-(--ease)",
+        "pointer-fine:hover:-translate-y-0.75 pointer-fine:hover:border-[color-mix(in_srgb,var(--gold)_48%,var(--border-gold))] pointer-fine:hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--gold)_12%,transparent),0_20px_48px_rgba(0,0,0,0.34)]",
         "motion-reduce:transition-none motion-reduce:hover:translate-y-0",
         isFeatured
           ? "border-[color-mix(in_srgb,var(--gold)_42%,var(--border-gold))] shadow-[0_0_0_1px_color-mix(in_srgb,var(--gold)_20%,transparent)]"
@@ -157,7 +156,7 @@ function PackCard({ pack }: { pack: Pack }) {
         <div className="min-w-0 flex-auto pt-[0.05rem]">
           <h3
             className={[
-              "font-serif-display text-[var(--text-primary)]",
+              "font-serif-display text-(--text-primary)",
               isFeatured
                 ? "text-[clamp(1.375rem,1.85vw,1.75rem)] leading-[1.1]"
                 : "text-[clamp(1.125rem,1.45vw,1.4375rem)] leading-[1.12]",
@@ -166,13 +165,13 @@ function PackCard({ pack }: { pack: Pack }) {
             {pack.name}
           </h3>
           {pack.subtitle ? (
-            <p className="mt-[0.3rem] text-[clamp(0.8125rem,0.88vw,0.875rem)] leading-[1.4] text-[var(--text-secondary)]">
+            <p className="mt-[0.3rem] text-[clamp(0.8125rem,0.88vw,0.875rem)] leading-[1.4] text-(--text-secondary)">
               {pack.subtitle}
             </p>
           ) : null}
         </div>
         {pack.tag ? (
-          <span className="mt-[0.35rem] shrink-0 self-start rounded-[2px] border border-[color-mix(in_srgb,var(--gold)_35%,var(--border-gold))] px-[0.55rem] py-[0.3rem] font-mono-text text-[0.625rem] uppercase tracking-[0.14em] text-[var(--gold)]">
+          <span className="mt-[0.35rem] shrink-0 self-start rounded-xs border border-[color-mix(in_srgb,var(--gold)_35%,var(--border-gold))] px-[0.55rem] py-[0.3rem] font-mono-text text-[0.625rem] uppercase tracking-[0.14em] text-[var(--gold)]">
             {pack.tag}
           </span>
         ) : null}
@@ -180,18 +179,18 @@ function PackCard({ pack }: { pack: Pack }) {
 
       <div className="mt-1 mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-[0.35rem] max-lg:justify-center max-lg:text-center lg:text-inherit">
         <p className="flex items-baseline gap-[0.35rem]">
-          <span className="font-serif-display text-[clamp(1.75rem,2.4vw,2.125rem)] leading-none text-[var(--gold)]">
+          <span className="font-serif-display text-[clamp(1.75rem,2.4vw,2.125rem)] leading-none text-(--gold)">
             {pack.priceAmount}
           </span>
-          <span className="text-[clamp(0.9375rem,1vw,1rem)] text-[var(--text-secondary)]">
+          <span className="text-[clamp(0.9375rem,1vw,1rem)] text-(--text-secondary)">
             {pack.priceUnit}
           </span>
         </p>
       </div>
 
       {pack.idealFor ? (
-        <p className="mb-1 flex flex-col gap-1 text-sm leading-[1.45] text-[var(--text-secondary)]">
-          <span className="font-mono-text text-[0.625rem] uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
+        <p className="mb-1 flex flex-col gap-1 text-sm leading-[1.45] text-(--text-secondary)">
+          <span className="font-mono-text text-[0.625rem] uppercase tracking-[0.12em] text-(--text-tertiary)">
             Ideal for
           </span>
           {pack.idealFor}
@@ -209,15 +208,15 @@ function PackCard({ pack }: { pack: Pack }) {
           return (
             <li
               key={text}
-              className="flex gap-2 text-[clamp(0.875rem,0.92vw,0.9375rem)] leading-[1.35] text-[var(--text-secondary)]"
+              className="flex gap-2 text-[clamp(0.875rem,0.92vw,0.9375rem)] leading-[1.35] text-(--text-secondary)"
             >
               <span
-                className="shrink-0 text-[0.8125rem] leading-[1.35] text-[var(--gold)]"
+                className="shrink-0 text-[0.8125rem] leading-[1.35] text-(--gold)"
                 aria-hidden="true"
               >
                 ✓
               </span>
-              <span className={bold ? "font-semibold text-[var(--text-secondary)]" : ""}>
+              <span className={bold ? "font-semibold text-(--text-secondary)" : ""}>
                 {text}
               </span>
             </li>
@@ -229,7 +228,7 @@ function PackCard({ pack }: { pack: Pack }) {
         {isFeatured ? (
           <GoldButton
             href="#early-access"
-            className={`${cardBtnClass} font-semibold text-[var(--bg-deep)] hover:text-[var(--bg-deep)]`}
+            className={`${cardBtnClass} font-semibold text-(--bg-deep) hover:text-(--bg-deep)`}
             onClick={() => trackWaitlistCtaClicked("pricing", { pack: pack.name })}
           >
             {pack.cta}
@@ -245,7 +244,7 @@ function PackCard({ pack }: { pack: Pack }) {
         )}
 
         {pack.footnote ? (
-          <p className="mt-[0.85rem] text-center text-sm font-medium leading-normal tracking-[0.01em] text-[var(--text-secondary)] max-lg:justify-center max-lg:text-center lg:text-inherit">
+          <p className="mt-[0.85rem] text-center text-sm font-medium leading-normal tracking-[0.01em] text-(--text-secondary) max-lg:justify-center max-lg:text-center lg:text-inherit">
             {pack.footnote}
           </p>
         ) : null}

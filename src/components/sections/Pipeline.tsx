@@ -18,9 +18,34 @@ import {
   createPipelineStageController,
   REPLAY_PIPELINE_EVENT,
 } from "@/lib/pipeline-tracer";
+import { pipelineSectionPadClass } from "@/lib/styles";
 
 const mainFlow = pipelineNodes.slice(0, 4);
 const parallelStage = pipelineStages[4];
+
+const pinWrapClass =
+  "pipeline-pin-wrap box-border gap-0 bg-[var(--bg-warm)] lg:flex lg:h-auto lg:min-h-0 lg:max-h-none lg:flex-col lg:justify-start lg:py-[clamp(2.75rem,5.5vh,4.5rem)]";
+
+const pinHeaderClass =
+  "pipeline-pin-header flex shrink-0 flex-col gap-[var(--pipeline-gap-meta-headline)] mb-[var(--pipeline-gap-tracer-cards)]";
+
+const runOpenClass =
+  "pipeline-run pipeline-run--open relative flex min-h-0 w-full shrink-0 flex-col pt-0";
+
+const viewportClass =
+  "pipeline-viewport relative flex w-full items-center overflow-x-hidden overflow-y-visible max-lg:justify-start max-lg:px-4 max-lg:py-[0.35rem] lg:px-[var(--pipeline-gutter)] lg:py-[var(--pipeline-card-scale-pad)]";
+
+const cardSlotClass =
+  "pipeline-card-slot flex w-[var(--pipeline-card-width)] shrink-0 origin-center items-center";
+
+const nodeStageClass = [
+  "pipeline-node pipeline-node--stage relative grid w-[var(--pipeline-card-width)] shrink-0 grid-rows-[auto_auto_1fr]",
+  "min-h-[var(--pipeline-card-min-height,clamp(22rem,32vh,28rem))] rounded border border-[var(--border-gold)] bg-[var(--bg-elevated)]",
+  "p-[1.2rem_1.1rem_1rem] transition-[border-color,background,box-shadow] duration-[400ms] ease-[var(--ease)] motion-reduce:transition-none lg:p-[36px_40px_32px]",
+  "[&.is-tracing]:border-[color-mix(in_srgb,var(--gold)_55%,var(--border-subtle))]",
+  "[&.is-tracing]:shadow-[0_0_0_1px_color-mix(in_srgb,var(--gold)_25%,transparent),0_0_28px_color-mix(in_srgb,var(--gold-bright)_18%,transparent)]",
+  "lg:[&.is-tracing]:shadow-[0_0_0_1px_color-mix(in_srgb,var(--gold)_22%,transparent),0_16px_48px_rgba(0,0,0,0.32)]",
+].join(" ");
 
 function PipelineTopBar({ className = "" }: { className?: string }) {
   return (
@@ -50,8 +75,10 @@ function PipelineMobileTopBar({ className = "" }: { className?: string }) {
 
 function PipelineIntro({ className = "" }: { className?: string }) {
   return (
-    <div className={`pipeline-header shrink-0 max-w-4xl ${className}`}>
-      <h2 className="pipeline-header-line font-serif-display text-[clamp(2.5rem,5vw,4.75rem)] leading-[1.05] opacity-0">
+    <div
+      className={`pipeline-header mb-[var(--pipeline-gap-headline-tracer)] max-w-4xl shrink-0 max-lg:mx-auto max-lg:text-center ${className}`}
+    >
+      <h2 className="pipeline-header-line font-serif-display text-[clamp(2.25rem,5vw,4.75rem)] leading-[1.05] opacity-0 lg:text-[clamp(2.5rem,5vw,4.75rem)]">
         <span style={{ color: "#ffffff" }}>Not one Claude call in a </span>
         <span style={{ color: "#c9a96e", fontStyle: "italic" }}>trenchcoat.</span>
       </h2>
@@ -69,27 +96,60 @@ function PipelineProgressRail({
   return (
     <nav
       ref={progressRailRef}
-      className={`pipeline-progress-rail pipeline-header-line opacity-0 ${className}`}
+      className={`pipeline-progress-rail pipeline-header-line relative w-full opacity-0 ${className}`}
       aria-label="Pipeline stages"
     >
-      <div className="pipeline-progress-track">
-        <div className="pipeline-progress-track-line" aria-hidden="true" />
-        <span
-          className="pipeline-progress-tracer pointer-events-none absolute z-10 size-2.5 rounded-full bg-[var(--gold-bright)] shadow-[0_0_16px_rgba(232,168,32,0.95)]"
+      <div className="pipeline-progress-track relative pt-[0.35rem]">
+        <div
+          className="pipeline-progress-track-line absolute top-[0.82rem] h-px bg-[rgba(168,163,154,0.18)]"
+          style={{
+            left: `calc(100% / ${pipelineRailSteps.length * 2})`,
+            right: `calc(100% / ${pipelineRailSteps.length * 2})`,
+          }}
           aria-hidden="true"
         />
-        <ol className="pipeline-progress-list">
+        <span
+          className="pipeline-progress-tracer pointer-events-none absolute top-0 left-0 z-[2] size-2.5 rounded-full bg-[var(--gold-bright)] opacity-0 shadow-[0_0_16px_rgba(232,168,32,0.95)]"
+          aria-hidden="true"
+        />
+        <ol className="pipeline-progress-list relative m-0 flex list-none justify-between gap-3 p-0">
           {pipelineRailSteps.map((step, index) => (
             <li
               key={step.step}
-              className={`pipeline-progress-step ${index === 0 ? "is-active" : ""}`}
+              className={`pipeline-progress-step group/step flex min-w-0 flex-1 flex-col items-center text-center ${index === 0 ? "is-active" : ""}`}
               data-stage-index={index}
             >
-              <span className="pipeline-progress-anchor" data-stage-anchor={index} aria-hidden="true">
-                <span className="pipeline-progress-dot" />
+              <span
+                className="pipeline-progress-anchor relative z-[1] flex size-4 items-center justify-center"
+                data-stage-anchor={index}
+                aria-hidden="true"
+              >
+                <span
+                  className={[
+                    "pipeline-progress-dot size-[0.55rem] rounded-full border border-[rgba(168,163,154,0.35)] bg-[var(--bg-warm)]",
+                    "transition-[border-color,background-color,box-shadow,transform] duration-200 ease-[var(--ease-out)]",
+                    "group-[.is-active]/step:border-[var(--gold-bright)] group-[.is-active]/step:bg-[var(--gold-bright)]",
+                    "group-[.is-complete]/step:border-[var(--gold)] group-[.is-complete]/step:bg-[var(--gold)]",
+                  ].join(" ")}
+                />
               </span>
-              <p className="pipeline-progress-label font-mono-text text-[0.58rem] font-semibold uppercase leading-snug tracking-[0.1em]">
-                <span className="pipeline-progress-num">{step.step}</span> {step.label}
+              <p
+                className={[
+                  "pipeline-progress-label font-mono-text mt-[0.65rem] text-[0.58rem] font-semibold uppercase leading-snug tracking-[0.1em] text-[var(--text-tertiary)]",
+                  "transition-colors duration-200 ease-[var(--ease-out)]",
+                  "group-[.is-active]/step:text-[var(--gold-bright)]",
+                  "group-[.is-complete:not(.is-active)]/step:text-[var(--text-secondary)]",
+                ].join(" ")}
+              >
+                <span
+                  className={[
+                    "pipeline-progress-num text-[color-mix(in_srgb,var(--text-tertiary)_85%,transparent)]",
+                    "group-[.is-active]/step:text-[var(--gold-bright)]",
+                  ].join(" ")}
+                >
+                  {step.step}
+                </span>{" "}
+                {step.label}
               </p>
             </li>
           ))}
@@ -208,8 +268,9 @@ export function Pipeline() {
       const onReplay = () => {
         const activeScrub = desktopScrub ?? mobileScrub;
         const scrubTrigger = activeScrub?.getScrubTrigger();
-        const dot = progressRailRef.current?.querySelector<HTMLElement>(".pipeline-progress-tracer")
-          ?? mobileProgressRailRef.current?.querySelector<HTMLElement>(".pipeline-progress-tracer");
+        const dot =
+          progressRailRef.current?.querySelector<HTMLElement>(".pipeline-progress-tracer") ??
+          mobileProgressRailRef.current?.querySelector<HTMLElement>(".pipeline-progress-tracer");
 
         if (!activeScrub || !dot) {
           return;
@@ -350,36 +411,49 @@ export function Pipeline() {
   );
 
   return (
-    <section id="pipeline" ref={sectionRef} className="section-pad bg-[var(--bg-warm)] lg:pb-0">
-      <div ref={pinWrapRef} className="pipeline-pin-wrap hidden lg:flex">
-        <Container className="pipeline-pin-header shrink-0">
+    <section
+      id="pipeline"
+      ref={sectionRef}
+      className={`${pipelineSectionPadClass} bg-[var(--bg-warm)]`}
+    >
+      <div ref={pinWrapRef} className={`${pinWrapClass} hidden lg:flex`}>
+        <Container className={pinHeaderClass}>
           <PipelineTopBar />
           <PipelineIntro />
           <PipelineProgressRail progressRailRef={progressRailRef} />
         </Container>
 
-        <div ref={runRef} className="pipeline-run pipeline-run--open relative min-h-0 w-full shrink-0">
-          <div ref={viewportRef} className="pipeline-viewport overflow-x-hidden overflow-y-visible">
-            <div ref={trackRef} className="pipeline-stage-track flex w-max items-center gap-4">
+        <div ref={runRef} className={runOpenClass}>
+          <div ref={viewportRef} className={viewportClass}>
+            <div
+              ref={trackRef}
+              className="pipeline-stage-track flex w-max items-center gap-4 will-change-transform"
+            >
               <HorizontalPipelineTrack />
             </div>
           </div>
         </div>
       </div>
 
-      <div ref={mobilePinWrapRef} className="pipeline-pin-wrap pipeline-pin-wrap--mobile flex flex-col lg:hidden">
-        <Container className="pipeline-pin-header shrink-0">
+      <div
+        ref={mobilePinWrapRef}
+        className={`${pinWrapClass} pipeline-pin-wrap--mobile flex flex-col lg:hidden`}
+      >
+        <Container className={pinHeaderClass}>
           <PipelineMobileTopBar />
           <PipelineIntro />
           <PipelineProgressRail
             progressRailRef={mobileProgressRailRef}
-            className="pipeline-progress-rail--mobile-hidden"
+            className="max-lg:hidden"
           />
         </Container>
 
-        <div ref={mobileRunRef} className="pipeline-run pipeline-run--open relative min-h-0 w-full shrink-0">
-          <div ref={mobileViewportRef} className="pipeline-viewport overflow-x-hidden overflow-y-visible">
-            <div ref={mobileTrackRef} className="pipeline-stage-track flex w-max items-center gap-4">
+        <div ref={mobileRunRef} className={runOpenClass}>
+          <div ref={mobileViewportRef} className={viewportClass}>
+            <div
+              ref={mobileTrackRef}
+              className="pipeline-stage-track flex w-max items-center gap-4 will-change-transform"
+            >
               <HorizontalPipelineTrack />
             </div>
           </div>
@@ -393,12 +467,12 @@ function HorizontalPipelineTrack() {
   return (
     <>
       {mainFlow.map((node, index) => (
-        <div key={node.name} className="pipeline-card-slot shrink-0">
+        <div key={node.name} className={cardSlotClass}>
           <PipelineStageCard node={node} index={index} />
         </div>
       ))}
 
-      <div className="pipeline-card-slot shrink-0" data-pipeline-hub>
+      <div className={cardSlotClass} data-pipeline-hub>
         <PipelineStageCard
           node={{
             name: parallelStage.title,
@@ -442,7 +516,7 @@ function PipelineStageCard({
   const outputLabel = cardOutput ? formatCardOutput(cardOutput) : null;
 
   return (
-    <article className="pipeline-node pipeline-node--stage" data-index={index}>
+    <article className={nodeStageClass} data-index={index}>
       <header className="flex items-start justify-between gap-6">
         <div className="flex min-w-0 flex-col items-start gap-[0.35rem]">
           <span className="shrink-0 font-mono-text text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-[var(--gold)]">
@@ -480,7 +554,7 @@ function PipelineStageCard({
           ) : null}
         </div>
 
-        <div className="flex h-full min-w-0 items-stretch justify-center [&_.pipeline-card-art]:h-full [&_.pipeline-card-art]:w-full [&_.pipeline-card-art]:min-h-[9.5rem] lg:[&_.pipeline-card-art]:min-h-[12.5rem]">
+        <div className="flex h-full min-w-0 items-stretch justify-center">
           <PipelineCardIllustration variant={cardIllustration} hero />
         </div>
       </div>
