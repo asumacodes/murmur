@@ -12,11 +12,20 @@ import { StackStrip } from "@/components/sections/StackStrip";
 import { StudioLog } from "@/components/sections/StudioLog";
 import { features } from "@/config/features";
 import { SectionAnalytics } from "@/components/SectionAnalytics";
+import { StickyMobileCTA } from "@/components/sections/StickyMobileCTA";
+import { faq } from "@/content/faq";
+import { buildFaqSchema } from "@/lib/structured-data";
 import { skipLinkClass } from "@/lib/styles";
 
 export function FullLandingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildFaqSchema(faq)),
+        }}
+      />
       <a href="#main-content" className={skipLinkClass}>
         Skip to content
       </a>
@@ -35,6 +44,7 @@ export function FullLandingPage() {
         <EarlyAccessCTA />
       </main>
       <Footer />
+      <StickyMobileCTA />
     </>
   );
 }

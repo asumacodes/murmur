@@ -28,7 +28,6 @@ export const comingSoon = {
   footer: {
     privacy: { label: "Privacy", href: "/privacy" },
     terms: { label: "Terms", href: "/terms" },
-    // Placeholder inbox — replace once a real address exists
-    contact: "hello@trymurmur.studio",
+    contact: "hey@trymurmur.studio",
   },
 } as const;

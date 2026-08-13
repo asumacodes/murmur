@@ -67,6 +67,7 @@ export async function POST(request: Request) {
       const { error: sendError } = await resend.emails.send({
         from,
         to: email,
+        replyTo: "hey@trymurmur.studio",
         subject: "You're on the Murmur waitlist",
         text: WELCOME_TEXT,
       });

@@ -50,6 +50,7 @@ export function PlayIcon({ className = "" }: { className?: string }) {
       <svg
         viewBox="0 0 16 16"
         className="ml-0.5 size-2.5 fill-current text-inherit transition-colors duration-200 group-hover:text-[var(--bg-deep)]"
+        aria-hidden="true"
       >
         <path d="M4 3.5v9l8-4.5-8-4.5z" />
       </svg>

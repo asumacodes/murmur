@@ -386,7 +386,8 @@ export const footerLinks = {
   ],
   studio: [
     { label: "Log", href: "#studio-log" },
-    { label: "About", href: "https://sprint0.trymurmur.studio" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
     { label: "Roadmap", href: "#pipeline" },
   ],
   legal: [

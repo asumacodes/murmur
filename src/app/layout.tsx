@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import {
+  organizationSchema,
+  softwareApplicationSchema,
+} from "@/lib/structured-data";
 import { Providers } from "./providers";
 import "./globals.css";
 
@@ -88,6 +92,18 @@ export default function RootLayout({
       className={`${geistSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(softwareApplicationSchema),
+          }}
+        />
         <Providers>
           <SmoothScroll>{children}</SmoothScroll>
         </Providers>
