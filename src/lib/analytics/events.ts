@@ -31,3 +31,27 @@ export function trackScrollDepth(percent: 25 | 50 | 75 | 100) {
     depth_percent: percent,
   });
 }
+
+export function trackArtifactsStageToggled(stage: "capture" | "artifacts") {
+  posthog?.capture("artifacts_stage_toggled", { stage });
+}
+
+export function trackArtifactsSurfaceTabbed(
+  surface: "brand" | "jira" | "confluence",
+) {
+  posthog?.capture("artifacts_surface_tabbed", { surface });
+}
+
+export function trackPipelineReplayClicked(location: "hero" | string) {
+  posthog?.capture("pipeline_replay_clicked", { cta_location: location });
+}
+
+export function trackSocialOutboundClicked(
+  network: "x" | "youtube" | "github",
+  location: "coming_soon" | "footer" | string,
+) {
+  posthog?.capture("social_outbound_clicked", {
+    social_network: network,
+    cta_location: location,
+  });
+}

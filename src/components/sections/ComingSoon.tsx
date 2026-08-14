@@ -5,7 +5,7 @@ import { MurmurMark } from "@/components/brand/MurmurMark";
 import { GhostButton, GoldButton, WaitlistForm } from "@/components/ui";
 import { comingSoon } from "@/content/coming-soon";
 import { useSubscribeForm } from "@/hooks/useSubscribeForm";
-import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
+import { trackSocialOutboundClicked, trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { motionDefaults, PREMIUM_EASE } from "@/lib/motion";
 import { skipLinkClass } from "@/lib/styles";
@@ -87,6 +87,7 @@ export function ComingSoon() {
               target="_blank"
               rel="noopener noreferrer"
               className="h-[2.875rem] w-full rounded text-[0.9375rem] sm:flex-1"
+              onClick={() => trackSocialOutboundClicked("x", "coming_soon")}
             >
               {social.x.label}
             </GoldButton>
@@ -95,6 +96,7 @@ export function ComingSoon() {
               target="_blank"
               rel="noopener noreferrer"
               className="h-[2.875rem] w-full rounded border-[color-mix(in_srgb,var(--gold)_55%,transparent)] text-[0.9375rem] sm:flex-1"
+              onClick={() => trackSocialOutboundClicked("youtube", "coming_soon")}
             >
               {social.youtube.label}
             </GhostButton>

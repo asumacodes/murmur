@@ -1,3 +1,4 @@
+import { Artifacts } from "@/components/sections/Artifacts";
 import { Comparison } from "@/components/sections/Comparison";
 import { EarlyAccessCTA } from "@/components/sections/EarlyAccessCTA";
 import { FAQ } from "@/components/sections/FAQ";
@@ -35,6 +36,7 @@ export function FullLandingPage() {
         <Hero />
         <HowItWorks />
         <Pipeline />
+        <Artifacts />
         <Comparison />
         <Pricing />
         {features.studioLog ? <StudioLog /> : null}

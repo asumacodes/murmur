@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Container, SectionEyebrow } from "@/components/ui";
 import { studioLog } from "@/content/home";
 import { useSectionReveal } from "@/hooks/useSectionReveal";
+import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { scrollEnter } from "@/lib/motion";
 import {
   focusRingClass,
@@ -83,6 +84,7 @@ export function StudioLog() {
         <a
           href="#early-access"
           className={`${focusRingClass} ${goldLinkClass} mt-8 inline-block rounded-sm text-sm`}
+          onClick={() => trackWaitlistCtaClicked("studio_log")}
         >
           View all updates →
         </a>

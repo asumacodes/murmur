@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { ListenerMockup } from "@/components/mockups";
 import { Container, GhostButton, PlayIcon, SectionEyebrow } from "@/components/ui";
 import { MagneticGoldButton } from "@/components/ui/MagneticGoldButton";
-import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
+import { trackPipelineReplayClicked, trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { pipelineLabels } from "@/content/home";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { REPLAY_PIPELINE_EVENT } from "@/lib/pipeline-tracer";
@@ -189,6 +189,7 @@ export function Hero() {
                     href="#pipeline"
                     className={`${heroBtnBase} border-[color-mix(in_srgb,var(--gold)_38%,transparent)] bg-transparent font-medium shadow-none hover:border-[var(--gold)] hover:bg-[rgba(201,169,110,0.04)] hover:text-[var(--gold)] hover:shadow-[inset_0_0_0_1px_rgba(201,169,110,0.06)]`}
                     onClick={() => {
+                      trackPipelineReplayClicked("hero");
                       window.dispatchEvent(new CustomEvent(REPLAY_PIPELINE_EVENT));
                     }}
                   >

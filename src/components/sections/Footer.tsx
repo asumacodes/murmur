@@ -6,6 +6,7 @@ import { Container } from "@/components/ui";
 import { footerLinks } from "@/content/home";
 import { features } from "@/config/features";
 import { useSectionReveal } from "@/hooks/useSectionReveal";
+import { trackSocialOutboundClicked } from "@/lib/analytics/events";
 import { PREMIUM_EASE, scrollEnterSoft } from "@/lib/motion";
 import { focusRingClass, goldLinkClass } from "@/lib/styles";
 
@@ -16,14 +17,29 @@ const footerLinkGroups = {
   ),
 };
 
-const socialLinks: { label: string; href: string; handle?: string }[] = [
+const socialLinks: {
+  label: string;
+  href: string;
+  handle?: string;
+  network: "x" | "youtube" | "github";
+}[] = [
   {
     label: "YouTube",
     handle: "@trymurmurhq",
     href: "https://www.youtube.com/@trymurmurhq",
+    network: "youtube",
   },
-  { label: "X", handle: "@trymurmurhq", href: "https://x.com/@trymurmurhq" },
-  { label: "GitHub", href: "https://github.com/asumacodes" },
+  {
+    label: "X",
+    handle: "@trymurmurhq",
+    href: "https://x.com/@trymurmurhq",
+    network: "x",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/asumacodes",
+    network: "github",
+  },
 ];
 
 export function Footer() {
@@ -103,6 +119,9 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`${focusRingClass} rounded-sm text-sm text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-primary)]`}
+                    onClick={() =>
+                      trackSocialOutboundClicked(item.network, "footer")
+                    }
                   >
                     {item.label}
                     {item.handle ? ` · ${item.handle}` : null} ↗
