@@ -78,9 +78,9 @@ export const pipelineNodeBodies = [
   "Speech becomes structured text: speaker turns, punctuation, paragraph breaks. The transcript is what the pipeline reads.",
   "Live web search for competitors and prior art. Citations you can open, not invented market research.",
   "One agent turns the memo into a typed PRD, validated against a Zod schema before anything downstream runs.",
-  "A usable identity — palette, type, and voice — pulled from your PRD. Not a mood board you'll redo.",
-  "Epics and stories generated from the PRD, in your own Jira tenant. A backlog that follows the product — not reverse-engineered after the fact.",
-  "A Confluence space scaffolded to your PRD — real pages, real structure, ready for your team to fill in.",
+  "A usable identity: palette, type, and voice pulled from your PRD. Not a mood board you'll redo.",
+  "Epics and stories generated from the PRD, in your own Jira tenant. A backlog that follows the product, not reverse-engineered after the fact.",
+  "A Confluence space scaffolded to your PRD. Real pages, real structure, ready for your team to fill in.",
 ];
 
 export type PipelineIllustration =
@@ -160,7 +160,7 @@ export const pipelineStages: PipelineStage[] = [
     title: "Brand Agent",
     role: "PRD fans out · parallel",
     output: "→ Brand identity kit",
-    body: "A usable identity — palette, type, and voice — pulled from your PRD. Not a mood board you'll redo.",
+    body: "A usable identity: palette, type, and voice pulled from your PRD. Not a mood board you'll redo.",
     glowTarget: 4,
   },
   {
@@ -168,7 +168,7 @@ export const pipelineStages: PipelineStage[] = [
     title: "Jira Generator",
     role: "PRD fans out · parallel",
     output: "→ Jira epics + stories",
-    body: "Epics and stories generated from the PRD, in your own Jira tenant. A backlog that follows the product — not reverse-engineered after the fact.",
+    body: "Epics and stories generated from the PRD, in your own Jira tenant. A backlog that follows the product, not reverse-engineered after the fact.",
     glowTarget: 5,
   },
   {
@@ -176,7 +176,7 @@ export const pipelineStages: PipelineStage[] = [
     title: "Confluence Generator",
     role: "PRD fans out · parallel",
     output: "→ Confluence space",
-    body: "A Confluence space scaffolded to your PRD — real pages, real structure, ready for your team to fill in.",
+    body: "A Confluence space scaffolded to your PRD. Real pages, real structure, ready for your team to fill in.",
     glowTarget: 6,
   },
 ];

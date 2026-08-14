@@ -11,7 +11,7 @@ export const organizationSchema = {
   url: SITE,
   logo: `${SITE}/icons/icon-512.png`,
   description:
-    "SprintZero Studios builds Murmur — voice-to-project-foundation software — and ships MVPs in 72-hour sprints.",
+    "SprintZero Studios builds Murmur, voice-to-project-foundation software, and ships MVPs in 72-hour sprints.",
   foundingLocation: {
     "@type": "Place",
     address: {
@@ -40,7 +40,7 @@ export const softwareApplicationSchema = {
   operatingSystem: "Web",
   url: SITE,
   description:
-    "Murmur turns a five-minute voice memo into a complete project foundation — a validated PRD, brand kit, Jira board, and Confluence space — in minutes.",
+    "Murmur turns a five-minute voice memo into a complete project foundation: a validated PRD, brand kit, Jira board, and Confluence space, in minutes.",
   publisher: {
     "@type": "Organization",
     name: "SprintZero Studios",

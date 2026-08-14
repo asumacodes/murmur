@@ -6,7 +6,7 @@ import { focusRingClass, goldLinkClass } from "@/lib/styles";
 export const metadata: Metadata = {
   title: "Contact · Murmur",
   description:
-    "Questions about Murmur or the waitlist? Email hey@trymurmur.studio — we reply within one business day.",
+    "Questions about Murmur or the waitlist? Email hey@trymurmur.studio. We reply within one business day.",
   alternates: { canonical: "/contact" },
 };
 

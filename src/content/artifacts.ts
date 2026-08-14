@@ -5,7 +5,7 @@ export const artifacts = {
   eyebrow: "The artifacts",
   title: "Talk on your phone. Open your workspace on your laptop.",
   subhead:
-    "Capture is a five-minute voice memo. What comes back is a brand kit, a Jira board, and a Confluence space — real artifacts in your own tools, not a summary you still have to act on.",
+    "Capture is a five-minute voice memo. What comes back is a brand kit, a Jira board, and a Confluence space: real artifacts in your own tools, not a summary you still have to act on.",
   stages: {
     capture: { label: "Capture", frameLabel: "Listener · iPhone" },
     artifacts: { label: "Artifacts", frameLabel: "Your workspace · Desktop" },
@@ -76,7 +76,7 @@ export const artifacts = {
   liveSample: {
     href: null as string | null,
     enabledLabel: "View a live sample →",
-    disabledLabel: "View a live sample — coming with our first public run",
+    disabledLabel: "View a live sample. Coming with our first public run",
   },
 } as const;
 

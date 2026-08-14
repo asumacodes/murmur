@@ -18,7 +18,7 @@ export default function NotFound() {
           This page took a wrong turn.
         </h1>
         <p className="mx-auto mt-5 max-w-md text-[var(--text-secondary)]">
-          The page you&apos;re after doesn&apos;t exist — or hasn&apos;t been
+          The page you&apos;re after doesn&apos;t exist, or hasn&apos;t been
           built yet. Murmur is a work in progress.
         </p>
         <div className="mt-8 flex justify-center">
