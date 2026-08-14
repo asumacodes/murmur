@@ -3,8 +3,8 @@ import { gsap } from "@/lib/gsap";
 
 export const REPLAY_PIPELINE_EVENT = "murmur:pipeline-replay";
 
-/** Progress breakpoints for 5 narrative stages (aligned to scrub scroll). */
-const STAGE_THRESHOLDS = [0, 0.18, 0.36, 0.54, 0.72, 1];
+/** Progress breakpoints for 7 narrative stages (aligned to scrub scroll). */
+const STAGE_THRESHOLDS = [0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 1];
 
 export function getPipelineStageIndex(progress: number): number {
   const clamped = Math.max(0, Math.min(1, progress));
@@ -51,16 +51,11 @@ export function createPipelineStageController(
 
   const queryNodes = () => gsap.utils.toArray<HTMLElement>(".pipeline-node", run);
   const querySlots = () => gsap.utils.toArray<HTMLElement>(".pipeline-card-slot", run);
-  const queryHubSlot = () => run.querySelector<HTMLElement>("[data-pipeline-hub]");
 
   const getActiveSlot = (stageIndex: number): HTMLElement | null => {
     const stage = pipelineStages[stageIndex];
     if (!stage) {
       return null;
-    }
-
-    if (stage.glowTarget === "hub") {
-      return queryHubSlot();
     }
 
     const nodeEl = queryNodes().find((entry) => entry.dataset.index === String(stage.glowTarget));
@@ -128,13 +123,6 @@ export function createPipelineStageController(
 
     const { glowTarget } = stage;
     const activeSlot = getActiveSlot(stageIndex);
-
-    if (glowTarget === "hub") {
-      activeSlot?.classList.add("is-active-stage");
-      activeSlot?.querySelector<HTMLElement>(".pipeline-node")?.classList.add("is-tracing");
-      applySlotFocus(activeSlot);
-      return;
-    }
 
     const nodeEl = queryNodes().find((entry) => entry.dataset.index === String(glowTarget));
     if (!nodeEl) {

@@ -58,9 +58,9 @@ export const pipelineNodes = [
   { name: "Transcription", role: "Structured Text", level: 0 },
   { name: "Exa", role: "Market Research", level: 0 },
   { name: "Claude / PRD Agent", role: "Zod Schema", level: 0 },
-  { name: "Brand Agent", role: "Identity Kit", level: 1 },
-  { name: "Jira Generator", role: "Epics + Stories", level: 1 },
-  { name: "Confluence Generator", role: "Space + Pages", level: 1 },
+  { name: "Brand Agent", role: "PRD fans out · parallel", level: 1 },
+  { name: "Jira Generator", role: "PRD fans out · parallel", level: 1 },
+  { name: "Confluence Generator", role: "PRD fans out · parallel", level: 1 },
 ];
 
 export const pipelineNodeOutputs = [
@@ -70,7 +70,7 @@ export const pipelineNodeOutputs = [
   "→ Validated PRD schema",
   "→ Brand identity kit",
   "→ Jira epics + stories",
-  "→ Confluence space scaffold",
+  "→ Confluence space",
 ];
 
 export const pipelineNodeBodies = [
@@ -78,9 +78,9 @@ export const pipelineNodeBodies = [
   "Speech becomes structured text: speaker turns, punctuation, paragraph breaks. The transcript is what the pipeline reads.",
   "Live web search for competitors and prior art. Citations you can open, not invented market research.",
   "One agent turns the memo into a typed PRD, validated against a Zod schema before anything downstream runs.",
-  "Palette, typography, and voice pulled from the spec, not a generic mood board.",
-  "Epics and stories generated from the PRD. The backlog follows the product, not reverse-engineered docs.",
-  "Confluence space and pages scaffolded to mirror the PRD structure your team can fill in.",
+  "A usable identity — palette, type, and voice — pulled from your PRD. Not a mood board you'll redo.",
+  "Epics and stories generated from the PRD, in your own Jira tenant. A backlog that follows the product — not reverse-engineered after the fact.",
+  "A Confluence space scaffolded to your PRD — real pages, real structure, ready for your team to fill in.",
 ];
 
 export type PipelineIllustration =
@@ -108,7 +108,9 @@ export const pipelineRailSteps = [
   { step: "02", label: "Transcription" },
   { step: "03", label: "Research" },
   { step: "04", label: "PRD" },
-  { step: "05", label: "Brand · Jira · Confluence" },
+  { step: "05", label: "Brand" },
+  { step: "06", label: "Jira" },
+  { step: "07", label: "Confluence" },
 ] as const;
 
 export type PipelineStage = {
@@ -117,7 +119,7 @@ export type PipelineStage = {
   role: string;
   output: string;
   body: string;
-  glowTarget: number | "hub";
+  glowTarget: number;
 };
 
 export const pipelineStages: PipelineStage[] = [
@@ -154,12 +156,28 @@ export const pipelineStages: PipelineStage[] = [
     glowTarget: 3,
   },
   {
-    step: "05–07",
-    title: "Parallel agents",
-    role: "PRD Fans Out",
-    output: "→ Brand · Jira · Confluence",
-    body: "The PRD fans out to three specialists at once: brand identity, Jira board, and Confluence space, generated in parallel.",
-    glowTarget: "hub",
+    step: "05",
+    title: "Brand Agent",
+    role: "PRD fans out · parallel",
+    output: "→ Brand identity kit",
+    body: "A usable identity — palette, type, and voice — pulled from your PRD. Not a mood board you'll redo.",
+    glowTarget: 4,
+  },
+  {
+    step: "06",
+    title: "Jira Generator",
+    role: "PRD fans out · parallel",
+    output: "→ Jira epics + stories",
+    body: "Epics and stories generated from the PRD, in your own Jira tenant. A backlog that follows the product — not reverse-engineered after the fact.",
+    glowTarget: 5,
+  },
+  {
+    step: "07",
+    title: "Confluence Generator",
+    role: "PRD fans out · parallel",
+    output: "→ Confluence space",
+    body: "A Confluence space scaffolded to your PRD — real pages, real structure, ready for your team to fill in.",
+    glowTarget: 6,
   },
 ];
 

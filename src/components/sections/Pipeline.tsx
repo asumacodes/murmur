@@ -9,7 +9,6 @@ import {
   pipelineNodeOutputs,
   pipelineNodes,
   pipelineRailSteps,
-  pipelineStages,
 } from "@/content/home";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { desktopMedia, mobileMedia, scrollEnter } from "@/lib/motion";
@@ -19,9 +18,6 @@ import {
   REPLAY_PIPELINE_EVENT,
 } from "@/lib/pipeline-tracer";
 import { pipelineSectionPadClass } from "@/lib/styles";
-
-const mainFlow = pipelineNodes.slice(0, 4);
-const parallelStage = pipelineStages[4];
 
 const pinWrapClass =
   "pipeline-pin-wrap box-border gap-0 bg-[var(--bg-warm)] lg:flex lg:h-auto lg:min-h-0 lg:max-h-none lg:flex-col lg:justify-start lg:py-[clamp(2.75rem,5.5vh,4.5rem)]";
@@ -348,14 +344,14 @@ export function Pipeline() {
         );
 
         gsap.set(run, { autoAlpha: 1, y: 0 });
-        requestAnimationFrame(() => desktopScrub?.setupScrub("+=240%"));
+        requestAnimationFrame(() => desktopScrub?.setupScrub("+=340%"));
 
         const onResize = () => {
           if (!run.classList.contains("is-live")) {
             return;
           }
 
-          desktopScrub?.setupScrub("+=240%");
+          desktopScrub?.setupScrub("+=340%");
         };
 
         window.addEventListener("resize", onResize);
@@ -387,7 +383,7 @@ export function Pipeline() {
         gsap.set(run, { autoAlpha: 1, y: 0 });
         gsap.set(track, { x: 0 });
         requestAnimationFrame(() => {
-          mobileScrub?.setupScrub("+=180%");
+          mobileScrub?.setupScrub("+=250%");
           mobileScrub?.scrubTo(0);
         });
 
@@ -466,26 +462,11 @@ export function Pipeline() {
 function HorizontalPipelineTrack() {
   return (
     <>
-      {mainFlow.map((node, index) => (
+      {pipelineNodes.map((node, index) => (
         <div key={node.name} className={cardSlotClass}>
           <PipelineStageCard node={node} index={index} />
         </div>
       ))}
-
-      <div className={cardSlotClass} data-pipeline-hub>
-        <PipelineStageCard
-          node={{
-            name: parallelStage.title,
-            role: parallelStage.role,
-            level: 1,
-          }}
-          index={4}
-          body={parallelStage.body}
-          output={parallelStage.output}
-          illustration="parallel"
-          stepLabel={parallelStage.step}
-        />
-      </div>
     </>
   );
 }

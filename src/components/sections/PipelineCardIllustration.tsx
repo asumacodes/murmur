@@ -172,25 +172,109 @@ export function PipelineCardIllustration({
       ) : null}
 
       {variant === "brand" ? (
-        <div className={`pipeline-art-swatches flex gap-[0.55rem] ${contentWidth}`}>
-          <span className="pipeline-art-swatch h-[3.25rem] flex-1 rounded-[0.55rem] border border-[rgba(168,163,154,0.14)] bg-[rgba(201,169,110,0.35)]" />
-          <span className="pipeline-art-swatch h-[3.25rem] flex-1 rounded-[0.55rem] border border-[rgba(168,163,154,0.14)] bg-[rgba(168,163,154,0.18)]" />
-          <span className="pipeline-art-swatch h-[3.25rem] flex-1 rounded-[0.55rem] border border-[rgba(168,163,154,0.14)] bg-[rgba(42,34,24,0.85)]" />
+        <div
+          className={[
+            "pipeline-art-brand grid grid-cols-4",
+            contentWidth,
+            hero ? "gap-[0.4rem]" : compact ? "gap-[0.22rem]" : "gap-[0.35rem]",
+          ].join(" ")}
+        >
+          {[
+            { label: "Ink", swatch: "bg-[#12110f] border-[rgba(168,163,154,0.28)]" },
+            { label: "Paper", swatch: "bg-[#e8e2d6] border-[rgba(232,226,214,0.35)]" },
+            { label: "Gold", swatch: "bg-[var(--gold)] border-[color-mix(in_srgb,var(--gold)_55%,transparent)]" },
+            { label: "Seal", swatch: "bg-[#8b3a2f] border-[rgba(139,58,47,0.45)]" },
+          ].map((chip) => (
+            <div key={chip.label} className="pipeline-art-swatch-unit flex min-w-0 flex-col gap-[0.35rem]">
+              <span
+                className={[
+                  "pipeline-art-swatch block w-full rounded-[0.4rem] border",
+                  chip.swatch,
+                  hero ? "h-[3.1rem]" : compact ? "h-[1.85rem]" : "h-[2.6rem]",
+                ].join(" ")}
+              />
+              {!compact ? (
+                <span className="font-mono-text truncate text-center text-[0.48rem] font-semibold uppercase tracking-[0.1em] text-[var(--text-tertiary)]">
+                  {chip.label}
+                </span>
+              ) : null}
+            </div>
+          ))}
         </div>
       ) : null}
 
       {variant === "jira" ? (
-        <div className={`pipeline-art-tickets flex flex-col gap-[0.45rem] ${contentWidth}`}>
-          <span className="pipeline-art-ticket block h-[0.85rem] rounded-[0.35rem] border border-[rgba(168,163,154,0.16)] bg-[rgba(168,163,154,0.1)]" />
-          <span className="pipeline-art-ticket block h-[0.85rem] w-[88%] rounded-[0.35rem] border border-[rgba(168,163,154,0.16)] bg-[rgba(168,163,154,0.1)]" />
-          <span className="pipeline-art-ticket block h-[0.85rem] w-[72%] rounded-[0.35rem] border border-[rgba(168,163,154,0.16)] bg-[rgba(168,163,154,0.1)]" />
+        <div
+          className={[
+            "pipeline-art-board grid grid-cols-3",
+            contentWidth,
+            hero ? "gap-[0.35rem]" : compact ? "gap-[0.22rem]" : "gap-[0.3rem]",
+          ].join(" ")}
+        >
+          {[
+            { label: "Backlog", cards: 2 },
+            { label: "Doing", cards: 2 },
+            { label: "Done", cards: 1 },
+          ].map((column) => (
+            <div
+              key={column.label}
+              className={[
+                "pipeline-art-column flex min-w-0 flex-col rounded-[0.4rem] border border-[rgba(168,163,154,0.14)] bg-[rgba(10,10,10,0.4)]",
+                hero ? "gap-[0.28rem] p-[0.32rem]" : compact ? "gap-[0.18rem] p-[0.2rem]" : "gap-[0.24rem] p-[0.28rem]",
+              ].join(" ")}
+            >
+              <span
+                className={[
+                  "font-mono-text truncate font-semibold uppercase tracking-[0.08em] text-[var(--text-tertiary)]",
+                  compact ? "text-[0.4rem]" : "text-[0.48rem]",
+                ].join(" ")}
+              >
+                {column.label}
+              </span>
+              {Array.from({ length: column.cards }, (_, cardIndex) => (
+                <span
+                  key={cardIndex}
+                  className={[
+                    "pipeline-art-ticket block w-full rounded-[0.25rem] border border-[rgba(168,163,154,0.18)] bg-[rgba(168,163,154,0.12)]",
+                    hero ? "h-[1.05rem]" : compact ? "h-[0.65rem]" : "h-[0.85rem]",
+                  ].join(" ")}
+                >
+                  <span
+                    className={[
+                      "mt-[0.28rem] ml-[0.28rem] block h-[0.16rem] rounded-full bg-[rgba(168,163,154,0.35)]",
+                      cardIndex === 0 ? "w-[70%]" : "w-[48%]",
+                    ].join(" ")}
+                  />
+                </span>
+              ))}
+            </div>
+          ))}
         </div>
       ) : null}
 
       {variant === "confluence" ? (
-        <div className={`pipeline-art-pages flex gap-[0.65rem] ${contentWidth}`}>
-          <span className="pipeline-art-page h-16 flex-1 rounded-[0.45rem] border border-[rgba(168,163,154,0.16)] bg-[rgba(168,163,154,0.08)]" />
-          <span className="pipeline-art-page mt-[0.65rem] h-16 flex-1 rounded-[0.45rem] border border-[rgba(168,163,154,0.16)] bg-[rgba(168,163,154,0.08)]" />
+        <div className={`pipeline-art-docs relative ${contentWidth}`}>
+          <div
+            className={[
+              "pipeline-art-page absolute right-0 bottom-0 w-[58%] rounded-[0.4rem] border border-[rgba(168,163,154,0.14)] bg-[rgba(20,18,15,0.9)]",
+              hero ? "h-[4.75rem] p-[0.55rem]" : compact ? "h-[2.75rem] p-[0.3rem]" : "h-[4rem] p-[0.45rem]",
+            ].join(" ")}
+          >
+            <span className="mb-[0.35rem] block h-[0.22rem] w-[42%] rounded-full bg-[rgba(168,163,154,0.2)]" />
+            <span className="mb-[0.28rem] block h-[0.18rem] w-full rounded-full bg-[rgba(168,163,154,0.12)]" />
+            <span className="block h-[0.18rem] w-[78%] rounded-full bg-[rgba(168,163,154,0.12)]" />
+          </div>
+          <div
+            className={[
+              "pipeline-art-page relative z-[1] w-[68%] rounded-[0.4rem] border border-[rgba(168,163,154,0.18)] bg-[rgba(28,25,20,0.95)] shadow-[0_8px_20px_rgba(0,0,0,0.35)]",
+              hero ? "h-[5.25rem] p-[0.65rem]" : compact ? "h-[3.1rem] p-[0.35rem]" : "h-[4.5rem] p-[0.55rem]",
+            ].join(" ")}
+          >
+            <span className="mb-[0.45rem] block h-[0.28rem] w-[48%] rounded-full bg-[color-mix(in_srgb,var(--gold)_45%,transparent)]" />
+            <span className="mb-[0.3rem] block h-[0.2rem] w-full rounded-full bg-[rgba(168,163,154,0.18)]" />
+            <span className="mb-[0.3rem] block h-[0.2rem] w-[92%] rounded-full bg-[rgba(168,163,154,0.14)]" />
+            <span className="block h-[0.2rem] w-[70%] rounded-full bg-[rgba(168,163,154,0.12)]" />
+          </div>
         </div>
       ) : null}
     </div>
