@@ -4,4 +4,5 @@ export const features = {
   // with pricing) is ready to ship.
   comingSoon: false,
   studioLog: false,
+  artifacts: false, // hide until video / output pass (recordings + GSAP)
 } as const;

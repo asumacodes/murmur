@@ -36,7 +36,7 @@ export function FullLandingPage() {
         <Hero />
         <HowItWorks />
         <Pipeline />
-        <Artifacts />
+        {features.artifacts ? <Artifacts /> : null}
         <Comparison />
         <Pricing />
         {features.studioLog ? <StudioLog /> : null}
