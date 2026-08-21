@@ -55,3 +55,11 @@ export function trackSocialOutboundClicked(
     cta_location: location,
   });
 }
+
+export function trackDemoDeviceToggled(device: "desktop" | "mobile") {
+  posthog?.capture("demo_device_toggled", { device });
+}
+
+export function trackDemoVideoPlayed(device: "desktop" | "mobile") {
+  posthog?.capture("demo_video_played", { device });
+}

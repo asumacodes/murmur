@@ -28,7 +28,7 @@ export const sectionSpyIds = features.studioLog
 export const analyticsSectionIds = [
   "how-it-works",
   "pipeline",
-  ...(features.artifacts ? (["artifacts"] as const) : []),
+  "demo",
   "comparison",
   "pricing",
   ...(features.studioLog ? (["studio-log"] as const) : []),
