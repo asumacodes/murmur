@@ -42,16 +42,16 @@ export const beatMeasures: Record<
       capture: (r) =>
         relPoint(container, r.left - 30, r.top - 30 + r.height / 2),
       timer: (r) => relPoint(container, r.left + r.width / 2, r.top - 50),
-      stop: (r) => relPoint(container, r.left - 12 + r.width / 2, r.bottom - 25),
+      stop: (r) => relPoint(container, r.left - 22 + r.width / 2, r.bottom - 25),
     }),
   transcribe: (shot, container) =>
     measureByAnchors(shot, container, {
       transcript: (r) =>
-        relPoint(container, r.left - 8, r.top + r.height / 2),
+        relPoint(container, r.left - 30, r.top + r.height / 2),
       meta: (r) =>
-        relPoint(container, r.left + r.width * 0.28, r.top - 10),
+        relPoint(container, r.left + r.width * 0.18, r.top + 35),
       runpipeline: (r) =>
-        relPoint(container, r.left + r.width / 2, r.bottom + 10),
+        relPoint(container, r.left - 20 + r.width / 2, r.bottom + 53),
     }),
   pipeline: (shot, container) =>
     measureByAnchors(shot, container, {
@@ -142,23 +142,23 @@ export const SCROLL_BEATS: ScrollBeat[] = [
       {
         id: "transcript",
         lines: ["Structured,", "not raw"],
-        label: { x: -12, y: 38 },
-        connector: { x: -10, y: 48 },
+        label: { x: 20, y: 32 },
+        connector: { x: 18, y: 50 },
         dir: "left",
       },
       {
         id: "meta",
-        lines: [`${SHOTGUN_WORD_COUNT} words ·`, "37 seconds"],
-        label: { x: 50, y: -28 },
-        connector: { x: 50, y: -12 },
+        lines: [`${SHOTGUN_WORD_COUNT} words · 37 seconds`],
+        label: { x: 100, y: 10 },
+        connector: { x: 81, y: 15 },
         dir: "up",
         loops: 2,
       },
       {
         id: "runpipeline",
         lines: ["One click.", "It runs."],
-        label: { x: 62, y: 108 },
-        connector: { x: 58, y: 116 },
+        label: { x: 35, y: 125 },
+        connector: { x: 42, y: 135 },
         dir: "down",
         loops: 1,
       },
