@@ -46,6 +46,16 @@ export function trackPipelineReplayClicked(location: "hero" | string) {
   posthog?.capture("pipeline_replay_clicked", { cta_location: location });
 }
 
+/** Scroll-hero film — which beat was in view (ACTION-based; no PII). */
+export function trackScrollHeroBeatViewed(beatId: string) {
+  posthog?.capture("scroll_hero_beat_viewed", { beat_id: beatId });
+}
+
+/** Fired once when the visitor reaches ~end of the 6-beat pin. */
+export function trackScrollHeroCompleted() {
+  posthog?.capture("scroll_hero_completed", {});
+}
+
 export function trackSocialOutboundClicked(
   network: "x" | "youtube" | "github",
   location: "coming_soon" | "footer" | string,

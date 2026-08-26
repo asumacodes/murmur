@@ -8,6 +8,7 @@ import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Pricing } from "@/components/sections/Pricing";
 import { Pipeline } from "@/components/sections/Pipeline";
+import { ScrollHero } from "@/components/sections/ScrollHero";
 import { SprintZeroBand } from "@/components/sections/SprintZeroBand";
 import { StackStrip } from "@/components/sections/StackStrip";
 import { StudioLog } from "@/components/sections/StudioLog";
@@ -33,7 +34,7 @@ export function FullLandingPage() {
       <Header />
       <main id="main-content" tabIndex={-1} className="overflow-x-hidden">
         <SectionAnalytics />
-        <Hero />
+        {features.scrollHero ? <ScrollHero /> : <Hero />}
         <HowItWorks />
         <Pipeline />
         <Demo />

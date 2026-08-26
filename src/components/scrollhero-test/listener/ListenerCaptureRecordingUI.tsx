@@ -28,7 +28,7 @@ export function ListenerCaptureRecordingUI({
         {formatTime(elapsedSeconds)}
       </p>
 
-      <div className="mt-6" data-sh-anchor="waveform">
+      <div className="mt-6" data-sh-anchor="capture">
         <ListenerDemoWaveform />
       </div>
 
