@@ -56,29 +56,29 @@ export const beatMeasures: Record<
   pipeline: (shot, container) =>
     measureByAnchors(shot, container, {
       stages: (r) =>
-        relPoint(container, r.left - 6, r.top + r.height * 0.45),
+        relPoint(container, r.left + 60, r.top + r.height * 1.30),
       progress: (r) =>
-        relPoint(container, r.left + r.width / 2, r.top - 8),
+        relPoint(container, r.left - 30 + r.width / 2, r.top + 30),
       building: (r) =>
-        relPoint(container, r.left + r.width / 2, r.bottom + 8),
+        relPoint(container, r.left - 20 + r.width / 2, r.bottom - 80),
     }),
   prd: (shot, container) =>
     measureByAnchors(shot, container, {
       oneliner: (r) =>
-        relPoint(container, r.left + r.width / 2, r.top - 8),
+        relPoint(container, r.left - 206 + r.width / 2, r.top + 34),
       feature: (r) =>
-        relPoint(container, r.left - 6, r.top + r.height * 0.4),
+        relPoint(container, r.left - 6, r.top + r.height * 1.7),
       nav: (r) =>
-        relPoint(container, r.left + r.width / 2, r.bottom + 8),
+        relPoint(container, r.left - 30 + r.width / 2, r.top + r.height * 0.4),
     }),
   workspace: (shot, container) =>
     measureByAnchors(shot, container, {
       palette: (r) =>
-        relPoint(container, r.left + r.width / 2, r.top - 8),
+        relPoint(container, r.left + 50 / 2, r.top + 38),
       values: (r) =>
-        relPoint(container, r.left - 6, r.top + r.height / 2),
+        relPoint(container, r.left - 6, r.top + 14 + r.height / 2),
       type: (r) =>
-        relPoint(container, r.left + r.width / 2, r.bottom + 8),
+        relPoint(container, r.left + 20 + r.width / 2, r.bottom + 50),
     }),
 };
 
@@ -177,23 +177,23 @@ export const SCROLL_BEATS: ScrollBeat[] = [
       {
         id: "stages",
         lines: ["Four agents,", "in order"],
-        label: { x: -12, y: 42 },
-        connector: { x: -10, y: 52 },
+        label: { x: 18, y: 90 },
+        connector: { x: 18, y: 100 },
         dir: "left",
       },
       {
         id: "progress",
         lines: ["Stage four", "of four"],
-        label: { x: 28, y: -28 },
-        connector: { x: 28, y: -12 },
+        label: { x: 65, y: 5 },
+        connector: { x: 55, y: 12 },
         dir: "up",
         loops: 2,
       },
       {
         id: "building",
         lines: ["Your board,", "forming"],
-        label: { x: 62, y: 108 },
-        connector: { x: 58, y: 116 },
+        label: { x: 55, y: 122 },
+        connector: { x: 65, y: 132 },
         dir: "down",
         loops: 1,
       },
@@ -212,23 +212,23 @@ export const SCROLL_BEATS: ScrollBeat[] = [
       {
         id: "oneliner",
         lines: ["A sharp", "one-liner"],
-        label: { x: 48, y: -28 },
-        connector: { x: 48, y: -12 },
+        label: { x: 100, y: 4 },
+        connector: { x: 90, y: 12 },
         dir: "up",
         loops: 2,
       },
       {
         id: "feature",
         lines: ["Real features,", "prioritized"],
-        label: { x: -12, y: 48 },
-        connector: { x: -10, y: 58 },
+        label: { x: 18, y: 92 },
+        connector: { x: 18, y: 100 },
         dir: "left",
       },
       {
         id: "nav",
         lines: ["Structured,", "navigable"],
-        label: { x: 78, y: 108 },
-        connector: { x: 78, y: 116 },
+        label: { x: 78, y: 122 },
+        connector: { x: 88, y: 132 },
         dir: "down",
         loops: 1,
       },
@@ -247,23 +247,23 @@ export const SCROLL_BEATS: ScrollBeat[] = [
       {
         id: "palette",
         lines: ["Palette,", "type & voice"],
-        label: { x: 50, y: -28 },
-        connector: { x: 50, y: -12 },
+        label: { x: 92, y: 2 },
+        connector: { x: 82, y: 10 },
         dir: "up",
         loops: 2,
       },
       {
         id: "values",
-        lines: ["Brand, Jira", "& Confluence —", "in your tools"],
-        label: { x: -14, y: 62 },
-        connector: { x: -10, y: 72 },
+        lines: ["Brand, Jira", "& Confluence:", "in your tools"],
+        label: { x: 18, y: 97 },
+        connector: { x: 18, y: 100 },
         dir: "left",
       },
       {
         id: "type",
         lines: ["Ready to use"],
-        label: { x: 50, y: 108 },
-        connector: { x: 50, y: 116 },
+        label: { x: 78, y: 127 },
+        connector: { x: 80, y: 127 },
         dir: "down",
         loops: 1,
       },
