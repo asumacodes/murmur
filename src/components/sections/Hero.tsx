@@ -183,7 +183,7 @@ export function Hero() {
                     className={`${heroBtnBase} !text-[var(--bg-deep)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:!text-[var(--bg-deep)]`}
                     onClick={() => trackWaitlistCtaClicked("hero")}
                   >
-                    Join early access →
+                    Join the waitlist →
                   </MagneticGoldButton>
                   <GhostButton
                     href="#pipeline"

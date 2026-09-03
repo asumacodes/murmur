@@ -59,7 +59,7 @@ export function StickyMobileCTA() {
         tabIndex={visible ? undefined : -1}
         onClick={() => trackWaitlistCtaClicked("sticky_mobile")}
       >
-        Join early access →
+        Join the waitlist →
       </GoldButton>
     </div>
   );

@@ -144,7 +144,7 @@ export function Header() {
               className="text-sm"
               onClick={() => trackWaitlistCtaClicked("nav")}
             >
-              Join early access
+              Join the waitlist
             </GhostButton>
           </div>
 
@@ -223,7 +223,7 @@ export function Header() {
               setOpen(false);
             }}
           >
-            Join early access
+            Join the waitlist
           </GhostButton>
         </div>
       </nav>
