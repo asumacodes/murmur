@@ -26,7 +26,9 @@ export const sectionSpyIds = features.studioLog
 
 /** All trackable content sections, in page order — analytics drop-off (not nav). */
 export const analyticsSectionIds = [
-  ...(features.scrollHero ? (["scroll-hero"] as const) : []),
+  ...(features.scrollHero
+    ? (["scroll-hero-intro", "top"] as const)
+    : (["top"] as const)),
   "how-it-works",
   "pipeline",
   "demo",

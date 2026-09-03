@@ -1,3 +1,4 @@
+import { ScrollHeroExperience } from "@/components/sections/ScrollHeroExperience";
 import { Comparison } from "@/components/sections/Comparison";
 import { Demo } from "@/components/sections/Demo";
 import { EarlyAccessCTA } from "@/components/sections/EarlyAccessCTA";
@@ -6,9 +7,8 @@ import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Pricing } from "@/components/sections/Pricing";
 import { Pipeline } from "@/components/sections/Pipeline";
-import { ScrollHero } from "@/components/sections/ScrollHero";
+import { Pricing } from "@/components/sections/Pricing";
 import { SprintZeroBand } from "@/components/sections/SprintZeroBand";
 import { StackStrip } from "@/components/sections/StackStrip";
 import { StudioLog } from "@/components/sections/StudioLog";
@@ -34,7 +34,7 @@ export function FullLandingPage() {
       <Header />
       <main id="main-content" tabIndex={-1} className="overflow-x-hidden">
         <SectionAnalytics />
-        {features.scrollHero ? <ScrollHero /> : <Hero />}
+        {features.scrollHero ? <ScrollHeroExperience /> : <Hero />}
         <HowItWorks />
         <Pipeline />
         <Demo />

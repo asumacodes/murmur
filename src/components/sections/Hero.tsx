@@ -15,31 +15,27 @@ const heroBtnBase =
 const heroMockupMobileChrome =
   "w-full max-w-[17.5rem] mx-auto [&_.listener]:w-full [&_.listener]:max-w-[17.5rem] [&_.listener]:-rotate-[1.5deg] [&_.lc-bezel]:rounded-[36px] [&_.lc-bezel]:p-[10px] [&_.lc-screen]:aspect-[390/720] [&_.lc-screen]:rounded-[28px] [&_.lc-screen]:px-4 [&_.lc-screen]:pb-[18px] [&_.lc-screen]:pt-[14px]";
 
-export function Hero() {
+const heroMotionTargets = [
+  ".hero-eyebrow",
+  ".hero-title-line",
+  ".hero-subhead",
+  ".hero-cta",
+  ".hero-honesty",
+  ".hero-mockup-wrapper",
+  ".hero-divider",
+  ".hero-pipeline-label",
+  ".hero-pipeline-arrow",
+];
+
+type HeroProps = {
+  className?: string;
+};
+
+export function Hero({ className }: HeroProps) {
   const containerRef = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
-      const targets = [
-        ".hero-eyebrow",
-        ".hero-title-line",
-        ".hero-subhead",
-        ".hero-cta",
-        ".hero-honesty",
-        ".hero-mockup-wrapper",
-        ".hero-divider",
-        ".hero-pipeline-label",
-        ".hero-pipeline-arrow",
-      ];
-
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        gsap.set(targets, { autoAlpha: 1, y: 0, x: 0, scale: 1, rotation: 0 });
-        gsap.set(".hero-divider", { scaleX: 1 });
-        return;
-      }
-
-      const mm = gsap.matchMedia();
-
       const animateListenerDevice = (options?: { float?: boolean }) => {
         const bars = gsap.utils.toArray<HTMLElement>(
           ".waveform-bar",
@@ -67,6 +63,14 @@ export function Hero() {
           });
         }
       };
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.set(heroMotionTargets, { autoAlpha: 1, y: 0, x: 0, scale: 1, rotation: 0 });
+        gsap.set(".hero-divider", { scaleX: 1 });
+        return;
+      }
+
+      const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px)", () => {
         animateListenerDevice({ float: true });
@@ -126,7 +130,7 @@ export function Hero() {
         animateListenerDevice();
 
         gsap.fromTo(
-          targets,
+          heroMotionTargets,
           { autoAlpha: 0, y: 16 },
           {
             autoAlpha: 1,
@@ -144,28 +148,34 @@ export function Hero() {
     { scope: containerRef },
   );
 
+  const motionHiddenClass = "opacity-0";
+
   return (
     <section
       ref={containerRef}
       id="top"
       aria-label="Hero: Murmur product introduction"
-      className="relative overflow-hidden pb-8 pt-32 sm:pt-40 lg:flex lg:min-h-[100svh] lg:flex-col lg:pb-8 lg:pt-28"
+      className={`relative overflow-hidden pb-8 pt-32 sm:pt-40 lg:flex lg:min-h-[100svh] lg:flex-col lg:pb-8 lg:pt-28 ${className ?? ""}`}
     >
       <Container className="relative z-10 flex flex-1 flex-col">
         <div className="grid flex-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7 lg:flex lg:flex-col lg:justify-center">
             <div className="hero-copy-stack mx-auto flex flex-col gap-6 text-center lg:mx-0 lg:gap-8 lg:text-left">
-              <SectionEyebrow className="hero-eyebrow opacity-0">
+              <SectionEyebrow className={`hero-eyebrow ${motionHiddenClass}`}>
                 MURMUR · A SPRINTZERO STUDIO PRODUCT
               </SectionEyebrow>
               <h1 className="font-serif-display text-[clamp(3.35rem,16vw,8rem)] leading-[0.95] tracking-[-0.02em] lg:text-[clamp(3.75rem,7.5vw,7.5rem)]">
-                <span className="hero-title-line block opacity-0">Speak.</span>
-                <span className="hero-title-line block opacity-0 italic text-[var(--gold)]">
+                <span className={`hero-title-line block ${motionHiddenClass}`}>Speak.</span>
+                <span
+                  className={`hero-title-line block italic text-[var(--gold)] ${motionHiddenClass}`}
+                >
                   Transcribe.
                 </span>
-                <span className="hero-title-line block opacity-0">Ship.</span>
+                <span className={`hero-title-line block ${motionHiddenClass}`}>Ship.</span>
               </h1>
-              <p className="hero-subhead mx-auto max-w-[35rem] text-center text-xl leading-[1.55] text-[var(--text-secondary)] opacity-0 lg:mx-0 lg:text-left">
+              <p
+                className={`hero-subhead mx-auto max-w-[35rem] text-center text-xl leading-[1.55] text-[var(--text-secondary)] lg:mx-0 lg:text-left ${motionHiddenClass}`}
+              >
                 A five-minute voice memo becomes a validated PRD, brand kit, Jira board, and
                 Confluence space, automatically. Skip the{" "}
                 <span className="font-serif-display italic text-[var(--text-primary)]">
@@ -173,10 +183,12 @@ export function Hero() {
                 </span>
                 .
               </p>
-              <div className={`hero-mockup-wrapper opacity-0 lg:hidden ${heroMockupMobileChrome}`}>
+              <div
+                className={`hero-mockup-wrapper lg:hidden ${motionHiddenClass} ${heroMockupMobileChrome}`}
+              >
                 <ListenerMockup animateWaveform />
               </div>
-              <div className="hero-cta opacity-0">
+              <div className={`hero-cta ${motionHiddenClass}`}>
                 <div className="flex flex-col items-center gap-3 sm:flex-row sm:items-center lg:justify-start">
                   <MagneticGoldButton
                     href="#early-access"
@@ -198,13 +210,17 @@ export function Hero() {
                   </GhostButton>
                 </div>
               </div>
-              <p className="hero-honesty mx-auto text-center font-mono-text text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)] opacity-0 lg:mx-0 lg:text-left">
+              <p
+                className={`hero-honesty mx-auto text-center font-mono-text text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)] lg:mx-0 lg:text-left ${motionHiddenClass}`}
+              >
                 Waitlist open · no launch date promised
               </p>
             </div>
           </div>
 
-          <div className="hero-mockup-wrapper hidden opacity-0 lg:col-span-5 lg:flex lg:items-center lg:justify-end lg:py-6">
+          <div
+            className={`hero-mockup-wrapper hidden lg:col-span-5 lg:flex lg:items-center lg:justify-end lg:py-6 ${motionHiddenClass}`}
+          >
             <ListenerMockup animateWaveform tall />
           </div>
         </div>
@@ -220,7 +236,9 @@ export function Hero() {
           >
             {pipelineLabels.map((item, index) => (
               <span key={item.label} className="contents">
-                <span className="hero-pipeline-label inline-flex items-center gap-1 text-[var(--gold)] opacity-0">
+                <span
+                  className={`hero-pipeline-label inline-flex items-center gap-1 text-[var(--gold)] ${motionHiddenClass}`}
+                >
                   <span className="font-serif-display text-[0.65rem] italic leading-none lg:text-[0.72rem]">
                     {item.numeral}
                   </span>
@@ -230,7 +248,7 @@ export function Hero() {
                 </span>
                 {index < pipelineLabels.length - 1 ? (
                   <span
-                    className="hero-pipeline-arrow hidden px-1 text-[0.72rem] leading-none text-[var(--gold)] opacity-0 lg:inline"
+                    className={`hero-pipeline-arrow hidden px-1 text-[0.72rem] leading-none text-[var(--gold)] lg:inline ${motionHiddenClass}`}
                     aria-hidden="true"
                   >
                     →

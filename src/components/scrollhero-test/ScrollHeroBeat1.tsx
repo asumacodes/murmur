@@ -1,3 +1,4 @@
 "use client";
 
-export { ScrollHero as ScrollHeroBeat1, ScrollHero } from "@/components/sections/ScrollHero";
+export { ScrollHeroStandalone as ScrollHeroBeat1, ScrollHeroStandalone } from "@/components/sections/ScrollHeroExperience";
+export { ScrollHero } from "@/components/sections/ScrollHero";

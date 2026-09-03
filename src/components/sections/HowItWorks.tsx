@@ -11,6 +11,8 @@ import {
 import { Container, SectionHeader } from "@/components/ui";
 import { StepArtifact } from "@/components/ui/StepArtifact";
 import { howItWorks } from "@/content/home";
+import { whenCinematicIntroGateOpen } from "@/lib/cinematicIntro";
+import { activateScrollEnterReveals, createScrollEnterReveal } from "@/lib/scrollReveal";
 import { useSectionReveal } from "@/hooks/useSectionReveal";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { desktopMedia, mobileMedia, scrollEnter } from "@/lib/motion";
@@ -22,6 +24,44 @@ const stepArtifacts = [
   { tilt: "ccw" as const, variant: "dark" as const, flat: false, mockup: <FoundationMockup /> },
   { tilt: "cw" as const, variant: "dark" as const, flat: false, mockup: <HandoffMockup /> },
 ];
+
+const HOW_ROW_REVEALED = "data-hw-row";
+
+function playHowStepRowReveal(row: HTMLElement) {
+  if (row.getAttribute(HOW_ROW_REVEALED) === "1") {
+    return;
+  }
+  row.setAttribute(HOW_ROW_REVEALED, "1");
+
+  const numeral = row.querySelector(".step-numeral");
+  const content = row.querySelector(".step-content");
+  const visual = row.querySelector(".step-visual");
+
+  const tl = gsap.timeline();
+  if (numeral) {
+    tl.fromTo(
+      numeral,
+      { autoAlpha: 0, x: -24 },
+      { autoAlpha: 1, x: 0, duration: 0.8, ease: "power3.out" },
+    );
+  }
+  if (content) {
+    tl.fromTo(
+      content,
+      { autoAlpha: 0, y: 24 },
+      { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out" },
+      "-=0.55",
+    );
+  }
+  if (visual) {
+    tl.fromTo(
+      visual,
+      { autoAlpha: 0, y: 28 },
+      { autoAlpha: 1, y: 0, duration: 0.85, ease: "cubic-bezier(0.16, 1, 0.3, 1)" },
+      "-=0.55",
+    );
+  }
+}
 
 export function HowItWorks() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -43,34 +83,42 @@ export function HowItWorks() {
 
   useGSAP(
     () => {
-      const revealTargets = [".step-numeral", ".step-content", ".step-visual"];
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let disposed = false;
+      let mm: gsap.MatchMedia | null = null;
 
-      if (reduceMotion) {
-        gsap.set(revealTargets, { autoAlpha: 1, x: 0, y: 0 });
-        gsap.set(".how-progress-fill", { scaleY: 1 });
-        gsap.utils.toArray<HTMLElement>(".how-mobile-panel").forEach((panel, index) => {
-          panel.classList.toggle("is-active", index === 0);
-        });
-      } else {
-        const recordingBars = gsap.utils.toArray<HTMLElement>(
-          ".how-recording-bar",
-          sectionRef.current,
-        );
+      const init = () => {
+        if (disposed || !sectionRef.current) {
+          return;
+        }
 
-        recordingBars.forEach((bar) => {
-          gsap.to(bar, {
-            scaleY: "random(0.55, 1.35)",
-            transformOrigin: "bottom center",
-            duration: "random(0.18, 0.42)",
-            repeat: -1,
-            yoyo: true,
-            ease: "power1.inOut",
+        const revealTargets = [".step-numeral", ".step-content", ".step-visual"];
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (reduceMotion) {
+          gsap.set(revealTargets, { autoAlpha: 1, x: 0, y: 0 });
+          gsap.set(".how-progress-fill", { scaleY: 1 });
+          gsap.utils.toArray<HTMLElement>(".how-mobile-panel").forEach((panel, index) => {
+            panel.classList.toggle("is-active", index === 0);
           });
-        });
-      }
+        } else {
+          const recordingBars = gsap.utils.toArray<HTMLElement>(
+            ".how-recording-bar",
+            sectionRef.current,
+          );
 
-      const mm = gsap.matchMedia();
+          recordingBars.forEach((bar) => {
+            gsap.to(bar, {
+              scaleY: "random(0.55, 1.35)",
+              transformOrigin: "bottom center",
+              duration: "random(0.18, 0.42)",
+              repeat: -1,
+              yoyo: true,
+              ease: "power1.inOut",
+            });
+          });
+        }
+
+        mm = gsap.matchMedia();
 
       mm.add(desktopMedia, () => {
         const aside = sectionRef.current?.querySelector<HTMLElement>(".how-progress-aside");
@@ -158,43 +206,32 @@ export function HowItWorks() {
           };
         }
 
+        const rowRevealTriggers: ScrollTrigger[] = [];
+
         rows.forEach((row, index) => {
           const numeral = row.querySelector(".step-numeral");
           const content = row.querySelector(".step-content");
           const visual = row.querySelector(".step-visual");
 
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: row,
-              ...scrollEnter,
-            },
-          });
-
           if (numeral) {
-            tl.fromTo(
-              numeral,
-              { autoAlpha: 0, x: -24 },
-              { autoAlpha: 1, x: 0, duration: 0.8, ease: "power3.out" },
-            );
+            gsap.set(numeral, { autoAlpha: 0, x: -24 });
           }
-
           if (content) {
-            tl.fromTo(
-              content,
-              { autoAlpha: 0, y: 24 },
-              { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out" },
-              "-=0.55",
-            );
+            gsap.set(content, { autoAlpha: 0, y: 24 });
+          }
+          if (visual) {
+            gsap.set(visual, { autoAlpha: 0, y: 28 });
           }
 
-          if (visual) {
-            tl.fromTo(
-              visual,
-              { autoAlpha: 0, y: 28 },
-              { autoAlpha: 1, y: 0, duration: 0.85, ease: "cubic-bezier(0.16, 1, 0.3, 1)" },
-              "-=0.55",
-            );
-          }
+          rowRevealTriggers.push(
+            createScrollEnterReveal({
+              trigger: row,
+              start: scrollEnter.start,
+              onEnter: () => {
+                whenCinematicIntroGateOpen(() => playHowStepRowReveal(row));
+              },
+            }),
+          );
 
           ScrollTrigger.create({
             trigger: row,
@@ -205,13 +242,17 @@ export function HowItWorks() {
           });
         });
 
+        activateScrollEnterReveals(rowRevealTriggers, (trigger) => {
+          whenCinematicIntroGateOpen(() => playHowStepRowReveal(trigger as HTMLElement));
+        });
+
         return () => {
           window.removeEventListener("resize", onResize);
         };
       });
 
       if (reduceMotion) {
-        return () => mm.revert();
+        return;
       }
 
       mm.add(mobileMedia, () => {
@@ -263,7 +304,15 @@ export function HowItWorks() {
         };
       });
 
-      return () => mm.revert();
+      requestAnimationFrame(() => ScrollTrigger.refresh());
+      };
+
+      init();
+
+      return () => {
+        disposed = true;
+        mm?.revert();
+      };
     },
     { scope: sectionRef },
   );

@@ -31,6 +31,8 @@ export const EMPTY_STAGE_BOX: StageBox = {
 
 export type ScrollBeatStageProps = {
   onLayout?: () => void;
+  /** Live demo (recording timer); omit or false for static mobile frames */
+  active?: boolean;
 };
 
 export type ScrollBeat = {

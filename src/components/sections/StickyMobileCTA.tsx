@@ -3,6 +3,16 @@
 import { useEffect, useState } from "react";
 import { GoldButton } from "@/components/ui";
 import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
+import { features } from "@/config/features";
+import { isPastCinematicIntro } from "@/lib/cinematicIntro";
+
+function isPastHeroScroll(): boolean {
+  // Desktop scroll-hero: pin spacer height. Mobile classic Hero: normal scroll threshold.
+  if (features.scrollHero && window.matchMedia("(min-width: 768px)").matches) {
+    return isPastCinematicIntro();
+  }
+  return window.scrollY > window.innerHeight * 0.8;
+}
 
 /**
  * Mobile-only persistent waitlist CTA. Shows after the hero (~0.8vh),
@@ -28,7 +38,7 @@ export function StickyMobileCTA() {
       ticking = true;
       requestAnimationFrame(() => {
         ticking = false;
-        const pastHero = window.scrollY > window.innerHeight * 0.8;
+        const pastHero = isPastHeroScroll();
 
         let nearForm = false;
         if (target) {

@@ -1,6 +1,7 @@
 "use client";
 
 import { type RefObject } from "react";
+import { whenCinematicIntroGateOpen } from "@/lib/cinematicIntro";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
 
@@ -65,69 +66,88 @@ export function useSectionReveal({
 }: UseSectionRevealOptions) {
   useGSAP(
     () => {
-      const root = scope.current;
-      if (!root) {
-        return;
-      }
+      let ctx: gsap.Context | null = null;
+      let cancelled = false;
 
-      const allTargets =
-        reducedMotionTargets ?? groups.map((group) => group.selector);
-
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        gsap.set(allTargets, { autoAlpha: 1, y: 0, x: 0, scaleY: 1, scale: 1 });
-        return;
-      }
-
-      for (const group of groups) {
-        const enter = group.scrollEnter ?? scrollEnterOption;
-        const from = { ...defaultFrom, ...group.from };
-        const to = { ...defaultTo, ...group.to };
-        const els = gsap.utils.toArray<HTMLElement>(group.selector, root);
-
-        if (!els.length) {
-          continue;
+      const setup = () => {
+        const root = scope.current;
+        if (cancelled || !root) {
+          return;
         }
 
-        gsap.set(els, from);
+        ctx = gsap.context(() => {
+          const allTargets =
+            reducedMotionTargets ?? groups.map((group) => group.selector);
 
-        const play = (batch: HTMLElement[]) => {
-          const pending = takePending(batch);
-          if (!pending.length) {
+          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            gsap.set(allTargets, { autoAlpha: 1, y: 0, x: 0, scaleY: 1, scale: 1 });
             return;
           }
-          gsap.to(pending, {
-            ...to,
-            stagger: to.stagger ?? 0.1,
-            overwrite: "auto",
-          });
-        };
 
-        if (group.batch) {
-          ScrollTrigger.batch(els, {
-            start: enter.start,
-            once: true,
-            onEnter: (batch) => play(batch as HTMLElement[]),
-          });
-          continue;
-        }
+          for (const group of groups) {
+            const enter = group.scrollEnter ?? scrollEnterOption;
+            const from = { ...defaultFrom, ...group.from };
+            const to = { ...defaultTo, ...group.to };
+            const els = gsap.utils.toArray<HTMLElement>(group.selector, root);
 
-        const triggerOption = group.trigger;
-        const triggerEl =
-          triggerOption === undefined || triggerOption === null
-            ? els[0]
-            : typeof triggerOption === "string"
-              ? ((root.querySelector(triggerOption) as HTMLElement | null) ?? els[0])
-              : triggerOption;
+            if (!els.length) {
+              continue;
+            }
 
-        ScrollTrigger.create({
-          trigger: triggerEl,
-          start: enter.start,
-          once: true,
-          invalidateOnRefresh: true,
-          refreshPriority: 1,
-          onEnter: () => play(els),
-        });
-      }
+            gsap.set(els, from);
+
+            const play = (batch: HTMLElement[]) => {
+              const pending = takePending(batch);
+              if (!pending.length) {
+                return;
+              }
+              gsap.to(pending, {
+                ...to,
+                stagger: to.stagger ?? 0.1,
+                overwrite: "auto",
+              });
+            };
+
+            if (group.batch) {
+            ScrollTrigger.batch(els, {
+              start: enter.start,
+              once: true,
+              onEnter: (batch) => {
+                whenCinematicIntroGateOpen(() => play(batch as HTMLElement[]));
+              },
+            });
+              continue;
+            }
+
+            const triggerOption = group.trigger;
+            const triggerEl =
+              triggerOption === undefined || triggerOption === null
+                ? els[0]
+                : typeof triggerOption === "string"
+                  ? ((root.querySelector(triggerOption) as HTMLElement | null) ?? els[0])
+                  : triggerOption;
+
+            ScrollTrigger.create({
+              trigger: triggerEl,
+              start: enter.start,
+              once: true,
+              invalidateOnRefresh: true,
+              refreshPriority: 1,
+              onEnter: () => {
+                whenCinematicIntroGateOpen(() => play(els));
+              },
+            });
+          }
+        }, root);
+        requestAnimationFrame(() => ScrollTrigger.refresh());
+      };
+
+      setup();
+
+      return () => {
+        cancelled = true;
+        ctx?.revert();
+      };
     },
     { scope },
   );

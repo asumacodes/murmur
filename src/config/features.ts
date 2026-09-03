@@ -5,6 +5,6 @@ export const features = {
   comingSoon: false,
   studioLog: false,
   artifacts: false, // hide until video / output pass (recordings + GSAP)
-  /** 6-beat scroll-hero replaces Hero when true. Keep false until mobile QA. */
-  scrollHero: false,
+  /** Desktop (md+): pinned scroll-hero. Mobile: classic Hero. */
+  scrollHero: true,
 } as const;

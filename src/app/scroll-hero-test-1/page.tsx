@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ScrollHeroBeat1 } from "@/components/scrollhero-test/ScrollHeroBeat1";
+import { ScrollHeroStandalone } from "@/components/sections/ScrollHeroExperience";
 
 export const metadata: Metadata = {
   title: "Scroll hero test 1 · Murmur",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function ScrollHeroTest1Page() {
   return (
     <main>
-      <ScrollHeroBeat1 />
+      <ScrollHeroStandalone />
     </main>
   );
 }
