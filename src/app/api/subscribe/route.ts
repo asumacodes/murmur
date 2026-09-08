@@ -5,13 +5,20 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const WELCOME_TEXT = `You're on the Murmur waitlist.
 
-Murmur turns a five-minute voice memo into a complete project foundation: a validated PRD, brand kit, Jira board, and Confluence space. It's being built carefully, so there's no launch date to promise yet. When it opens, you'll be among the first to get in.
+Talk for a few minutes. Murmur turns that into a complete project foundation, under ten minutes, in your own Atlassian workspace:
 
-That's the only email you'll get from us until there's something real to share. No drip, no filler.
+-> a validated PRD
+-> a brand kit
+-> a Jira board, epics and stories
+-> a Confluence space
+
+It's being built carefully, so there's no launch date to promise yet. When it opens, you'll be among the first in.
+
+That's the only email you'll get until there's something real to share. No drip, no filler.
 
 Murmur
 a SprintZero Studio product
-https://www.trymurmur.studio`;
+trymurmur.studio`;
 
 type SubscribeBody = {
   email?: unknown;
