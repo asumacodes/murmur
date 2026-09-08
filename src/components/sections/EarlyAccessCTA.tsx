@@ -12,6 +12,7 @@ export function EarlyAccessCTA() {
   const sectionRef = useRef<HTMLElement>(null);
   const { email, status, handleSubmit, onEmailChange } = useSubscribeForm({
     onSubmitStart: () => trackWaitlistCtaClicked("form_submit"),
+    formLocation: "early_access",
   });
 
   useSectionReveal({

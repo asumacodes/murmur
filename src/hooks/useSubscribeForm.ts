@@ -1,16 +1,23 @@
 "use client";
 
 import { FormEvent, useRef, useState } from "react";
+import { trackWaitlistFormStarted } from "@/lib/analytics/events";
 
 export type SubscribeStatus = "idle" | "loading" | "success" | "error";
 
 type UseSubscribeFormOptions = {
   /** Analytics / CTA location passed to the click tracker by the caller */
   onSubmitStart?: () => void;
+  /** Location for waitlist_form_started (once per page load on first input) */
+  formLocation?: "early_access" | "coming_soon" | string;
 };
 
-export function useSubscribeForm({ onSubmitStart }: UseSubscribeFormOptions = {}) {
+export function useSubscribeForm({
+  onSubmitStart,
+  formLocation = "early_access",
+}: UseSubscribeFormOptions = {}) {
   const submitGuardRef = useRef(false);
+  const formStartedRef = useRef(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<SubscribeStatus>("idle");
 
@@ -43,6 +50,10 @@ export function useSubscribeForm({ onSubmitStart }: UseSubscribeFormOptions = {}
   }
 
   function onEmailChange(value: string) {
+    if (!formStartedRef.current && value.length > 0) {
+      formStartedRef.current = true;
+      trackWaitlistFormStarted(formLocation);
+    }
     setEmail(value);
     if (status === "error") {
       setStatus("idle");

@@ -13,7 +13,8 @@ import { skipLinkClass } from "@/lib/styles";
 export function ComingSoon() {
   const rootRef = useRef<HTMLDivElement>(null);
   const { email, status, handleSubmit, onEmailChange } = useSubscribeForm({
-    onSubmitStart: () => trackWaitlistCtaClicked("hero"),
+    onSubmitStart: () => trackWaitlistCtaClicked("coming_soon"),
+    formLocation: "coming_soon",
   });
 
   const { social, notify, footer } = comingSoon;

@@ -1,8 +1,6 @@
 import { pipelineStages } from "@/content/home";
 import { gsap } from "@/lib/gsap";
 
-export const REPLAY_PIPELINE_EVENT = "murmur:pipeline-replay";
-
 /** Progress breakpoints for 7 narrative stages (aligned to scrub scroll). */
 const STAGE_THRESHOLDS = [0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 1];
 

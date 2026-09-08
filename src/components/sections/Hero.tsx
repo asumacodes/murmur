@@ -4,10 +4,9 @@ import { useRef } from "react";
 import { ListenerMockup } from "@/components/mockups";
 import { Container, GhostButton, PlayIcon, SectionEyebrow } from "@/components/ui";
 import { MagneticGoldButton } from "@/components/ui/MagneticGoldButton";
-import { trackPipelineReplayClicked, trackWaitlistCtaClicked } from "@/lib/analytics/events";
+import { trackPipelineCtaClicked, trackWaitlistCtaClicked } from "@/lib/analytics/events";
 import { pipelineLabels } from "@/content/home";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { REPLAY_PIPELINE_EVENT } from "@/lib/pipeline-tracer";
 
 const heroBtnBase =
   "min-h-11 px-5 text-[0.9375rem] font-medium leading-none tracking-[0.01em] max-lg:min-w-[min(100%,16rem)] max-lg:max-w-[calc(100%-2rem)]";
@@ -188,10 +187,7 @@ export function Hero() {
                   <GhostButton
                     href="#pipeline"
                     className={`${heroBtnBase} border-[color-mix(in_srgb,var(--gold)_38%,transparent)] bg-transparent font-medium shadow-none hover:border-[var(--gold)] hover:bg-[rgba(201,169,110,0.04)] hover:text-[var(--gold)] hover:shadow-[inset_0_0_0_1px_rgba(201,169,110,0.06)]`}
-                    onClick={() => {
-                      trackPipelineReplayClicked("hero");
-                      window.dispatchEvent(new CustomEvent(REPLAY_PIPELINE_EVENT));
-                    }}
+                    onClick={() => trackPipelineCtaClicked("hero")}
                   >
                     Watch the pipeline run
                     <PlayIcon />

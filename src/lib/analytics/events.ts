@@ -42,8 +42,13 @@ export function trackArtifactsSurfaceTabbed(
   posthog?.capture("artifacts_surface_tabbed", { surface });
 }
 
-export function trackPipelineReplayClicked(location: "hero" | string) {
-  posthog?.capture("pipeline_replay_clicked", { cta_location: location });
+export function trackPipelineCtaClicked(location: "hero" | string) {
+  posthog?.capture("pipeline_cta_clicked", { cta_location: location });
+}
+
+/** Fired once per page load when the visitor starts typing in the waitlist email field (no PII). */
+export function trackWaitlistFormStarted(location: "early_access" | "coming_soon" | string = "early_access") {
+  posthog?.capture("waitlist_form_started", { cta_location: location });
 }
 
 /** Scroll-hero film — which beat was in view (ACTION-based; no PII). */

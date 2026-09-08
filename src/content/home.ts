@@ -362,7 +362,7 @@ export const waitlistSection = {
   description:
     "Murmur is being built carefully. Join the waitlist and you'll be first in when it opens. No date promised, no spam.",
   placeholder: "you@studio.com",
-  cta: "Reserve a seat →",
+  cta: "Join the waitlist →",
   footnote: "One welcome email now, then only what matters. Unsubscribe anytime.",
 } as const;
 

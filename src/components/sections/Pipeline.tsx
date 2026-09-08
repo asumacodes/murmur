@@ -15,7 +15,6 @@ import { desktopMedia, mobileMedia, scrollEnter } from "@/lib/motion";
 import {
   applyPipelineScrub,
   createPipelineStageController,
-  REPLAY_PIPELINE_EVENT,
 } from "@/lib/pipeline-tracer";
 import { pipelineSectionPadClass } from "@/lib/styles";
 
@@ -233,7 +232,7 @@ function createScrubHandlers(refs: ScrubRefs, section: HTMLElement, pinWrap: HTM
     stageController.clearStage();
   };
 
-  return { setupScrub, scrubTo, kill, getScrubTrigger: () => scrubTrigger };
+  return { setupScrub, scrubTo, kill };
 }
 
 export function Pipeline() {
@@ -259,40 +258,6 @@ export function Pipeline() {
 
       let desktopScrub: ReturnType<typeof createScrubHandlers> | null = null;
       let mobileScrub: ReturnType<typeof createScrubHandlers> | null = null;
-      let replayTimeline: gsap.core.Timeline | null = null;
-
-      const onReplay = () => {
-        const activeScrub = desktopScrub ?? mobileScrub;
-        const scrubTrigger = activeScrub?.getScrubTrigger();
-        const dot =
-          progressRailRef.current?.querySelector<HTMLElement>(".pipeline-progress-tracer") ??
-          mobileProgressRailRef.current?.querySelector<HTMLElement>(".pipeline-progress-tracer");
-
-        if (!activeScrub || !dot) {
-          return;
-        }
-
-        replayTimeline?.kill();
-        scrubTrigger?.disable();
-
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
-
-        const proxy = { progress: 0 };
-        replayTimeline = gsap.timeline({
-          onUpdate: () => activeScrub.scrubTo(proxy.progress),
-          onComplete: () => {
-            scrubTrigger?.enable();
-          },
-        });
-
-        replayTimeline.to(proxy, {
-          progress: 1,
-          duration: 3.2,
-          ease: "none",
-        });
-
-        replayTimeline.play(0);
-      };
 
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         gsap.set(".pipeline-header-line", { autoAlpha: 1, y: 0 });
@@ -393,14 +358,10 @@ export function Pipeline() {
         };
       });
 
-      window.addEventListener(REPLAY_PIPELINE_EVENT, onReplay);
-
       return () => {
-        replayTimeline?.kill();
         desktopScrub?.kill();
         mobileScrub?.kill();
         mm.revert();
-        window.removeEventListener(REPLAY_PIPELINE_EVENT, onReplay);
       };
     },
     { scope: sectionRef },

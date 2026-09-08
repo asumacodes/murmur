@@ -133,12 +133,13 @@ improve the Service. This includes cookieless website analytics (via
 Cloudflare) and product analytics that set a first-party analytics cookie on
 our own domain. This cookie is used only to measure usage of our own websites
 and app (for example, to understand how visitors move from our marketing site
-to the product, which marketing sections they view, how far they scroll, and —
-when the scroll-hero experience is enabled — which beats of that sequence they
-reach and whether they complete it) and is not shared with advertisers or used
-to track you across other companies' websites. The information is used in an
-aggregated, de-identified form and is not used to determine your individual
-identity.
+to the product, which marketing sections they view, how far they scroll, when
+they start or submit the waitlist form — without collecting the email address
+itself — and, when the scroll-hero experience is enabled, which beats of that
+sequence they reach and whether they complete it) and is not shared with
+advertisers or used to track you across other companies' websites. The
+information is used in an aggregated, de-identified form and is not used to
+determine your individual identity.
 
 Alongside these, we use only the essential cookies required to keep you signed
 in and to operate the Service securely.
