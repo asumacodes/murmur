@@ -407,6 +407,7 @@ export const footerLinks = {
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
     { label: "Roadmap", href: "#pipeline" },
+    { label: "support@trymurmur.studio", href: "mailto:support@trymurmur.studio" },
   ],
   legal: [
     { label: "Privacy", href: "/privacy" },

@@ -39,6 +39,19 @@ export default function ContactPage() {
           <p className="font-mono-text mt-4 text-xs uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
             {contact.responsePromise}
           </p>
+          <p className="font-mono-text mt-1.5 text-xs uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
+            {contact.featureRequestPromise}
+          </p>
+
+          <p className="mt-6 text-sm text-[var(--text-secondary)]">
+            {contact.support.body}{" "}
+            <a
+              href={`mailto:${contact.support.email}`}
+              className={`${focusRingClass} ${goldLinkClass} rounded-sm`}
+            >
+              {contact.support.email}
+            </a>
+          </p>
 
           <div className="mt-10 border-t border-[var(--border-subtle)] pt-6">
             <a
