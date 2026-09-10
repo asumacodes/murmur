@@ -172,9 +172,6 @@ export function Hero() {
                 </span>
                 .
               </p>
-              <div className={`hero-mockup-wrapper opacity-0 lg:hidden ${heroMockupMobileChrome}`}>
-                <ListenerMockup animateWaveform />
-              </div>
               <div className="hero-cta opacity-0">
                 <div className="flex flex-col items-center gap-3 sm:flex-row sm:items-center lg:justify-start">
                   <MagneticGoldButton
@@ -197,6 +194,9 @@ export function Hero() {
               <p className="hero-honesty mx-auto text-center font-mono-text text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)] opacity-0 lg:mx-0 lg:text-left">
                 Waitlist open · no launch date promised
               </p>
+              <div className={`hero-mockup-wrapper opacity-0 lg:hidden ${heroMockupMobileChrome}`}>
+                <ListenerMockup animateWaveform />
+              </div>
             </div>
           </div>
 

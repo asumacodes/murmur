@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MurmurMark } from "@/components/brand/MurmurMark";
 import { navItems } from "@/content/home";
-import { GhostButton, VersionChip } from "@/components/ui";
+import { GhostButton, GoldButton, VersionChip } from "@/components/ui";
 import { features } from "@/config/features";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
@@ -215,16 +215,16 @@ export function Header() {
         </ul>
 
         <div className="mt-auto flex justify-center">
-          <GhostButton
+          <GoldButton
             href="#early-access"
-            className="max-lg:min-w-[min(100%,16rem)] max-lg:max-w-[calc(100%-2rem)]"
+            className="w-full justify-center"
             onClick={() => {
               trackWaitlistCtaClicked("nav");
               setOpen(false);
             }}
           >
-            Join the waitlist
-          </GhostButton>
+            Join the waitlist →
+          </GoldButton>
         </div>
       </nav>
     </header>
