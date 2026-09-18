@@ -1,3 +1,5 @@
+import { FOUNDING_REWARD_COPY } from "@/content/founding";
+
 export type FaqItem = { q: string; a: string };
 
 export const faq: FaqItem[] = [
@@ -19,6 +21,6 @@ export const faq: FaqItem[] = [
   },
   {
     q: "What's the founding member reward?",
-    a: "When Murmur opens, the first 50 people to subscribe get double their tier's idea allowance, for a year. Join the waitlist to be ready when that window opens.",
+    a: FOUNDING_REWARD_COPY,
   },
 ] as const;

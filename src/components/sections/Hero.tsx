@@ -4,7 +4,9 @@ import { useRef } from "react";
 import { ListenerMockup } from "@/components/mockups";
 import { Container, GhostButton, PlayIcon, SectionEyebrow } from "@/components/ui";
 import { MagneticGoldButton } from "@/components/ui/MagneticGoldButton";
-import { trackPipelineCtaClicked, trackWaitlistCtaClicked } from "@/lib/analytics/events";
+import { trackPipelineCtaClicked, trackSignupCtaClicked } from "@/lib/analytics/events";
+import { appHref } from "@/lib/appUrl";
+import { FOUNDING_REWARD_CHIP } from "@/content/founding";
 import { pipelineLabels } from "@/content/home";
 import { gsap, useGSAP } from "@/lib/gsap";
 
@@ -175,11 +177,11 @@ export function Hero() {
               <div className="hero-cta opacity-0">
                 <div className="flex flex-col items-center gap-3 sm:flex-row sm:items-center lg:justify-start">
                   <MagneticGoldButton
-                    href="#early-access"
+                    href={appHref()}
                     className={`${heroBtnBase} !text-[var(--bg-deep)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:!text-[var(--bg-deep)]`}
-                    onClick={() => trackWaitlistCtaClicked("hero")}
+                    onClick={() => trackSignupCtaClicked("hero")}
                   >
-                    Join the waitlist →
+                    Get started →
                   </MagneticGoldButton>
                   <GhostButton
                     href="#pipeline"
@@ -192,7 +194,7 @@ export function Hero() {
                 </div>
               </div>
               <p className="hero-honesty mx-auto text-center font-mono-text text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)] opacity-0 lg:mx-0 lg:text-left">
-                Waitlist open · no launch date promised
+                {FOUNDING_REWARD_CHIP}
               </p>
               <div className={`hero-mockup-wrapper opacity-0 lg:hidden ${heroMockupMobileChrome}`}>
                 <ListenerMockup animateWaveform />

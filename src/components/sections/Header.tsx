@@ -6,7 +6,8 @@ import { navItems } from "@/content/home";
 import { GhostButton, GoldButton, VersionChip } from "@/components/ui";
 import { features } from "@/config/features";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
-import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
+import { trackSignupCtaClicked } from "@/lib/analytics/events";
+import { appHref } from "@/lib/appUrl";
 import { sectionSpyIds } from "@/lib/motion";
 import { containerClass, focusRingClass, navLinkClass } from "@/lib/styles";
 
@@ -140,11 +141,11 @@ export function Header() {
         <div className="flex items-center gap-3">
           <div className="hidden md:block">
             <GhostButton
-              href="#early-access"
+              href={appHref()}
               className="text-sm"
-              onClick={() => trackWaitlistCtaClicked("nav")}
+              onClick={() => trackSignupCtaClicked("nav")}
             >
-              Join the waitlist
+              Get started
             </GhostButton>
           </div>
 
@@ -216,14 +217,14 @@ export function Header() {
 
         <div className="mt-auto flex justify-center">
           <GoldButton
-            href="#early-access"
+            href={appHref()}
             className="w-full justify-center"
             onClick={() => {
-              trackWaitlistCtaClicked("nav");
+              trackSignupCtaClicked("nav");
               setOpen(false);
             }}
           >
-            Join the waitlist →
+            Get started →
           </GoldButton>
         </div>
       </nav>

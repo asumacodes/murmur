@@ -1,7 +1,7 @@
 # Terms of Service · Murmur
 
 **Effective date:** 1st August 2026
-**Last updated:** 1st August 2026
+**Last updated:** 17th September 2026
 
 These Terms of Service ("Terms") are a binding agreement between you ("you" or "your") and **SprintZero Studios (OPC) Private Limited** ("SprintZero Studios," "we," "us," or "our") governing your use of **Murmur** (the "Service") at `www.trymurmur.studio` and `app.trymurmur.studio`.
 
@@ -82,6 +82,8 @@ The output is provided for your use as a starting point, not as professional, le
 The Service offers a free tier and paid subscription plans, along with pay-as-you-go options. Usage is metered by **delivered idea**: a completed pipeline result. Failed attempts do not count against your usage.
 
 Details of current plans, allowances, prices, and payment terms are presented to you **at the point of purchase** and are incorporated into these Terms when you subscribe or purchase. Paid features are not available until our payment functionality is live; until then, no purchase obligations arise.
+
+The first 50 subscribers get double their tier's idea allowance for 12 months.
 
 We may change plans, allowances, and pricing prospectively. Where a change affects an active paid plan, we will provide notice as required by applicable law.
 

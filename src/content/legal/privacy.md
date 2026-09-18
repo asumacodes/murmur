@@ -134,7 +134,8 @@ Cloudflare) and product analytics that set a first-party analytics cookie on
 our own domain. This cookie is used only to measure usage of our own websites
 and app (for example, to understand how visitors move from our marketing site
 to the product, which marketing sections they view, how far they scroll, when
-they start or submit the waitlist form — without collecting the email address
+they click a signup CTA through to the product, when they start or submit the
+waitlist form on the coming-soon path — without collecting the email address
 itself — and, when the scroll-hero experience is enabled, which beats of that
 sequence they reach and whether they complete it) and is not shared with
 advertisers or used to track you across other companies' websites. The

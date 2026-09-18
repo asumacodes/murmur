@@ -2,7 +2,8 @@
 
 import { GoldButton } from "@/components/ui";
 import { foundingReward } from "@/content/home";
-import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
+import { trackSignupCtaClicked } from "@/lib/analytics/events";
+import { appHref } from "@/lib/appUrl";
 
 /** Founding member offer — split row + CTA (same family as PAYG). */
 export function FoundingOffer() {
@@ -14,20 +15,20 @@ export function FoundingOffer() {
             {foundingReward.eyebrow}
           </span>
           <h3 className="font-serif-display text-[clamp(1.2rem,2.2vw,1.65rem)] leading-[1.15] text-[var(--text-primary)]">
-            First 50 · double ideas · 1 year
+            {foundingReward.label}
           </h3>
           <p className="max-w-[36rem] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
             {foundingReward.body}
           </p>
         </div>
         <GoldButton
-          href="#early-access"
+          href={appHref("founding")}
           className="min-h-11 w-full shrink-0 rounded-[2px] text-sm font-semibold !text-[var(--bg-deep)] md:w-auto"
           onClick={() =>
-            trackWaitlistCtaClicked("pricing", { pack: "founding" })
+            trackSignupCtaClicked("pricing", { tier: "founding" })
           }
         >
-          Join the waitlist →
+          Get started →
         </GoldButton>
       </div>
     </div>

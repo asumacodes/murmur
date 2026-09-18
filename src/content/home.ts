@@ -1,3 +1,5 @@
+import { FOUNDING_REWARD_COPY, FOUNDING_REWARD_LABEL } from "@/content/founding";
+
 export const navItems = [
   { label: "How it works", href: "#how-it-works" },
   { label: "Pipeline", href: "#pipeline" },
@@ -188,8 +190,10 @@ export type PackFeature =
       bold?: boolean;
     };
 
+export type PackName = "Starter" | "Builder" | "Studio";
+
 export type Pack = {
-  name: string;
+  name: PackName;
   subtitle?: string;
   priceAmount: string;
   priceUnit: string;
@@ -214,7 +218,7 @@ export const packs: Pack[] = [
       "Top-up at $5 / idea",
       "USD, no rollover. Monthly reset",
     ],
-    cta: "Join the waitlist →",
+    cta: "Get started →",
     featured: true,
   },
   {
@@ -228,7 +232,7 @@ export const packs: Pack[] = [
       "6-month retention",
       "Top-up at $4 / idea",
     ],
-    cta: "Join the waitlist →",
+    cta: "Get started →",
     tag: "Popular",
   },
   {
@@ -242,7 +246,7 @@ export const packs: Pack[] = [
       "6-month retention",
       "Top-up at $3 / idea",
     ],
-    cta: "Join the waitlist →",
+    cta: "Get started →",
     tag: "For agencies",
   },
 ];
@@ -259,9 +263,9 @@ export const paygEntry = {
 
 export const foundingReward = {
   eyebrow: "Founding members",
-  headline: "First 50 subscribers get double the ideas, for a year.",
-  body:
-    "When Murmur opens, the first 50 people to subscribe get double their tier's idea allowance, for a year. Join the waitlist to be ready when that window opens.",
+  label: FOUNDING_REWARD_LABEL,
+  headline: FOUNDING_REWARD_COPY,
+  body: FOUNDING_REWARD_COPY,
 } as const;
 
 // Full-width band below the tier cards. The ONLY Contact Sales surface —
@@ -356,14 +360,12 @@ export const comparison = {
   ],
 } as const;
 
-export const waitlistSection = {
-  eyebrow: "Join the waitlist",
+export const closerSection = {
+  eyebrow: "Get started",
   headline: "Be early.",
-  description:
-    "Murmur is being built carefully. Join the waitlist and you'll be first in when it opens. No date promised, no spam.",
-  placeholder: "you@studio.com",
-  cta: "Join the waitlist →",
-  footnote: "One welcome email now, then only what matters. Unsubscribe anytime.",
+  description: `Open Listener. One free idea to see the pipeline. ${FOUNDING_REWARD_COPY}`,
+  cta: "Get started →",
+  footnote: "No subscription required to try the free idea.",
 } as const;
 
 export const studioLog = [

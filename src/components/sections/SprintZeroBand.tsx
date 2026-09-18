@@ -4,10 +4,10 @@ import { useRef } from "react";
 import { Container, GoldButton, SectionEyebrow } from "@/components/ui";
 import { sprintZeroBand } from "@/content/home";
 import { useSectionReveal } from "@/hooks/useSectionReveal";
-import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
+import { trackSprintZeroCtaClicked } from "@/lib/analytics/events";
 import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
 
-/** Adjacent-product handoff. Sits between FAQ and waitlist. */
+/** Adjacent-product handoff. Sits between FAQ and the closer. */
 export function SprintZeroBand() {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -52,7 +52,7 @@ export function SprintZeroBand() {
             <GoldButton
               href={sprintZeroBand.ctaHref}
               className="min-h-11 rounded-xs text-sm font-semibold"
-              onClick={() => trackWaitlistCtaClicked("sprintzero_band")}
+              onClick={() => trackSprintZeroCtaClicked()}
             >
               {sprintZeroBand.cta}
             </GoldButton>
