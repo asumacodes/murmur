@@ -1,7 +1,7 @@
 # Terms of Service · Murmur
 
 **Effective date:** 1st August 2026
-**Last updated:** 17th September 2026
+**Last updated:** 24th September 2026
 
 These Terms of Service ("Terms") are a binding agreement between you ("you" or "your") and **SprintZero Studios (OPC) Private Limited** ("SprintZero Studios," "we," "us," or "our") governing your use of **Murmur** (the "Service") at `www.trymurmur.studio` and `app.trymurmur.studio`.
 
@@ -77,17 +77,33 @@ The output is provided for your use as a starting point, not as professional, le
 
 ---
 
-## 7. Plans, usage, and payment
+## 7. Plans, billing, and refunds
 
-The Service offers a free tier and paid subscription plans, along with pay-as-you-go options. Usage is metered by **delivered idea**: a completed pipeline result. Failed attempts do not count against your usage.
+**7.1 How plans work.** Murmur is metered by the *delivered idea* — a completed pipeline result. Each paid plan gives you a set number of ideas per month:
 
-Details of current plans, allowances, prices, and payment terms are presented to you **at the point of purchase** and are incorporated into these Terms when you subscribe or purchase. Paid features are not available until our payment functionality is live; until then, no purchase obligations arise.
+| Plan | Price | Ideas per month |
+| --- | --- | --- |
+| Starter | $19/mo | 5 |
+| Builder | $49/mo | 15 |
+| Studio | $79/mo | 30 |
+
+A plan is a monthly bucket of ideas, not a block of time. Only a delivered idea counts against your total; failed attempts never do. You can also buy additional ideas as top-ups (while subscribed) or pay-as-you-go (without a subscription), priced per idea and shown at the point of purchase. New accounts get one free idea to try the Service, with no subscription required.
 
 The first 50 subscribers get double their tier's idea allowance for 12 months.
 
-We may change plans, allowances, and pricing prospectively. Where a change affects an active paid plan, we will provide notice as required by applicable law.
+**7.2 Monthly reset, no rollover.** Each month your plan refills your idea count to your plan's number. Unused ideas do not carry over to the next month. If your plan renews, your count is set back to your plan's monthly number — it is not added to whatever remained.
 
-*(This section will be expanded with specific payment, billing, renewal, and refund terms when paid plans become available.)*
+**7.3 Changing plans.** When you upgrade, you purchase your new plan's full monthly ideas straight away, you're charged your new plan's price, and your monthly renewal date moves to the day you upgraded. Your previous plan ends at that point, and any ideas left in it carry over as extra ideas that don't expire. Upgrading is a fresh purchase of the larger plan, not a partial adjustment of your old one.
+
+**7.4 Cancellation.** You can cancel anytime to stop future renewals. Your plan is not renewed again and you are not charged further. Any ideas already in your current month remain usable until that month ends. Cancelling does not refund the remainder of the month you've already paid for.
+
+**7.5 Refunds.** Because ideas are delivered on demand and unused ideas are never lost while your plan is active, we do not offer refunds for unused ideas or for the remainder of a month after cancellation. We also do not refund ideas that have been delivered. This does not affect any refund or cancellation rights you have under laws that cannot be waived; where such rights apply, they take precedence over this section.
+
+**7.6 If something goes wrong.** If a run fails, it costs you nothing — your idea count is not reduced and you can run it again. If a delivered idea falls short of what you expected, contact us at [hey@trymurmur.studio](mailto:hey@trymurmur.studio) and we'll look into it — we'll usually put things right by fixing the result or re-crediting the idea, at our discretion. Our aim is to make it right, not to leave you out of pocket.
+
+**7.7 Payment processing.** Payments are processed by Dodo Payments, which acts as the merchant of record and appears as the seller on your card or bank statement — so your statement will show **"Dodo Payments,"** not Murmur. Prices are shown in US dollars or Indian rupees depending on your location. Applicable taxes are calculated and collected by Dodo Payments at checkout.
+
+**7.8 Price changes.** We may change plans, idea allowances, and prices going forward. Where a change affects a plan you're actively paying for, we'll give notice as required by law. Changes are not retroactive to ideas you've already purchased.
 
 ---
 
