@@ -12,11 +12,12 @@ export function packToTier(name: Pack["name"]): AppTier {
   return PACK_TO_TIER[name];
 }
 
+// Fallback keeps builds working when the env var is missing (e.g. a Vercel
+// environment it hasn't been added to); set NEXT_PUBLIC_APP_URL to override.
+const DEFAULT_APP_URL = "https://app.trymurmur.studio";
+
 export function appHref(tier?: AppTier): string {
-  const origin = process.env.NEXT_PUBLIC_APP_URL;
-  if (!origin) {
-    throw new Error("NEXT_PUBLIC_APP_URL is not set");
-  }
+  const origin = process.env.NEXT_PUBLIC_APP_URL || DEFAULT_APP_URL;
   const base = origin.replace(/\/$/, "");
   if (!tier) {
     return base;
