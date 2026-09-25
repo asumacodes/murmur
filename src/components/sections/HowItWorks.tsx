@@ -34,7 +34,9 @@ export function HowItWorks() {
     groups: [
       {
         selector: ".how-header > *",
-        from: { autoAlpha: 0, y: 24 },
+        // Opacity only: autoAlpha's visibility:hidden would drop the h2 from the
+        // accessibility tree and break heading order (h1 → h3) until scrolled.
+        from: { opacity: 0, y: 24 },
         to: { duration: 0.9, stagger: 0.12, ease: "power3.out" },
         trigger: ".how-header",
       },

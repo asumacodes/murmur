@@ -35,7 +35,7 @@ export const howItWorks = [
   {
     number: "03",
     label: "Research",
-    headline: "Exa searches the web for competitors, prior art, and market signal. You get a brief, not a hallucination.",
+    headline: "Exa searches the web for competitors, prior art, and market signal. Every finding links to a source you can open.",
     body: "Real URLs. Real snippets. Each finding cited and dated. The PRD agent reads this before it writes a word.",
     artifact: "Market signal",
   },
@@ -43,7 +43,7 @@ export const howItWorks = [
     number: "04",
     label: "Project foundation",
     headline: "Claude writes the PRD. A brand identity is generated. Jira board and Confluence space scaffold themselves.",
-    body: "Four specialists, four typed schemas, one validated handoff per agent. The output is what a small studio would produce in a week.",
+    body: "Four specialists, four typed schemas, one validated handoff per agent. The planning work a team would otherwise spend weeks on: a foundation, not a finished app.",
     artifact: "PRD + brand + Jira",
   },
   {
