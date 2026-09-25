@@ -275,7 +275,7 @@ export const SCROLL_BEATS: ScrollBeat[] = [
     spineLabel: "Ship",
     eyebrow: "06 · Ship",
     headline: ["Talk.", "Get a foundation."],
-    subhead: "Join the waitlist — be first when Murmur opens.",
+    subhead: "Get started — one free idea to see the pipeline.",
     hasStage: false,
     hotspots: [],
   },

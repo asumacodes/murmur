@@ -30,7 +30,7 @@ export const organizationSchema = {
 /**
  * SoftwareApplication — Murmur itself.
  * No aggregateRating (would require real reviews).
- * No offers until KAN-65 checkout exists (waitlist-only today).
+ * No offers until KAN-65 checkout exists (waitlist-only when comingSoon is true).
  */
 export const softwareApplicationSchema = {
   "@context": "https://schema.org",

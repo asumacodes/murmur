@@ -146,3 +146,85 @@ section[id] {
   }
 }
 
+
+/*
+ * Hero headline + subhead entrance. Runs in CSS rather than GSAP so the text is
+ * visible from first paint (LCP) and animates before hydration. Transform only:
+ * never animate opacity here. Timings mirror the GSAP hero timeline offsets.
+ */
+@keyframes hero-rise {
+  from {
+    transform: translateY(var(--hero-rise-y));
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-title-line,
+  .hero-subhead {
+    animation-name: hero-rise;
+    animation-fill-mode: both;
+  }
+
+  /* < 768px: GSAP y 16, 0.55s, power3.out, 0.07s stagger after the eyebrow. */
+  @media (max-width: 767px) {
+    .hero-title-line,
+    .hero-subhead {
+      --hero-rise-y: 16px;
+      animation-duration: 0.55s;
+      animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .hero-title-line:nth-child(1) {
+      animation-delay: 0.07s;
+    }
+
+    .hero-title-line:nth-child(2) {
+      animation-delay: 0.14s;
+    }
+
+    .hero-title-line:nth-child(3) {
+      animation-delay: 0.21s;
+    }
+
+    .hero-subhead {
+      animation-delay: 0.28s;
+    }
+  }
+
+  /* >= 768px: GSAP y 30 / 20, 1s, power4.out; lines at 0.2s + 0.15s stagger, subhead at 0.9s. */
+  @media (min-width: 768px) {
+    .hero-title-line,
+    .hero-subhead {
+      animation-duration: 1s;
+      animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .hero-title-line {
+      --hero-rise-y: 30px;
+    }
+
+    .hero-subhead {
+      --hero-rise-y: 20px;
+    }
+
+    .hero-title-line:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .hero-title-line:nth-child(2) {
+      animation-delay: 0.35s;
+    }
+
+    .hero-title-line:nth-child(3) {
+      animation-delay: 0.5s;
+    }
+
+    .hero-subhead {
+      animation-delay: 0.9s;
+    }
+  }
+}

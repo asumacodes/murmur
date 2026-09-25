@@ -15,7 +15,8 @@ import {
 } from "@/content/home";
 import { FoundingOffer } from "@/components/sections/FoundingOffer";
 import { useSectionReveal } from "@/hooks/useSectionReveal";
-import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
+import { trackSignupCtaClicked } from "@/lib/analytics/events";
+import { appHref, packToTier } from "@/lib/appUrl";
 import { PREMIUM_EASE, scrollEnter } from "@/lib/motion";
 import { sectionPadClass } from "@/lib/styles";
 
@@ -121,11 +122,11 @@ export function Pricing() {
               </span>
             </div>
             <GhostButton
-              href="#early-access"
+              href={appHref("payg")}
               className="min-h-11 w-full shrink-0 rounded-[2px] text-sm md:w-auto"
-              onClick={() => trackWaitlistCtaClicked("pricing", { pack: "payg" })}
+              onClick={() => trackSignupCtaClicked("pricing", { tier: "payg" })}
             >
-              Join the waitlist →
+              Get started →
             </GhostButton>
           </div>
         </div>
@@ -139,6 +140,7 @@ export function Pricing() {
 
 function PackCard({ pack }: { pack: Pack }) {
   const isFeatured = pack.featured === true;
+  const tier = packToTier(pack.name);
 
   return (
     <article
@@ -227,17 +229,17 @@ function PackCard({ pack }: { pack: Pack }) {
       <footer className="mt-auto pt-5">
         {isFeatured ? (
           <GoldButton
-            href="#early-access"
+            href={appHref(tier)}
             className={`${cardBtnClass} font-semibold text-(--bg-deep) hover:text-(--bg-deep)`}
-            onClick={() => trackWaitlistCtaClicked("pricing", { pack: pack.name })}
+            onClick={() => trackSignupCtaClicked("pricing", { tier })}
           >
             {pack.cta}
           </GoldButton>
         ) : (
           <GhostButton
-            href="#early-access"
+            href={appHref(tier)}
             className={ghostCardBtnClass}
-            onClick={() => trackWaitlistCtaClicked("pricing", { pack: pack.name })}
+            onClick={() => trackSignupCtaClicked("pricing", { tier })}
           >
             {pack.cta}
           </GhostButton>

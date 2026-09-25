@@ -4,7 +4,9 @@ import { useRef } from "react";
 import { ListenerMockup } from "@/components/mockups";
 import { Container, GhostButton, PlayIcon, SectionEyebrow } from "@/components/ui";
 import { MagneticGoldButton } from "@/components/ui/MagneticGoldButton";
-import { trackPipelineCtaClicked, trackWaitlistCtaClicked } from "@/lib/analytics/events";
+import { trackPipelineCtaClicked, trackSignupCtaClicked } from "@/lib/analytics/events";
+import { appHref } from "@/lib/appUrl";
+import { FOUNDING_REWARD_CHIP } from "@/content/founding";
 import { pipelineLabels } from "@/content/home";
 import { gsap, useGSAP } from "@/lib/gsap";
 
@@ -21,8 +23,6 @@ export function Hero() {
     () => {
       const targets = [
         ".hero-eyebrow",
-        ".hero-title-line",
-        ".hero-subhead",
         ".hero-cta",
         ".hero-honesty",
         ".hero-mockup-wrapper",
@@ -77,23 +77,13 @@ export function Hero() {
           { autoAlpha: 0, y: 15 },
           { autoAlpha: 1, y: 0, duration: 0.8 },
         )
-          .fromTo(
-            ".hero-title-line",
-            { autoAlpha: 0, y: 30 },
-            { autoAlpha: 1, y: 0, duration: 1, stagger: 0.15 },
-            "-=0.6",
-          )
-          .fromTo(
-            ".hero-subhead",
-            { autoAlpha: 0, y: 20 },
-            { autoAlpha: 1, y: 0, duration: 1 },
-            "-=0.6",
-          )
+          // Headline and subhead enter via the CSS hero-rise keyframe (globals.css) so
+          // they paint before hydration. The CTA keeps its old absolute slot at 1.3s.
           .fromTo(
             ".hero-cta",
             { autoAlpha: 0, y: 15 },
             { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.1 },
-            "-=0.6",
+            1.3,
           )
           .fromTo(
             ".hero-honesty",
@@ -131,7 +121,9 @@ export function Hero() {
             autoAlpha: 1,
             y: 0,
             duration: 0.55,
-            stagger: 0.07,
+            // Skip the four stagger slots the CSS-animated headline lines and subhead
+            // used to occupy, so everything after the eyebrow keeps its old timing.
+            stagger: (index) => (index === 0 ? 0 : index + 4) * 0.07,
             ease: "power3.out",
           },
         );
@@ -158,13 +150,13 @@ export function Hero() {
                 MURMUR · A SPRINTZERO STUDIO PRODUCT
               </SectionEyebrow>
               <h1 className="font-serif-display text-[clamp(3.35rem,16vw,8rem)] leading-[0.95] tracking-[-0.02em] lg:text-[clamp(3.75rem,7.5vw,7.5rem)]">
-                <span className="hero-title-line block opacity-0">Speak.</span>
-                <span className="hero-title-line block opacity-0 italic text-[var(--gold)]">
+                <span className="hero-title-line block">Speak.</span>{" "}
+                <span className="hero-title-line block italic text-[var(--gold)]">
                   Transcribe.
-                </span>
-                <span className="hero-title-line block opacity-0">Ship.</span>
+                </span>{" "}
+                <span className="hero-title-line block">Ship.</span>
               </h1>
-              <p className="hero-subhead mx-auto max-w-[35rem] text-center text-xl leading-[1.55] text-[var(--text-secondary)] opacity-0 lg:mx-0 lg:text-left">
+              <p className="hero-subhead mx-auto max-w-[35rem] text-center text-xl leading-[1.55] text-[var(--text-secondary)] lg:mx-0 lg:text-left">
                 A five-minute voice memo becomes a validated PRD, brand kit, Jira board, and
                 Confluence space, automatically. Skip the{" "}
                 <span className="font-serif-display italic text-[var(--text-primary)]">
@@ -175,11 +167,11 @@ export function Hero() {
               <div className="hero-cta opacity-0">
                 <div className="flex flex-col items-center gap-3 sm:flex-row sm:items-center lg:justify-start">
                   <MagneticGoldButton
-                    href="#early-access"
+                    href={appHref()}
                     className={`${heroBtnBase} !text-[var(--bg-deep)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:!text-[var(--bg-deep)]`}
-                    onClick={() => trackWaitlistCtaClicked("hero")}
+                    onClick={() => trackSignupCtaClicked("hero")}
                   >
-                    Join the waitlist →
+                    Get started →
                   </MagneticGoldButton>
                   <GhostButton
                     href="#pipeline"
@@ -192,7 +184,7 @@ export function Hero() {
                 </div>
               </div>
               <p className="hero-honesty mx-auto text-center font-mono-text text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)] opacity-0 lg:mx-0 lg:text-left">
-                Waitlist open · no launch date promised
+                {FOUNDING_REWARD_CHIP}
               </p>
               <div className={`hero-mockup-wrapper opacity-0 lg:hidden ${heroMockupMobileChrome}`}>
                 <ListenerMockup animateWaveform />

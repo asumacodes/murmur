@@ -20,8 +20,9 @@ import { MagneticGoldButton } from "@/components/ui/MagneticGoldButton";
 import {
   trackScrollHeroBeatViewed,
   trackScrollHeroCompleted,
-  trackWaitlistCtaClicked,
+  trackSignupCtaClicked,
 } from "@/lib/analytics/events";
+import { appHref } from "@/lib/appUrl";
 import { gsap } from "@/lib/gsap";
 import {
   prepareStrokeDraw,
@@ -487,8 +488,8 @@ export function ScrollHero() {
     return () => ctx.revert();
   }, [box.w, box.h, box.shotW, box.shotH, measureStage]);
 
-  const onWaitlistClick = () => {
-    trackWaitlistCtaClicked("scroll_hero");
+  const onSignupClick = () => {
+    trackSignupCtaClicked("scroll_hero");
   };
 
   if (stacked) {
@@ -519,11 +520,11 @@ export function ScrollHero() {
                         8 of 8 artifacts delivered
                       </p>
                       <MagneticGoldButton
-                        href="#early-access"
+                        href={appHref()}
                         className="mt-4 min-h-11 px-5 text-[0.9375rem]"
-                        onClick={onWaitlistClick}
+                        onClick={onSignupClick}
                       >
-                        Join the waitlist
+                        Get started
                       </MagneticGoldButton>
                     </div>
                   )}
@@ -644,11 +645,11 @@ export function ScrollHero() {
           8 of 8 artifacts delivered
         </p>
         <MagneticGoldButton
-          href="#early-access"
+          href={appHref()}
           className="mt-4 min-h-11 px-5 text-[0.9375rem]"
-          onClick={onWaitlistClick}
+          onClick={onSignupClick}
         >
-          Join the waitlist
+          Get started
         </MagneticGoldButton>
       </div>
 

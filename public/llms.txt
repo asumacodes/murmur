@@ -1,0 +1,26 @@
+# Murmur
+
+> Murmur turns a spoken product idea into a project foundation: a PRD, a competitive research brief, a brand kit, a Jira board with epics and stories, and a Confluence space, created in the user's own Atlassian workspace. It is a foundation, not a finished app.
+
+You record a voice memo in Listener (Murmur's capture app). An agentic pipeline then runs transcription (AssemblyAI), competitor and market research (Exa), a PRD agent (Claude, validated against a typed schema), a brand agent, and Jira and Confluence generators. A full run takes under ten minutes; the measured average is about six.
+
+Murmur ends where automation ends. Turning the foundation into working software is human-led work offered separately by SprintZero Studio in 72-hour sprints.
+
+## Pricing
+
+- One free delivered idea per account.
+- Plans are billed per idea delivered, with a monthly idea allowance and no rollover. Failed runs never use an idea.
+- Pay-as-you-go single ideas are available without a subscription.
+- Current prices: https://www.trymurmur.studio/#pricing
+
+## Key pages
+
+- [Home](https://www.trymurmur.studio/): how it works, the pipeline, pricing, FAQ
+- [About](https://www.trymurmur.studio/about)
+- [Contact](https://www.trymurmur.studio/contact)
+- [Terms](https://www.trymurmur.studio/terms)
+- [Privacy](https://www.trymurmur.studio/privacy)
+
+## Related
+
+- [SprintZero Studio](https://sprint0.trymurmur.studio): the studio behind Murmur; builds MVPs from a Murmur foundation in 72-hour sprints

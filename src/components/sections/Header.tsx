@@ -6,7 +6,8 @@ import { navItems } from "@/content/home";
 import { GhostButton, GoldButton, VersionChip } from "@/components/ui";
 import { features } from "@/config/features";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
-import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
+import { trackSignupCtaClicked } from "@/lib/analytics/events";
+import { appHref } from "@/lib/appUrl";
 import { sectionSpyIds } from "@/lib/motion";
 import { containerClass, focusRingClass, navLinkClass } from "@/lib/styles";
 
@@ -140,11 +141,11 @@ export function Header() {
         <div className="flex items-center gap-3">
           <div className="hidden md:block">
             <GhostButton
-              href="#early-access"
+              href={appHref()}
               className="text-sm"
-              onClick={() => trackWaitlistCtaClicked("nav")}
+              onClick={() => trackSignupCtaClicked("nav")}
             >
-              Join the waitlist
+              Get started
             </GhostButton>
           </div>
 
@@ -175,6 +176,9 @@ export function Header() {
         ref={drawerRef}
         aria-label="Mobile navigation"
         aria-hidden={!open}
+        // inert keeps the closed drawer's links out of the tab order; the
+        // transform transition still runs because inert has no visual effect.
+        inert={!open}
         className={`fixed top-0 right-0 z-50 flex h-dvh w-[min(100%,20rem)] flex-col border-l border-[var(--border-gold)] bg-[var(--bg-elevated)] px-5 pt-5 pb-6 transition-transform duration-[320ms] ease-[var(--ease)] will-change-transform md:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
@@ -216,14 +220,14 @@ export function Header() {
 
         <div className="mt-auto flex justify-center">
           <GoldButton
-            href="#early-access"
+            href={appHref()}
             className="w-full justify-center"
             onClick={() => {
-              trackWaitlistCtaClicked("nav");
+              trackSignupCtaClicked("nav");
               setOpen(false);
             }}
           >
-            Join the waitlist →
+            Get started →
           </GoldButton>
         </div>
       </nav>

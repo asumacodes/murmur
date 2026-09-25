@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { GoldButton } from "@/components/ui";
-import { trackWaitlistCtaClicked } from "@/lib/analytics/events";
+import { trackSignupCtaClicked } from "@/lib/analytics/events";
+import { appHref } from "@/lib/appUrl";
 
 /**
- * Mobile-only persistent waitlist CTA. Shows after the hero (~0.8vh),
- * hides when #early-access is on screen so it doesn't stack on the form.
+ * Mobile-only persistent Get started CTA. Shows after the hero (~0.8vh),
+ * hides when #early-access is on screen so it doesn't stack on the closer.
  * Desktop keeps the header CTA instead (md+).
  */
 export function StickyMobileCTA() {
@@ -54,12 +55,12 @@ export function StickyMobileCTA() {
       aria-hidden={!visible}
     >
       <GoldButton
-        href="#early-access"
+        href={appHref()}
         className="w-full justify-center"
         tabIndex={visible ? undefined : -1}
-        onClick={() => trackWaitlistCtaClicked("sticky_mobile")}
+        onClick={() => trackSignupCtaClicked("sticky_mobile")}
       >
-        Join the waitlist →
+        Get started →
       </GoldButton>
     </div>
   );

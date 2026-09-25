@@ -12,8 +12,20 @@ export function trackWaitlistCtaClicked(
   });
 }
 
-export function trackSignupCtaClicked(location: CtaLocation) {
-  posthog?.capture("signup_cta_clicked", { cta_location: location });
+export function trackSignupCtaClicked(
+  location: CtaLocation,
+  extra?: Record<string, unknown>,
+) {
+  posthog?.capture("signup_cta_clicked", {
+    cta_location: location,
+    ...extra,
+  });
+}
+
+export function trackSprintZeroCtaClicked() {
+  posthog?.capture("sprintzero_cta_clicked", {
+    cta_location: "sprintzero_band",
+  });
 }
 
 export function trackSectionViewed(
