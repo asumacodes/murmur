@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     siteName: "Murmur",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/og/murmur-og-v1.png",
         width: 1200,
         height: 630,
         alt: "Murmur: Speak. Transcribe. Ship.",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     description:
       "The agentic pipeline that turns a voice memo into a complete project foundation.",
     creator: "@AsumaCodes",
-    images: ["/opengraph-image"],
+    images: ["/og/murmur-og-v1.png"],
   },
 };
 
