@@ -80,7 +80,13 @@ export function useSectionReveal({
 
       for (const group of groups) {
         const enter = group.scrollEnter ?? scrollEnterOption;
-        const from = { ...defaultFrom, ...group.from };
+        // A group whose `from` sets `opacity` fades without autoAlpha's
+        // visibility:hidden, so its content (e.g. a section h2) stays in the
+        // accessibility tree before it scrolls into view.
+        const from =
+          group.from && "opacity" in group.from
+            ? { y: defaultFrom.y, ...group.from }
+            : { ...defaultFrom, ...group.from };
         const to = { ...defaultTo, ...group.to };
         const els = gsap.utils.toArray<HTMLElement>(group.selector, root);
 

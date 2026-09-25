@@ -176,6 +176,9 @@ export function Header() {
         ref={drawerRef}
         aria-label="Mobile navigation"
         aria-hidden={!open}
+        // inert keeps the closed drawer's links out of the tab order; the
+        // transform transition still runs because inert has no visual effect.
+        inert={!open}
         className={`fixed top-0 right-0 z-50 flex h-dvh w-[min(100%,20rem)] flex-col border-l border-[var(--border-gold)] bg-[var(--bg-elevated)] px-5 pt-5 pb-6 transition-transform duration-[320ms] ease-[var(--ease)] will-change-transform md:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
