@@ -160,10 +160,10 @@ export function Hero() {
                 MURMUR · A SPRINTZERO STUDIO PRODUCT
               </SectionEyebrow>
               <h1 className="font-serif-display text-[clamp(3.35rem,16vw,8rem)] leading-[0.95] tracking-[-0.02em] lg:text-[clamp(3.75rem,7.5vw,7.5rem)]">
-                <span className="hero-title-line block opacity-0">Speak.</span>
+                <span className="hero-title-line block opacity-0">Speak.</span>{" "}
                 <span className="hero-title-line block opacity-0 italic text-[var(--gold)]">
                   Transcribe.
-                </span>
+                </span>{" "}
                 <span className="hero-title-line block opacity-0">Ship.</span>
               </h1>
               <p className="hero-subhead mx-auto max-w-[35rem] text-center text-xl leading-[1.55] text-[var(--text-secondary)] opacity-0 lg:mx-0 lg:text-left">

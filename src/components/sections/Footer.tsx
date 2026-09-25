@@ -68,7 +68,7 @@ export function Footer() {
               <span>Murmur</span>
             </p>
             <p className="mt-3 text-[var(--text-secondary)]">
-              Speak. Structure. Handoff.
+              Speak. Transcribe. Ship.
             </p>
             <a
               href="https://sprint0.trymurmur.studio"

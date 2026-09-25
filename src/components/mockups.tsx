@@ -267,7 +267,7 @@ export function ResearchMockup() {
             {item.quote}
           </p>
           <p className="font-mono-text mt-3 text-[0.58rem] uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
-            Category · indexed 2024-05-14
+            Category · source cited
           </p>
         </div>
       ))}

@@ -17,7 +17,7 @@ export const artifacts = {
   },
   brand: {
     productName: "Murmur",
-    tagline: "Speak. Structure. Handoff.",
+    tagline: "Speak. Transcribe. Ship.",
     palette: [
       { hex: "#0a0a0a", label: "Ink" },
       { hex: "#faf6ec", label: "Paper" },
