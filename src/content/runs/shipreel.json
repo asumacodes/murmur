@@ -1,0 +1,1033 @@
+{
+  "slug": "shipreel",
+  "order": 2,
+  "idea": "Launch-video SaaS for founders",
+  "category": "Dev tools",
+  "seoNoun": "SaaS",
+  "title": "ShipReel",
+  "recordedAt": "2026-09-23",
+  "runAt": "2026-09-23",
+  "memoSeconds": 49,
+  "runSeconds": 422,
+  "language": "en",
+  "transcript": "Now that Hixfield has their own MCP and has kind of open source systems, what can we build through that? Like maybe a launch video, start SaaS where people just give them, give their startup context, codebase and stuff and instructions and/or prompt. For how do they like their launch video to generate. And we call Hexfield API and then generate their launch reel, launch video, launch demo. Maybe that can become a, you know, SaaS tool.",
+  "prd": {
+    "productName": "ShipReel",
+    "oneLiner": "The only fully hosted SaaS that turns a founder's repo, context, and launch instructions straight into a finished multi-format launch video via Higgsfield's API — no MCP setup, no CLI, no prompt engineering.",
+    "problem": "Indie founders launching on Product Hunt, the App Store, or X need a polished launch video fast, but agencies charge $1,000-$20,000 and take weeks, so most founders either skip video entirely or DIY it by manually feeding their codebase into Claude Design to extract a design system and then hand-prompting scene-by-scene footage — a process the community has documented as working but painfully slow and fully manual. The alternative, Higgsfield's open MCP ecosystem, gives technical users access to 30+ video models and ready-made UGC/faceless skills, but every existing wrapper around it — Higgsfield's own chat-based skills, reeljet, Higgsfield Director MCP, AI Promo Video — either requires freeform prompting inside Claude/ChatGPT, demands CLI and MCP setup, or targets generic ad/UGC content rather than a startup's actual codebase and launch narrative. None of them offer a single hosted flow where a non-technical founder hands over a repo, a prompt, and a platform, and gets back a finished, publishable launch reel.",
+    "targetUser": "Solo founders and small indie SaaS teams preparing a Product Hunt, App Store, or social launch who want an agency-quality demo video without learning MCP, Claude Code, or video editing tools.",
+    "features": {
+      "must_have": [
+        {
+          "title": "Higgsfield video generation integration",
+          "description": "Call Higgsfield's API/MCP models (Veo, Kling, Seedance, etc.) to render the launch video from a generated script and supplied assets."
+        },
+        {
+          "title": "Multi-format export",
+          "description": "Output both a 16:9 master video and a 9:16 reframed vertical cut for Product Hunt, landing pages, and Reels/TikTok/Shorts."
+        },
+        {
+          "title": "Script and narrative generation",
+          "description": "Generate a launch-video script and shot list from the founder's product description, instructions, and tone preferences."
+        },
+        {
+          "title": "Caption/subtitle generation",
+          "description": "Auto-generate burned-in captions synced to the narration or voiceover track."
+        },
+        {
+          "title": "Screenshot/screen-recording ingestion",
+          "description": "Accept uploaded product screenshots, screen recordings, and logo assets as real footage source material for the video."
+        },
+        {
+          "title": "Cost/credit visibility before render",
+          "description": "Show estimated Higgsfield credit cost and require explicit approval before spending render budget on a generation job."
+        }
+      ],
+      "should_have": [
+        {
+          "title": "Guided intake wizard",
+          "description": "Replace freeform chat prompting with a structured form for tone, style, platform, and brand preferences, better than Higgsfield MCP's raw prompt-driven UGC Factory."
+        },
+        {
+          "title": "Codebase-aware context extraction",
+          "description": "Pull README, package.json, and repo structure to auto-generate feature lists and value props, beyond reeljet's screenshot-only ingestion."
+        },
+        {
+          "title": "Flat-fee credit abstraction",
+          "description": "Bill founders one predictable subscription price instead of exposing raw Higgsfield credits, improving on Director MCP's manual cost-preflight approach."
+        },
+        {
+          "title": "Bundled publishing kit",
+          "description": "Auto-generate a title, description, hashtags, and thumbnail alongside the video, saving the manual assembly step required in AI Promo Video."
+        }
+      ],
+      "could_have": [
+        {
+          "title": "Startup-launch-specific templates",
+          "description": "Offer Product Hunt launch reel, investor teaser, and App Store trailer templates distinct from generic UGC/ad templates."
+        },
+        {
+          "title": "One-click GitHub connect",
+          "description": "OAuth into a repo to auto-pull README and changelog content instead of manually pasting context."
+        },
+        {
+          "title": "Launch-specific hook scoring",
+          "description": "Score generated cuts on hook strength and pacing tuned for launch-day virality rather than general ad performance."
+        }
+      ],
+      "wont_have": [
+        {
+          "title": "Mobile apps",
+          "description": "No native iOS/Android app; web-only for the 72-hour MVP."
+        },
+        {
+          "title": "Voice/persona customization",
+          "description": "No custom avatar creation or voice cloning; use Higgsfield's default voices/avatars as-is."
+        },
+        {
+          "title": "Advanced integrations",
+          "description": "No Zapier, Slack, or CI/CD pipeline triggers for auto-generating videos on deploy."
+        },
+        {
+          "title": "White-labelling",
+          "description": "No agency/reseller white-label branding options at launch."
+        },
+        {
+          "title": "Multi-language support",
+          "description": "No localized script or voiceover generation beyond English."
+        },
+        {
+          "title": "Admin dashboard",
+          "description": "No team roles, analytics dashboard, or multi-seat account management."
+        },
+        {
+          "title": "Fully custom code-generated motion graphics",
+          "description": "No Revideo/Three.js-level custom animation system like AI Promo Video; we rely on Higgsfield's model outputs, not bespoke rendering pipelines."
+        },
+        {
+          "title": "Faceless long-form content factory",
+          "description": "No 10-minute YouTube explainer generation; scope is limited to short launch videos, not Higgsfield's Faceless Content Factory use case."
+        }
+      ]
+    },
+    "successMetrics": [
+      {
+        "metric": "Signups",
+        "target": "150 founders sign up within the first 30 days post-launch"
+      },
+      {
+        "metric": "Trial-to-paid conversion rate",
+        "target": "≥20% of signups convert to a paid plan within 14 days of signup, yielding ~30 paying customers by day 44"
+      },
+      {
+        "metric": "Monthly recurring revenue",
+        "target": "$$2,070 MRR by day 60 (30 customers at $69/month)"
+      },
+      {
+        "metric": "Job completion rate",
+        "target": "≥85% of launch-video generation jobs complete without manual retry within the first 60 days"
+      },
+      {
+        "metric": "Customer satisfaction",
+        "target": "≥4.2/5 average CSAT (5-point post-delivery survey) collected within the first 60 days"
+      }
+    ],
+    "nonGoals": [],
+    "risks": [],
+    "openQuestions": [
+      "What markup on Higgsfield API/credit costs is needed to sustain a $69/mo flat fee without eroding margin?",
+      "Should GitHub repo OAuth be required at signup, or is screenshot-only ingestion sufficient for the 72-hour MVP?",
+      "What minimum codebase signal (README, package.json, live URL) reliably produces accurate narrative extraction in the build window?",
+      "Do we proxy/store rendered videos ourselves or serve directly from Higgsfield's storage for v1?"
+    ],
+    "competitiveLandscape": []
+  },
+  "research": {
+    "marketSummary": "The launch/demo video space is rapidly being reshaped by Higgsfield's open MCP, which has spawned an ecosystem of official skills (UGC Factory, Faceless Content Factory) and a handful of small open-source projects (reeljet, Higgsfield Director MCP, AI Promo Video) that chain Higgsfield or code-based rendering (Revideo/FFmpeg) to automate promo videos for indie founders. Most solutions today are either generic ad/UGC generators requiring manual prompting, or developer-only open-source skills with no hosted UI, support, or business model. None combine deep codebase/context ingestion, a guided intake of founder instructions/preferences, and a fully hosted, non-technical SaaS experience purpose-built for startup launch videos.",
+    "ourPositioning": "We are the first fully hosted, non-technical SaaS that turns a startup's codebase, context, and launch instructions directly into a polished, multi-format launch video via Higgsfield's API - eliminating the need to learn MCP, prompt-engineer, or stitch together open-source developer tools that today's Higgsfield ecosystem requires.",
+    "tableStakes": [
+      "Integration with AI video generation models (Higgsfield MCP or equivalent: Sora, Veo, Kling, Seedance)",
+      "Support for common launch/promo formats (16:9 landscape and 9:16 vertical for Reels/TikTok/Shorts/Product Hunt)",
+      "Script/narrative generation from a product description or prompt",
+      "Caption/subtitle generation",
+      "Ability to incorporate real product screenshots or screen recordings",
+      "Cost/credit visibility before rendering to avoid wasted spend"
+    ],
+    "differentiationOpportunities": [
+      "Native codebase ingestion (not just screenshots) to auto-extract product design system, features, and value props for accurate, on-brand video content",
+      "Fully hosted, non-technical SaaS onboarding (no Claude Code/CLI/MCP setup required) targeting founders who don't want to touch developer tooling",
+      "Structured intake of founder preferences/instructions (tone, style, target platform, brand guidelines) as a guided form/wizard rather than freeform prompting",
+      "End-to-end packaging: single click from 'give us your repo + instructions' to a finished, multi-format launch reel/demo/video with publishing kit (titles, captions, hashtags)",
+      "Startup-launch-specific templates (Product Hunt launch, investor teaser, App Store trailer) versus generic UGC/ad templates",
+      "Managed cost/credit abstraction so founders pay one predictable SaaS price instead of managing Higgsfield credits directly"
+    ],
+    "competitors": [
+      {
+        "name": "Higgsfield AI",
+        "url": "https://higgsfield.ai",
+        "positioning": "AI-native creative suite that plugs 30+ video/image/audio models into chat agents (Claude, ChatGPT) via an open MCP server, letting marketers generate ad creatives, UGC videos, and faceless content without leaving their chat workflow.",
+        "keyFeatures": [
+          "Open MCP server (mcp.higgsfield.ai) connecting to Claude, ChatGPT, Cursor, CLI agents",
+          "Access to 30+ underlying models (Sora 2, Veo, Kling, Seedance, Soul, Nano Banana)",
+          "Pre-built skills: UGC Factory, Faceless Content Factory, SaaS UGC templates",
+          "Virality scoring on generated videos",
+          "A/B variant generation for ad testing",
+          "Consistent creator avatar across a full ad"
+        ],
+        "pricingModel": "Freemium (free tier for casual generation) + paid subscription tiers unlocking higher resolution, longer duration, more credits",
+        "strengths": [
+          "Official, well-maintained MCP with broad model access",
+          "Strong brand and content marketing around MCP use cases",
+          "Ready-made templates specifically for SaaS/product ads (SaaS UGC)",
+          "Large model catalog reduces vendor management overhead"
+        ],
+        "weaknesses": [
+          "Generic ad/UGC focus, not specialized in translating a codebase into a launch narrative",
+          "No native codebase/context ingestion - relies on user-supplied prompts/photos",
+          "Requires users to already be inside Claude/ChatGPT and manage MCP setup themselves",
+          "No end-to-end 'give us your repo and instructions' onboarding flow"
+        ],
+        "directOverlap": [
+          "Uses Higgsfield API/MCP for video generation",
+          "Targets founders/marketers wanting quick promo videos",
+          "SaaS-specific UGC template"
+        ]
+      },
+      {
+        "name": "reeljet (Xabilimon1)",
+        "url": "https://github.com/Xabilimon1/reeljet",
+        "positioning": "Open-source Claude Code skill that turns real app/product screen recordings into short-form promo videos (Reels/TikTok/Shorts) by combining Higgsfield-generated b-roll with ffmpeg assembly, targeted at indie devs launching on Product Hunt/X.",
+        "keyFeatures": [
+          "Ingests real screen recordings/screenshots/logo as source material",
+          "Uses Higgsfield MCP for AI-generated motion/b-roll (Veo, Sora, Kling, Seedance)",
+          "Auto-assembles master 16:9 + reframed 9:16 vertical outputs",
+          "Kinetic captions colored from product's own palette",
+          "Approval gate before spending render credits",
+          "Local music library integration"
+        ],
+        "pricingModel": "Free/open source (MIT license); underlying Higgsfield credits still required",
+        "strengths": [
+          "Directly targets the indie founder / launch-video use case",
+          "Uses actual product footage, not generic stock/AI mockups",
+          "Cost-conscious design (approval gate before spending credits)",
+          "Multi-format export tailored to launch channels"
+        ],
+        "weaknesses": [
+          "Niche open-source project, tiny community (2 stars), unpolished/unsupported",
+          "Requires developer setup (Claude Code, Python), not a hosted SaaS",
+          "No codebase-context understanding beyond visual captures",
+          "No business model / support / SLA"
+        ],
+        "directOverlap": [
+          "Explicitly built for launch videos from Higgsfield MCP",
+          "Targets founders and SaaS launches",
+          "Same core value prop: real product + AI generation = promo video"
+        ]
+      },
+      {
+        "name": "Higgsfield Director MCP (pop123-ux)",
+        "url": "https://github.com/pop123-ux/higgsfield-mcp",
+        "positioning": "Unofficial 'intelligence layer' companion to Higgsfield's official MCP that plans full faceless-video productions (script, storyboard, voice, captions, budget, publishing kit) before handing execution to the official server.",
+        "keyFeatures": [
+          "Full production planning: storyboard, voiceover script, SRT captions, cost estimate, publishing kit",
+          "Cost preflight checks before rendering to avoid wasted credits",
+          "Uses real Higgsfield model IDs/params for accurate execution manifests",
+          "No own network calls - pure orchestration layer, no API key needed"
+        ],
+        "pricingModel": "Free/open source, requires official Higgsfield account for execution",
+        "strengths": [
+          "Strong cost-control and planning discipline",
+          "Deep integration knowledge of Higgsfield's real API/model catalog",
+          "Reduces wasted spend on faceless content channels"
+        ],
+        "weaknesses": [
+          "Faceless-content niche, not product-launch/demo focused",
+          "No codebase ingestion or product-context awareness",
+          "Very small/unofficial project with no support",
+          "Requires technical setup, not a turnkey SaaS"
+        ],
+        "directOverlap": [
+          "Built on Higgsfield MCP",
+          "Video generation planning/orchestration"
+        ]
+      },
+      {
+        "name": "AI Promo Video (MendesCorporation)",
+        "url": "https://github.com/MendesCorporation/ai-promo-video",
+        "positioning": "Open-source, headless AI agent skill/MCP server that autonomously produces full promo videos (script, motion graphics, editing, export) using Revideo + FFmpeg instead of pre-made templates, for developers already using Codex/Claude Code/Cursor.",
+        "keyFeatures": [
+          "Fully code-generated motion compositions (TypeScript + Revideo), not templated",
+          "Supports perspective cameras, kinetic typography, shaders, Three.js scenes",
+          "FFmpeg handles editing, audio mixing, and iterative revisions",
+          "No hosted service, no subscription - runs entirely local via AI coding agent"
+        ],
+        "pricingModel": "Free/open source; cost limited to underlying AI coding assistant usage",
+        "strengths": [
+          "Highly flexible, unlimited custom visual styles beyond templates",
+          "No recurring SaaS cost - appeals to technical founders",
+          "Demonstrated SaaS motion benchmark example (SignalNest)"
+        ],
+        "weaknesses": [
+          "Steep technical setup, requires coding agent + dev environment",
+          "No hosted UI, no non-technical user path",
+          "Doesn't use Higgsfield video models specifically",
+          "No packaged 'give us your codebase and instructions' intake flow"
+        ],
+        "directOverlap": [
+          "Codebase-aware promo/demo video generation",
+          "AI agent-directed video production for SaaS launches"
+        ]
+      },
+      {
+        "name": "DIY Claude Design + Codebase Workflow (community pattern)",
+        "url": "https://www.indiehackers.com/post/agencies-charge-5-000-for-a-60-second-product-demo-video-i-make-mine-for-0-heres-the-exact-workflow-ab23fa5fad",
+        "positioning": "Emerging grassroots workflow where founders manually feed their codebase into Claude Design to extract their design system, then hand-build animated demo videos frame by frame at near-zero cost.",
+        "keyFeatures": [
+          "Claude Design auto-extracts design system (colors, typography, spacing) from a codebase",
+          "Manual scene-by-scene prompting for demo video creation",
+          "Replaces $1,000-$20,000 agency-made SaaS demo videos"
+        ],
+        "pricingModel": "Free (cost of existing Claude subscription only)",
+        "strengths": [
+          "Proves strong founder demand and willingness to DIY to avoid agency costs",
+          "Validates codebase-to-visual-identity extraction as a real, working concept",
+          "Zero marginal cost"
+        ],
+        "weaknesses": [
+          "Fully manual, no automation/pipeline, no video generation model integration",
+          "Time-intensive, requires frame-by-frame direction",
+          "Not a product - just a blog-documented technique",
+          "No packaging, distribution, or repeatability as a service"
+        ],
+        "directOverlap": [
+          "Codebase-to-launch-video concept",
+          "Founder/indie SaaS target audience",
+          "Cost-saving vs. agency positioning"
+        ]
+      }
+    ]
+  },
+  "brand": {
+    "brandName": "ShipReel",
+    "tagline": "Repo in, launch video out.",
+    "nameNotes": [
+      "LaunchReel could work as an alternative if 'Ship' feels too dev-jargon-heavy for non-technical founders",
+      "ReelPilot as a secondary option emphasizing the hands-off automation angle"
+    ],
+    "brandValues": [
+      "Speed over friction",
+      "No prompt engineering required",
+      "Founder-first simplicity",
+      "Agency-quality without agency cost",
+      "Transparent, predictable pricing"
+    ],
+    "colorPalette": {
+      "accent": "#FF6B5B",
+      "neutral": "#F4F3F9",
+      "primary": "#5B4FE9",
+      "semantic": {
+        "error": "#E63946",
+        "success": "#2ECC71",
+        "warning": "#F5A623"
+      },
+      "secondary": "#1A1B2E"
+    },
+    "typography": {
+      "body": "Inter",
+      "mono": "JetBrains Mono",
+      "heading": "Space Grotesk"
+    },
+    "logoDirection": {
+      "form": "Abstract play-button/film-reel hybrid formed from a code bracket shape",
+      "style": "Modern geometric tech mark with subtle motion cues",
+      "avoidances": [
+        "Literal clapperboard or camera icons (too generic/stock)",
+        "Overly corporate or agency-style crest logos",
+        "Complex gradients that don't scale down to favicon size",
+        "Anything resembling TikTok/YouTube's existing logo language"
+      ],
+      "symbolConcept": "A play triangle merged with a closing code bracket ']' to represent code transforming into finished video"
+    },
+    "iconographyStyle": "Flat geometric line icons with rounded corners, consistent 2px stroke weight, minimal detail, using bracket/play/frame motifs to reinforce the code-to-video narrative, subtle accent-color highlights on interactive states"
+  },
+  "engineering": {
+    "overview": "ShipReel is a hosted Next.js SaaS that converts a founder's repo context, uploaded assets, and launch instructions into a finished multi-format launch video by orchestrating Higgsfield's video-generation API. Users go through a guided intake wizard (no MCP/CLI/prompt engineering), the backend extracts context (repo README/package.json or manual input), generates a script/shot-list via an LLM, assembles a Higgsfield render job with uploaded screenshots/screen-recordings, previews estimated credit cost for approval, submits the render, polls/receives webhook status, then produces 16:9 and 9:16 exports with burned-in captions and a publishing kit (title/description/hashtags/thumbnail). Billing is a flat-fee subscription abstracting raw Higgsfield credit costs.",
+    "dataFlow": "User signs up (Supabase Auth) → creates a Project via intake wizard, entering product description, tone/platform preferences, and uploading screenshots, screen recordings and logo → Context Extraction Service parses any supplied repo text/README into structured context → Script Generation Service calls the LLM to produce script + shot list + captions for review → user approves; Higgsfield Orchestration Service computes estimated credit cost for explicit approval → a render_job is enqueued → Job Worker submits to Higgsfield's API and tracks status → on completion, the worker fetches 16:9 and 9:16 outputs, burns captions, generates a thumbnail and publishing-kit text → the web app shows finished videos for download once status = completed.",
+    "components": [
+      {
+        "name": "Web App (Next.js)",
+        "responsibility": "Guided intake wizard, asset upload UI, cost/credit approval screen, job status dashboard, video preview/download, account & billing settings."
+      },
+      {
+        "name": "API Layer (Next.js Route Handlers / Edge & Server Functions)",
+        "responsibility": "Auth-guarded REST endpoints for projects, uploads, script generation, job submission, status polling, and webhook receipt from Higgsfield."
+      },
+      {
+        "name": "Context Extraction Service",
+        "responsibility": "Parses uploaded repo metadata (README, package.json) or manual form input into structured feature/value-prop data used for script generation."
+      },
+      {
+        "name": "Script & Shot-List Generation Service (LLM)",
+        "responsibility": "Calls an LLM to turn extracted context + tone/platform preferences into a launch video script, shot list, and caption text."
+      },
+      {
+        "name": "Higgsfield Orchestration Service",
+        "responsibility": "Builds Higgsfield API/MCP requests from script+assets, estimates credit cost pre-render, submits render jobs, handles callbacks/polling, retrieves 16:9 and 9:16 outputs."
+      },
+      {
+        "name": "Asset Storage (Supabase Storage)",
+        "responsibility": "Stores uploaded screenshots, screen recordings, logos, and final rendered video files/thumbnails."
+      },
+      {
+        "name": "Database (Supabase Postgres)",
+        "responsibility": "Persists users, projects, context data, scripts, render jobs, assets, and billing/subscription state."
+      },
+      {
+        "name": "Billing Service (Stripe)",
+        "responsibility": "Manages flat-fee subscription plans, payment status, and gates render job creation based on active subscription."
+      },
+      {
+        "name": "Auth Service (Supabase Auth)",
+        "responsibility": "Email/password + OAuth login, session management, row-level security policy enforcement."
+      },
+      {
+        "name": "Job Worker / Queue",
+        "responsibility": "Background processing for long-running render submission, status polling, caption burning, and multi-format export assembly triggered post-render."
+      }
+    ],
+    "techStack": {
+      "llm": "OpenAI API (or equivalent LLM provider) for context extraction summarization, script/shot-list generation, and publishing-kit copy generation.",
+      "auth": "Supabase Auth (email/password + optional GitHub OAuth for future repo-connect), JWT-based session, RLS enforced at the DB layer.",
+      "infra": "Vercel for hosting/CI-CD of the Next.js app; Supabase Storage for asset/video file storage; Stripe for subscription billing; Higgsfield API/MCP as the core video-generation provider; Inngest or Trigger.dev for durable background job orchestration and webhook handling.",
+      "backend": "Next.js Route Handlers (Node runtime) for API endpoints; background job worker implemented via a queue (Supabase Edge Functions or a lightweight worker service e.g. Inngest/Trigger.dev) for long-running Higgsfield render polling and post-processing.",
+      "database": "Supabase Postgres with Row Level Security policies scoping all tables to the authenticated user_id (via project ownership).",
+      "devtools": "TypeScript, ESLint/Prettier, Supabase CLI for local dev/migrations, GitHub Actions for CI (lint/build/test), Vercel preview deployments for PR review.",
+      "frontend": "Next.js (App Router) + TypeScript + Tailwind CSS, deployed as a single full-stack app; guided multi-step wizard UI with client-side upload progress and job-status polling via SWR/React Query."
+    },
+    "dataModels": [
+      {
+        "entity": "User",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "email",
+            "type": "text"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamptz"
+          },
+          {
+            "name": "stripe_customer_id",
+            "type": "text"
+          }
+        ],
+        "relationships": [
+          "has many Projects",
+          "has one Subscription"
+        ]
+      },
+      {
+        "entity": "Subscription",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "stripe_subscription_id",
+            "type": "text"
+          },
+          {
+            "name": "status",
+            "type": "text"
+          },
+          {
+            "name": "plan",
+            "type": "text"
+          },
+          {
+            "name": "current_period_end",
+            "type": "timestamptz"
+          }
+        ],
+        "relationships": [
+          "belongs to User"
+        ]
+      },
+      {
+        "entity": "Project",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "platform",
+            "type": "text"
+          },
+          {
+            "name": "tone",
+            "type": "text"
+          },
+          {
+            "name": "product_description",
+            "type": "text"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamptz"
+          }
+        ],
+        "relationships": [
+          "belongs to User",
+          "has one ProjectContext",
+          "has many Assets",
+          "has many Scripts",
+          "has many RenderJobs"
+        ]
+      },
+      {
+        "entity": "ProjectContext",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "project_id",
+            "type": "uuid"
+          },
+          {
+            "name": "readme_text",
+            "type": "text"
+          },
+          {
+            "name": "package_json_text",
+            "type": "text"
+          },
+          {
+            "name": "repo_url",
+            "type": "text"
+          },
+          {
+            "name": "extracted_features",
+            "type": "jsonb"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamptz"
+          }
+        ],
+        "relationships": [
+          "belongs to Project"
+        ]
+      },
+      {
+        "entity": "Asset",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "project_id",
+            "type": "uuid"
+          },
+          {
+            "name": "type",
+            "type": "text"
+          },
+          {
+            "name": "storage_path",
+            "type": "text"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamptz"
+          }
+        ],
+        "relationships": [
+          "belongs to Project",
+          "may belong to RenderJob"
+        ]
+      },
+      {
+        "entity": "Script",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "project_id",
+            "type": "uuid"
+          },
+          {
+            "name": "script_text",
+            "type": "text"
+          },
+          {
+            "name": "shot_list",
+            "type": "jsonb"
+          },
+          {
+            "name": "captions",
+            "type": "jsonb"
+          },
+          {
+            "name": "status",
+            "type": "text"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamptz"
+          }
+        ],
+        "relationships": [
+          "belongs to Project",
+          "used by RenderJob"
+        ]
+      },
+      {
+        "entity": "RenderJob",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "project_id",
+            "type": "uuid"
+          },
+          {
+            "name": "script_id",
+            "type": "uuid"
+          },
+          {
+            "name": "higgsfield_job_id",
+            "type": "text"
+          },
+          {
+            "name": "estimated_credit_cost",
+            "type": "numeric"
+          },
+          {
+            "name": "actual_credit_cost",
+            "type": "numeric"
+          },
+          {
+            "name": "status",
+            "type": "text"
+          },
+          {
+            "name": "error_message",
+            "type": "text"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamptz"
+          },
+          {
+            "name": "completed_at",
+            "type": "timestamptz"
+          }
+        ],
+        "relationships": [
+          "belongs to Project",
+          "belongs to Script",
+          "has many Assets (outputs)"
+        ]
+      },
+      {
+        "entity": "PublishingKit",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "render_job_id",
+            "type": "uuid"
+          },
+          {
+            "name": "title",
+            "type": "text"
+          },
+          {
+            "name": "description",
+            "type": "text"
+          },
+          {
+            "name": "hashtags",
+            "type": "jsonb"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamptz"
+          }
+        ],
+        "relationships": [
+          "belongs to RenderJob"
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "title": "Set up Supabase project and schema",
+        "description": "Provision Supabase project, run schemaSql migrations for users, subscriptions, projects, project_context, assets, scripts, render_jobs, and publishing_kits, and configure Row Level Security policies scoping all rows to the owning user via project relationships."
+      },
+      {
+        "title": "Implement auth and subscription gating",
+        "description": "Wire up Supabase Auth (email/password) in Next.js, create protected route middleware, integrate Stripe Checkout/webhooks for flat-fee subscription creation, and enforce active-subscription checks before allowing render job creation."
+      },
+      {
+        "title": "Deploy pipeline setup",
+        "description": "Connect repo to Vercel for automatic preview/production deployments, configure environment variables (Supabase keys, Stripe keys, Higgsfield API keys, LLM API keys), and set up GitHub Actions for lint/build checks on PRs."
+      },
+      {
+        "title": "Build guided intake wizard and asset upload flow",
+        "description": "Create the multi-step form (product description, tone, platform, screenshots/screen-recordings/logo upload to Supabase Storage) that creates a Project, ProjectContext, and Asset records."
+      },
+      {
+        "title": "Build script/shot-list generation and review UI",
+        "description": "Implement the LLM-backed endpoint that consumes ProjectContext to generate a Script (script_text, shot_list, captions), plus a review/edit UI where the founder approves or edits before render submission."
+      },
+      {
+        "title": "Build Higgsfield orchestration and cost-approval flow",
+        "description": "Implement the service that builds a Higgsfield render request from the approved Script and Assets, computes estimated_credit_cost for user approval, submits the job, and creates a RenderJob record in pending_approval/queued state."
+      },
+      {
+        "title": "Build background worker for job polling and multi-format export",
+        "description": "Implement a durable background job (Inngest/Trigger.dev or Supabase Edge Function cron) that polls/receives Higgsfield webhooks, updates RenderJob status, fetches 16:9 and 9:16 outputs plus burned-in captions, generates a thumbnail, stores results as Assets, and creates the PublishingKit."
+      },
+      {
+        "title": "Build job status dashboard and final video delivery UI",
+        "description": "Create the project dashboard showing RenderJob status in real time, and once completed, display/download both video formats along with the generated PublishingKit (title, description, hashtags, thumbnail)."
+      }
+    ],
+    "openQuestions": [
+      "What markup on Higgsfield API/credit costs is needed to sustain a $69/mo flat fee without eroding margin, and how should estimated_credit_cost be computed per job type?",
+      "Should GitHub repo OAuth be required at signup, or is screenshot-only ingestion sufficient for the 72-hour MVP, and does this change the ProjectContext schema now vs. later?",
+      "What minimum codebase signal (README, package.json, live URL) reliably produces accurate narrative extraction within the build window, and should this be validated with a fallback to manual-only input?",
+      "Do we proxy/store rendered videos ourselves in Supabase Storage or serve directly from Higgsfield's storage/CDN for v1, and what are the implications for asset retention, egress cost, and long-term URL stability?",
+      "How do we handle Higgsfield job failures/retries without double-charging credits, and what user-facing retry/refund policy should the render_jobs.status flow support?",
+      "What is the polling vs. webhook strategy for Higgsfield job status, and does the chosen background job framework (Inngest/Trigger.dev/Edge Functions) reliably support the expected render durations (minutes to tens of minutes)?"
+    ],
+    "schemaSqlExcerpt": "CREATE TABLE projects (\n  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),\n  user_id uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  name text NOT NULL,\n  platform text NOT NULL DEFAULT 'product_hunt',\n  tone text,\n  product_description text\n);\n\nCREATE TABLE project_context (\n  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),\n  project_id uuid NOT NULL REFERENCES projects(id) ON DELETE CASCADE,\n  readme_text text,\n  repo_url text,\n  extracted_features jsonb DEFAULT '[]'::jsonb\n);"
+  },
+  "jira": {
+    "projectKey": "SHIPR89",
+    "epicCount": 11,
+    "storyCount": 33,
+    "epics": [
+      {
+        "key": "SHIPR89-1",
+        "title": "Engineering & Infrastructure",
+        "stories": [
+          {
+            "key": "SHIPR89-2",
+            "title": "Set up Supabase project and schema",
+            "phase": 1
+          },
+          {
+            "key": "SHIPR89-3",
+            "title": "Implement auth and subscription gating",
+            "phase": 1
+          },
+          {
+            "key": "SHIPR89-4",
+            "title": "Deploy pipeline setup",
+            "phase": 1
+          }
+        ]
+      },
+      {
+        "key": "SHIPR89-5",
+        "title": "Higgsfield video generation integration",
+        "stories": [
+          {
+            "key": "SHIPR89-6",
+            "title": "Build Higgsfield API client wrapper module",
+            "phase": 1
+          },
+          {
+            "key": "SHIPR89-7",
+            "title": "Build render submission Route Handler",
+            "phase": 2
+          },
+          {
+            "key": "SHIPR89-8",
+            "title": "Add render failure handling and retry",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "SHIPR89-9",
+        "title": "Multi-format export",
+        "stories": [
+          {
+            "key": "SHIPR89-10",
+            "title": "Add multi-format output fields to assets table",
+            "phase": 1
+          },
+          {
+            "key": "SHIPR89-11",
+            "title": "Build background worker step for dual-format export",
+            "phase": 2
+          },
+          {
+            "key": "SHIPR89-12",
+            "title": "Build dual-format download UI",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "SHIPR89-13",
+        "title": "Script and narrative generation",
+        "stories": [
+          {
+            "key": "SHIPR89-14",
+            "title": "Design scripts table and prompt template scaffolding",
+            "phase": 1
+          },
+          {
+            "key": "SHIPR89-15",
+            "title": "Build script generation Route Handler",
+            "phase": 2
+          },
+          {
+            "key": "SHIPR89-16",
+            "title": "Build script review/edit UI",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "SHIPR89-17",
+        "title": "Caption/subtitle generation",
+        "stories": [
+          {
+            "key": "SHIPR89-18",
+            "title": "Extend script schema to store caption timing data",
+            "phase": 1
+          },
+          {
+            "key": "SHIPR89-19",
+            "title": "Integrate caption generation into background worker",
+            "phase": 2
+          },
+          {
+            "key": "SHIPR89-20",
+            "title": "Add caption style preview toggle",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "SHIPR89-21",
+        "title": "Screenshot/screen-recording ingestion",
+        "stories": [
+          {
+            "key": "SHIPR89-22",
+            "title": "Build Supabase Storage upload pipeline and assets table",
+            "phase": 1
+          },
+          {
+            "key": "SHIPR89-23",
+            "title": "Build multi-file upload UI in intake wizard",
+            "phase": 2
+          },
+          {
+            "key": "SHIPR89-24",
+            "title": "Add asset preview and removal management",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "SHIPR89-25",
+        "title": "Cost/credit visibility before render",
+        "stories": [
+          {
+            "key": "SHIPR89-26",
+            "title": "Add cost estimation fields to render_jobs schema",
+            "phase": 1
+          },
+          {
+            "key": "SHIPR89-27",
+            "title": "Build cost estimation service and approval endpoint",
+            "phase": 2
+          },
+          {
+            "key": "SHIPR89-28",
+            "title": "Build cost approval modal UI",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "SHIPR89-29",
+        "title": "Guided intake wizard",
+        "stories": [
+          {
+            "key": "SHIPR89-30",
+            "title": "Build multi-step wizard scaffolding and ProjectContext schema",
+            "phase": 1
+          },
+          {
+            "key": "SHIPR89-31",
+            "title": "Build tone/style/platform selection steps",
+            "phase": 2
+          },
+          {
+            "key": "SHIPR89-32",
+            "title": "Add wizard progress persistence and resume",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "SHIPR89-33",
+        "title": "Codebase-aware context extraction",
+        "stories": [
+          {
+            "key": "SHIPR89-34",
+            "title": "Build GitHub OAuth connection and repo fetch schema",
+            "phase": 1
+          },
+          {
+            "key": "SHIPR89-35",
+            "title": "Build README/package.json parsing service",
+            "phase": 2
+          },
+          {
+            "key": "SHIPR89-36",
+            "title": "Build extracted-context review UI",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "SHIPR89-37",
+        "title": "Flat-fee credit abstraction",
+        "stories": [
+          {
+            "key": "SHIPR89-38",
+            "title": "Define subscription plan and usage-limit schema",
+            "phase": 1
+          },
+          {
+            "key": "SHIPR89-39",
+            "title": "Build usage tracking and quota enforcement",
+            "phase": 2
+          },
+          {
+            "key": "SHIPR89-40",
+            "title": "Build usage dashboard widget",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "SHIPR89-41",
+        "title": "Bundled publishing kit",
+        "stories": [
+          {
+            "key": "SHIPR89-42",
+            "title": "Design publishing_kits schema",
+            "phase": 1
+          },
+          {
+            "key": "SHIPR89-43",
+            "title": "Build publishing kit generation service",
+            "phase": 2
+          },
+          {
+            "key": "SHIPR89-44",
+            "title": "Build publishing kit display/copy UI",
+            "phase": 3
+          }
+        ]
+      }
+    ]
+  },
+  "roadmap": [
+    {
+      "phase": 1,
+      "storyCount": 13,
+      "epics": [
+        "Engineering & Infrastructure",
+        "Higgsfield video generation integration",
+        "Multi-format export",
+        "Script and narrative generation",
+        "Caption/subtitle generation",
+        "Screenshot/screen-recording ingestion",
+        "Cost/credit visibility before render",
+        "Guided intake wizard",
+        "Codebase-aware context extraction",
+        "Flat-fee credit abstraction",
+        "Bundled publishing kit"
+      ]
+    },
+    {
+      "phase": 2,
+      "storyCount": 10,
+      "epics": [
+        "Higgsfield video generation integration",
+        "Multi-format export",
+        "Script and narrative generation",
+        "Caption/subtitle generation",
+        "Screenshot/screen-recording ingestion",
+        "Cost/credit visibility before render",
+        "Guided intake wizard",
+        "Codebase-aware context extraction",
+        "Flat-fee credit abstraction",
+        "Bundled publishing kit"
+      ]
+    },
+    {
+      "phase": 3,
+      "storyCount": 10,
+      "epics": [
+        "Higgsfield video generation integration",
+        "Multi-format export",
+        "Script and narrative generation",
+        "Caption/subtitle generation",
+        "Screenshot/screen-recording ingestion",
+        "Cost/credit visibility before render",
+        "Guided intake wizard",
+        "Codebase-aware context extraction",
+        "Flat-fee credit abstraction",
+        "Bundled publishing kit"
+      ]
+    }
+  ],
+  "confluence": {
+    "pages": [
+      "01 - Product",
+      "02 - Brand & Identity",
+      "03 - Engineering",
+      "04 - Competitor Analysis",
+      "05 - Roadmap",
+      "06 - Research Notes"
+    ]
+  }
+}

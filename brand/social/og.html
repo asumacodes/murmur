@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Murmur · Open Graph</title>
+    <link rel="stylesheet" href="../shared/brand.css" />
+    <style>
+      .artboard {
+        --glow-x: 82%;
+        --glow-y: 22%;
+        padding: 64px 72px;
+        display: flex;
+        flex-direction: column;
+      }
+      .wm {
+        font-size: 40px;
+      }
+      h1 {
+        margin-top: auto;
+        font-size: 96px;
+      }
+      .sub {
+        margin-top: 22px;
+        max-width: 780px;
+        font-size: 27px;
+        line-height: 1.35;
+      }
+      .foot {
+        margin-top: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .foot .left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 22px;
+      }
+      .foot .rule {
+        width: 44px;
+      }
+      .foot .stat {
+        font-size: 16px;
+        color: var(--fg-3);
+      }
+      .flock-wrap {
+        position: absolute;
+        right: 60px;
+        top: 56px;
+        width: 420px;
+        height: 190px;
+      }
+      .flock-wrap canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="artboard bg" data-w="1200" data-h="630">
+      <span class="wordmark wm"><span data-mark></span>murmur</span>
+      <div class="flock-wrap"><canvas data-flock data-seed="3" data-bars="36" data-count="3400" data-size="1"></canvas></div>
+      <h1 class="display">Voice memo in.<br /><span class="accent">Whole</span> project out.</h1>
+      <p class="sub muted">Research, PRD, brand kit, tech design, roadmap and a Jira board, from one voice memo. In under 10 minutes.</p>
+      <div class="foot">
+        <span class="left"><span class="rule"></span><span class="url">trymurmur.studio</span></span>
+        <span class="mono stat">First idea free</span>
+      </div>
+    </main>
+    <script src="../shared/brand.js"></script>
+  </body>
+</html>

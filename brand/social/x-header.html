@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Murmur · X header</title>
+    <link rel="stylesheet" href="../shared/brand.css" />
+    <style>
+      /* X places the avatar over the bottom-left; keep that corner empty. */
+      .artboard {
+        --glow-x: 30%;
+        --glow-y: 45%;
+      }
+      .flock-wrap {
+        position: absolute;
+        left: 70px;
+        top: 70px;
+        width: 560px;
+        height: 230px;
+        opacity: 0.9;
+      }
+      .flock-wrap canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .copy {
+        position: absolute;
+        right: 70px;
+        top: 50%;
+        transform: translateY(-54%);
+        text-align: right;
+      }
+      h1 {
+        font-size: 84px;
+      }
+      .stages {
+        margin-top: 30px;
+        font-size: 19px;
+        color: var(--fg-3);
+      }
+      .foot {
+        margin-top: 22px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 16px;
+        font-size: 24px;
+      }
+      .foot .rule {
+        width: 56px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="artboard bg" data-w="1500" data-h="500">
+      <div class="flock-wrap"><canvas data-flock data-seed="7" data-bars="40" data-count="4200" data-size="1.05"></canvas></div>
+      <div class="copy">
+        <h1 class="display">Voice memo in.<br /><span class="accent">Whole</span> project out.</h1>
+        <p class="mono stages">Voice → research · PRD · brand · tech design · Jira</p>
+        <p class="foot"><span class="rule"></span><span class="url">trymurmur.studio</span></p>
+      </div>
+    </main>
+    <script src="../shared/brand.js"></script>
+  </body>
+</html>

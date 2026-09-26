@@ -1,11 +1,11 @@
 {
   "name": "Murmur",
   "short_name": "Murmur",
-  "description": "Speak. Transcribe. Ship.",
+  "description": "Voice memo in. Whole project out. PRD, brand kit and Jira board in under 10 minutes.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#0a0a0a",
+  "background_color": "#0a0a0b",
+  "theme_color": "#0a0a0b",
   "icons": [
     {
       "src": "/icons/icon-192.png",

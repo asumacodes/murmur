@@ -1,0 +1,36 @@
+{
+  "slug": "aavaas",
+  "capturedAt": "2026-09-26",
+  "screens": [
+    {
+      "name": "prd",
+      "source": "app",
+      "label": "PRD"
+    },
+    {
+      "name": "competitors",
+      "source": "app",
+      "label": "Competitor map"
+    },
+    {
+      "name": "brand",
+      "source": "app",
+      "label": "Brand kit"
+    },
+    {
+      "name": "engineering",
+      "source": "app",
+      "label": "Engineering brief"
+    },
+    {
+      "name": "jira",
+      "source": "jira",
+      "label": "Jira backlog"
+    },
+    {
+      "name": "confluence",
+      "source": "confluence",
+      "label": "05 - Roadmap"
+    }
+  ]
+}

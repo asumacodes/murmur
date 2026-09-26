@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Murmur · caption overlay</title>
+    <link rel="stylesheet" href="../shared/brand.css" />
+    <style>
+      /* Transparent overlay for video captions. ?text= sets the line (use <br> for a break). */
+      .caption {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 84%;
+        padding: 0.5em 0.9em;
+        border-radius: 0.6em;
+        background: var(--scrim);
+        border: 1px solid var(--line);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        color: var(--fg);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.28;
+        text-align: center;
+      }
+      html.portrait .caption {
+        bottom: 26%;
+        font-size: 50px;
+      }
+      html.landscape .caption {
+        bottom: 10%;
+        font-size: 56px;
+      }
+    </style>
+  </head>
+  <body class="transparent">
+    <main class="artboard" data-w="1080" data-h="1920">
+      <p class="caption" data-text>So I just described the idea out loud,<br />the way I'd explain it to a friend.</p>
+    </main>
+    <script src="../shared/brand.js"></script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Murmur · hook overlay</title>
+    <link rel="stylesheet" href="../shared/brand.css" />
+    <style>
+      /* Opening-line overlay: a soft scrim so the words read over any footage. */
+      .scrim {
+        position: absolute;
+        inset: 0;
+      }
+      .hook {
+        position: absolute;
+        color: var(--fg);
+      }
+      html.portrait .scrim {
+        background: radial-gradient(90% 26% at 50% 23%, var(--scrim) 0%, var(--scrim) 30%, var(--scrim-soft) 100%);
+      }
+      html.portrait .hook {
+        left: 110px;
+        right: 110px;
+        top: 330px;
+        font-size: 92px;
+      }
+      html.landscape .scrim {
+        background: radial-gradient(60% 42% at 34% 50%, var(--scrim) 0%, var(--scrim) 32%, var(--scrim-soft) 100%);
+      }
+      html.landscape .hook {
+        left: 128px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 110px;
+      }
+    </style>
+  </head>
+  <body class="transparent">
+    <main class="artboard" data-w="1080" data-h="1920">
+      <div class="scrim"></div>
+      <h1 class="hook display" data-text>I talked for 49 seconds.<br />This is what <span class="accent">came out.</span></h1>
+    </main>
+    <script src="../shared/brand.js"></script>
+  </body>
+</html>

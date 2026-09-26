@@ -98,7 +98,7 @@ We use a small number of trusted service providers ("Data Processors" / "sub-pro
 | **AssemblyAI, Inc.** | Transcribes your recordings | Audio and transcript | United States |
 | **Resend (Plus Five Five, Inc.)** | Sends our emails | Email address | United States |
 | **Cloudflare, Inc.** | DNS, email routing, and cookieless website/performance analytics | Routing and aggregate website-performance analytics | United States / global |
-| **PostHog** | Product and behavioural analytics | Pseudonymous usage events and first-touch attribution (no recordings, transcripts, or run results) | European Union |
+| **PostHog** | Product and behavioral analytics | Pseudonymous usage events and first-touch attribution (no recordings, transcripts, or run results) | European Union |
 
 We may also disclose personal data where required by law, to enforce our Terms, or to protect the rights, safety, and security of our users, the public, or SprintZero Studios.
 
@@ -135,8 +135,8 @@ our own domain. This cookie is used only to measure usage of our own websites
 and app (for example, to understand how visitors move from our marketing site
 to the product, which marketing sections they view, how far they scroll, when
 they click a signup CTA through to the product, when they start or submit the
-waitlist form on the coming-soon path — without collecting the email address
-itself — and, when the scroll-hero experience is enabled, which beats of that
+waitlist form on the coming-soon path (without collecting the email address
+itself), and, when the scroll-hero experience is enabled, which beats of that
 sequence they reach and whether they complete it) and is not shared with
 advertisers or used to track you across other companies' websites. The
 information is used in an aggregated, de-identified form and is not used to

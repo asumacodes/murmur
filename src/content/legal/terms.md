@@ -79,7 +79,7 @@ The output is provided for your use as a starting point, not as professional, le
 
 ## 7. Plans, billing, and refunds
 
-**7.1 How plans work.** Murmur is metered by the *delivered idea* — a completed pipeline result. Each paid plan gives you a set number of ideas per month:
+**7.1 How plans work.** Murmur is metered by the *delivered idea*: a completed pipeline result. Each paid plan gives you a set number of ideas per month:
 
 | Plan | Price | Ideas per month |
 | --- | --- | --- |
@@ -91,7 +91,7 @@ A plan is a monthly bucket of ideas, not a block of time. Only a delivered idea 
 
 The first 50 subscribers get double their tier's idea allowance for 12 months.
 
-**7.2 Monthly reset, no rollover.** Each month your plan refills your idea count to your plan's number. Unused ideas do not carry over to the next month. If your plan renews, your count is set back to your plan's monthly number — it is not added to whatever remained.
+**7.2 Monthly reset, no rollover.** Each month your plan refills your idea count to your plan's number. Unused ideas do not carry over to the next month. If your plan renews, your count is set back to your plan's monthly number; it is not added to whatever remained.
 
 **7.3 Changing plans.** When you upgrade, you purchase your new plan's full monthly ideas straight away, you're charged your new plan's price, and your monthly renewal date moves to the day you upgraded. Your previous plan ends at that point, and any ideas left in it carry over as extra ideas that don't expire. Upgrading is a fresh purchase of the larger plan, not a partial adjustment of your old one.
 
@@ -99,9 +99,9 @@ The first 50 subscribers get double their tier's idea allowance for 12 months.
 
 **7.5 Refunds.** Because ideas are delivered on demand and unused ideas are never lost while your plan is active, we do not offer refunds for unused ideas or for the remainder of a month after cancellation. We also do not refund ideas that have been delivered. This does not affect any refund or cancellation rights you have under laws that cannot be waived; where such rights apply, they take precedence over this section.
 
-**7.6 If something goes wrong.** If a run fails, it costs you nothing — your idea count is not reduced and you can run it again. If a delivered idea falls short of what you expected, contact us at [hey@trymurmur.studio](mailto:hey@trymurmur.studio) and we'll look into it — we'll usually put things right by fixing the result or re-crediting the idea, at our discretion. Our aim is to make it right, not to leave you out of pocket.
+**7.6 If something goes wrong.** If a run fails, it costs you nothing: your idea count is not reduced and you can run it again. If a delivered idea falls short of what you expected, contact us at [hey@trymurmur.studio](mailto:hey@trymurmur.studio) and we'll look into it. We'll usually put things right by fixing the result or re-crediting the idea, at our discretion. Our aim is to make it right, not to leave you out of pocket.
 
-**7.7 Payment processing.** Payments are processed by Dodo Payments, which acts as the merchant of record and appears as the seller on your card or bank statement — so your statement will show **"Dodo Payments,"** not Murmur. Prices are shown in US dollars or Indian rupees depending on your location. Applicable taxes are calculated and collected by Dodo Payments at checkout.
+**7.7 Payment processing.** Payments are processed by Dodo Payments, which acts as the merchant of record and appears as the seller on your card or bank statement, so your statement will show **"Dodo Payments,"** not Murmur. Prices are shown in US dollars or Indian rupees depending on your location. Applicable taxes are calculated and collected by Dodo Payments at checkout.
 
 **7.8 Price changes.** We may change plans, idea allowances, and prices going forward. Where a change affects a plan you're actively paying for, we'll give notice as required by law. Changes are not retroactive to ideas you've already purchased.
 

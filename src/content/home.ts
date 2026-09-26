@@ -1,418 +1,257 @@
-import { FOUNDING_REWARD_COPY, FOUNDING_REWARD_LABEL } from "@/content/founding";
+import type { ShapeName } from "@/components/webgl/shapes";
+import { FOUNDING_REWARD_COPY } from "@/content/founding";
 
-export const navItems = [
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Pipeline", href: "#pipeline" },
-  { label: "Compare", href: "#comparison" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Studio log", href: "#studio-log" },
-  { label: "FAQ", href: "#faq" },
+export const hero = {
+  eyebrow: "Voice → project foundation",
+  titleLine1: "Voice memo in.",
+  titleLine2Lead: "Whole",
+  titleLine2Rest: "project out.",
+  subhead:
+    "Talk through your idea. Murmur researches the competition, writes the PRD, designs the brand and drafts the tech design. Then it builds your Confluence space, roadmap and Jira board in your own Atlassian site, all in under 10 minutes.",
+  secondaryCta: "See a real run",
+} as const;
+
+/** The hero loop: what the flock turns into, and the caption shown while it does. */
+export const heroSequence: { shape: ShapeName; label: string; hold: number }[] = [
+  { shape: "voice", label: "Listening", hold: 3.4 },
+  { shape: "transcript", label: "Transcribing", hold: 1.8 },
+  { shape: "research", label: "Researching the market", hold: 2.4 },
+  { shape: "prd", label: "Writing the PRD", hold: 2.2 },
+  { shape: "brand", label: "Designing the brand", hold: 2.2 },
+  { shape: "jira", label: "Building your board", hold: 2.6 },
 ];
 
-export const pipelineLabels = [
-  { numeral: "i.", label: "VOICE" },
-  { numeral: "ii.", label: "RESEARCH" },
-  { numeral: "iii.", label: "PRD" },
-  { numeral: "iv.", label: "BRAND" },
-  { numeral: "v.", label: "SHIPPED" },
-];
-
-export const howItWorks = [
-  {
-    number: "01",
-    label: "Voice in",
-    headline: "You open Listener. Tap once. Talk for five minutes.",
-    body: "No prompts. No fields. No structure to figure out. Speak the idea as if explaining it to a friend at a kitchen table.",
-    artifact: "Recording",
-  },
-  {
-    number: "02",
-    label: "Transcription",
-    headline: "Your voice becomes structured text in seconds.",
-    body: "Speaker turns, punctuation, paragraph breaks. Clean transcript in, clean transcript out. It's what the rest of the pipeline reads.",
-    artifact: "Transcript",
-  },
-  {
-    number: "03",
-    label: "Research",
-    headline: "Exa searches the web for competitors, prior art, and market signal. Every finding links to a source you can open.",
-    body: "Real URLs. Real snippets. Each finding cited and dated. The PRD agent reads this before it writes a word.",
-    artifact: "Market signal",
-  },
-  {
-    number: "04",
-    label: "Project foundation",
-    headline: "Claude writes the PRD. A brand identity is generated. Jira board and Confluence space scaffold themselves.",
-    body: "Four specialists, four typed schemas, one validated handoff per agent. The planning work a team would otherwise spend weeks on: a foundation, not a finished app.",
-    artifact: "PRD + brand + Jira",
-  },
-  {
-    number: "05",
-    label: "Ship it with SprintZero",
-    headline: "When the foundation is ready to become working software, SprintZero Studio takes it from there.",
-    body: "Murmur ends where automation ends. Turning the PRD, board, and brand into a shipped landing page, MVP, or full build is human-led studio work, delivered in 72-hour sprints.",
-    artifact: "Handoff",
-  },
-];
-
-export const pipelineNodes = [
-  { name: "Listener", role: "PWA Capture", level: 0 },
-  { name: "Transcription", role: "Structured Text", level: 0 },
-  { name: "Exa", role: "Market Research", level: 0 },
-  { name: "Claude / PRD Agent", role: "Zod Schema", level: 0 },
-  { name: "Brand Agent", role: "PRD fans out · parallel", level: 1 },
-  { name: "Jira Generator", role: "PRD fans out · parallel", level: 1 },
-  { name: "Confluence Generator", role: "PRD fans out · parallel", level: 1 },
-];
-
-export const pipelineNodeOutputs = [
-  "→ Voice capture session",
-  "→ Structured transcript",
-  "→ Competitive brief",
-  "→ Validated PRD schema",
-  "→ Brand identity kit",
-  "→ Jira epics + stories",
-  "→ Confluence space",
-];
-
-export const pipelineNodeBodies = [
-  "Speak once. Murmur captures your voice in one tap: no uploads to fumble, no prompt wrangling, no leaving your flow.",
-  "Speech becomes structured text: speaker turns, punctuation, paragraph breaks. The transcript is what the pipeline reads.",
-  "Live web search for competitors and prior art. Citations you can open, not invented market research.",
-  "One agent turns the memo into a typed PRD, validated against a Zod schema before anything downstream runs.",
-  "A usable identity: palette, type, and voice pulled from your PRD. Not a mood board you'll redo.",
-  "Epics and stories generated from the PRD, in your own Jira tenant. A backlog that follows the product, not reverse-engineered after the fact.",
-  "A Confluence space scaffolded to your PRD. Real pages, real structure, ready for your team to fill in.",
-];
-
-export type PipelineIllustration =
-  | "capture"
-  | "transcript"
-  | "research"
-  | "schema"
-  | "parallel"
-  | "brand"
-  | "jira"
-  | "confluence";
-
-export const pipelineNodeIllustrations: PipelineIllustration[] = [
-  "capture",
-  "transcript",
-  "research",
-  "schema",
-  "brand",
-  "jira",
-  "confluence",
-];
-
-export const pipelineRailSteps = [
-  { step: "01", label: "Voice" },
-  { step: "02", label: "Transcription" },
-  { step: "03", label: "Research" },
-  { step: "04", label: "PRD" },
-  { step: "05", label: "Brand" },
-  { step: "06", label: "Jira" },
-  { step: "07", label: "Confluence" },
-] as const;
-
-export type PipelineStage = {
-  step: string;
-  title: string;
-  role: string;
+export type Stage = {
+  id: string;
+  n: string;
+  name: string;
+  shape: ShapeName;
   output: string;
   body: string;
-  glowTarget: number;
+  fields: string[];
+  by?: string;
 };
 
-export const pipelineStages: PipelineStage[] = [
+/** The nine stages, in the order a run produces them. Field names mirror the app's output types. */
+export const stages: Stage[] = [
   {
-    step: "01",
-    title: "Listener",
-    role: "PWA Capture",
-    output: "→ Voice capture session",
-    body: "Speak once. Murmur captures your voice in one tap: no uploads to fumble, no prompt wrangling, no leaving your flow.",
-    glowTarget: 0,
+    id: "voice",
+    n: "01",
+    name: "Voice memo",
+    shape: "voice",
+    output: "Your idea, out loud",
+    body: "Tap record and pitch it like you would to a friend. Fifteen seconds works; ten minutes is the ceiling. Rather type? That works too.",
+    fields: ["Phone or desktop", "15 sec to 10 min", "Or type it"],
   },
   {
-    step: "02",
-    title: "Transcription",
-    role: "Transcription",
-    output: "→ Structured transcript",
-    body: "Speech becomes structured text: speaker turns, punctuation, paragraph breaks. The transcript is what the pipeline reads.",
-    glowTarget: 1,
+    id: "transcript",
+    n: "02",
+    name: "Transcript",
+    shape: "transcript",
+    output: "Clean, punctuated text",
+    body: "Your memo becomes text you can read back and correct. Nothing runs until you confirm.",
+    fields: ["Language detection", "Review before running"],
+    by: "AssemblyAI",
   },
   {
-    step: "03",
-    title: "Exa",
-    role: "Market Research",
-    output: "→ Competitive brief",
-    body: "Live web search for competitors and prior art. Citations you can open, not invented market research.",
-    glowTarget: 2,
+    id: "research",
+    n: "03",
+    name: "Competitor map",
+    shape: "research",
+    output: "Who's already out there",
+    body: "Live web search for competitors and prior art. Every competitor comes with a link you can open, their positioning, strengths, weaknesses and pricing where it's stated.",
+    fields: ["competitors[]", "marketSummary", "tableStakes", "differentiationOpportunities", "ourPositioning"],
+    by: "Exa",
   },
   {
-    step: "04",
-    title: "Claude / PRD Agent",
-    role: "Zod Schema",
-    output: "→ Validated PRD schema",
-    body: "One agent turns the memo into a typed PRD, validated against a Zod schema before anything downstream runs.",
-    glowTarget: 3,
+    id: "prd",
+    n: "04",
+    name: "PRD",
+    shape: "prd",
+    output: "The product requirements document",
+    body: "A tight, opinionated PRD. MoSCoW features grounded in your memo and the research. Won't-haves included, because that's where scope creep dies.",
+    fields: ["oneLiner", "problem", "targetUser", "must / should / could / won't", "successMetrics", "risks", "openQuestions"],
+    by: "Claude",
   },
   {
-    step: "05",
-    title: "Brand Agent",
-    role: "PRD fans out · parallel",
-    output: "→ Brand identity kit",
-    body: "A usable identity: palette, type, and voice pulled from your PRD. Not a mood board you'll redo.",
-    glowTarget: 4,
+    id: "brand",
+    n: "05",
+    name: "Brand kit",
+    shape: "brand",
+    output: "A name, a tagline, a palette",
+    body: "Name notes, a tagline, brand values, a full color palette with semantic colors, a type system and a logo direction with a ready-to-use image prompt.",
+    fields: ["tagline", "brandValues", "colorPalette", "typography", "logoDirection", "logoPrompt"],
+    by: "Claude",
   },
   {
-    step: "06",
-    title: "Jira Generator",
-    role: "PRD fans out · parallel",
-    output: "→ Jira epics + stories",
-    body: "Epics and stories generated from the PRD, in your own Jira tenant. A backlog that follows the product, not reverse-engineered after the fact.",
-    glowTarget: 5,
+    id: "engineering",
+    n: "06",
+    name: "Tech design",
+    shape: "engineering",
+    output: "The engineering brief",
+    body: "High-level architecture, data flow, components and their responsibilities, data models, a SQL and TypeScript schema, a tech stack and the first engineering tasks.",
+    fields: ["hld", "dataModels", "schemaSql", "techStack", "engineeringTasks"],
+    by: "Claude",
   },
   {
-    step: "07",
-    title: "Confluence Generator",
-    role: "PRD fans out · parallel",
-    output: "→ Confluence space",
-    body: "A Confluence space scaffolded to your PRD. Real pages, real structure, ready for your team to fill in.",
-    glowTarget: 6,
+    id: "confluence",
+    n: "07",
+    name: "Confluence space",
+    shape: "confluence",
+    output: "Six pages, already written",
+    body: "A new space in your own Confluence, named after the brand: Product, Brand & Identity, Engineering, Competitor Analysis, Roadmap, Research Notes.",
+    fields: ["01 Product", "02 Brand", "03 Engineering", "04 Competitors", "05 Roadmap", "06 Research"],
+    by: "Atlassian",
+  },
+  {
+    id: "roadmap",
+    n: "08",
+    name: "Roadmap",
+    shape: "roadmap",
+    output: "Three phases, every story placed",
+    body: "Every story lands in phase one, two or three, so you know what ships first and what can wait. It lives in Confluence and on the board.",
+    fields: ["Phase 1", "Phase 2", "Phase 3"],
+  },
+  {
+    id: "jira",
+    n: "09",
+    name: "Jira board",
+    shape: "jira",
+    output: "Epics and stories in your own Jira",
+    body: "A brand-new Jira project in your own site, with epics drawn from the PRD's features plus one for engineering. The public runs created 11 to 12 epics and 33 to 47 stories. Open it and start pulling cards.",
+    fields: ["New project", "Epics", "Stories", "Phase per story"],
+    by: "Atlassian",
   },
 ];
 
-export type PackFeature =
-  | string
-  | {
-      text: string;
-      bold?: boolean;
-    };
-
-export type PackName = "Starter" | "Builder" | "Studio";
-
-export type Pack = {
-  name: PackName;
-  subtitle?: string;
-  priceAmount: string;
-  priceUnit: string;
-  idealFor?: string;
-  features: PackFeature[];
-  cta: string;
-  tag?: string;
-  footnote?: string;
-  featured?: boolean;
-};
-
-export const packs: Pack[] = [
-  {
-    name: "Starter",
-    subtitle: "Validate a few ideas at a time.",
-    priceAmount: "$19",
-    priceUnit: "/ month",
-    idealFor: "Founders validating a few ideas at a time",
-    features: [
-      { text: "5 ideas / month", bold: true },
-      "1-month retention",
-      "Top-up at $5 / idea",
-      "USD, no rollover. Monthly reset",
-    ],
-    cta: "Get started →",
-    featured: true,
-  },
-  {
-    name: "Builder",
-    subtitle: "For serial builders and small teams.",
-    priceAmount: "$49",
-    priceUnit: "/ month",
-    idealFor: "Serial builders and small teams shipping regularly",
-    features: [
-      { text: "15 ideas / month", bold: true },
-      "6-month retention",
-      "Top-up at $4 / idea",
-    ],
-    cta: "Get started →",
-    tag: "Popular",
-  },
-  {
-    name: "Studio",
-    subtitle: "For agencies pitching clients at volume.",
-    priceAmount: "$79",
-    priceUnit: "/ month",
-    idealFor: "Agencies and studios pitching clients at volume",
-    features: [
-      { text: "30 ideas / month", bold: true },
-      "6-month retention",
-      "Top-up at $3 / idea",
-    ],
-    cta: "Get started →",
-    tag: "For agencies",
-  },
-];
-
-// Presented prominently alongside the tiers as the no-commitment entry —
-// not buried. KAN-49: the answer for anyone who balks at a subscription.
-export const paygEntry = {
-  priceAmount: "$7",
-  priceUnit: "/ idea",
-  label: "Pay as you go",
-  description:
-    "One idea, no subscription. The no-commitment way in. Three PAYG ideas cost more than Starter and deliver fewer. The upgrade math is deliberately obvious.",
+export const howItWorks = {
+  eyebrow: "How it works",
+  title: "Three steps.",
+  titleAccent: "You only do the talking.",
+  steps: [
+    {
+      n: "01",
+      title: "Say the idea",
+      body: "Open Murmur on your phone or laptop and talk. What it does, who it's for, why now. No prompts, no forms, no structure to figure out.",
+      meta: "15 sec to 10 min",
+    },
+    {
+      n: "02",
+      title: "Murmur runs the other eight",
+      body: "Research, PRD, brand kit, tech design, Confluence, roadmap and Jira, each stage building on everything before it. Close the tab; you'll get a notification when it's done.",
+      meta: "≈ 8 min",
+    },
+    {
+      n: "03",
+      title: "Open your workspace",
+      body: "Your Jira project and Confluence space are already there, in your own Atlassian site. Everything else downloads as Markdown, plus a brand-kit zip.",
+      meta: "Your tools",
+    },
+  ],
 } as const;
-
-export const foundingReward = {
-  eyebrow: "Founding members",
-  label: FOUNDING_REWARD_LABEL,
-  headline: FOUNDING_REWARD_COPY,
-  body: FOUNDING_REWARD_COPY,
-} as const;
-
-// Full-width band below the tier cards. The ONLY Contact Sales surface —
-// Studio is fully self-serve and never sits behind Contact Sales.
-export const sprintZeroBand = {
-  eyebrow: "From foundation to shipped",
-  headline: "Want to turn your Murmur artifacts into real, working software?",
-  body: "Murmur turns your idea into a complete project foundation. SprintZero Studio turns that foundation into shipped software: landing page, MVP, or full product build, in 72-hour sprints.",
-  cta: "Contact SprintZero",
-  ctaHref: "https://sprint0.trymurmur.studio",
-  responsePromise: "We reply to every enquiry within one business day.",
-} as const;
-
-export const stackLayers = [
-  {
-    label: "Intelligence",
-    tools: [
-      { name: "Claude", note: "PRD + agent reasoning" },
-      { name: "AssemblyAI", note: "Speech to text" },
-      { name: "Exa", note: "Market research" },
-    ],
-  },
-  {
-    label: "Orchestration",
-    tools: [
-      { name: "n8n", note: "Self-hosted workflows" },
-      { name: "Atlassian", note: "Jira + Confluence" },
-    ],
-  },
-  {
-    label: "Ship stack",
-    tools: [
-      { name: "Next.js", note: "App shell" },
-      { name: "Supabase", note: "Auth + data" },
-      { name: "Vercel", note: "Hosting" },
-    ],
-  },
-  {
-    label: "Infrastructure",
-    tools: [
-      { name: "Cloudflare", note: "DNS + edge" },
-      { name: "Resend", note: "Transactional email" },
-      { name: "PostHog", note: "Product analytics" },
-      { name: "DigitalOcean", note: "Pipeline compute" },
-    ],
-  },
-] as const;
 
 export const comparison = {
-  eyebrow: "Murmur vs. by hand",
-  headline: "The same foundation. One afternoon versus one tap.",
+  eyebrow: "By hand vs Murmur",
+  title: "Same foundation.",
+  titleAccent: "Different week.",
   subhead:
-    "By hand is a day of context-switching. Murmur runs the same work in parallel and hands you coherent artifacts.",
-  manualLabel: "By hand",
-  murmurLabel: "With Murmur",
+    "None of this is hard. It's just a lot. Drag across any card to see the first week of a new idea done by hand, then done by talking.",
   rows: [
+    { id: "research", dimension: "Market research", manual: "Twenty tabs, half stale, none cited.", murmur: "A competitor map with a source link for every competitor." },
+    { id: "prd", dimension: "The PRD", manual: "Write it, restructure it, rewrite it.", murmur: "MoSCoW features, grounded in your memo and the research." },
+    { id: "brand", dimension: "Brand", manual: "A mood board now, a real brand later. Maybe.", murmur: "Tagline, palette, type and logo direction." },
+    { id: "tech", dimension: "Tech design", manual: "Lives in your head until it's too late.", murmur: "Architecture, data models and a SQL schema." },
+    { id: "backlog", dimension: "The backlog", manual: "Reverse-engineer epics from the doc.", murmur: "Phased epics and stories, in your own Jira." },
+    { id: "workspace", dimension: "The workspace", manual: "Set up Confluence before you've written a word.", murmur: "Six pages, already written." },
+  ],
+  manualTotal: "Days, across six tools",
+  manualNote: "Docs, tabs, a design tool, a whiteboard, Jira and Confluence.",
+  murmurTotal: "Under 10 minutes",
+} as const;
+
+export const pricing = {
+  eyebrow: "Pricing",
+  title: "Pay per idea.",
+  titleAccent: "Your first one's on us.",
+  subhead:
+    "Every account starts with one free idea: the full foundation, no card. After that, pick a plan or buy one idea at a time. An idea is only used when a run delivers.",
+  free: {
+    name: "Your first idea",
+    price: "$0",
+    tagline: "on every account",
+    note: "The full foundation: research, PRD, brand kit, tech design, roadmap, Jira board and Confluence space. No card needed.",
+  },
+  payg: { name: "Pay as you go", price: "$7", unit: "/ idea", note: "No subscription. Ideas never expire.", tier: "payg" as const },
+  plans: [
     {
-      dimension: "Getting started",
-      manual: "Blank doc, blank board. Stare.",
-      murmur: "Talk for five minutes. That's the input.",
+      name: "Starter",
+      tier: "starter" as const,
+      price: 19,
+      ideas: 5,
+      blurb: "A few new ideas a month.",
+      features: ["5 ideas / month", "1-month result retention", "Top-ups at $5 / idea"],
+      highlight: false,
     },
     {
-      dimension: "The PRD",
-      manual: "Write it, rewrite the structure, rewrite again.",
-      murmur: "Typed PRD, schema-validated before anything runs.",
+      name: "Builder",
+      tier: "builder" as const,
+      price: 49,
+      ideas: 15,
+      blurb: "For builders shipping regularly.",
+      features: ["15 ideas / month", "6-month result retention", "Top-ups at $4 / idea"],
+      highlight: true,
     },
     {
-      dimension: "Market research",
-      manual: "Twenty tabs, half stale, none cited.",
-      murmur: "Competitive brief with citations you can open.",
+      name: "Studio",
+      tier: "studio" as const,
+      price: 79,
+      ideas: 30,
+      blurb: "Agencies pitching clients at volume.",
+      features: ["30 ideas / month", "6-month result retention", "Top-ups at $3 / idea"],
+      highlight: false,
     },
-    {
-      dimension: "Brand",
-      manual: "Mood board now, fix later (you won't).",
-      murmur: "Palette, type, and voice from the spec.",
-    },
-    {
-      dimension: "The backlog",
-      manual: "Reverse-engineer epics from the doc.",
-      murmur: "Jira epics and stories from the PRD, in your tenant.",
-    },
-    {
-      dimension: "The workspace",
-      manual: "Set up Confluence before you've written a word.",
-      murmur: "Space scaffolded to mirror the PRD.",
-    },
-    {
-      dimension: "How long",
-      manual: "An afternoon across five tools.",
-      murmur: "Under ten minutes, start to foundation.",
-    },
+  ],
+  footnotes: [
+    "Failed runs never use an idea. Retrying a stage is free.",
+    "Monthly ideas reset; they don't roll over. Top-ups never expire.",
+    "Prices in USD, exclusive of tax. INR pricing shown in the app for India.",
+  ],
+  foundingTitle: "Founding members",
+  foundingHeadline: "Double the ideas, for a year.",
+  founding: FOUNDING_REWARD_COPY,
+} as const;
+
+export const stack = {
+  eyebrow: "Built on",
+  items: [
+    { name: "Claude", note: "Writes every document" },
+    { name: "Exa", note: "Live web research" },
+    { name: "AssemblyAI", note: "Transcription" },
+    { name: "Jira", note: "Your board" },
+    { name: "Confluence", note: "Your space" },
+    { name: "Supabase", note: "Auth + data" },
+    { name: "Vercel", note: "Hosting" },
   ],
 } as const;
 
-export const closerSection = {
-  eyebrow: "Get started",
-  headline: "Be early.",
-  description: `Open Listener. One free idea to see the pipeline. ${FOUNDING_REWARD_COPY}`,
-  cta: "Get started →",
-  footnote: "No subscription required to try the free idea.",
+export const sprintZero = {
+  eyebrow: "When you're ready to build",
+  titleLead: "Foundation ready?",
+  titleAccent: "SprintZero ships it.",
+  body: "Murmur stops where automation should. SprintZero, the studio behind Murmur, takes your foundation and hands back a deployed, working MVP in a fixed 72-hour window.",
+  cta: "Book a 30-minute call",
+  href: "https://sprint0.trymurmur.studio/book",
+  price: "Fixed scope · from $1,500",
+  steps: [
+    { who: "Murmur", name: "Foundation", detail: "PRD, brand, tech design and a Jira board, in minutes." },
+    { who: "SprintZero", name: "72-hour sprint", detail: "One operator builds against that board." },
+    { who: "You", name: "Live MVP", detail: "Deployed, with the code, infra and keys handed over." },
+  ],
 } as const;
 
-export const studioLog = [
-  {
-    date: "2026 · MAY · 18",
-    dateTime: "2026-05-18",
-    title: "Phase 0 - Pipeline wiring",
-    duration: "Build note",
-    action: "View",
-    href: "#pipeline",
-    description: "The current build map: Listener intake, transcription, research, PRD, brand, Jira, and Confluence.",
-  },
-  {
-    date: "2026 · MAY · 11",
-    dateTime: "2026-05-11",
-    title: "PRD agent + Zod schema pass",
-    duration: "Build note",
-    action: "View",
-    href: "#how-it-works",
-    description: "What has to be true before Murmur can call an output validated: typed fields, source notes, pack boundaries, and human-readable handoff docs.",
-  },
-  {
-    date: "2026 · MAY · 04",
-    dateTime: "2026-05-04",
-    title: "Listener PWA prototype",
-    duration: "Build note",
-    action: "View",
-    href: "#top",
-    description: "The voice-in surface is intentionally small: one tap, then a clean handoff into the orchestration layer.",
-  },
-];
-
-export const footerLinks = {
-  product: [
-    { label: "How it works", href: "#how-it-works" },
-    { label: "Pipeline", href: "#pipeline" },
-    { label: "Pricing", href: "#pricing" },
-  ],
-  studio: [
-    { label: "Log", href: "#studio-log" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
-    { label: "Roadmap", href: "#pipeline" },
-    { label: "support@trymurmur.studio", href: "mailto:support@trymurmur.studio" },
-  ],
-  legal: [
-    { label: "Privacy", href: "/privacy" },
-    { label: "Terms", href: "/terms" },
-  ],
-};
+export const closer = {
+  eyebrow: "Your turn",
+  titleLine1: "Say it",
+  titleLine2: "out loud.",
+  body: "The idea you keep describing to friends is about eight minutes away from a Jira board. Your first one's on us.",
+} as const;

@@ -1,0 +1,1355 @@
+{
+  "slug": "creature-clash",
+  "order": 1,
+  "idea": "Mobile creature-battler game prototype",
+  "category": "Games",
+  "seoNoun": "mobile game",
+  "title": "Creature Clash: Duel Loop Prototype",
+  "recordedAt": "2026-09-25",
+  "runAt": "2026-09-25",
+  "memoSeconds": 176,
+  "runSeconds": 562,
+  "language": "en",
+  "transcript": "So, uh, Poké Clash or Creature Clash is a mobile creature battling game built around the fantasy of becoming the greatest trainer alive. You start with a single companion creature and set out on a journey, walking routes, catching wild creatures to grow your collection, and battling other trainers along the way. Every battle is a duel of stats. Each creature is scored against a handful of categories like attack, attack, defense, speed, and special powers. And in battle, you pick which category to fight on turn by whittling down your opponent's health. On top of the raw numbers sit 2 layers of depth. First, elemental types— fire, water, grass, electric, and rock— that beat the— that beat and lose to each other in a rock-paper-scissors triangle. So your strongest strat can be neutralized by a bad matchup, and category choice becomes a real read against your opponent. Second unique abilities each creature carries bend the rules of the duel: stealing a strat, forcing a category, shrugging off a type disadvantage. This is of course V3. The world is structured as a series of gems— gyms, G-Y-M-S, gyms. Each themed around a type and guarded by a leader. Beat the leader, earn a badge, and after a hard-won victory of a 3v3 duel, you even get to swap one of your creatures for one of theirs. Collect all the badges, top the leaderboard, and prove you're the best. The long-term vision is online multiplayer where trainers battle each other directly, but the heart of it is a single-player story mode you can lose yourself in. In the initial phase of project, the multi— we would go with the single-player story mode where the other trainers would be AI-powered. This is a passion project first, an idea that's been kicking around for years, and this is about finally building it as interactive and as fun as it can possibly be. On strategy, the plan is to prototype privately against real creature data to nail down whether the loop is generally fun, even without worrying about art or originality. And only later, if the game proves worth it, invest in a set of original creatures. For anything that goes public, validate the fun first, own the world second. Another feature that we should be adding in this would be XP and progression. With each battle, with each duel of a creature, with each winning, losing, or drawing, of a creature, the creature would be earning XP, experience points, and those experience points would then be used by their trainer to increase their categories. Any of the categories could be used by that. So yeah, that's all.",
+  "prd": {
+    "productName": "Creature Clash: Duel Loop Prototype",
+    "oneLiner": "A private single-player prototype testing whether a classic stat-category duel, type triangle, and rule-bending abilities can out-strategize the card-based and gesture-based combat that current mobile creature collectors ship with.",
+    "problem": "Trainers who grew up on Pokémon-style games want the fantasy of raising a creature, out-thinking a rival, and proving mastery through direct head-to-head duels — but today they either play nostalgia-driven originals or settle for mobile alternatives that reframe combat as card-hand play (Creature Clash: Echoes) or gesture-drawing minigames (Poke Clash), diluting the read-your-opponent tension of picking a stat category under a type disadvantage. The founder has held this idea for years and currently has no way to test it beyond imagination; there is no build yet, private or public, and no evidence the stat-duel-plus-abilities loop is actually fun before investing in original art or a live release. Existing competitors also lack a persistent gym/badge journey or a post-battle creature swap, meaning even players drawn to the genre have no mobile product offering structured trainer-vs-leader progression with tangible stakes for winning.",
+    "targetUser": "The founder themself, acting as the sole private playtester of a personal passion project, prototyping to determine if the core battle loop is fun before showing it to anyone else.",
+    "features": {
+      "must_have": [
+        {
+          "title": "Starter creature & wild catching",
+          "rationale": "Named as the opening hook of the journey in the transcript and is table-stakes for the genre per competitor analysis.",
+          "description": "Player begins with a single companion creature and can catch additional wild creatures encountered while walking routes."
+        },
+        {
+          "title": "Stat-category duel system",
+          "rationale": "This is the heart of the idea as described by the founder and the product's core differentiator from competitors' card- and gesture-based combat.",
+          "description": "Battles are turn-based duels where each side picks a category (attack, defense, speed, special) to fight on, whittling down opponent HP."
+        },
+        {
+          "title": "Elemental type triangle",
+          "rationale": "Explicitly specified by the founder as the first depth layer on top of raw stats, and type triangles are table stakes across all competitors.",
+          "description": "Five types — fire, water, grass, electric, rock — beat and lose to each other in a rock-paper-scissors pattern that modifies duel outcomes."
+        },
+        {
+          "title": "Unique creature abilities",
+          "rationale": "Founder describes this as the second core depth layer; research flags it as a whitespace deeper than competitors' Marks/Momentum systems.",
+          "description": "Each creature carries an ability that bends duel rules — stealing a strat, forcing a category, or negating a type disadvantage."
+        },
+        {
+          "title": "Gym/badge structure with leaders",
+          "rationale": "Directly specified in the transcript as the world's structure and identified as a differentiation opportunity neither competitor offers.",
+          "description": "World is organized into gyms, each themed around a type and guarded by a leader; beating a leader awards a badge."
+        },
+        {
+          "title": "Post-gym 3v3 creature swap",
+          "rationale": "Explicitly described by the founder as a reward mechanic and confirmed by research as a gap no competitor addresses.",
+          "description": "After winning a 3v3 duel against a gym leader, the player swaps one of their creatures for one of the leader's."
+        },
+        {
+          "title": "XP and trainer-directed stat growth",
+          "rationale": "Founder explicitly calls this out as a feature to add, and research flags player-directed stat allocation as a gap versus competitors' automatic evolution stages.",
+          "description": "Creatures earn XP from every battle outcome (win, lose, or draw), which the trainer allocates across any stat category."
+        },
+        {
+          "title": "AI-powered single-player trainers",
+          "rationale": "Transcript explicitly scopes phase one to single-player story mode with AI trainers, deferring multiplayer.",
+          "description": "In this initial phase, all opposing trainers encountered on routes and in gyms are AI-controlled rather than live players."
+        },
+        {
+          "title": "Prototype on real creature data, no original art",
+          "rationale": "Founder's stated strategy: validate the fun of the loop privately before investing in original creatures or art.",
+          "description": "Build and balance the loop using existing/placeholder creature data and stats rather than original designs."
+        }
+      ],
+      "should_have": [
+        {
+          "title": "Persistent open-world route exploration",
+          "rationale": "Creature Clash: Echoes resets progress via procedurally generated roguelite runs on defeat; a persistent journey better matches the founder's route-walking framing and is a stated differentiation opportunity.",
+          "description": "Routes and gyms form a continuous walkable world state that persists between sessions, rather than resetting."
+        },
+        {
+          "title": "Badge-linked trainer leaderboard",
+          "rationale": "Poke Clash offers only a simple friend-ranking leaderboard; tying ranking to badge/gym progression better reflects the founder's 'top the leaderboard, prove you're the best' framing.",
+          "description": "Leaderboard ranks the player against tracked AI trainers by badges earned, not just battles won."
+        }
+      ],
+      "could_have": [
+        {
+          "title": "Online trainer-vs-trainer multiplayer",
+          "rationale": "Founder names this as the long-term vision but explicitly defers it past the initial phase; research confirms neither competitor offers stated PvP.",
+          "description": "Direct PvP battles between real trainers using the same stat-duel, type, and ability system."
+        },
+        {
+          "title": "Original creature roster & artwork",
+          "rationale": "Founder's own stated sequencing: invest in original creatures only after the loop proves fun, so it belongs later than V1.",
+          "description": "Replace placeholder/real creature data with an original, owned set of creature designs and art."
+        },
+        {
+          "title": "Expanded ability library",
+          "rationale": "Research identifies the ability layer as deeper than competitors' systems and worth expanding once core viability is proven.",
+          "description": "Grow the pool of unique, rule-bending abilities beyond the initial launch set once the base loop is validated."
+        }
+      ],
+      "wont_have": [
+        {
+          "title": "Monetization / in-app purchases",
+          "rationale": "This is a private prototype validating fun first, not a public release, so monetization is out of scope per the founder's stated strategy.",
+          "description": "No energy systems, currency packs, or subscription passes in this version."
+        },
+        {
+          "title": "Creature trading between players",
+          "rationale": "Offered by Creature Clash: Echoes but not mentioned by the founder and irrelevant to a single-player private prototype.",
+          "description": "No mechanism to trade creatures with other trainers."
+        },
+        {
+          "title": "Egg hatching acquisition ritual",
+          "rationale": "The founder specifies catching wild creatures on routes as the acquisition method, not hatching, explicitly diverging from both competitors' egg systems.",
+          "description": "No egg-based creature acquisition system."
+        },
+        {
+          "title": "Procedurally generated roguelite run structure",
+          "rationale": "Competitor Creature Clash: Echoes uses this structure; the founder's route-walking, persistent-world framing explicitly rejects it.",
+          "description": "No procedurally generated maps or run-based resets on defeat."
+        },
+        {
+          "title": "Card-based or gesture-drawing combat",
+          "rationale": "Both competitors use these mechanics; the founder's stat-category duel system is the explicit alternative being tested.",
+          "description": "No card-hand mechanics or gesture/shape-drawing inputs for battling."
+        },
+        {
+          "title": "Public app store release & account system",
+          "rationale": "Transcript frames this explicitly as a private prototype to validate fun before any public investment.",
+          "description": "No App Store/Google Play publishing, sign-in, or cloud save/backup in this phase."
+        },
+        {
+          "title": "Daily arenas, equippable relics, and cosmetic variants",
+          "rationale": "These are extra systems from Creature Clash: Echoes that add scope without testing the core duel loop the founder wants validated first.",
+          "description": "No Proving-Grounds-style daily challenge modes, equippable relic items, or shiny/rare cosmetic creature variants."
+        }
+      ]
+    },
+    "successMetrics": [
+      {
+        "metric": "Story-mode completion rate",
+        "target": "≥70% of prototype playtest sessions reach the final gym badge within the first 30 days of internal testing"
+      },
+      {
+        "metric": "Playtest session frequency",
+        "target": "≥3 play sessions per week sustained across a 4-week private playtest period"
+      },
+      {
+        "metric": "Self-reported fun score (1-5 scale)",
+        "target": "Average score of ≥4/5 collected across all playtest sessions within the first 30 days"
+      },
+      {
+        "metric": "Category-choice variety per battle",
+        "target": "≥3 distinct stat categories used on average per duel, measured across the first 100 test battles within 60 days"
+      }
+    ],
+    "nonGoals": [
+      "Not building or publishing to app stores in this phase — remains a private prototype.",
+      "Not implementing online multiplayer or live PvP battling in V1.",
+      "Not designing or commissioning original creature art or IP for this phase.",
+      "Not building any monetization, account, or cloud-sync systems.",
+      "Not supporting more than the five specified elemental types at launch."
+    ],
+    "risks": [
+      "The stat-duel-plus-abilities loop may not prove meaningfully more fun than card- or gesture-based alternatives once actually played, invalidating the core bet.",
+      "Balancing five types plus per-creature unique abilities and trainer-directed XP allocation could produce dominant strategies that flatten the intended 'read your opponent' tension.",
+      "Using real/existing creature data during prototyping carries IP risk if the build is ever shown publicly or shared before original creatures are developed.",
+      "As a solo passion project, the combined scope of gyms, swap mechanics, abilities, and XP allocation risks stalling before the core loop is even validated."
+    ],
+    "openQuestions": [
+      "How many gyms/badges constitute a complete V1 story mode for playtesting purposes?",
+      "What threshold of fun/completion data triggers the decision to invest in original creature art?",
+      "Should XP-driven stat allocation be fully player-controlled per category, or guided with suggested distributions?",
+      "Which existing creature dataset will be used for prototyping, and what are the legal constraints on using it even privately?"
+    ],
+    "competitiveLandscape": [
+      {
+        "competitor": "Creature Clash: Echoes (CYBERWARD, LLC.)",
+        "positioningDelta": "Replaces its card-hand/Momentum roguelite combat and procedurally reset runs with a persistent stat-category duel, type triangle, and rule-bending abilities inside a continuous gym/badge world."
+      },
+      {
+        "competitor": "Poke Clash: Monster Hunter (vCubegame)",
+        "positioningDelta": "Replaces its gesture-drawing capture/combat mechanic with strategic, stat-based turn-by-turn dueling and a structured gym/leader progression it lacks."
+      }
+    ]
+  },
+  "research": {
+    "marketSummary": "The competitive set is small but directly adjacent to the proposed idea: mobile creature-collector games that borrow heavily from the Pokémon formula (hatching, evolving, elemental type advantages, and a trainer journey). Creature Clash: Echoes is the closest analog, already live on iOS and Android as a free-to-play card-based roguelite with a 4-element triangle, evolution, and light narrative, though it reports very low download numbers on Google Play. Poke Clash is an older (2018-era) mobile title using gesture-drawing combat rather than stat-based dueling, with a simpler catch-and-train loop. Neither competitor is stated to offer a persistent open-world gym/badge structure, direct trainer-vs-trainer swapping of creatures, or player-vs-player online multiplayer, leaving room for differentiation in structured progression and social battling.",
+    "ourPositioning": "Where existing mobile creature collectors lean on card-based roguelite combat (Creature Clash: Echoes) or gesture-drawing capture mechanics (Poke Clash), this product differentiates with a classic stat-duel battle system layered with type match-ups and rule-bending unique abilities, wrapped in a persistent gym-and-badge journey with trainer-vs-leader creature swaps and, eventually, direct online PvP — validating the core duel loop first before investing in original creature art.",
+    "tableStakes": [
+      "Creature collecting/catching mechanic",
+      "Elemental type advantage system (rock-paper-scissors style triangle)",
+      "Creature evolution or stat growth over time",
+      "Egg hatching or similar creature acquisition ritual",
+      "Free-to-play mobile release with optional in-app purchases",
+      "A journey/adventure framing with a story or world to progress through"
+    ],
+    "differentiationOpportunities": [
+      "Persistent gym/badge structure with named leaders guarding themed types, not seen as stated in competitor feature lists",
+      "Post-gym-battle creature swap mechanic between trainer and leader, not offered by either competitor",
+      "Direct stat-category duel system (attack/defense/speed/special picked turn-by-turn) versus card-hand or gesture-based combat used by competitors",
+      "Unique creature abilities that bend duel rules (stealing a strat, forcing a category, negating type disadvantage) — deeper ability layer than competitors' Marks/Momentum systems",
+      "XP-driven trainer-directed stat allocation (player chooses which category to grow) rather than automatic evolution stages",
+      "Long-term online trainer-vs-trainer multiplayer battling, which neither competitor states as a feature",
+      "Open-world route-walking exploration structure vs. procedurally generated roguelite runs"
+    ],
+    "competitors": [
+      {
+        "name": "Creature Clash: Echoes (CYBERWARD, LLC.)",
+        "url": "https://creatureclashgame.com/",
+        "positioning": "A monster card roguelite with Pokémon-style collection depth, strategic card combat, and a story-driven corrupted world, designed from the ground up for mobile.",
+        "keyFeatures": [
+          "48 unique creatures across 16 families and 4 elements",
+          "Elemental triangle: Fire beats Nature, Nature beats Water, Water beats Fire, Stone as neutral wildcard",
+          "Card-based combat with Momentum chaining and Marks to exploit weaknesses",
+          "3-stage evolution per creature",
+          "Procedurally generated roguelite zone/chapter runs with elites and bosses",
+          "Egg hatching with rare Shiny/Glimmering variants",
+          "Story fragments and lore ('Echoes') uncovered through play",
+          "No account required to play; optional sign-in for backup/trading",
+          "Proving Grounds daily arenas and equippable Trainer Stones relics",
+          "Trading with friends"
+        ],
+        "pricingModel": "Free to download and play with optional in-app purchases (energy packs, bundles, Champion's Pass subscription); stated as no pay-to-win",
+        "strengths": [
+          "Already live on App Store and Google Play",
+          "Clear elemental-triangle strategy layer similar to proposed idea",
+          "Strong narrative/lore hook layered onto collection mechanics",
+          "No pay-to-win positioning may build trust",
+          "Evolution and progression systems already implemented"
+        ],
+        "weaknesses": [
+          "Uses card-based combat rather than direct stat-category duels",
+          "Roguelite run structure (losing resets zone runs) rather than persistent open-world journey/gyms",
+          "No stated multiplayer/PvP battling between trainers",
+          "Only 10+ downloads reported on Google Play, suggesting limited traction",
+          "Only 4 elements/types vs. proposed 5 (fire, water, grass, electric, rock)"
+        ],
+        "directOverlap": [
+          "Creature collecting and hatching",
+          "Elemental type advantages (rock-paper-scissors style)",
+          "Evolution/leveling of creatures",
+          "Trainer journey framing",
+          "Mobile-first design",
+          "Free-to-play with optional purchases"
+        ]
+      },
+      {
+        "name": "Poke Clash: Monster Hunter (vCubegame)",
+        "url": "https://apkpure.com/poke-clash-monster-hunter/com.vcube.pokeclash",
+        "positioning": "A fast-paced monster battling and catching game using gesture-drawing controls, framed around becoming the best monster hunter.",
+        "keyFeatures": [
+          "Gesture/shape-drawing combat mechanic to attack and capture monsters",
+          "Dozens of catchable monster types with unique stats and skills",
+          "Monster training and evolution",
+          "Monster egg hatching",
+          "Boss 'Mining Mode' battles with gem rewards",
+          "Leaderboard/ranking against friends ('top hunters')"
+        ],
+        "strengths": [
+          "Distinct, novel gesture-drawing combat mechanic differentiates it from stat-duel games",
+          "Simple, catch-and-battle loop similar to genre conventions",
+          "Has boss/mining mode for added challenge variety"
+        ],
+        "weaknesses": [
+          "Combat is based on drawing/gesture matching rather than strategic stat-category or type decisions, so lower strategic depth",
+          "Last updated 2018, suggesting the game may be outdated/unsupported",
+          "No stated gym/badge structure or trainer-vs-trainer swapping mechanic",
+          "No stated multiplayer battling, only friend leaderboard racing"
+        ],
+        "directOverlap": [
+          "Catching and training monsters",
+          "Evolution",
+          "Trainer/hunter journey fantasy",
+          "Egg hatching",
+          "Mobile platform"
+        ]
+      }
+    ]
+  },
+  "brand": {
+    "brandName": "Creature Clash: Duel Loop Prototype",
+    "tagline": "Pick your category. Prove the loop.",
+    "nameNotes": [
+      "Could shorten internally to 'Duel Loop' for day-to-day builds and playtest logs.",
+      "Alt working title 'Clash Core' if a leaner internal codename is preferred over the full franchise-style name."
+    ],
+    "brandValues": [
+      "Strategic tension over spectacle",
+      "Prototype honesty — test fun before polish",
+      "Read-your-opponent depth",
+      "Structured mastery through gyms and badges",
+      "Solo-builder pragmatism"
+    ],
+    "colorPalette": {
+      "accent": "#E8622C",
+      "neutral": "#B9C0CC",
+      "primary": "#1F2A44",
+      "semantic": {
+        "error": "#C4432E",
+        "success": "#3FA66B",
+        "warning": "#E0A62E"
+      },
+      "secondary": "#2F8F8B"
+    },
+    "typography": {
+      "body": "Inter",
+      "mono": "JetBrains Mono",
+      "heading": "Space Grotesk"
+    },
+    "logoDirection": {
+      "form": "A hexagonal badge shield containing an abstract triangular loop motif",
+      "style": "Minimal strategic emblem, badge-inspired, flat and geometric — reads as an internal dev/prototype mark rather than a consumer game logo",
+      "avoidances": [
+        "No cute creature mascots or silhouettes resembling existing franchises",
+        "No card-hand or playing-card iconography",
+        "No gesture/swipe/finger-drawing symbols",
+        "No cartoon or chibi styling",
+        "No literal monster illustrations"
+      ],
+      "symbolConcept": "A closed triangular arrow-loop (referencing the type triangle and the repeating duel/category-pick cycle) set inside a gym-badge silhouette, suggesting both strategy and progression"
+    },
+    "iconographyStyle": "Flat geometric line icons with rounded joins, badge and shield motifs for progression states, triangular arrow forms for type/category relationships, limited two-tone fills using palette accents, no illustrative or mascot-style artwork"
+  },
+  "engineering": {
+    "overview": "A private, single-player web prototype for validating a stat-category duel loop before any art or public release is built. There are no other players, no accounts, and no cloud sync in scope, so the architecture is deliberately local-first: a Next.js client running entirely in the founder's browser, with all creature, battle, and playtest data stored in an on-device SQLite database. Nothing about the duel, the world, or the AI trainers depends on a server, so no backend API is built. The one thing this project must get right is the turn-resolution logic for the stat duel (type triangle + abilities + growth), so that component is designed first and in depth; everything else (world navigation, roster growth, gym/badge progression, AI opponents, telemetry) is built around feeding it clean inputs and recording its outputs for balance analysis.",
+    "dataFlow": "On launch, the Next.js client loads the Creature & Content Data Layer and the founder's save file from local SQLite. The player navigates the route/gym map (World Route Navigation); encountering a wild creature or trainer starts a Battle row. Each round, the player picks a category in the UI while the AI Trainer Decision Engine picks for the opponent; both choices go into the Duel Battle Engine, which applies the type chart and any ability effects, resolves HP deltas, and appends a BattleTurn row. When a battle ends, Creature Roster & Growth awards XP and prompts stat allocation (written as an idempotent XPAllocation); if it was a deciding gym battle, Gym & Badge Progression issues a Badge and runs the idempotent GymSwap. All writes land in the local SQLite database — nothing is sent to a server. Playtest Telemetry logs the session and the founder periodically exports the SQLite file/JSON to review against the success metrics.",
+    "components": [
+      {
+        "name": "Duel Battle Engine",
+        "responsibility": "The core of the product. Inputs per round: the two active creatures (stats after growth allocation, current HP, ability, elemental type), the category each side picks that round (attack/defense/speed/special), and a seeded RNG value for the battle. Outputs: which side wins the round, the HP delta applied, whether an ability fired and what it changed, and an immutable BattleTurn log row. Category choices are revealed simultaneously, the type-triangle multiplier is applied, abilities resolve in a fixed documented order (steal > force > negate-disadvantage > other), and the same battle_id, rng_seed and choice sequence always reproduce the same outcome, so balance bugs are reproducible."
+      },
+      {
+        "name": "Ability Rules Registry",
+        "responsibility": "Defines the launch set of unique creature abilities as structured trigger/effect data (steal-category, force-category, negate-type-disadvantage, etc.) that the Battle Engine reads and resolves; keeps rule-bending logic declarative and testable rather than hard-coded per creature."
+      },
+      {
+        "name": "AI Trainer Decision Engine",
+        "responsibility": "Deterministic, rule-based (non-LLM) heuristics that choose a category for every AI-controlled opponent — wild creatures, route trainers, and gym leaders — e.g. counter the player's last category, lean into a type advantage, or protect a low-HP creature. Kept deterministic so duel outcomes stay reproducible for balance testing."
+      },
+      {
+        "name": "Creature Roster & Growth",
+        "responsibility": "Tracks each owned CreatureInstance's stats, HP, and ability; awards XP after every battle (win, lose, or draw) and exposes the trainer-directed allocation UI that lets the player assign earned XP to any stat category, writing an idempotent XPAllocation record per battle per creature."
+      },
+      {
+        "name": "Gym & Badge Progression",
+        "responsibility": "Models the ordered sequence of gyms, each with a type theme and a leader trainer; issues a Badge on a 3v3 gym win and runs the post-gym creature swap (player gives one creature, receives one of the leader's), recorded as a single idempotent GymSwap transaction keyed to the deciding battle."
+      },
+      {
+        "name": "World Route Navigation & Wild Catching",
+        "responsibility": "Renders the persistent, walkable route/gym map, resolves wild encounters from each route's weighted species table, and handles the starter-selection and catch flow that adds a new CreatureInstance to the roster."
+      },
+      {
+        "name": "Creature & Content Data Layer",
+        "responsibility": "Loads and serves the placeholder/real creature species, base stats, types, and ability definitions used for prototyping (per the founder's stated strategy of validating the loop before original art); isolated behind one module so the real dataset can later be swapped for original creatures without touching the Battle Engine."
+      },
+      {
+        "name": "Local Persistence & Save Layer",
+        "responsibility": "Owns the on-device SQLite database (schema below): reads/writes all game state, exposes save export/import as a file so the founder can back up a playtest run manually, since no cloud sync is in scope."
+      },
+      {
+        "name": "Playtest Telemetry & Leaderboard",
+        "responsibility": "Logs PlaytestSession records (duration, self-reported 1–5 fun score, battles played) and derives the four success metrics (completion rate, session frequency, fun score, category variety) plus a simple badge-count leaderboard against the tracked AI trainers, all computed locally from the SQLite tables."
+      }
+    ],
+    "techStack": {
+      "llm": "Not required. AI trainers use deterministic, rule-based heuristics (e.g. counter the player's last category, lean into a type advantage, protect low-HP creatures) rather than a generative model, so battle outcomes stay reproducible for the seeded-RNG replay requirement and the 'category-choice variety' success metric. All stat math, type-triangle multipliers, XP, and swap logic are deterministic code, never model output.",
+      "auth": "Not required. Single local player, no account system per PRD non-goals; the app opens straight into the on-device save file.",
+      "infra": "No cloud infra required to run the prototype; launched via local dev/build on the founder's machine. Optional unlisted Vercel static deploy only to test on a phone browser — it would serve JS/asset bundles only, never game data, keeping the 'no public release' non-goal intact.",
+      "backend": "No server/API layer. All game, duel, and progression logic runs client-side in the browser — this is a single local player with no accounts or multiplayer, so a backend would add infrastructure the PRD explicitly excludes.",
+      "database": "Client-side SQLite via sql.js (WASM), persisted to the browser's OPFS/IndexedDB on the founder's own device. No cloud database, so no game or playtest data is ever transmitted anywhere — matches the PRD's explicit 'no cloud sync' non-goal.",
+      "devtools": "TypeScript, ESLint/Prettier as standard; Vitest unit tests specifically around the Duel Battle Engine's round-resolution function, since its correctness and determinism are what the whole validation effort depends on.",
+      "frontend": "Next.js (App Router) as a local-first single-page client; no SSR or multi-tenant needs for a solo private prototype."
+    },
+    "dataModels": [
+      {
+        "entity": "Trainer",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "role",
+            "type": "text"
+          },
+          {
+            "name": "gymId",
+            "type": "uuid | null"
+          },
+          {
+            "name": "decisionProfile",
+            "type": "text | null"
+          },
+          {
+            "name": "createdAt",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "Trainer has many CreatureInstance (as owner)",
+          "Trainer has many Badge (as earner, for leaderboard)",
+          "Trainer 1:1 Gym (as leader)"
+        ]
+      },
+      {
+        "entity": "ElementType",
+        "fields": [
+          {
+            "name": "id",
+            "type": "text"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          }
+        ],
+        "relationships": [
+          "ElementType referenced by Species, Gym, Route, TypeEffectiveness"
+        ]
+      },
+      {
+        "entity": "TypeEffectiveness",
+        "fields": [
+          {
+            "name": "attackerType",
+            "type": "text"
+          },
+          {
+            "name": "defenderType",
+            "type": "text"
+          },
+          {
+            "name": "multiplier",
+            "type": "numeric"
+          }
+        ],
+        "relationships": [
+          "Composite key (attackerType, defenderType)"
+        ]
+      },
+      {
+        "entity": "Ability",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "description",
+            "type": "text"
+          },
+          {
+            "name": "triggerType",
+            "type": "text"
+          },
+          {
+            "name": "effectType",
+            "type": "text"
+          },
+          {
+            "name": "effectParams",
+            "type": "jsonb"
+          }
+        ],
+        "relationships": [
+          "Ability referenced by Species.abilityId and CreatureInstance.abilityId",
+          "Ability referenced by BattleTurn.abilityTriggeredId"
+        ]
+      },
+      {
+        "entity": "Species",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "primaryType",
+            "type": "text"
+          },
+          {
+            "name": "baseAttack",
+            "type": "int"
+          },
+          {
+            "name": "baseDefense",
+            "type": "int"
+          },
+          {
+            "name": "baseSpeed",
+            "type": "int"
+          },
+          {
+            "name": "baseSpecial",
+            "type": "int"
+          },
+          {
+            "name": "abilityId",
+            "type": "uuid"
+          },
+          {
+            "name": "catchRate",
+            "type": "numeric"
+          },
+          {
+            "name": "isLeaderExclusive",
+            "type": "boolean"
+          },
+          {
+            "name": "sourceNote",
+            "type": "text"
+          }
+        ],
+        "relationships": [
+          "Species has many CreatureInstance",
+          "Species has many RouteEncounter"
+        ]
+      },
+      {
+        "entity": "CreatureInstance",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "speciesId",
+            "type": "uuid"
+          },
+          {
+            "name": "ownerTrainerId",
+            "type": "uuid"
+          },
+          {
+            "name": "nickname",
+            "type": "text | null"
+          },
+          {
+            "name": "level",
+            "type": "int"
+          },
+          {
+            "name": "xpTotal",
+            "type": "int"
+          },
+          {
+            "name": "attackStat",
+            "type": "int"
+          },
+          {
+            "name": "defenseStat",
+            "type": "int"
+          },
+          {
+            "name": "speedStat",
+            "type": "int"
+          },
+          {
+            "name": "specialStat",
+            "type": "int"
+          },
+          {
+            "name": "currentHp",
+            "type": "int"
+          },
+          {
+            "name": "maxHp",
+            "type": "int"
+          },
+          {
+            "name": "abilityId",
+            "type": "uuid"
+          },
+          {
+            "name": "teamSlot",
+            "type": "int | null"
+          },
+          {
+            "name": "caughtAt",
+            "type": "timestamp | null"
+          },
+          {
+            "name": "createdAt",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "CreatureInstance belongs to Species and Trainer",
+          "CreatureInstance referenced by BattleTurn, XPAllocation, GymSwap"
+        ]
+      },
+      {
+        "entity": "Gym",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "typeTheme",
+            "type": "text"
+          },
+          {
+            "name": "leaderTrainerId",
+            "type": "uuid"
+          },
+          {
+            "name": "sequenceOrder",
+            "type": "int"
+          },
+          {
+            "name": "badgeName",
+            "type": "text"
+          }
+        ],
+        "relationships": [
+          "Gym has one leader Trainer",
+          "Gym has many Badge",
+          "Gym has many GymSwap via Battle"
+        ]
+      },
+      {
+        "entity": "Badge",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "trainerId",
+            "type": "uuid"
+          },
+          {
+            "name": "gymId",
+            "type": "uuid"
+          },
+          {
+            "name": "earnedAt",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "Badge belongs to Trainer and Gym",
+          "unique (trainerId, gymId)"
+        ]
+      },
+      {
+        "entity": "Route",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "sequenceOrder",
+            "type": "int"
+          },
+          {
+            "name": "typeTheme",
+            "type": "text | null"
+          }
+        ],
+        "relationships": [
+          "Route has many RouteEncounter",
+          "Route referenced by Battle.routeId"
+        ]
+      },
+      {
+        "entity": "RouteEncounter",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "routeId",
+            "type": "uuid"
+          },
+          {
+            "name": "speciesId",
+            "type": "uuid"
+          },
+          {
+            "name": "encounterWeight",
+            "type": "numeric"
+          }
+        ],
+        "relationships": [
+          "RouteEncounter belongs to Route and Species"
+        ]
+      },
+      {
+        "entity": "Battle",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "kind",
+            "type": "text"
+          },
+          {
+            "name": "routeId",
+            "type": "uuid | null"
+          },
+          {
+            "name": "gymId",
+            "type": "uuid | null"
+          },
+          {
+            "name": "playerTrainerId",
+            "type": "uuid"
+          },
+          {
+            "name": "opponentTrainerId",
+            "type": "uuid | null"
+          },
+          {
+            "name": "rngSeed",
+            "type": "bigint"
+          },
+          {
+            "name": "winnerSide",
+            "type": "text | null"
+          },
+          {
+            "name": "startedAt",
+            "type": "timestamp"
+          },
+          {
+            "name": "endedAt",
+            "type": "timestamp | null"
+          },
+          {
+            "name": "idempotencyKey",
+            "type": "text"
+          }
+        ],
+        "relationships": [
+          "Battle has many BattleTurn",
+          "Battle has 0..1 GymSwap",
+          "Battle has many XPAllocation"
+        ]
+      },
+      {
+        "entity": "BattleTurn",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "battleId",
+            "type": "uuid"
+          },
+          {
+            "name": "turnNumber",
+            "type": "int"
+          },
+          {
+            "name": "playerCreatureId",
+            "type": "uuid"
+          },
+          {
+            "name": "opponentCreatureId",
+            "type": "uuid"
+          },
+          {
+            "name": "playerCategory",
+            "type": "text"
+          },
+          {
+            "name": "opponentCategory",
+            "type": "text"
+          },
+          {
+            "name": "typeMultiplierPlayer",
+            "type": "numeric"
+          },
+          {
+            "name": "typeMultiplierOpponent",
+            "type": "numeric"
+          },
+          {
+            "name": "abilityTriggeredId",
+            "type": "uuid | null"
+          },
+          {
+            "name": "hpDeltaPlayer",
+            "type": "int"
+          },
+          {
+            "name": "hpDeltaOpponent",
+            "type": "int"
+          }
+        ],
+        "relationships": [
+          "BattleTurn belongs to Battle",
+          "unique (battleId, turnNumber)",
+          "source data for category-choice-variety metric"
+        ]
+      },
+      {
+        "entity": "XPAllocation",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "battleId",
+            "type": "uuid"
+          },
+          {
+            "name": "creatureInstanceId",
+            "type": "uuid"
+          },
+          {
+            "name": "xpEarned",
+            "type": "int"
+          },
+          {
+            "name": "allocatedStat",
+            "type": "text | null"
+          },
+          {
+            "name": "allocatedAmount",
+            "type": "int | null"
+          },
+          {
+            "name": "allocatedAt",
+            "type": "timestamp | null"
+          },
+          {
+            "name": "idempotencyKey",
+            "type": "text"
+          }
+        ],
+        "relationships": [
+          "XPAllocation belongs to Battle and CreatureInstance"
+        ]
+      },
+      {
+        "entity": "GymSwap",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "battleId",
+            "type": "uuid"
+          },
+          {
+            "name": "playerCreatureGivenId",
+            "type": "uuid"
+          },
+          {
+            "name": "leaderCreatureReceivedId",
+            "type": "uuid"
+          },
+          {
+            "name": "swappedAt",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "GymSwap belongs to Battle (1:1)"
+        ]
+      },
+      {
+        "entity": "PlaytestSession",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "startedAt",
+            "type": "timestamp"
+          },
+          {
+            "name": "endedAt",
+            "type": "timestamp | null"
+          },
+          {
+            "name": "durationSec",
+            "type": "int | null"
+          },
+          {
+            "name": "funScore",
+            "type": "int | null"
+          },
+          {
+            "name": "battlesPlayedCount",
+            "type": "int"
+          },
+          {
+            "name": "notes",
+            "type": "text | null"
+          }
+        ],
+        "relationships": [
+          "Standalone; aggregated for success-metric reporting"
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "title": "Local schema & persistence setup",
+        "description": "Stand up the sql.js (SQLite/WASM) database from the schema above inside the browser, with OPFS/IndexedDB-backed storage, a migration runner, and a manual save-file export/import so a multi-week playtest isn't lost to browser storage eviction."
+      },
+      {
+        "title": "Access setup (no-op, single local profile)",
+        "description": "Confirm the app boots directly into one local save with no login screen, and add a guard/lint rule preventing any accidental network or cloud-service calls from creeping into the client, per the no-accounts/no-cloud-sync non-goals."
+      },
+      {
+        "title": "Local run & deploy setup",
+        "description": "Configure `next dev`/local static build as the primary way to run the prototype; wire an optional unlisted Vercel deploy for phone-browser testing that ships client assets only, with no data endpoints."
+      },
+      {
+        "title": "Duel Battle Engine core",
+        "description": "Implement the deterministic round-resolution algorithm: category reveal, type-triangle multiplier lookup, fixed-order ability resolution, stat comparison, HP delta, and BattleTurn logging, backed by a seeded RNG and a full Vitest suite covering type/ability edge cases."
+      },
+      {
+        "title": "Ability Rules Registry & launch ability set",
+        "description": "Build the trigger/effect data model for abilities (steal-category, force-category, negate-type-disadvantage) and author the initial roster's abilities against it, decoupled from the Battle Engine's core loop."
+      },
+      {
+        "title": "AI Trainer Decision Engine",
+        "description": "Implement rule-based category-selection heuristics for wild encounters, route trainers, and gym leaders, with distinct difficulty/decision profiles per Trainer.decisionProfile."
+      },
+      {
+        "title": "Creature Roster & XP Growth flow",
+        "description": "Build the XP-earning logic for every battle outcome (win/lose/draw) and the trainer-directed stat-allocation UI, writing one idempotent XPAllocation row per battle per creature."
+      },
+      {
+        "title": "Gym/Badge progression & 3v3 swap",
+        "description": "Implement gym sequencing, badge issuance on a 3v3 gym win, and the post-gym creature swap as a single idempotent GymSwap transaction keyed to the deciding battle."
+      },
+      {
+        "title": "World route navigation & wild catching",
+        "description": "Build the persistent route/gym map, weighted wild-encounter resolution from RouteEncounter data, starter selection, and the catch flow that creates a new CreatureInstance."
+      },
+      {
+        "title": "Playtest telemetry & metrics export",
+        "description": "Log PlaytestSession records (duration, 1-5 fun score, battles played) and add an export view that computes the four PRD success metrics directly from the local SQLite tables."
+      }
+    ],
+    "openQuestions": [
+      "How many gyms/badges constitute a 'complete' V1 story mode for playtesting purposes? (from PRD)",
+      "What threshold of fun/completion data should trigger investment in original creature art? (from PRD)",
+      "Should XP-driven stat allocation be fully free-form per category, or guided with suggested distributions? (from PRD)",
+      "Which existing creature dataset will be used for prototyping, and what legal exposure exists even for a private, unreleased build? (from PRD)",
+      "What is the exact round-resolution/damage formula and tie-break rule when both sides pick the same category or land equal adjusted stats? (this doc assumed 'difference in stat value, no damage on tie' — needs founder sign-off)",
+      "When more than one ability could trigger in the same round, what is the intended precedence beyond the placeholder steal > force > negate order used here?",
+      "Is browser OPFS/IndexedDB persistence reliable enough across a 4+ week playtest, or should the prototype be wrapped in a thin desktop shell (e.g. a Tauri build) for a guaranteed on-disk SQLite save file?",
+      "Is the prototype meant to be played on a phone browser (touch input, small screen) during validation, or is desktop-only acceptable for this phase?"
+    ],
+    "schemaSqlExcerpt": "CREATE TABLE type_effectiveness (\n  attacker_type text NOT NULL REFERENCES element_types(id),\n  defender_type text NOT NULL REFERENCES element_types(id),\n  multiplier numeric NOT NULL,\n  PRIMARY KEY (attacker_type, defender_type)\n);\n\nCREATE TABLE abilities (\n  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),\n  name text NOT NULL,\n  trigger_type text NOT NULL,\n  effect_type text NOT NULL,\n  effect_params jsonb\n);\n\nCREATE TABLE trainers (\n  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),\n  name text NOT NULL,\n  role text NOT NULL CHECK (role IN ('player','ai_route','gym_leader'))\n);"
+  },
+  "jira": {
+    "projectKey": "CREAT67",
+    "epicCount": 12,
+    "storyCount": 47,
+    "epics": [
+      {
+        "key": "CREAT67-1",
+        "title": "Engineering & Infrastructure",
+        "stories": [
+          {
+            "key": "CREAT67-2",
+            "title": "Stand up local sql.js schema, migrations, and persistence",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-3",
+            "title": "Build manual save-file export/import",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-4",
+            "title": "Configure no-login single-profile boot and network-call guard",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-5",
+            "title": "Configure local dev/build run and optional unlisted Vercel deploy",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-6",
+            "title": "Build playtest telemetry logging and metrics export view",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "CREAT67-7",
+        "title": "Starter creature & wild catching",
+        "stories": [
+          {
+            "key": "CREAT67-8",
+            "title": "Build the starter selection screen and initial roster creation",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-9",
+            "title": "Implement weighted wild-encounter resolution",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-10",
+            "title": "Build the catch flow UI and success/fail resolution",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-11",
+            "title": "Build the route navigation map UI",
+            "phase": 2
+          }
+        ]
+      },
+      {
+        "key": "CREAT67-12",
+        "title": "Stat-category duel system",
+        "stories": [
+          {
+            "key": "CREAT67-13",
+            "title": "Implement the deterministic round-resolution engine",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-14",
+            "title": "Build the category-selection duel UI",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-15",
+            "title": "Persist BattleTurn logging to local SQLite",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-16",
+            "title": "Write Vitest suite covering round-resolution edge cases",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "CREAT67-17",
+        "title": "Elemental type triangle",
+        "stories": [
+          {
+            "key": "CREAT67-18",
+            "title": "Model the five-type matchup matrix",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-19",
+            "title": "Expose multiplier values for advantage, disadvantage, and neutral cases",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-20",
+            "title": "Write unit tests for the full type matchup table",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-21",
+            "title": "Add type-advantage indicator to the duel reveal UI",
+            "phase": 2
+          }
+        ]
+      },
+      {
+        "key": "CREAT67-22",
+        "title": "Unique creature abilities",
+        "stories": [
+          {
+            "key": "CREAT67-23",
+            "title": "Build the Ability trigger/effect data model",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-24",
+            "title": "Author the launch roster's ability assignments",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-25",
+            "title": "Wire ability resolution into the fixed-order duel pipeline",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-26",
+            "title": "Add ability-activation feedback to the duel UI",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "CREAT67-27",
+        "title": "Gym/badge structure with leaders",
+        "stories": [
+          {
+            "key": "CREAT67-28",
+            "title": "Model Gym and Leader data with type themes",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-29",
+            "title": "Implement gym sequencing and unlock logic",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-30",
+            "title": "Implement badge issuance on gym leader defeat",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-31",
+            "title": "Build gym leader encounter and badge-award UI",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "CREAT67-32",
+        "title": "Post-gym 3v3 creature swap",
+        "stories": [
+          {
+            "key": "CREAT67-33",
+            "title": "Implement the idempotent GymSwap transaction",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-34",
+            "title": "Build the post-battle swap selection UI",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-35",
+            "title": "Guard against duplicate swap execution",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-36",
+            "title": "Reflect swapped roster in the creature management UI",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "CREAT67-37",
+        "title": "XP and trainer-directed stat growth",
+        "stories": [
+          {
+            "key": "CREAT67-38",
+            "title": "Implement XP-earning logic for all battle outcomes",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-39",
+            "title": "Build the trainer-directed stat allocation UI",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-40",
+            "title": "Add duplicate-allocation validation",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-41",
+            "title": "Display stat growth history on the creature detail screen",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "CREAT67-42",
+        "title": "AI-powered single-player trainers",
+        "stories": [
+          {
+            "key": "CREAT67-43",
+            "title": "Implement rule-based category-selection heuristics",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-44",
+            "title": "Integrate AI decision engine into the duel category-selection step",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-45",
+            "title": "Configure distinct difficulty profiles per trainer type",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-46",
+            "title": "Write Vitest tests verifying deterministic AI behavior",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "CREAT67-47",
+        "title": "Prototype on real creature data, no original art",
+        "stories": [
+          {
+            "key": "CREAT67-48",
+            "title": "Source and import a placeholder creature dataset",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-49",
+            "title": "Validate imported data against stat and type constraints",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-50",
+            "title": "Build a generic placeholder asset pipeline",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-51",
+            "title": "Document the data source and future art swap-out plan",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "CREAT67-52",
+        "title": "Persistent open-world route exploration",
+        "stories": [
+          {
+            "key": "CREAT67-53",
+            "title": "Persist world state changes to local SQLite",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-54",
+            "title": "Implement session-resume loading on app launch",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-55",
+            "title": "Add explored-route visual indicator to the map",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "CREAT67-56",
+        "title": "Badge-linked trainer leaderboard",
+        "stories": [
+          {
+            "key": "CREAT67-57",
+            "title": "Model tracked-trainer badge counts",
+            "phase": 1
+          },
+          {
+            "key": "CREAT67-58",
+            "title": "Implement badge-based ranking algorithm",
+            "phase": 2
+          },
+          {
+            "key": "CREAT67-59",
+            "title": "Build the leaderboard screen UI",
+            "phase": 2
+          }
+        ]
+      }
+    ]
+  },
+  "roadmap": [
+    {
+      "phase": 1,
+      "storyCount": 19,
+      "epics": [
+        "Engineering & Infrastructure",
+        "Starter creature & wild catching",
+        "Stat-category duel system",
+        "Elemental type triangle",
+        "Unique creature abilities",
+        "Gym/badge structure with leaders",
+        "Post-gym 3v3 creature swap",
+        "XP and trainer-directed stat growth",
+        "AI-powered single-player trainers",
+        "Prototype on real creature data, no original art",
+        "Persistent open-world route exploration",
+        "Badge-linked trainer leaderboard"
+      ]
+    },
+    {
+      "phase": 2,
+      "storyCount": 19,
+      "epics": [
+        "Starter creature & wild catching",
+        "Stat-category duel system",
+        "Elemental type triangle",
+        "Unique creature abilities",
+        "Gym/badge structure with leaders",
+        "Post-gym 3v3 creature swap",
+        "XP and trainer-directed stat growth",
+        "AI-powered single-player trainers",
+        "Prototype on real creature data, no original art",
+        "Persistent open-world route exploration",
+        "Badge-linked trainer leaderboard"
+      ]
+    },
+    {
+      "phase": 3,
+      "storyCount": 9,
+      "epics": [
+        "Engineering & Infrastructure",
+        "Stat-category duel system",
+        "Unique creature abilities",
+        "Gym/badge structure with leaders",
+        "Post-gym 3v3 creature swap",
+        "XP and trainer-directed stat growth",
+        "AI-powered single-player trainers",
+        "Prototype on real creature data, no original art",
+        "Persistent open-world route exploration"
+      ]
+    }
+  ],
+  "confluence": {
+    "pages": [
+      "01 - Product",
+      "02 - Brand & Identity",
+      "03 - Engineering",
+      "04 - Competitor Analysis",
+      "05 - Roadmap",
+      "06 - Research Notes"
+    ]
+  }
+}

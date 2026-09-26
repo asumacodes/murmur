@@ -1,26 +1,42 @@
 # Murmur
 
-> Murmur turns a spoken product idea into a project foundation: a PRD, a competitive research brief, a brand kit, a Jira board with epics and stories, and a Confluence space, created in the user's own Atlassian workspace. It is a foundation, not a finished app.
+> Murmur turns a spoken product idea into a project foundation in under 10 minutes: a competitor map with source links, a PRD, a brand kit, an engineering brief, a three-phase roadmap, and a Jira project (epics + stories) and Confluence space created in the user's own Atlassian site. It is a foundation, not a finished app.
 
-You record a voice memo in Listener (Murmur's capture app). An agentic pipeline then runs transcription (AssemblyAI), competitor and market research (Exa), a PRD agent (Claude, validated against a typed schema), a brand agent, and Jira and Confluence generators. A full run takes under ten minutes; the measured average is about six.
+## Product facts (checked 2026-09-26)
 
-Murmur ends where automation ends. Turning the foundation into working software is human-led work offered separately by SprintZero Studio in 72-hour sprints.
+- Input: a voice memo of 15 seconds to 10 minutes, recorded on phone or desktop. Typing the idea also works.
+- Pipeline: transcription (AssemblyAI) → competitor and market research with source links (Exa) → PRD (Claude; MoSCoW features, typically with a rationale per feature; success metrics, non-goals, risks, open questions) → brand kit (name notes, tagline, values, color palette, typography, logo direction) → engineering brief (architecture, data flow, components, data models, SQL/TypeScript schema, tech stack, tasks) → Confluence space with six pages → roadmap (three phases) → Jira project with epics and stories.
+- Run time: under 10 minutes. The four public example runs took 7m 02s to 9m 22s.
+- Atlassian: a free Atlassian account is enough. Murmur creates a new Jira project and Confluence space in the user's own site for each idea.
+- Exports: Markdown for the PRD, research, engineering brief and transcript; a brand-kit zip.
+- Privacy: runs are private to the account; results are kept for one month (six months on Builder and Studio), then deleted.
+- Availability: waitlist with invites in batches (September 2026).
 
-## Pricing
+## Pricing (USD)
 
-- One free delivered idea per account.
-- Plans are billed per idea delivered, with a monthly idea allowance and no rollover. Failed runs never use an idea.
-- Pay-as-you-go single ideas are available without a subscription.
-- Current prices: https://www.trymurmur.studio/#pricing
+- First idea: free, every account.
+- Pay as you go: $7 per idea, no subscription.
+- Starter: $19/month, 5 ideas. Builder: $49/month, 15 ideas. Studio: $79/month, 30 ideas.
+- Failed runs never use an idea. Founding offer: the first 50 subscribers get double their tier's idea allowance for 12 months.
+
+## Real example runs (unedited output)
+
+- [Creature Clash: mobile creature-battler game prototype](https://www.trymurmur.studio/examples/creature-clash): 2:56 memo, 9m 22s run, 12 epics, 47 stories.
+- [ShipReel: launch-video SaaS for founders](https://www.trymurmur.studio/examples/shipreel): 0:49 memo, 7m 02s run, 11 epics, 33 stories.
+- [Aavaas: AI home-design and floor-plan tool](https://www.trymurmur.studio/examples/aavaas): 1:57 memo, 7m 42s run, 11 epics, 39 stories.
+- [Fin Matter: personal AI finance assistant](https://www.trymurmur.studio/examples/fin-matter): 2:57 memo, 7m 31s run, 11 epics, 41 stories.
 
 ## Key pages
 
-- [Home](https://www.trymurmur.studio/): how it works, the pipeline, pricing, FAQ
-- [About](https://www.trymurmur.studio/about)
-- [Contact](https://www.trymurmur.studio/contact)
-- [Terms](https://www.trymurmur.studio/terms)
-- [Privacy](https://www.trymurmur.studio/privacy)
+- [Home](https://www.trymurmur.studio/): how it works, the nine-stage pipeline, pricing, FAQ
+- [PRD examples](https://www.trymurmur.studio/examples)
+- [Free PRD → Jira CSV converter](https://www.trymurmur.studio/tools/prd-to-jira-csv)
+- [PRD template](https://www.trymurmur.studio/templates/prd)
+- [Technical design document template](https://www.trymurmur.studio/templates/technical-design-document)
+- [Murmur vs ChatPRD](https://www.trymurmur.studio/compare/chatprd)
+- [Murmur vs Atlassian Rovo](https://www.trymurmur.studio/compare/atlassian-rovo)
+- [About](https://www.trymurmur.studio/about) · [Contact](https://www.trymurmur.studio/contact)
 
-## Related
+## Company
 
-- [SprintZero Studio](https://sprint0.trymurmur.studio): the studio behind Murmur; builds MVPs from a Murmur foundation in 72-hour sprints
+Built by SprintZero Studios (OPC) Private Limited, Chandigarh, India. Contact: hey@trymurmur.studio. Turning a Murmur foundation into working software is offered separately by [SprintZero Studio](https://sprint0.trymurmur.studio) in 72-hour sprints.

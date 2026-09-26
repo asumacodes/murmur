@@ -1,0 +1,1253 @@
+{
+  "slug": "aavaas",
+  "order": 3,
+  "idea": "AI home-design & floor-plan tool",
+  "category": "PropTech",
+  "seoNoun": "proptech app",
+  "title": "Aavaas",
+  "recordedAt": "2026-09-23",
+  "runAt": "2026-09-23",
+  "memoSeconds": 117,
+  "runSeconds": 462,
+  "language": "en",
+  "transcript": "So most people walk into an architect's office with a plot size, a Pinterest board, and no idea what they actually want, and pay in months of revisions to find out. The product turns that first conversation into a working model before the appointment. You describe the plot, the road, the family, and how you live. If you are into Vastu, uh, If you are into Vastu, you share your, uh, preferences. You share the direction of your plot, the facing of your plot, and, uh, in plain language, all of it in plain language. It asks the questions an architect, a senior architect, would ask you. Which way does it face? Who sleeps where? How many cars do you want? Do you follow Vastu or not? Then it draws you floor plans. You can argue with. You can actually come back any number of times you want for those floor plans. And then it builds the house as a 3D model you can spin like a dollhouse, lift floor by floor, and walk through at eye height from the gate to the roof. Change your mind about the kitchen and the model changes with you. What you take to the architect is not a blank slate. But a plan you have stood inside, you have roamed inside, you have checked every inch of it inside, with the reasons for each design written down so the professional's time goes into making it buildable rather than guessing what you actually want. Why it works and what it doesn't— the value is in the reasoning layer, not the renderer. Room sizes that are honest about the plot, parking that respects the road, Orientation and Vastu placements, the trade-offs said out loud. So yeah.",
+  "prd": {
+    "productName": "Aavaas",
+    "oneLiner": "Aavaas turns the first plot-and-family conversation into a walkable, arguable 3D home model with written design reasoning — where GrehYug and Cadbull hand you a one-shot Vastu plan and Architects House hands you a preset catalog.",
+    "problem": "People walk into an architect's office with a plot size, a Pinterest board, and no real idea of what they want, then pay in months of revisions to discover it — the transcript describes this exact blind first meeting as the industry norm. Today's coping mechanism is either hiring an architect cold and iterating expensively, or using AI generators like GrehYug, Cadbull, or Naksha that take a static form (plot, facing, BHK, Vastu toggle) and spit out a one-shot plan for a flat fee, with no room to argue with it and no explanation of why any room sits where it does. Architect-catalog platforms like Architects House solve speed with presets, but you're customizing someone else's archetype, not designing from how your family actually lives. The gap the market leaves open: no tool treats the brief as a conversation about lifestyle, lets you revise for free until it's right, or hands the architect a walkable model with the reasoning already written down — so the professional's time still goes into guessing instead of building.",
+    "targetUser": "First-time Indian homeowners with an owned residential plot who are about to engage — or are already stuck revising with — an architect, and want to arrive at that meeting with a reasoned, walkable plan instead of a blank brief.",
+    "features": {
+      "must_have": [
+        {
+          "title": "Plot & Lifestyle Intake",
+          "rationale": "Directly requested in the transcript and matches the tableStakes plot/facing/road input every competitor requires.",
+          "description": "Plain-language intake capturing plot dimensions, facing, road width, family composition, sleeping arrangements, parking needs, and Vastu preference (strict/light/none)."
+        },
+        {
+          "title": "Vastu Preference Toggle",
+          "rationale": "TableStakes feature present in GrehYug, Cadbull, and Naksha — non-viable without it.",
+          "description": "Strict, light, or no-preference Vastu mode applied to room placement logic."
+        },
+        {
+          "title": "BHK & Room Configuration Generation",
+          "rationale": "TableStakes across all direct competitors.",
+          "description": "Generates a room-by-room floor plan from BHK count, plot shape, and intake answers."
+        },
+        {
+          "title": "2D Floor Plan Export",
+          "rationale": "TableStakes deliverable every competitor ships as a baseline output.",
+          "description": "Downloadable PDF floor plan showing room layout, dimensions, and Vastu zones."
+        },
+        {
+          "title": "3D Dollhouse Model",
+          "rationale": "Explicitly requested in the transcript and matches the tableStakes 3D visualization bar set by GrehYug.",
+          "description": "Spinnable, floor-liftable 3D model generated from the floor plan."
+        },
+        {
+          "title": "Setback & Parking Check",
+          "rationale": "TableStakes per competitor analysis — plans without this are treated as non-viable drafts.",
+          "description": "Validates room and parking placement against road width and standard setback norms."
+        },
+        {
+          "title": "Free Revision Loop",
+          "rationale": "Directly from the transcript: 'you can come back any number of times you want for those floor plans.'",
+          "description": "Users can re-answer intake questions or tweak room choices and regenerate the plan without limit or added cost within the MVP."
+        }
+      ],
+      "should_have": [
+        {
+          "title": "Unlimited Iteration vs. Paid Regeneration",
+          "rationale": "GrehYug's analysis flags 'no unlimited free re-generation loop' as a weakness we can beat.",
+          "description": "Position free, repeated regeneration against GrehYug's ₹3,999 one-shot paid model — same intake, no per-regeneration fee."
+        },
+        {
+          "title": "Lifestyle-First Conversational Intake",
+          "rationale": "Architects House DBYO starts from preset archetypes, not a bespoke lifestyle brief, per competitor weakness.",
+          "description": "Replace static archetype/model pickers with a guided Q&A that asks who sleeps where and how the family lives before generating anything."
+        },
+        {
+          "title": "Written Design Rationale Notes",
+          "rationale": "GrehYug and Cadbull ship disclaimers, not design reasoning, per competitor analysis weakness.",
+          "description": "Each major room placement and trade-off (orientation, Vastu, parking) comes with a one-line written reason, exportable alongside the PDF."
+        }
+      ],
+      "could_have": [
+        {
+          "title": "Eye-Height Walkthrough",
+          "rationale": "Named explicitly as a differentiation opportunity — no competitor offers a full walkable eye-height experience.",
+          "description": "Walk the model from gate to roof at eye height, not just spin the dollhouse, floor by floor."
+        },
+        {
+          "title": "Unified Trade-off Reasoning View",
+          "rationale": "Differentiation opportunity — competitors siloed Vastu and architecture into separate toggles or products.",
+          "description": "A single screen showing how Vastu, climate, orientation, and family needs were weighed against each other for the current plan."
+        },
+        {
+          "title": "Vastu-Independent Design Mode",
+          "rationale": "Whitespace inspired by Architects House's dual-path model but unified in one flow rather than split products.",
+          "description": "Optional mode that optimizes for view/climate instead of Vastu compliance, letting users compare both."
+        }
+      ],
+      "wont_have": [
+        {
+          "title": "Mobile Apps",
+          "rationale": "Explicit scope punt to protect the 72-hour build window.",
+          "description": "No native iOS/Android app; web-only for the MVP."
+        },
+        {
+          "title": "Voice / Persona Customisation",
+          "rationale": "Explicit scope punt; adds build complexity with no MVP validation value.",
+          "description": "No voice assistant or customizable AI persona for the intake conversation."
+        },
+        {
+          "title": "Advanced Integrations",
+          "rationale": "Explicit scope punt to keep the MVP shippable in 72 hours.",
+          "description": "No CAD software sync, ERP, contractor scheduling, or payment gateway integrations beyond a single checkout."
+        },
+        {
+          "title": "White-Labelling",
+          "rationale": "Explicit scope punt; irrelevant to validating the core homeowner use case.",
+          "description": "No reseller or agency-branded version of the tool."
+        },
+        {
+          "title": "Multi-Language Support",
+          "rationale": "Explicit scope punt to avoid translation and localization overhead pre-validation.",
+          "description": "English-only intake and outputs at launch."
+        },
+        {
+          "title": "Admin Dashboards",
+          "rationale": "Explicit scope punt; not needed to validate the core product loop.",
+          "description": "No internal analytics or ops dashboard beyond basic logging."
+        },
+        {
+          "title": "CAD/DXF Professional Export",
+          "rationale": "GrehYug and Cadbull already serve the professional-drafting segment; we're explicitly not competing there.",
+          "description": "No AutoCAD-layered DXF export for professional drafting workflows."
+        },
+        {
+          "title": "Sanctioned/Legal Approval Drawings",
+          "rationale": "Explicitly out of scope per own positioning as pre-architect prep, not a professional certification tool.",
+          "description": "No municipal-submission-ready, structurally stamped, or legally sanctioned drawings."
+        }
+      ]
+    },
+    "successMetrics": [
+      {
+        "metric": "Intake-to-3D-model completion rate",
+        "target": "≥70% of users who start the plot/family intake complete a viewable 3D model within 60 days of launch"
+      },
+      {
+        "metric": "Paid conversion rate",
+        "target": "≥8% of completed 3D-model users purchase the full plan package within 30 days of model completion"
+      },
+      {
+        "metric": "Revenue",
+        "target": "$$5,000 MRR (~₹4L) by day 90, from approximately 100 paying customers at ₹4,000 average order value"
+      },
+      {
+        "metric": "Customer satisfaction (CSAT)",
+        "target": "≥4.2 out of 5 average CSAT from a post-walkthrough survey (1-5 scale), collected from at least 50 respondents within 90 days"
+      }
+    ],
+    "nonGoals": [
+      "Not producing sanctioned, legal, or municipal-approval-ready construction drawings",
+      "Not replacing licensed architects or structural/MEP engineers",
+      "Not supporting apartment, commercial, or multi-unit developer projects at launch",
+      "Not offering CAD/DXF export or MEP layout generation in the MVP",
+      "Not building an architect-booking or contractor marketplace"
+    ],
+    "risks": [
+      "Generating a full eye-height walkable 3D model (vs. just a dollhouse) may exceed what's achievable with available AI tooling inside 72 hours",
+      "Vastu, climate, and setback rule logic combined could produce unbuildable or non-compliant layouts without expert validation, undermining trust",
+      "Users may expect legally sanctioned drawings despite disclaimers, creating the same liability confusion competitors already flag",
+      "Conversational, lifestyle-driven intake is inherently more complex to build than a static form, risking scope creep within the build window"
+    ],
+    "openQuestions": [
+      "What's the minimum viable 3D fidelity (static dollhouse vs. full eye-height walkthrough) achievable within 72 hours?",
+      "How do we source and validate setback/municipal bylaw data per city within the MVP timeline?",
+      "Should pricing be a flat fee like GrehYug or freemium-with-paid-export to maximize conversion without cannibalizing revenue?",
+      "Should Vastu compliance be shown as a numeric score (like GrehYug's 82/100) or narrative-only to avoid false precision claims?"
+    ],
+    "competitiveLandscape": [
+      {
+        "competitor": "GrehYug",
+        "positioningDelta": "One-shot ₹3,999 paid Vastu generator vs. our free unlimited iteration and lifestyle-first intake"
+      },
+      {
+        "competitor": "Architects House (DBYO)",
+        "positioningDelta": "Preset archetype catalog vs. our bespoke plot-and-family-driven brief with no presets"
+      },
+      {
+        "competitor": "AI Cadbull Studio",
+        "positioningDelta": "Professional CAD-grade tool for architects vs. our homeowner-facing walkable 3D with a rationale layer"
+      },
+      {
+        "competitor": "Naksha AI",
+        "positioningDelta": "Ultra-cheap static 2D plans vs. our full 3D walkthrough and written design reasoning"
+      },
+      {
+        "competitor": "DesignDrafter",
+        "positioningDelta": "B2B engineering-ready drafting suite vs. our consumer pre-architect preparation tool"
+      },
+      {
+        "competitor": "HouseGPTs",
+        "positioningDelta": "Generic room-level 3D rendering vs. our India-specific Vastu/climate/setback logic and gate-to-roof walkthrough"
+      }
+    ]
+  },
+  "research": {
+    "marketSummary": "India's residential pre-architect design space is rapidly filling with AI floor plan generators, splitting into three clusters: (1) Vastu-first tools (GrehYug, Cadbull, Naksha) that generate compliant 2D/3D plans from plot+facing inputs at low cost but treat Vastu and lifestyle as checkbox inputs rather than a conversational reasoning process; (2) architect-catalog platforms (Architects House) that offer curated archetypes with budget/render bundles but start from presets rather than a truly bespoke brief; (3) general-purpose 2D-to-3D visualization tools (HouseGPTs, DesignDrafter) aimed at broader design/drafting use cases without India-specific regulatory or Vastu depth. Nearly all treat 'generate a plan' as a single-shot transaction rather than an iterative, walkable, argued-with negotiation between homeowner and system, and none document design reasoning in a form built for an architect handoff.",
+    "ourPositioning": "Unlike single-shot Vastu generators or architect catalogs that hand you a plan, we turn the first conversation into a living, walkable model you can argue with endlessly and take to your architect already reasoned-through — collapsing months of blind revisions into a single informed first meeting.",
+    "tableStakes": [
+      "Plot dimension, facing/orientation, and road-width input",
+      "Vastu compliance option (toggleable strict/light/none)",
+      "BHK/room configuration selection",
+      "2D floor plan output (PDF/DXF export)",
+      "Basic 3D visualization or renders",
+      "Setback and parking awareness per local norms",
+      "Fast turnaround (minutes, not weeks)",
+      "Low-friction entry pricing relative to architect fees"
+    ],
+    "differentiationOpportunities": [
+      "True conversational intake modeling family lifestyle (who sleeps where, how you actually live) rather than static form fields",
+      "Unlimited free iteration/'argue with the plan' loop instead of one-shot or paid-per-regeneration pricing",
+      "Full walkable eye-height 3D experience from gate to roof, floor-by-floor lift, not just room-level renders or static dollhouse",
+      "Written, explicit design-rationale layer (why each room/placement/trade-off was chosen) built specifically for architect hand-off, not just a disclaimer",
+      "Unified reasoning across Vastu, climate, orientation, and family lifestyle trade-offs stated transparently, rather than siloed toggles or separate product surfaces",
+      "Positioning explicitly as pre-architect preparation tool that shortens revision cycles with professionals, not a replacement or a professional generation tool"
+    ],
+    "competitors": [
+      {
+        "name": "GrehYug",
+        "url": "https://grehyug.com/auto-plan",
+        "positioning": "AI Vastu-aligned floor plan generator delivered via WhatsApp with climate-aware specs and jyotish dates, positioned as pre-architect conceptual draft",
+        "keyFeatures": [
+          "Plot/facing/road input form",
+          "Vastu preference toggle (strict/light/none)",
+          "PDF+DXF export",
+          "3D dollhouse view",
+          "Vastu scoring (e.g. 82/100)",
+          "Bring-your-own-boundary upload",
+          "Climate-aware specs (NBC/ECBC)",
+          "Staircase position options"
+        ],
+        "pricingModel": "Flat fee per generation (₹3,999)",
+        "strengths": [
+          "Deep Vastu/classical text sourcing and credibility framing",
+          "Multiple deliverables (report, DXF, renders, budget)",
+          "Boundary upload flexibility"
+        ],
+        "weaknesses": [
+          "One-shot generation, unclear iterative revision model",
+          "No mention of unlimited free re-generation/argue-with-plan loop",
+          "Heavier, jargon-dense positioning vs plain-language conversation",
+          "No walkthrough-at-eye-height experience mentioned"
+        ],
+        "directOverlap": [
+          "Vastu-based floor plan generation",
+          "Plot/facing input",
+          "3D dollhouse model",
+          "Plain-language brief to structured output"
+        ]
+      },
+      {
+        "name": "Architects House (DBYO)",
+        "url": "https://architects-house.com/aho/dbyo",
+        "positioning": "Architect-led customizable home design catalog with two paths: Vastu-certified or view/climate-led architecture, delivering floor plan + renders + budget",
+        "keyFeatures": [
+          "Archetype + model picker (villa, farmhouse, apartment etc.)",
+          "Free customization (color, layout, facing)",
+          "Budget/BoQ breakdown",
+          "Studio renders + narrated walkthrough",
+          "CoA-licensed architect involvement",
+          "Vastu certification via AstroSpeaks (separate surface)"
+        ],
+        "pricingModel": "Tiered per-archetype pricing starting ₹399–₹3,999",
+        "strengths": [
+          "Catalog-based speed (pick a model vs blank generation)",
+          "Architect + Vastu-astrologer credibility stacking",
+          "Budget transparency with cost deltas"
+        ],
+        "weaknesses": [
+          "Starts from preset models/archetypes rather than a truly personalized plot+family-driven brief",
+          "Splits Vastu vs architecture-led into separate products rather than integrated reasoning",
+          "Less conversational discovery of family living patterns"
+        ],
+        "directOverlap": [
+          "Floor plan + render + budget bundle",
+          "Vastu certification option",
+          "Customization loop before builder handoff"
+        ]
+      },
+      {
+        "name": "AI Cadbull Studio (Floor Plan Generator)",
+        "url": "https://ai.cadbull.com/tools/floor-plan-generator",
+        "positioning": "Fast construction-grade AI floor plan generator for architects/professionals, Vastu-aware, AutoCAD-ready",
+        "keyFeatures": [
+          "30-second generation",
+          "Furnished plans with dimensions",
+          "Vastu zone defaults toggle",
+          "Multi-storey (G+2) with aligned stairs",
+          "Layered DXF export",
+          "Setback-aware geometry"
+        ],
+        "pricingModel": "Credit-based (~20 credits/₹40 per plan)",
+        "strengths": [
+          "Extremely cheap and fast",
+          "Construction-grade dimensional accuracy",
+          "Targets professional/CAD workflow"
+        ],
+        "weaknesses": [
+          "No 3D walkthrough/dollhouse experience",
+          "No conversational brief-taking of family lifestyle",
+          "Targets architects/drafters, not end homeowners directly",
+          "No reasoning/rationale layer explaining trade-offs"
+        ],
+        "directOverlap": [
+          "Plot+BHK+facing input",
+          "Vastu zone awareness",
+          "Fast plan generation"
+        ]
+      },
+      {
+        "name": "Naksha AI",
+        "url": "https://www.nakshaai.com/",
+        "positioning": "Budget 2D floor plan generator with optional architect verification, targeting cost-conscious self-builders",
+        "keyFeatures": [
+          "AI-generated plan (₹25) vs architect-verified plan (₹499)",
+          "Vastu compliant toggle",
+          "Construction cost estimator",
+          "PNG/PDF download"
+        ],
+        "pricingModel": "Per-plan micro-pricing (₹25–₹499)",
+        "strengths": [
+          "Very low price point, high accessibility",
+          "Fast turnaround (60-90 sec)",
+          "Cost estimator add-on"
+        ],
+        "weaknesses": [
+          "Basic 2D only, no 3D/walkthrough",
+          "No deep conversational intake or reasoning documentation",
+          "Limited differentiation beyond low price"
+        ],
+        "directOverlap": [
+          "Vastu compliance option",
+          "Plot/facing/BHK based generation"
+        ]
+      },
+      {
+        "name": "DesignDrafter",
+        "url": "https://designdrafter.com/generate-floor-plan/",
+        "positioning": "Professional-grade AI floor plan tool for architects and developers needing regulation-aware, engineering-ready layouts",
+        "keyFeatures": [
+          "Rule-based spatial logic",
+          "MEP-integrated layouts",
+          "Regulation-aware design",
+          "Instant iteration on inputs",
+          "Manual wall/room editing"
+        ],
+        "pricingModel": "Not specified (likely SaaS/professional tool)",
+        "strengths": [
+          "Strong iteration capability",
+          "Professional engineering-readiness",
+          "Targets B2B (architects/developers) workflow"
+        ],
+        "weaknesses": [
+          "Not consumer-facing, no plain-language homeowner intake",
+          "No Vastu focus",
+          "No 3D walkthrough or dollhouse experience mentioned"
+        ],
+        "directOverlap": [
+          "Iterative regeneration on input changes",
+          "Regulation/setback awareness"
+        ]
+      },
+      {
+        "name": "HouseGPTs",
+        "url": "https://housegpts.com/ai-floor-plan-designer",
+        "positioning": "Free browser-based AI floor planner turning 2D sketches into photorealistic 3D room views for homeowners, renovators, agents",
+        "keyFeatures": [
+          "Draw-to-scale canvas",
+          "AI-assisted first draft",
+          "Furniture placement",
+          "Floor plan to 3D photorealistic rendering",
+          "Free entry tier"
+        ],
+        "pricingModel": "Freemium (free drawing, presumably paid 3D generation)",
+        "strengths": [
+          "Very low barrier to entry, free tool",
+          "Flexible drawing + AI hybrid",
+          "Broad use cases (renovation, rental, new build)"
+        ],
+        "weaknesses": [
+          "No India-specific Vastu/regulation/setback logic",
+          "No structured brief for family living patterns",
+          "3D is room-level rendering, not a full walkable model from gate to roof",
+          "No reasoning/rationale documentation for architect handoff"
+        ],
+        "directOverlap": [
+          "3D visualization from floor plan",
+          "Consumer-facing self-serve design tool"
+        ]
+      }
+    ]
+  },
+  "brand": {
+    "brandName": "Aavaas",
+    "tagline": "Walk your home before you build it.",
+    "nameNotes": [
+      "Aavaas (आवास) means 'dwelling/abode' in Hindi/Sanskrit — carries emotional warmth and cultural rootedness, no change recommended.",
+      "Alternate consideration: 'Aavaas Studio' if a more professional/B2B-facing sub-brand is needed later."
+    ],
+    "brandValues": [
+      "Reasoned, not one-shot",
+      "Family-first design",
+      "Rooted in tradition, built with logic",
+      "Free to argue, free to revise",
+      "Clarity before construction"
+    ],
+    "colorPalette": {
+      "accent": "#D9A441",
+      "neutral": "#F1EAE0",
+      "primary": "#B5502A",
+      "semantic": {
+        "error": "#C1462F",
+        "success": "#4E8C6B",
+        "warning": "#E0A63C"
+      },
+      "secondary": "#2E3A59"
+    },
+    "typography": {
+      "body": "Inter",
+      "mono": "JetBrains Mono",
+      "heading": "Fraunces"
+    },
+    "logoDirection": {
+      "form": "An abstract mark merging a gabled roofline with a compass/directional cross to suggest both 'home' and 'orientation/reasoning'",
+      "style": "Minimal, geometric, single-weight linework with a warm architectural feel",
+      "avoidances": [
+        "Literal red-tiled roof clipart",
+        "Om symbols or overtly religious iconography",
+        "Generic real-estate skyline logos",
+        "3D-rendered or photorealistic house icons",
+        "Overly ornate or traditional Indian motifs that feel dated"
+      ],
+      "symbolConcept": "A house silhouette split by a subtle Vastu compass line, implying every wall has a reason and every room a direction"
+    },
+    "iconographyStyle": "Consistent 2px line icons with rounded joins, architectural blueprint-inspired (plot outlines, compass points, room grids, walkthrough arrows), monochrome by default with terracotta accent fills for active states"
+  },
+  "engineering": {
+    "overview": "Aavaas is a web application that converts a conversational plot-and-lifestyle intake into a rule-validated floor plan, a spinnable 3D dollhouse model, a PDF export, and written design rationale. The system combines an LLM-driven conversational intake layer, a deterministic Vastu/setback rules engine, a layout generation service that produces structured room geometry, and a client-side 3D renderer that consumes that geometry. Users can iterate on the intake and regenerate plans for free, with each iteration versioned so they can compare and revert. A single checkout unlocks the final downloadable package (PDF + rationale + 3D export).",
+    "dataFlow": "User signs in → creates a Project → Conversational Intake UI collects plot/facing/family/Vastu answers, sent to Intake Orchestration Service which structures and stores them as intake_responses → on 'generate', Floor Plan Generation Engine reads intake_responses + plot data, applies Vastu & Setback Rules Engine to produce a versioned floor_plans record with nested rooms → Design Rationale Generator attaches rationale_text per room/category → 3D Model Service converts layout_json into a model asset consumed by the browser-side Three.js viewer; PDF Export Service renders the same layout_json into a PDF stored in Supabase Storage → user reviews the dollhouse model and PDF, can revise intake (creating a new floor_plan version) at no cost → once satisfied, user completes checkout (Orders) which unlocks final downloadable assets.",
+    "components": [
+      {
+        "name": "Conversational Intake UI",
+        "responsibility": "Guides the user through plain-language questions about plot, facing, family composition, sleeping arrangements, parking, and Vastu preference; stores structured answers incrementally."
+      },
+      {
+        "name": "Intake Orchestration Service (LLM)",
+        "responsibility": "Uses an LLM to turn free-text/guided answers into structured intake fields, ask clarifying follow-ups, and detect when enough information exists to generate a plan."
+      },
+      {
+        "name": "Floor Plan Generation Engine",
+        "responsibility": "Combines plot geometry, BHK requirements, and intake data with the Vastu/setback rules engine to produce a structured room-by-room layout (positions, dimensions, zones)."
+      },
+      {
+        "name": "Vastu & Setback Rules Engine",
+        "responsibility": "Deterministic rule set (strict/light/none Vastu modes, municipal setback norms by road width) that validates and adjusts room placement produced by the generation engine."
+      },
+      {
+        "name": "Design Rationale Generator (LLM)",
+        "responsibility": "Generates one-line written reasoning per major room/trade-off decision (orientation, Vastu, parking, climate) tied to the layout output."
+      },
+      {
+        "name": "3D Model Service",
+        "responsibility": "Converts the structured layout JSON into a renderable 3D scene definition (walls, floors, room volumes) consumed by a client-side Three.js/React-Three-Fiber viewer for spin/floor-lift interaction."
+      },
+      {
+        "name": "PDF Export Service",
+        "responsibility": "Renders the 2D floor plan, dimensions, Vastu zones, and rationale notes into a downloadable PDF."
+      },
+      {
+        "name": "Revision & Versioning Service",
+        "responsibility": "Tracks intake edits and regenerated floor plan versions per project, enabling free unlimited iteration and rollback."
+      },
+      {
+        "name": "Payments & Checkout",
+        "responsibility": "Handles the single paid checkout that unlocks final PDF/3D export downloads."
+      },
+      {
+        "name": "Auth & Profile Service",
+        "responsibility": "Manages user sign-up/login and project ownership via Supabase Auth."
+      },
+      {
+        "name": "Storage",
+        "responsibility": "Stores generated PDFs, 3D model assets, and intermediate layout artifacts in Supabase Storage."
+      }
+    ],
+    "techStack": {
+      "llm": "OpenAI GPT-4o (or equivalent) used for: (1) conversational intake structuring/follow-up questions, (2) assisting layout heuristics alongside the deterministic Vastu/setback rules engine, (3) generating one-line design rationale text.",
+      "auth": "Supabase Auth (email/password + OAuth) with RLS policies tying rows to auth.uid().",
+      "infra": "Vercel for frontend/API hosting, Supabase Storage for PDF and 3D asset files, Supabase Postgres managed DB.",
+      "backend": "Next.js API Routes / Supabase Edge Functions for orchestration (intake processing, layout generation, rationale generation, PDF rendering, checkout webhooks).",
+      "database": "Supabase Postgres with Row Level Security scoped per user_id/project_id.",
+      "devtools": "TypeScript, ESLint, Prettier, Zod for schema validation, GitHub Actions for CI (lint/typecheck/test), Vercel Preview Deployments.",
+      "frontend": "Next.js 14 (App Router) + React + TypeScript + TailwindCSS; React-Three-Fiber/Three.js for the spinnable 3D dollhouse viewer; React Hook Form + Zod for the conversational intake steps."
+    },
+    "dataModels": [
+      {
+        "entity": "Profile",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "full_name",
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "has many Projects",
+          "has many Orders"
+        ]
+      },
+      {
+        "entity": "Project",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "plot_width",
+            "type": "number"
+          },
+          {
+            "name": "plot_length",
+            "type": "number"
+          },
+          {
+            "name": "plot_area",
+            "type": "number"
+          },
+          {
+            "name": "facing",
+            "type": "string"
+          },
+          {
+            "name": "road_width",
+            "type": "number"
+          },
+          {
+            "name": "vastu_preference",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          },
+          {
+            "name": "updated_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to Profile",
+          "has many IntakeResponses",
+          "has many FloorPlans",
+          "has many Revisions",
+          "has many Orders"
+        ]
+      },
+      {
+        "entity": "IntakeResponse",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "project_id",
+            "type": "uuid"
+          },
+          {
+            "name": "question_key",
+            "type": "string"
+          },
+          {
+            "name": "answer",
+            "type": "jsonb"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to Project"
+        ]
+      },
+      {
+        "entity": "FloorPlan",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "project_id",
+            "type": "uuid"
+          },
+          {
+            "name": "version",
+            "type": "number"
+          },
+          {
+            "name": "bhk_count",
+            "type": "number"
+          },
+          {
+            "name": "total_area",
+            "type": "number"
+          },
+          {
+            "name": "layout_json",
+            "type": "jsonb"
+          },
+          {
+            "name": "pdf_url",
+            "type": "string"
+          },
+          {
+            "name": "is_current",
+            "type": "boolean"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to Project",
+          "has many Rooms",
+          "has many DesignRationales",
+          "has many ModelAssets"
+        ]
+      },
+      {
+        "entity": "Room",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "floor_plan_id",
+            "type": "uuid"
+          },
+          {
+            "name": "room_type",
+            "type": "string"
+          },
+          {
+            "name": "floor_number",
+            "type": "number"
+          },
+          {
+            "name": "width",
+            "type": "number"
+          },
+          {
+            "name": "length",
+            "type": "number"
+          },
+          {
+            "name": "position_x",
+            "type": "number"
+          },
+          {
+            "name": "position_y",
+            "type": "number"
+          },
+          {
+            "name": "orientation",
+            "type": "string"
+          },
+          {
+            "name": "vastu_zone",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to FloorPlan",
+          "has many DesignRationales"
+        ]
+      },
+      {
+        "entity": "DesignRationale",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "floor_plan_id",
+            "type": "uuid"
+          },
+          {
+            "name": "room_id",
+            "type": "uuid"
+          },
+          {
+            "name": "category",
+            "type": "string"
+          },
+          {
+            "name": "rationale_text",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to FloorPlan",
+          "optionally belongs to Room"
+        ]
+      },
+      {
+        "entity": "ModelAsset",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "floor_plan_id",
+            "type": "uuid"
+          },
+          {
+            "name": "asset_type",
+            "type": "string"
+          },
+          {
+            "name": "file_url",
+            "type": "string"
+          },
+          {
+            "name": "format",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to FloorPlan"
+        ]
+      },
+      {
+        "entity": "Revision",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "project_id",
+            "type": "uuid"
+          },
+          {
+            "name": "floor_plan_id",
+            "type": "uuid"
+          },
+          {
+            "name": "change_summary",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to Project",
+          "references FloorPlan"
+        ]
+      },
+      {
+        "entity": "Order",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "project_id",
+            "type": "uuid"
+          },
+          {
+            "name": "amount",
+            "type": "number"
+          },
+          {
+            "name": "currency",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "type": "string"
+          },
+          {
+            "name": "payment_provider",
+            "type": "string"
+          },
+          {
+            "name": "payment_reference",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to Profile",
+          "belongs to Project"
+        ]
+      },
+      {
+        "entity": "VastuRule",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "room_type",
+            "type": "string"
+          },
+          {
+            "name": "preferred_zone",
+            "type": "string"
+          },
+          {
+            "name": "priority",
+            "type": "number"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          }
+        ],
+        "relationships": [
+          "referenced by Floor Plan Generation Engine logic (not FK-linked)"
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "title": "Database schema setup",
+        "description": "Create Supabase Postgres tables (profiles, projects, intake_responses, floor_plans, rooms, design_rationales, model_assets, revisions, orders, vastu_rules) per schemaSql, add indexes on foreign keys, and enable Row Level Security policies scoping data to the owning user."
+      },
+      {
+        "title": "Auth setup",
+        "description": "Configure Supabase Auth (email/password + optional Google OAuth), wire session handling into Next.js middleware, and auto-create a profiles row on first sign-in via a Postgres trigger or Edge Function."
+      },
+      {
+        "title": "Deploy setup",
+        "description": "Configure Vercel project with Supabase environment variables, set up preview/production environments, and connect GitHub Actions for lint/typecheck/build checks on PRs before merge."
+      },
+      {
+        "title": "Conversational Plot & Lifestyle Intake flow",
+        "description": "Build the guided Q&A UI capturing plot dimensions, facing, road width, family composition, sleeping arrangements, parking needs, and Vastu preference; persist answers incrementally as intake_responses tied to a project."
+      },
+      {
+        "title": "Floor Plan Generation Engine",
+        "description": "Implement the service that takes intake_responses + plot geometry, applies the Vastu & Setback Rules Engine (strict/light/none modes, road-width-based setbacks), and produces a versioned floor_plans record with associated rooms."
+      },
+      {
+        "title": "Design Rationale Generation",
+        "description": "Integrate LLM call that reads the generated layout_json and produces one-line rationale_text entries per room/category (orientation, vastu, parking, climate, family), stored in design_rationales."
+      },
+      {
+        "title": "3D Dollhouse Model Viewer",
+        "description": "Build a service that converts floor plan layout_json into a 3D scene definition (per-floor room volumes) and a React-Three-Fiber viewer supporting spin and floor-lift interactions."
+      },
+      {
+        "title": "2D Floor Plan PDF Export",
+        "description": "Implement server-side PDF rendering of the current floor plan (room layout, dimensions, Vastu zones, rationale notes) and store the file in Supabase Storage, linked via floor_plans.pdf_url."
+      },
+      {
+        "title": "Free Revision Loop & Versioning",
+        "description": "Allow users to edit intake answers and regenerate the floor plan without cost, creating a new floor_plans version and a revisions log entry while marking the previous version is_current = false."
+      },
+      {
+        "title": "Checkout & Order Fulfillment",
+        "description": "Integrate a single payment provider (e.g. Razorpay) to unlock final downloadable PDF/3D exports upon successful payment, recording the transaction in orders and updating project.status to 'paid'."
+      }
+    ],
+    "openQuestions": [
+      "What minimum 3D fidelity (static dollhouse vs. eye-height walkthrough) is achievable given the chosen rendering stack and build timeline?",
+      "Should floor plan geometry generation rely primarily on deterministic rule-based logic or LLM-assisted layout reasoning, and how do we validate LLM-produced geometry doesn't violate physical/Vastu constraints?",
+      "How do we source and encode setback/municipal bylaw data per city/state for the Vastu & Setback Rules Engine within the MVP timeline?",
+      "What format should model_assets use for the 3D scene (custom JSON consumed directly by Three.js vs. exporting to glTF) to balance generation simplicity and rendering fidelity?",
+      "Should Vastu compliance be surfaced as a numeric score or narrative-only rationale, and how does that decision affect the design_rationales schema?",
+      "What is the versioning/storage strategy for repeated free regenerations to avoid unbounded storage growth of PDFs and 3D assets per project?",
+      "Which payment provider (Razorpay, Stripe) best supports INR checkout and webhook reliability for the single paid unlock flow?"
+    ],
+    "schemaSqlExcerpt": "CREATE TABLE projects (\n  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),\n  user_id uuid NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,\n  name text NOT NULL,\n  plot_width numeric,\n  plot_length numeric,\n  facing text,\n  road_width numeric,\n  vastu_preference text CHECK (vastu_preference IN ('strict','light','none')) DEFAULT 'light',\n  status text NOT NULL DEFAULT 'draft' CHECK (status IN ('draft','generated','paid')),\n  created_at timestamptz NOT NULL DEFAULT now()\n);\n\nCREATE TABLE floor_plans (\n  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),\n  project_id uuid NOT NULL REFERENCES projects(id) ON DELETE CASCADE,\n  version int NOT NULL DEFAULT 1,\n  bhk_count int,\n  layout_json jsonb NOT NULL,\n  is_current boolean NOT NULL DEFAULT true\n);"
+  },
+  "jira": {
+    "projectKey": "AAVAA66",
+    "epicCount": 11,
+    "storyCount": 39,
+    "epics": [
+      {
+        "key": "AAVAA66-1",
+        "title": "Engineering & Infrastructure",
+        "stories": [
+          {
+            "key": "AAVAA66-2",
+            "title": "Set up Supabase Postgres schema and RLS policies",
+            "phase": 1
+          },
+          {
+            "key": "AAVAA66-3",
+            "title": "Configure Supabase Auth and session middleware",
+            "phase": 1
+          },
+          {
+            "key": "AAVAA66-4",
+            "title": "Configure Vercel deployment and CI pipeline",
+            "phase": 1
+          },
+          {
+            "key": "AAVAA66-5",
+            "title": "Integrate Razorpay checkout and order fulfillment",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "AAVAA66-6",
+        "title": "Plot & Lifestyle Intake",
+        "stories": [
+          {
+            "key": "AAVAA66-7",
+            "title": "Build the multi-step intake form UI",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-8",
+            "title": "Persist intake answers incrementally via API route",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-9",
+            "title": "Add conditional field logic for family and parking sections",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-10",
+            "title": "Add resumable progress indicator to intake flow",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "AAVAA66-11",
+        "title": "Vastu Preference Toggle",
+        "stories": [
+          {
+            "key": "AAVAA66-12",
+            "title": "Build the strict/light/none Vastu toggle component",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-13",
+            "title": "Wire Vastu mode into the floor plan generation request",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-14",
+            "title": "Write regression tests for each Vastu mode's room placement output",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "AAVAA66-15",
+        "title": "BHK & Room Configuration Generation",
+        "stories": [
+          {
+            "key": "AAVAA66-16",
+            "title": "Build the core layout generation service",
+            "phase": 1
+          },
+          {
+            "key": "AAVAA66-17",
+            "title": "Persist generated rooms to floor_plans and rooms tables",
+            "phase": 1
+          },
+          {
+            "key": "AAVAA66-18",
+            "title": "Build the BHK count selector and generation trigger UI",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-19",
+            "title": "Add plot-shape-aware layout adjustments",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "AAVAA66-20",
+        "title": "2D Floor Plan Export",
+        "stories": [
+          {
+            "key": "AAVAA66-21",
+            "title": "Build the server-side PDF rendering service",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-22",
+            "title": "Store and link the generated PDF via Supabase Storage",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-23",
+            "title": "Build the download button and export UI state",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "AAVAA66-24",
+        "title": "3D Dollhouse Model",
+        "stories": [
+          {
+            "key": "AAVAA66-25",
+            "title": "Build the layout-to-3D-scene conversion service",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-26",
+            "title": "Build the React-Three-Fiber viewer component",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-27",
+            "title": "Implement spin and floor-lift interaction controls",
+            "phase": 3
+          },
+          {
+            "key": "AAVAA66-28",
+            "title": "Optimize model asset caching and storage",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "AAVAA66-29",
+        "title": "Setback & Parking Check",
+        "stories": [
+          {
+            "key": "AAVAA66-30",
+            "title": "Implement setback and parking validation ruleset",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-31",
+            "title": "Add road-width-based setback calculation logic",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-32",
+            "title": "Build UI warnings for setback/parking violations",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-33",
+            "title": "Write edge-case tests for narrow plots and irregular road widths",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "AAVAA66-34",
+        "title": "Free Revision Loop",
+        "stories": [
+          {
+            "key": "AAVAA66-35",
+            "title": "Implement floor plan versioning and revisions logging",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-36",
+            "title": "Build the edit-and-regenerate entry point",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-37",
+            "title": "Add a revision history view",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "AAVAA66-38",
+        "title": "Unlimited Iteration vs. Paid Regeneration",
+        "stories": [
+          {
+            "key": "AAVAA66-39",
+            "title": "Ensure regeneration flow bypasses the payment gate",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-40",
+            "title": "Add UI messaging highlighting unlimited free regeneration",
+            "phase": 3
+          },
+          {
+            "key": "AAVAA66-41",
+            "title": "Track regeneration counts per project for reporting",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "AAVAA66-42",
+        "title": "Lifestyle-First Conversational Intake",
+        "stories": [
+          {
+            "key": "AAVAA66-43",
+            "title": "Design the conversational question flow structure",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-44",
+            "title": "Integrate GPT-4o-assisted follow-up question generation",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-45",
+            "title": "Build branching logic based on family composition answers",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "AAVAA66-46",
+        "title": "Written Design Rationale Notes",
+        "stories": [
+          {
+            "key": "AAVAA66-47",
+            "title": "Integrate GPT-4o rationale generation for each room decision",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-48",
+            "title": "Persist rationale entries to design_rationales table",
+            "phase": 2
+          },
+          {
+            "key": "AAVAA66-49",
+            "title": "Display rationale notes inline in the floor plan and 3D viewer",
+            "phase": 3
+          },
+          {
+            "key": "AAVAA66-50",
+            "title": "Include rationale notes in the PDF export",
+            "phase": 3
+          }
+        ]
+      }
+    ]
+  },
+  "roadmap": [
+    {
+      "phase": 1,
+      "storyCount": 5,
+      "epics": [
+        "Engineering & Infrastructure",
+        "BHK & Room Configuration Generation"
+      ]
+    },
+    {
+      "phase": 2,
+      "storyCount": 20,
+      "epics": [
+        "Plot & Lifestyle Intake",
+        "Vastu Preference Toggle",
+        "BHK & Room Configuration Generation",
+        "2D Floor Plan Export",
+        "3D Dollhouse Model",
+        "Setback & Parking Check",
+        "Free Revision Loop",
+        "Unlimited Iteration vs. Paid Regeneration",
+        "Lifestyle-First Conversational Intake",
+        "Written Design Rationale Notes"
+      ]
+    },
+    {
+      "phase": 3,
+      "storyCount": 14,
+      "epics": [
+        "Engineering & Infrastructure",
+        "Plot & Lifestyle Intake",
+        "Vastu Preference Toggle",
+        "BHK & Room Configuration Generation",
+        "2D Floor Plan Export",
+        "3D Dollhouse Model",
+        "Setback & Parking Check",
+        "Free Revision Loop",
+        "Unlimited Iteration vs. Paid Regeneration",
+        "Lifestyle-First Conversational Intake",
+        "Written Design Rationale Notes"
+      ]
+    }
+  ],
+  "confluence": {
+    "pages": [
+      "01 - Product",
+      "02 - Brand & Identity",
+      "03 - Engineering",
+      "04 - Competitor Analysis",
+      "05 - Roadmap",
+      "06 - Research Notes"
+    ]
+  }
+}

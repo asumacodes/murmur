@@ -1,38 +1,30 @@
 import type { MetadataRoute } from "next";
+import { runs } from "@/content/runs";
+import { SITE_URL } from "@/lib/site";
+
+/** Real lastmod dates only: bump CONTENT_UPDATED when page copy changes. */
+const CONTENT_UPDATED = "2026-09-26";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const page = (path: string, priority: number, changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"], lastModified = CONTENT_UPDATED) => ({
+    url: `${SITE_URL}${path}`,
+    lastModified,
+    changeFrequency,
+    priority,
+  });
 
   return [
-    {
-      url: "https://www.trymurmur.studio",
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: "https://www.trymurmur.studio/about",
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.trymurmur.studio/contact",
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: "https://www.trymurmur.studio/privacy",
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: "https://www.trymurmur.studio/terms",
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
+    page("", 1, "weekly"),
+    page("/examples", 0.9, "weekly"),
+    ...runs.map((r) => page(`/examples/${r.slug}`, 0.8, "monthly")),
+    page("/tools/prd-to-jira-csv", 0.8, "monthly"),
+    page("/templates/prd", 0.8, "monthly"),
+    page("/templates/technical-design-document", 0.7, "monthly"),
+    page("/compare/chatprd", 0.6, "monthly"),
+    page("/compare/atlassian-rovo", 0.6, "monthly"),
+    page("/about", 0.5, "monthly"),
+    page("/contact", 0.4, "yearly"),
+    page("/privacy", 0.2, "yearly"),
+    page("/terms", 0.2, "yearly"),
   ];
 }

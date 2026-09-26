@@ -1,7 +1,8 @@
 import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Container } from "@/components/ui";
+import Link from "next/link";
+import { PageShell } from "@/components/site/PageShell";
 
 type LegalDocumentProps = {
   eyebrow: string;
@@ -14,7 +15,7 @@ const legalLinkClass =
 const markdownComponents: Components = {
   h1({ children }) {
     return (
-      <h1 className="font-serif-display mb-5 text-[clamp(2.4rem,5.5vw,3.6rem)] leading-[1.05] font-normal tracking-[-0.02em] text-[var(--text-primary)] first:mt-0">
+      <h1 className="display-2 mb-5 text-[var(--text-primary)] first:mt-0">
         {children}
       </h1>
     );
@@ -96,28 +97,20 @@ const markdownComponents: Components = {
 
 export function LegalDocument({ eyebrow, markdown }: LegalDocumentProps) {
   return (
-    <main className="pt-[clamp(3rem,6vw,5.5rem)] pb-[clamp(4.5rem,10vw,10rem)]">
-      <Container>
-        <div className="mx-auto max-w-[44rem]">
-          <a
-            href="/"
-            className="mb-10 inline-flex items-center text-sm text-[var(--text-tertiary)] transition-colors duration-[180ms] ease-[var(--ease-out)] hover:text-[var(--gold)]"
-          >
-            ← Murmur
-          </a>
-          <p className="font-mono-text text-xs uppercase tracking-[0.15em] text-[var(--gold)]">
-            {eyebrow}
-          </p>
-          <article className="mt-5 text-[1.05rem] leading-[1.75] text-[var(--text-secondary)] max-sm:text-base [&_:first-child]:mt-0">
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={markdownComponents}
-            >
+    <PageShell>
+      <div className="wrap pb-24 pt-32 sm:pt-40">
+        <div className="mx-auto max-w-[46rem]">
+          <Link href="/" className="mb-10 inline-flex items-center gap-2 text-sm text-fg-3 transition-colors hover:text-fg">
+            <span aria-hidden="true">←</span> Murmur
+          </Link>
+          <p className="eyebrow">{eyebrow}</p>
+          <article className="mt-5 text-[1.05rem] leading-[1.75] text-fg-2 max-sm:text-base [&_:first-child]:mt-0">
+            <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
               {markdown}
             </ReactMarkdown>
           </article>
         </div>
-      </Container>
-    </main>
+      </div>
+    </PageShell>
   );
 }
