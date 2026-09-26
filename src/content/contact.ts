@@ -1,16 +1,16 @@
 export const contact = {
   eyebrow: "Contact",
-  headline: "Get in touch.",
-  body: "Questions about Murmur, the waitlist, or anything else? Email us. We read everything.",
+  headline: "A human reads every email.",
+  body: "Email us about anything Murmur. A human reads every message.",
   email: "hey@trymurmur.studio",
-  responsePromise: "We reply to every enquiry within one business day.",
-  featureRequestPromise: "Feature requests: expect a reply within 3 business days.",
+  responsePromise: "Most emails get a reply within one business day.",
+  featureRequestPromise: "Feature requests can take up to three business days.",
   support: {
     body: "Found a bug or need help with the app?",
     email: "support@trymurmur.studio",
   },
   sprintZero: {
-    label: "For SprintZero build enquiries →",
+    label: "For SprintZero build inquiries →",
     href: "https://sprint0.trymurmur.studio",
   },
 } as const;

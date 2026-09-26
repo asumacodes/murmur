@@ -12,6 +12,31 @@ export type FirstTouch = {
   landing_path?: string;
 };
 
+const REF_KEY = "mm_ref";
+const REF_RE = /^[a-z0-9]{6,12}$/;
+
+/** Referral code from ?ref=, kept for the session's waitlist signup. */
+export function captureReferral() {
+  if (typeof window === "undefined") return;
+  const ref = new URLSearchParams(window.location.search).get("ref")?.toLowerCase();
+  if (!ref || !REF_RE.test(ref)) return;
+  try {
+    sessionStorage.setItem(REF_KEY, ref);
+  } catch {
+    // storage blocked: referral simply isn't attributed
+  }
+}
+
+export function readReferral(): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const ref = sessionStorage.getItem(REF_KEY);
+    return ref && REF_RE.test(ref) ? ref : null;
+  } catch {
+    return null;
+  }
+}
+
 export function captureFirstTouchOnce() {
   if (typeof window === "undefined") return;
   // already set? never overwrite (set-once semantics)

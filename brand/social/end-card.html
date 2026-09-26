@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Murmur · end card</title>
+    <link rel="stylesheet" href="../shared/brand.css" />
+    <style>
+      .artboard {
+        display: grid;
+      }
+      .wm {
+        position: absolute;
+      }
+      .flock-wrap {
+        position: absolute;
+      }
+      .flock-wrap canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .copy {
+        position: absolute;
+      }
+      .sub {
+        line-height: 1.4;
+      }
+      .cta-row {
+        position: absolute;
+        display: flex;
+        align-items: center;
+      }
+      .note {
+        color: var(--fg-3);
+      }
+      html:not(.portrait) .p-only {
+        display: none;
+      }
+
+      /* ---- 1920×1080 ---- */
+      html.landscape .artboard {
+        --glow-x: 70%;
+        --glow-y: 28%;
+      }
+      html.landscape .wm {
+        left: 128px;
+        top: 112px;
+        font-size: 52px;
+      }
+      html.landscape .flock-wrap {
+        right: 128px;
+        top: 90px;
+        width: 760px;
+        height: 250px;
+      }
+      html.landscape .copy {
+        left: 128px;
+        top: 360px;
+      }
+      html.landscape h1 {
+        font-size: 150px;
+      }
+      html.landscape .sub {
+        margin-top: 34px;
+        max-width: 1100px;
+        font-size: 36px;
+      }
+      html.landscape .cta-row {
+        left: 128px;
+        right: 128px;
+        bottom: 112px;
+        justify-content: space-between;
+      }
+      html.landscape .url {
+        font-size: 40px;
+      }
+      html.landscape .cta-stack {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 18px;
+      }
+      html.landscape .cta {
+        font-size: 44px;
+      }
+      html.landscape .note {
+        font-size: 22px;
+      }
+
+      /* ---- 1080×1920 ---- */
+      html.portrait .artboard {
+        --glow-x: 50%;
+        --glow-y: 30%;
+      }
+      html.portrait .wm {
+        left: 128px;
+        top: 200px;
+        font-size: 56px;
+      }
+      html.portrait .flock-wrap {
+        left: 100px;
+        right: 100px;
+        top: 380px;
+        height: 330px;
+      }
+      html.portrait .copy {
+        left: 128px;
+        right: 128px;
+        top: 800px;
+      }
+      html.portrait h1 {
+        font-size: 154px;
+      }
+      html.portrait .sub {
+        margin-top: 40px;
+        font-size: 38px;
+      }
+      html.portrait .cta-row {
+        left: 128px;
+        right: 128px;
+        bottom: 260px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 34px;
+      }
+      html.portrait .cta-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        order: -1;
+      }
+      html.portrait .cta {
+        font-size: 48px;
+      }
+      html.portrait .note {
+        font-size: 24px;
+      }
+      html.portrait .url {
+        font-size: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="artboard bg" data-w="1920" data-h="1080">
+      <span class="wordmark wm"><span data-mark></span>murmur</span>
+      <div class="flock-wrap"><canvas data-flock data-seed="11" data-bars="44" data-count="9000" data-size="1.15"></canvas></div>
+      <div class="copy">
+        <h1 class="display">Voice memo in.<br /><span class="accent">Whole</span><br class="p-only" /> project out.</h1>
+        <p class="sub muted">Research, PRD, brand kit, tech design, roadmap and a Jira board.<br />In under 10 minutes.</p>
+      </div>
+      <div class="cta-row">
+        <span class="url">trymurmur.studio</span>
+        <span class="cta-stack">
+          <span class="cta"><span class="dot"></span><span data-cta>Get early access</span><span data-arrow></span></span>
+          <span class="mono note">First idea free · no card</span>
+        </span>
+      </div>
+    </main>
+    <script src="../shared/brand.js"></script>
+  </body>
+</html>

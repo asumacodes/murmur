@@ -1,27 +1,36 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { referralCodeFor } from "@/lib/referral";
+import { SITE_URL } from "@/lib/site";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const TOKEN_RE = /^[a-z0-9_:-]{1,40}$/i;
+const REF_RE = /^[a-z0-9]{6,12}$/;
+const ROLES = new Set(["founder", "pm", "agency", "engineer", "other"]);
 
-const WELCOME_TEXT = `You're on the Murmur waitlist.
+function welcomeText(referralUrl: string) {
+  return `You're on the Murmur waitlist.
 
-Talk for a few minutes. Murmur turns that into a complete project foundation, under ten minutes, in your own Atlassian workspace:
+Murmur turns a voice memo into a project foundation in under 10 minutes: competitor research, a PRD, a brand kit, an engineering brief, a roadmap, and a Jira board and Confluence space in your own Atlassian site.
 
--> a validated PRD
--> a brand kit
--> a Jira board, epics and stories
--> a Confluence space
+Invites go out in batches. When yours lands, your first idea is free.
 
-It's being built carefully, so there's no launch date to promise yet. When it opens, you'll be among the first in.
+Know someone who'd use it? Here's your link:
+${referralUrl}
 
-That's the only email you'll get until there's something real to share. No drip, no filler.
+This is the only email until your invite. No drip, no filler.
 
 Murmur
-a SprintZero Studio product
+a SprintZero Studios product
 trymurmur.studio`;
+}
 
 type SubscribeBody = {
   email?: unknown;
+  location?: unknown;
+  role?: unknown;
+  ref?: unknown;
+  tier?: unknown;
 };
 
 export async function POST(request: Request) {
@@ -33,69 +42,66 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const email =
-    typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
+  const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
 
-  if (!email || !EMAIL_RE.test(email)) {
-    return NextResponse.json(
-      { error: "Enter a valid email address." },
-      { status: 400 },
-    );
+  if (!email || email.length > 254 || !EMAIL_RE.test(email)) {
+    return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
   }
+
+  const location = typeof body.location === "string" && TOKEN_RE.test(body.location) ? body.location : "site";
+  const role = typeof body.role === "string" && ROLES.has(body.role) ? body.role : null;
+  const ref = typeof body.ref === "string" && REF_RE.test(body.ref) ? body.ref : null;
+  const tier = typeof body.tier === "string" && TOKEN_RE.test(body.tier) ? body.tier : null;
+
+  const code = referralCodeFor(email);
+  const referralUrl = `${SITE_URL}/?ref=${code}`;
 
   const apiKey = process.env.RESEND_API_KEY;
 
   if (!apiKey) {
     console.error("[subscribe] RESEND_API_KEY is not configured");
-    return NextResponse.json(
-      { error: "Notify list is temporarily unavailable." },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: "The waitlist is temporarily unavailable." }, { status: 500 });
   }
 
   const resend = new Resend(apiKey);
 
+  // "source" is the only custom contact property that exists in Resend, so
+  // attribution is packed into it: location|role|tier|ref (ref = who referred them).
+  const source = [location, role, tier && `tier:${tier}`, ref && `ref:${ref}`, `code:${code}`]
+    .filter(Boolean)
+    .join("|")
+    .slice(0, 200);
+
   const { error } = await resend.contacts.create({
     email,
     unsubscribed: false,
-    // Requires a Contact Property named "source" to already exist in the
-    // Resend dashboard — created once during setup, not by this route.
-    properties: { source: "coming-soon" },
+    properties: { source },
   });
 
   if (!error) {
-    // Welcome email — the single "one welcome email now" the footnote promises.
-    // Fire on a genuinely new contact only. A send failure must NOT fail the
-    // signup: the contact is already saved, so we log and still return ok.
     const from = process.env.RESEND_FROM;
     if (!from) {
-      console.error("[subscribe] RESEND_FROM is not configured — skipping welcome email");
+      console.error("[subscribe] RESEND_FROM is not configured; skipping welcome email");
     } else {
       const { error: sendError } = await resend.emails.send({
         from,
         to: email,
         replyTo: "hey@trymurmur.studio",
         subject: "You're on the Murmur waitlist",
-        text: WELCOME_TEXT,
+        text: welcomeText(referralUrl),
       });
       if (sendError) {
         console.error("[subscribe] welcome email failed", sendError);
       }
     }
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, code, referralUrl });
   }
 
-  // TODO(verify in Phase 5): confirm this actually matches Resend's
-  // duplicate-contact error message with a real repeat submission.
   const message = (error.message ?? "").toLowerCase();
   if (message.includes("already") || message.includes("exist")) {
-    // Duplicate signup — contact already exists, so no welcome email re-send.
-    return NextResponse.json({ ok: true, alreadySubscribed: true });
+    return NextResponse.json({ ok: true, alreadySubscribed: true, code, referralUrl });
   }
 
   console.error("[subscribe] Resend error", error);
-  return NextResponse.json(
-    { error: "Something went wrong. Try again." },
-    { status: 500 },
-  );
+  return NextResponse.json({ error: "Something went wrong. Try again." }, { status: 500 });
 }

@@ -1,0 +1,1403 @@
+{
+  "slug": "fin-matter",
+  "order": 4,
+  "idea": "Personal AI finance assistant",
+  "category": "Fintech · AI",
+  "seoNoun": "fintech AI app",
+  "title": "Fin Matter",
+  "recordedAt": "2026-09-04",
+  "runAt": "2026-09-04",
+  "memoSeconds": 177,
+  "runSeconds": 451,
+  "language": "en",
+  "transcript": "Fin Matter is a personal AI finance assistant I am building only for myself. Not a product, not for every— anyone else. Just a place where I can ask anything about my own money and get a real answer. Think of it as a chat box with total context on my finances … And yeah, the whole point is that its knowledge is my financial data and nothing else. It never invents a number. It never guesses a card benefit. Never makes up advice. All the actual money math is deterministic and provable. The AI only explains it, reasons over it, and talks to me about it. I've tried building this twice before as a full product and stalled both times because I kept trying to build the entire financial foundation before I could even ask a single question. This time, let's flip it. Start with the assistant and one real question … So what I want to figure out is what's the smallest version of this that's genuinely useful to me on day one?",
+  "prd": {
+    "productName": "Fin Matter",
+    "oneLiner": "A private, deterministic AI chat assistant over one person's real financial life — built one real question at a time, not aggregated all at once like every India fintech AI project.",
+    "problem": "The founder's financial life is scattered across bank accounts, loans/EMIs, salary structure, credit cards, mutual funds, domestic and international stocks, RSUs/ESOPs, EPF and NPS, and answering a real decision like 'can I afford a 30 lakh car' or 'how should I optimize HRA' currently means manually piecing together spreadsheets and mental math with no single source of truth. Existing tools force a painful tradeoff: Finwiser and similar Account Aggregator products demand 30+ account connections before delivering any insight, FinFolio and other trackers are dashboard-first and require ongoing manual upkeep, and chat-based agents like FinNexa, Arth, and JN-66 either lose context between sessions, ignore credit card rewards and RSU/salary nuance, or aren't wired to real personal data at all. The founder has already stalled twice trying to build the full financial foundation before asking a single question — the gap in every competitor is that none let you start with one real question and grow the data model only as far as that question requires, while guaranteeing every number is deterministic and never invented by the LLM.",
+    "targetUser": "The founder themself — a single individual with a complex financial life (salary with appraisals, RSUs/ESOPs, credit cards, loans, EPF/NPS, domestic and international investments) who needs a private reasoning tool for real money decisions, explicitly not a mass-market product.",
+    "features": {
+      "must_have": [
+        {
+          "title": "Deterministic Financial Compute Layer",
+          "rationale": "Table-stakes across FinSense AI and JN-66's grounded-answer approach, and an explicit founder mandate that numbers are never invented.",
+          "description": "All financial math — EMI, tax, SIP, affordability, net worth — runs through provable calculator functions; the LLM only explains results, never computes them."
+        },
+        {
+          "title": "Single-Thread Chat Interface Over Personal Knowledge Base",
+          "rationale": "Table stakes established by every competitor (Finwiser, FinNexa, Arth, JN-66) as the baseline UX pattern.",
+          "description": "One conversational thread where the user can ask any question about their own finances and get an answer grounded in their wired-up data."
+        },
+        {
+          "title": "First-Question Data Wiring",
+          "rationale": "Directly grounded in transcript: founder stalled twice trying to build the entire foundation first and wants to flip that order.",
+          "description": "Ingest only the specific data needed to answer the founder's single most important starter question, rather than building the full financial foundation upfront."
+        },
+        {
+          "title": "Core India Financial Data Model",
+          "rationale": "Table stakes per competitor analysis — coverage of core India financial instruments is required for the assistant to be viable at all.",
+          "description": "Structured schema covering bank accounts, loans/EMIs, salary structure, mutual funds, domestic and international stocks, RSUs/ESOPs, EPF and NPS."
+        },
+        {
+          "title": "Manual Data Entry for MVP",
+          "rationale": "Table stakes ingestion requirement that directly resolves the transcript's own open question — manual entry is the fastest path to a working assistant.",
+          "description": "User types or pastes real financial figures directly into the system as the initial ingestion method; no parsing or integrations required at launch."
+        },
+        {
+          "title": "Private Local Data Storage",
+          "rationale": "Table stakes privacy expectation shared by FinFolio's and JN-66's local-first architectures.",
+          "description": "All financial data and conversation history stored locally/privately with no third-party sharing, since this is a single-user personal tool."
+        }
+      ],
+      "should_have": [
+        {
+          "title": "Personalized Calculators Wired to Real Data",
+          "rationale": "FinSense AI's calculators are deterministic but generic and disconnected from a real ledger — we do better by wiring them to actual personal data.",
+          "description": "EMI/SIP/tax calculators like FinSense AI's, but computed against the user's actual loan, salary, and investment figures instead of generic manual inputs."
+        },
+        {
+          "title": "Persistent Financial Memory Across Sessions",
+          "rationale": "FinNexa holds no data beyond a session, forcing context to be re-explained every time — persistence is a direct improvement.",
+          "description": "Retain the user's financial knowledge base between conversations so context never has to be rebuilt, unlike FinNexa's session-only design."
+        },
+        {
+          "title": "Incremental Ingestion Instead of Full Aggregation Upfront",
+          "rationale": "Finwiser requires 30+ account connections before delivering any insight — we invert that order to reach usefulness faster.",
+          "description": "Add new data sources (email parsing, statement upload, Account Aggregator) one at a time as new questions require them, rather than connecting everything first."
+        },
+        {
+          "title": "Unified Net-Worth View Inline in Chat",
+          "rationale": "FinFolio's breadth is locked behind a dashboard-first UI; delivering the same data conversationally is a lighter-weight alternative.",
+          "description": "Surface relevant balances and holdings conversationally as part of an answer, instead of requiring a separate dashboard like FinFolio."
+        }
+      ],
+      "could_have": [
+        {
+          "title": "Credit Card Rewards Reasoning",
+          "rationale": "Identified as a whitespace differentiation opportunity — no competitor covers credit card rewards reasoning.",
+          "description": "Assistant evaluates which card to use for a purchase based on actual reward/cashback terms and current spend patterns."
+        },
+        {
+          "title": "Salary & Appraisal-Aware Tax Optimization",
+          "rationale": "Differentiation opportunity: no competitor addresses salary-structure-aware tax optimization.",
+          "description": "Uses actual salary structure and appraisal history to recommend optimal HRA declaration and other tax-saving choices."
+        },
+        {
+          "title": "Unified RSU/ESOP and International Stock Reasoning",
+          "rationale": "Only FinFolio partially tracks RSU/ESOP and none integrate it into deterministic chat-based planning — clear whitespace.",
+          "description": "Combine domestic assets with RSUs, ESOPs, and international stock holdings in one deterministic net-worth and planning engine."
+        },
+        {
+          "title": "Per-Question Ingestion Channel Selection",
+          "rationale": "Differentiation opportunity: flexible, question-driven ingestion versus competitors' one-size-fits-all aggregation strategy.",
+          "description": "Choose the lightest ingestion method — manual, email/SMS parsing, or Account Aggregator — per question rather than committing to one channel for everything."
+        }
+      ],
+      "wont_have": [
+        {
+          "title": "Mobile apps",
+          "rationale": "Explicit scope cut to hit the 72-hour window; not required to answer the first real question.",
+          "description": "No iOS/Android app; web or CLI/chat interface only for the MVP."
+        },
+        {
+          "title": "Voice/persona customisation",
+          "rationale": "Adds interaction-layer complexity irrelevant to a single-user deterministic finance tool.",
+          "description": "No voice interface or configurable assistant personas/tone settings."
+        },
+        {
+          "title": "Advanced integrations",
+          "rationale": "Founder explicitly wants to avoid building the full financial foundation before asking one question.",
+          "description": "No direct bank/broker API integrations, UPI sync, or Account Aggregator onboarding at launch."
+        },
+        {
+          "title": "White-labelling",
+          "rationale": "Irrelevant for a single-user personal tool that is explicitly not a commercial product.",
+          "description": "No theming, branding, or multi-tenant configuration options."
+        },
+        {
+          "title": "Multi-language support",
+          "rationale": "Founder is the sole user, so single-language support is sufficient for personal use.",
+          "description": "English only; no localization or regional language support."
+        },
+        {
+          "title": "Admin dashboards",
+          "rationale": "A single-user tool has no other users or admins to manage.",
+          "description": "No admin panel, user management, or analytics dashboard."
+        },
+        {
+          "title": "Full account aggregator onboarding",
+          "rationale": "Explicitly the pattern the founder wants to avoid based on two prior stalled attempts.",
+          "description": "No mandatory upfront connection of 30+ accounts like Finwiser before the assistant becomes useful."
+        },
+        {
+          "title": "Multi-user support",
+          "rationale": "Transcript explicitly states this is not a product and is only for personal use.",
+          "description": "No accounts, authentication, or support for anyone other than the founder."
+        }
+      ]
+    },
+    "successMetrics": [
+      {
+        "metric": "Time to first working answer",
+        "target": "First real financial question answered end-to-end within 72 hours of project start."
+      },
+      {
+        "metric": "Deterministic calculation accuracy",
+        "target": "100% of financial calculations match manual verification across the first 20 queries within 30 days."
+      },
+      {
+        "metric": "Personal usage frequency",
+        "target": "≥5 real financial questions asked per week by day 30 post-launch."
+      },
+      {
+        "metric": "Data domain coverage",
+        "target": "At least 3 financial data domains (bank, loans, investments) wired into the knowledge base within 14 days of launch."
+      },
+      {
+        "metric": "Founder satisfaction (CSAT)",
+        "target": "Average self-rated CSAT of ≥4.0 out of 5 across the first 20 chat sessions within 30 days."
+      }
+    ],
+    "nonGoals": [
+      "Not a multi-user or public product — built and used by one person only.",
+      "Not a full account-aggregation platform — no upfront connection of all financial accounts.",
+      "Not an investment advisory or execution tool — no trades, transfers, or commissioned recommendations.",
+      "Not a dashboard/visualization product — conversational chat is the only interface.",
+      "Not scoped to cover every financial data domain at launch — only what the first question requires."
+    ],
+    "risks": [
+      "Founder relapses into building the full financial foundation before shipping a single answer, repeating the two prior stalled attempts.",
+      "Manual data entry becomes a bottleneck if no lightweight ingestion path is chosen quickly for subsequent questions.",
+      "Deterministic engine (tax rules, EMI/SIP formulas, RSU vesting logic) balloons in scope if not strictly limited to the first question's needs.",
+      "Financial data goes stale without any refresh mechanism, undermining the 'never guesses' guarantee over time."
+    ],
+    "openQuestions": [
+      "What is the single first question to wire and answer on day one — car affordability, retirement home planning, or the supercomputer purchase?",
+      "Should the first data domain be entered manually, parsed from statements, or connected via Account Aggregator?",
+      "How will credit card reward rules be sourced and kept accurate without manual upkeep?",
+      "What triggers wiring a new data domain — is it purely 'the next question I want to ask'?"
+    ],
+    "competitiveLandscape": [
+      {
+        "competitor": "Finwiser",
+        "positioningDelta": "Requires 30+ account aggregator connections before any value; we deliver a real answer within 72 hours using only the data one question needs."
+      },
+      {
+        "competitor": "FinFolio (myFinance)",
+        "positioningDelta": "Dashboard-first asset tracker; we are chat-first and skip the dashboard entirely, wiring only what's needed."
+      },
+      {
+        "competitor": "Arth (finAgent)",
+        "positioningDelta": "Manual onboarding covers profile/cashflow only; we add credit card rewards, RSU/ESOP, and salary-structure tax reasoning it lacks."
+      },
+      {
+        "competitor": "JN-66",
+        "positioningDelta": "Focused on spending/transactions; we extend deterministic reasoning to investments, big-purchase affordability, and tax optimization."
+      },
+      {
+        "competitor": "FinNexa",
+        "positioningDelta": "Session-only, no persistent memory; we retain financial context across every conversation."
+      },
+      {
+        "competitor": "FinSight AI",
+        "positioningDelta": "Broad feature surface (UPI sync, projections, synthetic data) risks the 'build everything first' trap; we intentionally stay narrow and incremental."
+      },
+      {
+        "competitor": "FinSense AI",
+        "positioningDelta": "Generic calculators not tied to real personal accounts; ours are wired directly to the user's actual salary, loans, and investments."
+      }
+    ]
+  },
+  "research": {
+    "marketSummary": "There's a small but active wave of India-focused open-source/hobbyist 'AI + personal finance' projects (hackathon builds, self-hosted trackers, and one funded-looking RIA startup) all converging on the same insight: users want a single conversational interface over their fragmented financial data (banks, investments, EPF/NPS, loans, RSUs) instead of dashboards. Most projects solve either (a) broad automated data aggregation (Finwiser, FinFolio) or (b) a chat/agent layer with deterministic math (FinSense AI, JN-66, Arth), but none combine deep personal breadth (credit card rewards, RSU/ESOP, salary/appraisal, international stocks, NPS/EPF) with a strictly deterministic, provable-math chat assistant built incrementally around single real questions rather than full-platform ingestion upfront. This confirms the space is real and validated, but fragmented and mostly unfinished/hobby-grade — no one has nailed the 'start with one question, wire only what's needed' incremental build philosophy.",
+    "ourPositioning": "Fin Matter is not a product competing for users but a deliberately narrow, deterministic personal finance chat assistant built for one person's real financial life — including credit card rewards, RSUs, salary/appraisal, and NPS/EPF — where every number is provably sourced from real data and the system grows one real question at a time instead of demanding full financial aggregation upfront like every existing India fintech AI project.",
+    "tableStakes": [
+      "Natural language chat interface over personal financial data",
+      "Coverage of core India financial instruments: bank accounts, EMIs/loans, mutual funds, EPF/NPS",
+      "Some form of automated or semi-automated data ingestion (statements, Account Aggregator, email/SMS parsing)",
+      "Basic deterministic calculators (EMI, SIP, tax) so numbers aren't hallucinated",
+      "Privacy-conscious data handling (local-first, self-hosted, or consent-based AA)",
+      "Ability to answer at least simple affordability/planning questions"
+    ],
+    "differentiationOpportunities": [
+      "Credit card rewards/benefit tracking and 'is this the right card to use' reasoning — no competitor covers this",
+      "Salary structure and appraisal-aware tax optimization (e.g., optimal HRA declaration) — unaddressed by all",
+      "RSU/ESOP + international stock portfolio integration combined with domestic assets in one deterministic engine — only FinFolio partially touches RSU/ESOP, without chat-first design",
+      "Strict separation of deterministic financial computation layer from LLM reasoning/explanation layer as an explicit architectural guarantee (most competitors let the LLM touch numbers directly)",
+      "Radically incremental 'one question, wire only needed data' build philosophy vs. every competitor's 'aggregate everything first' approach — reduces time-to-value dramatically",
+      "Single-user, not-a-product mindset removing scalability/onboarding-flow overhead that burdens Finwiser/FinFolio, allowing faster iteration on real personal edge cases (₹100 Red Bull-level judgment calls)",
+      "Multi-channel flexible ingestion strategy (manual entry → email/SMS parsing → Account Aggregator) chosen per-question rather than mandating full aggregation upfront"
+    ],
+    "competitors": [
+      {
+        "name": "Finwiser",
+        "url": "https://finwiser.org/",
+        "positioning": "Fee-only SEBI-registered AI financial advisor for India's middle class, aggregating 30+ account types via Account Aggregator for a composite net-worth/goal picture",
+        "keyFeatures": [
+          "Account Aggregator integration across 7 buckets (banking, investments, pensions, insurance, loans, business, physical assets)",
+          "Net worth, real surplus, goals-on-track, risk score dashboard",
+          "Fiduciary advice model, no commissions",
+          "Bank-grade security, revocable consent"
+        ],
+        "pricingModel": "Likely subscription/advisory fee (fiduciary RIA model)",
+        "strengths": [
+          "Regulatory credibility (SEBI RIA)",
+          "Broad automated data aggregation",
+          "Trust-focused, no-commission positioning"
+        ],
+        "weaknesses": [
+          "Built for mass market, not deep personalization",
+          "Onboarding-heavy (30+ account connections) before any value",
+          "Generic advisory output vs deterministic personal reasoning",
+          "No mention of RSU/ESOP/international stocks or single 'ask anything' chat depth"
+        ],
+        "directOverlap": [
+          "Account Aggregator onboarding",
+          "Net worth/goal tracking",
+          "India-specific financial data types (EPF, NPS, loans)"
+        ]
+      },
+      {
+        "name": "FinFolio (myFinance)",
+        "url": "https://github.com/balajiregt/myFinance",
+        "positioning": "Self-hosted, privacy-first Indian portfolio tracker covering all asset classes including RSU/ESOP, EPF/NPS, physical gold, real estate",
+        "keyFeatures": [
+          "Unified dashboard across 10 asset classes",
+          "Gmail API expense auto-tracking",
+          "AI insights on portfolio data",
+          "Reminders for EMIs/premiums/SIPs",
+          "100% local storage, self-hosted"
+        ],
+        "pricingModel": "Free, open-source, self-hosted (optional own Supabase/Fly.io costs)",
+        "strengths": [
+          "Most comprehensive India-specific asset coverage seen (RSU/ESOP, NPS, gold, real estate)",
+          "Strong privacy model",
+          "Already solves 'no single view' problem"
+        ],
+        "weaknesses": [
+          "Dashboard/tracker first, chat assistant is secondary bolt-on",
+          "Requires manual setup/maintenance as self-hosted single-file app",
+          "Not built around a single deep conversational Q&A experience",
+          "No salary structure/appraisal/tax optimization reasoning"
+        ],
+        "directOverlap": [
+          "RSU/ESOP tracking",
+          "EPF/NPS coverage",
+          "Loans/EMI tracking",
+          "AI insights on personal portfolio data",
+          "Self-hosted privacy-first approach"
+        ]
+      },
+      {
+        "name": "Arth (finAgent)",
+        "url": "https://github.com/saurabhgssingh/finAgent",
+        "positioning": "Open-source AI financial agent working exclusively for the user, no commissions, cross-product reasoning, auditable",
+        "keyFeatures": [
+          "3-step onboarding (profile, monthly money flow, safety net)",
+          "Savings rate and surplus computation",
+          "Insurance gap flagging",
+          "Local LLM support (Gemini, Claude CLI)"
+        ],
+        "pricingModel": "Free/open-source, self-hosted, BYO LLM API key",
+        "strengths": [
+          "Philosophically aligned (agent works only for user)",
+          "Fast onboarding flow",
+          "Transparent/auditable reasoning"
+        ],
+        "weaknesses": [
+          "Manual data entry onboarding (no automated aggregation/parsing mentioned)",
+          "No mention of credit card rewards, RSU, mutual funds/stocks depth",
+          "Early stage, likely limited data breadth"
+        ],
+        "directOverlap": [
+          "Personal-only agent philosophy",
+          "Chat-based Q&A over financial profile",
+          "Deterministic reasoning intent"
+        ]
+      },
+      {
+        "name": "JN-66",
+        "url": "https://github.com/pushkar-anand/JN-66",
+        "positioning": "Fully local, self-hosted personal finance agent for households answering natural-language questions about spending and accounts",
+        "keyFeatures": [
+          "ReAct agent loop over local LLM (Ollama)",
+          "India-first transaction modes (UPI/NACH/NEFT/IMPS)",
+          "Spending breakdowns, transaction search, recurring payment tracking",
+          "Zero data sharing, local PostgreSQL"
+        ],
+        "pricingModel": "Free, open-source, self-hosted",
+        "strengths": [
+          "Strong privacy/local-first architecture",
+          "India-specific transaction taxonomy",
+          "Natural language query interface already working"
+        ],
+        "weaknesses": [
+          "Focused on spending/transactions, not investments/RSU/tax/credit card rewards",
+          "No mention of deterministic financial math or planning questions (afford a car, retirement home)",
+          "Requires self-hosting technical setup"
+        ],
+        "directOverlap": [
+          "Natural language chat over financial data",
+          "Local/self-hosted privacy model",
+          "India-specific data types"
+        ]
+      },
+      {
+        "name": "FinNexa",
+        "url": "https://fin-nexa.vercel.app",
+        "positioning": "AI assistant that converts Fi Money MCP data into conversational financial literacy insights",
+        "keyFeatures": [
+          "Fi Money MCP read-only integration",
+          "Structured financial snapshot before AI analysis",
+          "Conversational insights (overspending, financial health)",
+          "No data storage beyond session"
+        ],
+        "pricingModel": "Hackathon project, unclear/free",
+        "strengths": [
+          "Explicit 'never makes up data' constraint matches deterministic philosophy",
+          "Clean read-only data pipeline via MCP",
+          "Conversational framing of financial health"
+        ],
+        "weaknesses": [
+          "Dependent entirely on Fi Money MCP as sole data source (no credit cards rewards, RSU, salary structure detail)",
+          "Literacy-focused, not deep personal decision support (e.g., affordability of specific big purchases)",
+          "No persistence/session-only, limited for planning"
+        ],
+        "directOverlap": [
+          "Never invents data / grounded-only AI answers",
+          "Conversational chat over real financial data",
+          "Read-only aggregation approach"
+        ]
+      },
+      {
+        "name": "FinSight AI",
+        "url": "https://github.com/Mehul2305/finsight-ai",
+        "positioning": "Full-stack AI financial platform for spending analysis, SIP planning, investment recommendations and goal tracking",
+        "keyFeatures": [
+          "Claude AI chat with financial context injection",
+          "Bank statement PDF/CSV parsing",
+          "UPI integration (GPay/PhonePe/Paytm)",
+          "30-year investment projections",
+          "Synthetic data engine for demos"
+        ],
+        "pricingModel": "Open-source/self-built, unclear commercial model",
+        "strengths": [
+          "Multiple ingestion methods (statement upload + UPI sync)",
+          "Investment/goal projection features",
+          "Production-grade full-stack build"
+        ],
+        "weaknesses": [
+          "Broad feature surface risks the 'build everything first' trap the founder wants to avoid",
+          "No RSU/ESOP, NPS, international stocks, credit card rewards mentioned",
+          "Generic recommendation engine vs deterministic explain-only AI"
+        ],
+        "directOverlap": [
+          "AI chat with full financial context",
+          "Goal-based planning (e.g., house purchase)",
+          "Bank data ingestion via parsing"
+        ]
+      },
+      {
+        "name": "FinSense AI",
+        "url": "https://github.com/pbhoomikadesai/FinSense-AI",
+        "positioning": "India-specific personal finance agent focused on precision calculators (EMI/SIP/Tax) with agentic query routing",
+        "keyFeatures": [
+          "Deterministic EMI/SIP/Tax/FD calculators",
+          "Smart query classification and routing",
+          "Domain-restricted answers with source citations",
+          "Multi-step LangGraph workflows"
+        ],
+        "pricingModel": "Open-source, live demo (likely free)",
+        "strengths": [
+          "Strong deterministic calculation engine matching 'provable math' philosophy",
+          "Tax slab accuracy (2025-26 regime rules)",
+          "Source citation for trust"
+        ],
+        "weaknesses": [
+          "Not connected to user's actual personal accounts/data — generic calculators, not personalized knowledge base",
+          "No credit card rewards, RSUs, portfolio-specific context",
+          "No account aggregation or real data ingestion"
+        ],
+        "directOverlap": [
+          "Deterministic financial math (never guesses)",
+          "Tax/EMI/SIP calculation logic",
+          "India-specific financial rules"
+        ]
+      }
+    ]
+  },
+  "brand": {
+    "brandName": "Fin Matter",
+    "tagline": "One real question. One true answer.",
+    "nameNotes": [
+      "Ledger — evokes a single source of truth without sounding like a consumer app",
+      "Fin Matter reads well as 'the finances that actually matter' — keep as primary"
+    ],
+    "brandValues": [
+      "Deterministic — never invents a number",
+      "Private by default",
+      "Grows only as far as the question demands",
+      "Quiet precision over dashboard noise",
+      "Built for one person, not a market"
+    ],
+    "colorPalette": {
+      "accent": "#C9A24B",
+      "neutral": "#E9E7E1",
+      "primary": "#0E1F2B",
+      "semantic": {
+        "error": "#B4483A",
+        "success": "#2E7D5B",
+        "warning": "#C9902F"
+      },
+      "secondary": "#1F6F5C"
+    },
+    "typography": {
+      "body": "Inter",
+      "mono": "JetBrains Mono",
+      "heading": "Fraunces"
+    },
+    "logoDirection": {
+      "form": "A single thin vertical or diagonal line piercing through a small cluster of connected nodes, suggesting one question threading through only the data it needs",
+      "style": "Minimal, private, engineering-grade — closer to a personal ledger seal than a fintech app icon",
+      "avoidances": [
+        "piggy banks, coins, dollar signs, rupee glyphs used decoratively",
+        "gradient fintech-app aesthetics",
+        "dashboard/chart iconography",
+        "friendly rounded mascot styles",
+        "generic bank/pillar/vault imagery"
+      ],
+      "symbolConcept": "A single thread running through a constellation of financial nodes (bank, salary, RSU, loan) — only the nodes touched by the thread are lit, the rest remain dim, visualizing incremental, question-driven wiring"
+    },
+    "iconographyStyle": "Thin single-weight line icons with sharp, deliberate corners rather than soft rounding — each icon reads as a precise node in a financial graph (account, loan, RSU, EPF) with an optional single accent-gold node or line to signal 'currently wired' vs dimmed neutral-gray for 'not yet connected'"
+  },
+  "engineering": {
+    "overview": "Fin Matter is a single-user, privacy-first financial reasoning assistant. It pairs a conversational chat interface with a strictly deterministic financial compute layer: the LLM is only ever permitted to explain numbers that were produced by verified calculator functions running against the user's own structured financial data in Postgres. The data model grows incrementally — only the tables needed to answer the current question are populated via manual entry — rather than requiring full account aggregation upfront. Every chat turn is logged with the underlying calculation trace so results can be manually verified for accuracy.",
+    "dataFlow": "User submits a question in Chat UI → Chat Orchestrator sends message + conversation history + tool schema to LLM → LLM returns a tool call (e.g. compute_affordability, get_net_worth) → Orchestrator validates inputs against Financial Data Store and executes the matching Deterministic Compute Engine function → Result + calculation trace is written to Calculation Audit Log → Orchestrator sends the structured numeric result back to the LLM Explanation Service with an instruction to explain-only-do-not-compute → LLM returns natural language explanation → Orchestrator persists both the user message and assistant response (with trace) in Conversation Memory Store → Chat UI renders the answer. New financial domains are only added to the Financial Data Store, via manual entry forms, when a new question requires them.",
+    "components": [
+      {
+        "name": "Chat UI",
+        "responsibility": "Single-thread Next.js web interface where the user types financial questions and reads grounded answers; also hosts manual data-entry forms for each financial domain (bank, loans, salary, cards, investments, RSU/ESOP, EPF/NPS)."
+      },
+      {
+        "name": "Chat Orchestrator (API layer)",
+        "responsibility": "Receives user messages, calls the LLM with tool/function definitions describing available deterministic calculators and data queries, executes the tools the LLM selects, and re-invokes the LLM only to phrase an explanation of the returned numeric results."
+      },
+      {
+        "name": "Deterministic Financial Compute Engine",
+        "responsibility": "Pure, unit-tested TypeScript functions for EMI, SIP, tax (old/new regime), affordability, RSU vesting value, net worth aggregation, and credit-card reward math. No LLM involvement; every function is independently verifiable."
+      },
+      {
+        "name": "LLM Explanation Service",
+        "responsibility": "Wraps an LLM (function-calling capable) that (a) maps natural language to the correct calculator/query tool call and (b) turns structured numeric results into a plain-English answer — never invents figures itself."
+      },
+      {
+        "name": "Financial Data Store",
+        "responsibility": "Supabase Postgres schema holding the user's real financial entities (bank accounts, loans, salary structure, credit cards, mutual funds, domestic/international stocks, RSU/ESOP grants, EPF, NPS) — populated incrementally via manual entry."
+      },
+      {
+        "name": "Conversation Memory Store",
+        "responsibility": "Persists chat threads and messages, including the calculation trace attached to each assistant response, so context and prior answers survive across sessions."
+      },
+      {
+        "name": "Auth Service",
+        "responsibility": "Supabase Auth restricting the app to a single authenticated user (the founder); protects all data and chat endpoints via row-level security."
+      },
+      {
+        "name": "Calculation Audit Log",
+        "responsibility": "Stores every calculator invocation (inputs, outputs, function version) tied to the chat message that triggered it, enabling manual accuracy verification against the success metric."
+      }
+    ],
+    "techStack": {
+      "llm": "OpenAI GPT-4o (function/tool calling) used strictly for intent parsing and result explanation — never for arithmetic; system prompt hard-enforces 'explain only, never compute'",
+      "auth": "Supabase Auth (email/password or magic link), single allow-listed user account, RLS policies enforced on every table",
+      "infra": "Vercel (frontend + API routes), Supabase managed Postgres + Auth, single production environment (no multi-tenant infra needed)",
+      "backend": "Next.js Route Handlers (API layer) for chat orchestration + a standalone TypeScript deterministic-compute module (pure functions, unit tested with Vitest) invoked as tool calls",
+      "database": "Supabase Postgres with Row Level Security scoped to the single user_id",
+      "devtools": "TypeScript, ESLint + Prettier, Vitest for calculator unit tests, Supabase CLI for migrations, GitHub Actions for CI (lint/test/build) and Vercel auto-deploy on main",
+      "frontend": "Next.js 14 (App Router) + TypeScript + Tailwind CSS + shadcn/ui, single-thread chat UI with inline manual-entry forms per financial domain"
+    },
+    "dataModels": [
+      {
+        "entity": "User",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "name": "display_name",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "User has many BankAccount, Loan, SalaryStructure, CreditCard, MutualFundHolding, StockHolding, RSUGrant, EPFAccount, NPSAccount, ConversationThread"
+        ]
+      },
+      {
+        "entity": "BankAccount",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "bank_name",
+            "type": "string"
+          },
+          {
+            "name": "account_type",
+            "type": "string"
+          },
+          {
+            "name": "balance",
+            "type": "numeric"
+          },
+          {
+            "name": "as_of_date",
+            "type": "date"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to User"
+        ]
+      },
+      {
+        "entity": "Loan",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "loan_type",
+            "type": "string"
+          },
+          {
+            "name": "principal",
+            "type": "numeric"
+          },
+          {
+            "name": "interest_rate_pct",
+            "type": "numeric"
+          },
+          {
+            "name": "tenure_months",
+            "type": "int"
+          },
+          {
+            "name": "start_date",
+            "type": "date"
+          },
+          {
+            "name": "outstanding_balance",
+            "type": "numeric"
+          },
+          {
+            "name": "emi_amount",
+            "type": "numeric"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to User"
+        ]
+      },
+      {
+        "entity": "SalaryStructure",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "effective_date",
+            "type": "date"
+          },
+          {
+            "name": "basic",
+            "type": "numeric"
+          },
+          {
+            "name": "hra",
+            "type": "numeric"
+          },
+          {
+            "name": "special_allowance",
+            "type": "numeric"
+          },
+          {
+            "name": "bonus_annual",
+            "type": "numeric"
+          },
+          {
+            "name": "employer_pf_contribution",
+            "type": "numeric"
+          },
+          {
+            "name": "tax_regime",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to User"
+        ]
+      },
+      {
+        "entity": "CreditCard",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "card_name",
+            "type": "string"
+          },
+          {
+            "name": "credit_limit",
+            "type": "numeric"
+          },
+          {
+            "name": "current_outstanding",
+            "type": "numeric"
+          },
+          {
+            "name": "reward_rules",
+            "type": "jsonb"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to User"
+        ]
+      },
+      {
+        "entity": "MutualFundHolding",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "fund_name",
+            "type": "string"
+          },
+          {
+            "name": "units",
+            "type": "numeric"
+          },
+          {
+            "name": "avg_nav",
+            "type": "numeric"
+          },
+          {
+            "name": "current_nav",
+            "type": "numeric"
+          },
+          {
+            "name": "sip_amount",
+            "type": "numeric"
+          },
+          {
+            "name": "as_of_date",
+            "type": "date"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to User"
+        ]
+      },
+      {
+        "entity": "StockHolding",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "ticker",
+            "type": "string"
+          },
+          {
+            "name": "market",
+            "type": "string"
+          },
+          {
+            "name": "quantity",
+            "type": "numeric"
+          },
+          {
+            "name": "avg_price",
+            "type": "numeric"
+          },
+          {
+            "name": "current_price",
+            "type": "numeric"
+          },
+          {
+            "name": "currency",
+            "type": "string"
+          },
+          {
+            "name": "as_of_date",
+            "type": "date"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to User"
+        ]
+      },
+      {
+        "entity": "RSUGrant",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "grant_type",
+            "type": "string"
+          },
+          {
+            "name": "company",
+            "type": "string"
+          },
+          {
+            "name": "total_units",
+            "type": "numeric"
+          },
+          {
+            "name": "vested_units",
+            "type": "numeric"
+          },
+          {
+            "name": "grant_date",
+            "type": "date"
+          },
+          {
+            "name": "vesting_schedule",
+            "type": "jsonb"
+          },
+          {
+            "name": "strike_price",
+            "type": "numeric"
+          },
+          {
+            "name": "current_price",
+            "type": "numeric"
+          },
+          {
+            "name": "currency",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to User"
+        ]
+      },
+      {
+        "entity": "EPFAccount",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "current_balance",
+            "type": "numeric"
+          },
+          {
+            "name": "employee_monthly_contribution",
+            "type": "numeric"
+          },
+          {
+            "name": "employer_monthly_contribution",
+            "type": "numeric"
+          },
+          {
+            "name": "as_of_date",
+            "type": "date"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to User"
+        ]
+      },
+      {
+        "entity": "NPSAccount",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "current_balance",
+            "type": "numeric"
+          },
+          {
+            "name": "monthly_contribution",
+            "type": "numeric"
+          },
+          {
+            "name": "asset_allocation",
+            "type": "jsonb"
+          },
+          {
+            "name": "as_of_date",
+            "type": "date"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to User"
+        ]
+      },
+      {
+        "entity": "ConversationThread",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to User",
+          "has many Message"
+        ]
+      },
+      {
+        "entity": "Message",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "thread_id",
+            "type": "uuid"
+          },
+          {
+            "name": "role",
+            "type": "string"
+          },
+          {
+            "name": "content",
+            "type": "text"
+          },
+          {
+            "name": "calculation_log_id",
+            "type": "uuid"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to ConversationThread",
+          "optionally references CalculationLog"
+        ]
+      },
+      {
+        "entity": "CalculationLog",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid"
+          },
+          {
+            "name": "user_id",
+            "type": "uuid"
+          },
+          {
+            "name": "function_name",
+            "type": "string"
+          },
+          {
+            "name": "function_version",
+            "type": "string"
+          },
+          {
+            "name": "inputs",
+            "type": "jsonb"
+          },
+          {
+            "name": "outputs",
+            "type": "jsonb"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp"
+          }
+        ],
+        "relationships": [
+          "belongs to User",
+          "referenced by Message"
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "title": "Provision Supabase project and run schema migrations",
+        "description": "Create Supabase project, apply the full schemaSql via Supabase CLI migrations, enable Row Level Security on every table scoped to auth.uid(), and seed a single user record for the founder."
+      },
+      {
+        "title": "Set up single-user Supabase Auth flow",
+        "description": "Configure Supabase Auth (magic link or email/password), restrict signups to the founder's email only, wire Next.js middleware to protect all chat and data-entry routes, and store the session securely."
+      },
+      {
+        "title": "Build and unit-test the Deterministic Financial Compute Engine",
+        "description": "Implement pure TypeScript functions for EMI, SIP future value, tax computation (old/new regime), affordability, RSU vesting value, and net worth aggregation; write exhaustive Vitest cases with hand-verified expected outputs to satisfy the 100% deterministic-accuracy success metric."
+      },
+      {
+        "title": "Implement Chat Orchestrator with LLM tool-calling",
+        "description": "Build the API route that sends conversation history + tool schema to the LLM, executes the selected deterministic function or data query against Supabase, logs the call in calculation_logs, and re-invokes the LLM only to phrase an explanation of the returned structured result."
+      },
+      {
+        "title": "Build manual data-entry UI for core financial domains",
+        "description": "Build forms for bank accounts, loans, salary structure, credit cards, mutual funds, stock holdings, RSU/ESOP grants, EPF, and NPS, allowing incremental population per domain as each new question requires it, matching the First-Question Data Wiring requirement."
+      },
+      {
+        "title": "Implement persistent conversation memory",
+        "description": "Build conversation_threads and messages persistence so chat context survives across sessions, including rendering the calculation trace inline with each assistant answer for auditability."
+      },
+      {
+        "title": "Configure Vercel deployment and environment",
+        "description": "Connect the repo to Vercel, configure Supabase and LLM API keys as environment secrets, set up preview/production environments, and enable GitHub Actions CI to run lint/tests before deploy."
+      }
+    ],
+    "openQuestions": [
+      "What is the single first question to wire and answer on day one, and which minimal set of tables does it require to be populated first?",
+      "Should manual data entry be free-form (LLM-assisted parsing into structured fields) or strictly structured forms to guarantee no LLM involvement in data capture itself?",
+      "How will credit card reward rules be sourced and kept accurate over time without manual upkeep becoming a maintenance burden?",
+      "What staleness threshold on as_of_date should trigger a UI warning that a number may be out of date, to protect the 'never guesses' guarantee?",
+      "Should the deterministic compute engine be versioned per function (function_version) so historical calculation_logs remain valid if formulas change later (e.g., tax law updates)?",
+      "What is the trigger/workflow for deciding when to add a new financial domain table — purely 'the next question I want to ask', and who/what enforces that discipline against scope creep?"
+    ],
+    "schemaSqlExcerpt": "CREATE TABLE loans (\n  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),\n  user_id uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  loan_type text NOT NULL,\n  principal numeric NOT NULL,\n  interest_rate_pct numeric NOT NULL,\n  tenure_months integer NOT NULL,\n  outstanding_balance numeric NOT NULL,\n  emi_amount numeric\n);\n\nCREATE TABLE salary_structures (\n  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),\n  user_id uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  effective_date date NOT NULL,\n  basic numeric NOT NULL,\n  hra numeric NOT NULL DEFAULT 0,\n  tax_regime text NOT NULL DEFAULT 'new'\n);"
+  },
+  "jira": {
+    "projectKey": "FINMA90",
+    "epicCount": 11,
+    "storyCount": 41,
+    "epics": [
+      {
+        "key": "FINMA90-1",
+        "title": "Engineering & Infrastructure",
+        "stories": [
+          {
+            "key": "FINMA90-2",
+            "title": "Provision Supabase project and apply schema migrations",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-3",
+            "title": "Set up single-user Supabase Auth flow",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-4",
+            "title": "Build and unit-test the deterministic financial compute engine",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-5",
+            "title": "Configure Vercel deployment and CI pipeline",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-6",
+            "title": "Implement chat orchestrator route with LLM tool-calling",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-7",
+            "title": "Build manual data-entry UI for core financial domains",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-8",
+            "title": "Implement persistent conversation memory with calculation trace",
+            "phase": 2
+          }
+        ]
+      },
+      {
+        "key": "FINMA90-9",
+        "title": "Deterministic Financial Compute Layer",
+        "stories": [
+          {
+            "key": "FINMA90-10",
+            "title": "Implement core deterministic calculator functions",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-11",
+            "title": "Wire compute functions as LLM tool calls",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-12",
+            "title": "Enforce explain-only system prompt for the LLM",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-13",
+            "title": "Log every calculation call for auditability",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "FINMA90-14",
+        "title": "Single-Thread Chat Interface Over Personal Knowledge Base",
+        "stories": [
+          {
+            "key": "FINMA90-15",
+            "title": "Build the single-thread chat UI shell",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-16",
+            "title": "Build chat message send/receive API integration",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-17",
+            "title": "Ground chat answers in the user's stored financial data",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-18",
+            "title": "Polish chat loading, error, and scroll states",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "FINMA90-19",
+        "title": "First-Question Data Wiring",
+        "stories": [
+          {
+            "key": "FINMA90-20",
+            "title": "Define the minimal data fields for the starter question",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-21",
+            "title": "Build the minimal entry form for starter-question data",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-22",
+            "title": "Wire the chat orchestrator to answer the starter question",
+            "phase": 2
+          }
+        ]
+      },
+      {
+        "key": "FINMA90-23",
+        "title": "Core India Financial Data Model",
+        "stories": [
+          {
+            "key": "FINMA90-24",
+            "title": "Design the Postgres schema for all financial domains",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-25",
+            "title": "Apply schema via Supabase CLI migrations",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-26",
+            "title": "Generate TypeScript types matching the schema",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-27",
+            "title": "Validate schema against sample real financial data",
+            "phase": 2
+          }
+        ]
+      },
+      {
+        "key": "FINMA90-28",
+        "title": "Manual Data Entry for MVP",
+        "stories": [
+          {
+            "key": "FINMA90-29",
+            "title": "Build a reusable manual entry form component",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-30",
+            "title": "Build domain-specific manual entry forms",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-31",
+            "title": "Add field validation and Supabase write handling",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-32",
+            "title": "Add edit and update capability for entered data",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "FINMA90-33",
+        "title": "Private Local Data Storage",
+        "stories": [
+          {
+            "key": "FINMA90-34",
+            "title": "Enable Row Level Security on all Supabase tables",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-35",
+            "title": "Audit data flow to confirm no third-party sharing",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-36",
+            "title": "Encrypt sensitive financial fields at rest",
+            "phase": 2
+          }
+        ]
+      },
+      {
+        "key": "FINMA90-37",
+        "title": "Personalized Calculators Wired to Real Data",
+        "stories": [
+          {
+            "key": "FINMA90-38",
+            "title": "Build calculator UI components pre-filled from real data",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-39",
+            "title": "Connect calculator components to the compute engine via API",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-40",
+            "title": "Add scenario override and comparison view",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "FINMA90-41",
+        "title": "Persistent Financial Memory Across Sessions",
+        "stories": [
+          {
+            "key": "FINMA90-42",
+            "title": "Create conversation_threads and messages tables",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-43",
+            "title": "Load prior conversation context on session start",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-44",
+            "title": "Build a simple thread history browser",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "FINMA90-45",
+        "title": "Incremental Ingestion Instead of Full Aggregation Upfront",
+        "stories": [
+          {
+            "key": "FINMA90-46",
+            "title": "Build a modular ingestion source framework",
+            "phase": 1
+          },
+          {
+            "key": "FINMA90-47",
+            "title": "Scaffold placeholder connectors for future sources",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-48",
+            "title": "Prompt the user to add data only when a question requires it",
+            "phase": 3
+          }
+        ]
+      },
+      {
+        "key": "FINMA90-49",
+        "title": "Unified Net-Worth View Inline in Chat",
+        "stories": [
+          {
+            "key": "FINMA90-50",
+            "title": "Build the net-worth aggregation compute function",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-51",
+            "title": "Render inline net-worth breakdown component in chat",
+            "phase": 2
+          },
+          {
+            "key": "FINMA90-52",
+            "title": "Add visual formatting and trend polish to net-worth display",
+            "phase": 3
+          }
+        ]
+      }
+    ]
+  },
+  "roadmap": [
+    {
+      "phase": 1,
+      "storyCount": 14,
+      "epics": [
+        "Engineering & Infrastructure",
+        "Deterministic Financial Compute Layer",
+        "Single-Thread Chat Interface Over Personal Knowledge Base",
+        "First-Question Data Wiring",
+        "Core India Financial Data Model",
+        "Manual Data Entry for MVP",
+        "Private Local Data Storage",
+        "Persistent Financial Memory Across Sessions",
+        "Incremental Ingestion Instead of Full Aggregation Upfront"
+      ]
+    },
+    {
+      "phase": 2,
+      "storyCount": 20,
+      "epics": [
+        "Engineering & Infrastructure",
+        "Deterministic Financial Compute Layer",
+        "Single-Thread Chat Interface Over Personal Knowledge Base",
+        "First-Question Data Wiring",
+        "Core India Financial Data Model",
+        "Manual Data Entry for MVP",
+        "Private Local Data Storage",
+        "Personalized Calculators Wired to Real Data",
+        "Persistent Financial Memory Across Sessions",
+        "Incremental Ingestion Instead of Full Aggregation Upfront",
+        "Unified Net-Worth View Inline in Chat"
+      ]
+    },
+    {
+      "phase": 3,
+      "storyCount": 7,
+      "epics": [
+        "Deterministic Financial Compute Layer",
+        "Single-Thread Chat Interface Over Personal Knowledge Base",
+        "Manual Data Entry for MVP",
+        "Personalized Calculators Wired to Real Data",
+        "Persistent Financial Memory Across Sessions",
+        "Incremental Ingestion Instead of Full Aggregation Upfront",
+        "Unified Net-Worth View Inline in Chat"
+      ]
+    }
+  ],
+  "confluence": {
+    "pages": [
+      "01 - Product",
+      "02 - Brand & Identity",
+      "03 - Engineering",
+      "04 - Competitor Analysis",
+      "05 - Roadmap",
+      "06 - Research Notes"
+    ]
+  }
+}

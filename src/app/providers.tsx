@@ -2,21 +2,18 @@
 
 import { Suspense, useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { captureFirstTouchOnce } from "@/lib/analytics/first-touch";
-import { initPostHog, posthog } from "@/lib/analytics/posthog-client";
+import { captureFirstTouchOnce, captureReferral } from "@/lib/analytics/first-touch";
+import { trackPageViewed } from "@/lib/analytics/events";
+import { initPostHog } from "@/lib/analytics/posthog-client";
+import { WaitlistProvider } from "@/components/cta/WaitlistProvider";
+import { RevealObserver } from "@/components/motion/RevealObserver";
 
 function PageviewTracker() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    posthog?.capture("marketing_page_viewed", {
-      path: pathname,
-      // referrer captured automatically by posthog as $referrer;
-      // UTMs auto-parsed from URL into $initial_utm_* (set-once) + $utm_* (current)
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- fire on route/search change only
+    trackPageViewed(pathname, { theme: document.documentElement.dataset.theme });
   }, [pathname, searchParams]);
 
   return null;
@@ -25,15 +22,17 @@ function PageviewTracker() {
 export function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     initPostHog();
-    captureFirstTouchOnce(); // durable first-touch; survives OAuth hop (Step 2 reads mm_ft)
+    captureFirstTouchOnce(); // durable first-touch; survives the OAuth hop into the app
+    captureReferral();
   }, []);
 
   return (
-    <>
+    <WaitlistProvider>
       <Suspense fallback={null}>
         <PageviewTracker />
       </Suspense>
+      <RevealObserver />
       {children}
-    </>
+    </WaitlistProvider>
   );
 }

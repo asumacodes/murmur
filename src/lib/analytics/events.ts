@@ -1,92 +1,150 @@
-import { posthog } from "./posthog-client";
+import { initPostHog, posthog } from "./posthog-client";
 
-type CtaLocation = "hero" | "footer" | "nav" | "pricing" | "form_submit" | string;
+/**
+ * Explicit marketing events only (autocapture is off). Never put an email,
+ * name, or free text a visitor typed into an event property.
+ *
+ * Funnel, in order:
+ *   marketing_page_viewed → marketing_section_viewed → *_cta_clicked
+ *   → waitlist_modal_opened → waitlist_form_started → waitlist_submitted
+ *   → waitlist_joined → referral_link_copied / referral_shared
+ */
 
-export function trackWaitlistCtaClicked(
+type CtaLocation =
+  | "hero"
+  | "nav"
+  | "nav_mobile"
+  | "sticky_mobile"
+  | "run_explorer"
+  | "how_it_works"
+  | "pipeline"
+  | "comparison"
+  | "pricing"
+  | "faq"
+  | "closer"
+  | "footer"
+  | "example_page"
+  | "tool_page"
+  | "template_page"
+  | "compare_page"
+  | (string & {});
+
+function capture(event: string, props?: Record<string, unknown>) {
+  // Child effects run before the provider's init effect, so make sure the
+  // client exists before the very first event (the pageview).
+  initPostHog();
+  posthog?.capture(event, props);
+}
+
+export function trackPageViewed(path: string, extra?: Record<string, unknown>) {
+  capture("marketing_page_viewed", { path, ...extra });
+}
+
+export function trackWaitlistCtaClicked(location: CtaLocation, extra?: Record<string, unknown>) {
+  capture("waitlist_cta_clicked", { cta_location: location, ...extra });
+}
+
+export function trackSignupCtaClicked(location: CtaLocation, extra?: Record<string, unknown>) {
+  capture("signup_cta_clicked", { cta_location: location, ...extra });
+}
+
+export function trackWaitlistModalOpened(location: CtaLocation, extra?: Record<string, unknown>) {
+  capture("waitlist_modal_opened", { cta_location: location, ...extra });
+}
+
+/** Once per page load, on the first keystroke in any waitlist email field. */
+export function trackWaitlistFormStarted(location: CtaLocation) {
+  capture("waitlist_form_started", { cta_location: location });
+}
+
+export function trackWaitlistSubmitted(
   location: CtaLocation,
+  status: "success" | "duplicate" | "error",
   extra?: Record<string, unknown>,
 ) {
-  posthog?.capture("waitlist_cta_clicked", {
-    cta_location: location,
-    ...extra,
-  });
+  capture("waitlist_submitted", { cta_location: location, status, ...extra });
 }
 
-export function trackSignupCtaClicked(
-  location: CtaLocation,
-  extra?: Record<string, unknown>,
-) {
-  posthog?.capture("signup_cta_clicked", {
-    cta_location: location,
-    ...extra,
-  });
+export function trackWaitlistJoined(location: CtaLocation, extra?: Record<string, unknown>) {
+  capture("waitlist_joined", { cta_location: location, ...extra });
 }
 
-export function trackSprintZeroCtaClicked() {
-  posthog?.capture("sprintzero_cta_clicked", {
-    cta_location: "sprintzero_band",
-  });
+export function trackWaitlistIdeaShared(length: number) {
+  capture("waitlist_idea_shared", { idea_length_bucket: length < 80 ? "short" : length < 280 ? "medium" : "long" });
 }
 
-export function trackSectionViewed(
-  sectionId: string,
-  extra?: Record<string, unknown>,
-) {
-  posthog?.capture("marketing_section_viewed", {
-    section_id: sectionId,
-    ...extra,
-  });
+export function trackReferralLinkCopied(location: CtaLocation) {
+  capture("referral_link_copied", { cta_location: location });
+}
+
+export function trackReferralShared(network: "x" | "linkedin" | "whatsapp" | "native", location: CtaLocation) {
+  capture("referral_shared", { network, cta_location: location });
+}
+
+export function trackSectionViewed(sectionId: string, extra?: Record<string, unknown>) {
+  capture("marketing_section_viewed", { section_id: sectionId, ...extra });
 }
 
 export function trackScrollDepth(percent: 25 | 50 | 75 | 100) {
-  posthog?.capture("marketing_scroll_depth", {
-    depth_percent: percent,
-  });
+  capture("marketing_scroll_depth", { depth_percent: percent });
 }
 
-export function trackArtifactsStageToggled(stage: "capture" | "artifacts") {
-  posthog?.capture("artifacts_stage_toggled", { stage });
+export function trackRunExplorerSelected(slug: string, method: "click" | "auto" | "keyboard") {
+  capture("run_explorer_selected", { run_slug: slug, method });
 }
 
-export function trackArtifactsSurfaceTabbed(
-  surface: "brand" | "jira" | "confluence",
-) {
-  posthog?.capture("artifacts_surface_tabbed", { surface });
+export function trackRunExplorerReplayed(slug: string) {
+  capture("run_explorer_replayed", { run_slug: slug });
 }
 
-export function trackPipelineCtaClicked(location: "hero" | string) {
-  posthog?.capture("pipeline_cta_clicked", { cta_location: location });
+export function trackRunExplorerOpenedFull(slug: string) {
+  capture("run_explorer_opened_full", { run_slug: slug });
 }
 
-/** Fired once per page load when the visitor starts typing in the waitlist email field (no PII). */
-export function trackWaitlistFormStarted(location: "early_access" | "coming_soon" | string = "early_access") {
-  posthog?.capture("waitlist_form_started", { cta_location: location });
+export function trackRunScreenViewed(slug: string, screen: string) {
+  capture("run_screen_viewed", { run_slug: slug, screen });
 }
 
-/** Scroll-hero film — which beat was in view (ACTION-based; no PII). */
-export function trackScrollHeroBeatViewed(beatId: string) {
-  posthog?.capture("scroll_hero_beat_viewed", { beat_id: beatId });
+export function trackExampleViewed(slug: string) {
+  capture("example_viewed", { run_slug: slug });
 }
 
-/** Fired once when the visitor reaches ~end of the 6-beat pin. */
-export function trackScrollHeroCompleted() {
-  posthog?.capture("scroll_hero_completed", {});
+export function trackExampleTabChanged(slug: string, tab: string) {
+  capture("example_tab_changed", { run_slug: slug, tab });
 }
 
-export function trackSocialOutboundClicked(
-  network: "x" | "youtube" | "github",
-  location: "coming_soon" | "footer" | string,
-) {
-  posthog?.capture("social_outbound_clicked", {
-    social_network: network,
-    cta_location: location,
-  });
+export function trackThemeToggled(theme: "light" | "dark") {
+  capture("theme_toggled", { theme });
 }
 
-export function trackDemoDeviceToggled(device: "desktop" | "mobile") {
-  posthog?.capture("demo_device_toggled", { device });
+export function trackPipelineStageViewed(stage: string, index: number) {
+  capture("pipeline_stage_viewed", { stage, index });
 }
 
-export function trackDemoVideoPlayed(device: "desktop" | "mobile") {
-  posthog?.capture("demo_video_played", { device });
+export function trackPricingTierClicked(tier: string, mode: "waitlist" | "signup") {
+  capture("pricing_tier_clicked", { tier, cta_mode: mode });
+}
+
+export function trackFaqOpened(question: string) {
+  capture("faq_opened", { question });
+}
+
+export function trackVideoOpened(device: "desktop" | "mobile") {
+  capture("demo_video_played", { device });
+}
+
+export function trackSprintZeroCtaClicked(location: CtaLocation = "sprintzero_band") {
+  capture("sprintzero_cta_clicked", { cta_location: location });
+}
+
+export function trackSocialOutboundClicked(network: "x" | "youtube" | "github", location: CtaLocation) {
+  capture("social_outbound_clicked", { social_network: network, cta_location: location });
+}
+
+export function trackToolUsed(tool: string, extra?: Record<string, unknown>) {
+  capture("free_tool_used", { tool, ...extra });
+}
+
+export function trackTemplateAction(template: string, action: "copy" | "download") {
+  capture("template_action", { template, action });
 }

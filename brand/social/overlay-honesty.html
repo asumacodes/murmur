@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Murmur · honesty label</title>
+    <link rel="stylesheet" href="../shared/brand.css" />
+    <style>
+      /*
+       * Every sped-up screen recording carries this label. ?text= must state the
+       * real run time of the footage shown (e.g. "Real run · 7m 42s · sped up").
+       */
+      .label {
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7em;
+        padding: 0.7em 1.1em;
+        border-radius: 999px;
+        background: var(--scrim);
+        border: 1px solid var(--line-2);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        color: var(--fg-2);
+        white-space: nowrap;
+      }
+      .label .rec {
+        font-size: 1em;
+      }
+      html.portrait .label {
+        left: 90px;
+        top: 250px;
+        font-size: 30px;
+      }
+      html.landscape .label {
+        left: 120px;
+        top: 110px;
+        font-size: 34px;
+      }
+    </style>
+  </head>
+  <body class="transparent">
+    <main class="artboard" data-w="1080" data-h="1920">
+      <p class="label mono"><span class="rec"></span><span data-text>Real run · 7m 42s · sped up</span></p>
+    </main>
+    <script src="../shared/brand.js"></script>
+  </body>
+</html>

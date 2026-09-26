@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "brand:render": "node brand/render.mjs"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.6",
+    "playwright-core": "1.63.0",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3"
   }
